@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="ICPC Schema" product="MySQL" version="5.5.9" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.21 ( Revision: ${bzr.revision-id} )" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d" case-sensitive="true">
+    <extra-name-characters>#@</extra-name-characters>
+    <identifier-quote-string>`</identifier-quote-string>
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://localhost:8889/icpc</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfd8dfc5dfc5dfde</user-password>
+    <schema-pattern>icpc.*</schema-pattern>
+    <default-schemas>icpc.*</default-schemas>
+    <default-dialect>MySQL</default-dialect>
+    <libraries>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
+      </library>
+    </libraries>
+    <table name="sampleGenotypes" schema="" catalog="icpc" type="TABLE">
+      <column name="subject_id" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
+      <column name="sortOrder" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="genotype" sqlType="VARCHAR" length="10" precision="0" nullable="false" jdbcType="12" />
+    </table>
+    <table name="samplePpiNames" schema="" catalog="icpc" type="TABLE">
+      <column name="subject_id" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
+      <column name="ppiName" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
+    </table>
+    <table name="sampleSources" schema="" catalog="icpc" type="TABLE">
+      <column name="subject_id" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
+      <column name="source" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+    </table>
+    <table name="samples" schema="" catalog="icpc" type="TABLE">
+      <column name="Subject_ID" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
+      <column name="Genotyping" sqlType="DECIMAL" length="10" precision="0" nullable="false" jdbcType="3" />
+      <column name="Phenotyping" sqlType="DECIMAL" length="10" precision="0" nullable="false" jdbcType="3" />
+      <column name="Sample_Source" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Project" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
+      <column name="Gender" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Race_self" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Race_OMB" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Ethnicity_reported" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Ethnicity_OMB" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Country" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Age" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Height" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Weight" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="BMI" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Comorbidities" sqlType="VARCHAR" length="2000" precision="0" nullable="true" jdbcType="12" />
+      <column name="Diabetes" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Ever_Smoked" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Current_smoker" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Alcohol" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Blood_Pressure" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Diastolic_BP_Max" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Diastolic_BP_Median" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Systolic_BP_Max" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Systolic_BP_Median" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="CRP" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="BUN" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Creatinine" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Ejection_fraction" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Left_Ventricle" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="placebo_RCT" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Clopidogrel" sqlType="DECIMAL" length="10" precision="0" nullable="false" jdbcType="3" />
+      <column name="Dose_Clopidogrel" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Duration_Clopidogrel" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Aspirin" sqlType="DECIMAL" length="10" precision="0" nullable="false" jdbcType="3" />
+      <column name="Dose_Aspirin" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Duration_Aspirin" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Statins" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PPI" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PPI_name" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Calcium_blockers" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Beta_blockers" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="ACE_Inh" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Ang_inh_blockers" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Ezetemib" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Glycoprotein_IIaIIIb_inhibitor" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Active_metabolite" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="CV_events" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_MACE" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Bleeding" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Major_Bleeding" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Minor_Bleeding" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Days_MajorBleeding" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Days_MinorBleeding" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="STEMI" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_STEMI" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="NSTEMI" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_NSTEMI" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Angina" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_Angina" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="REVASC" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_REVASC" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Stroke" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_stroke" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Other_ischemic" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Congestive_Heart_Failure" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_heartFailure" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Mechanical_Valve_Replacement" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_MechValve" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Tissue_Valve_Replacement" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_tissValve" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Stent_thromb" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_stent" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="All_cause_mortality" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_mortality" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Cardiovascular_death" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_death" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Left_ventricular_hypertrophy" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_venHypertrophy" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Peripheral_vascular_disease" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_PeriVascular" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Atrial_fibrillation" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_AF" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Duration_followup_clinical_outcomes" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Blood_Cell" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="White_cell_count" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Red_cell_count" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Platelet_count" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Mean_platelet_volume" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Hematocrit" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chol" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="LDL" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="HDL" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Total_Cholesterol" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Triglycerides" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Plat_Aggr_Pheno" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Instrument" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Inter_assay_variation" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Intra_assay_variation" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Blood_collection_type" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Sample_type" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Verify_Now_base" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_post_loading" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_while_on_clopidogrel" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Optical_Platelet_Aggregometry" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Pre_clopidogrel_platelet_aggregometry_base" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Post_clopidogrel_platelet_aggregometry" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Aggregometry_agonist" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="ADP" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Arachadonic_acid" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Collagen" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Platelet_aggregometry_method" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Clopidogrel_loading_dose" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PFA_mean_EPI_Collagen_closure_Baseline" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PFA_mean_ADP_Collagen_closure_Baseline" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PFA_mean_EPI_Collagen_closure_Post" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PFA_mean_ADP_Collagen_closure_Post" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_Loading_PFA" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PFA_mean_EPI_Collagen_closure_Standard" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PFA_mean_ADP_Collagen_closure_Standard" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_baseline_Base" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_baseline_PRU" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_baseline_percentinhibition" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_post_Base" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_post_PRU" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_post_percentinhibition" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_loading_VerifyNow" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_on_clopidogrel_Base" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_on_clopidogrel_PRU" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Verify_Now_on_clopidogrel_percentinhibition" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_ADP_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_ADP_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_collagen_1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_collagen_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_collagen_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_collagen_6" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_epi" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_max_aa" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_lag_collagen_1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_lag_collagen_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_lag_collagen_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_baseline_lag_collagen_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_ADP_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_ADP_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_collagen_1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_collagen_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_collagen_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_collagen_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_epi_perc" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_max_aa_perc" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_lag_collagen_1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_lag_collagen_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_lag_collagen_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_post_lag_collagen_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_loading_PAP8" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_ADP_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_ADP_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_collagen_1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_collagen_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_collagen_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_collagen_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_epi_pct" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_max_aa_pct" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_lag_collagen_1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_lag_collagen_2" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="5PAP_8_standard_lag_collagen_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="PAP_8_standard_lag_collagen_10" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_baseline_max_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_baseline_max_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_baseline_max_aa" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_baseline_max_collagen1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_baseline_lag_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_baseline_lag_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_baseline_lag_aa" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_baseline_lag_collagen1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_loading_max_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_loading_max_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_loading_max_aa" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_loading_max_collagen1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_loading_lag_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_loading_lag_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_loading_lag_aa" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_loading_lag_collagen1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Time_loading_Chronolog" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_standard_max_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_standard_max_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_standard_max_aa" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_standard_max_collagen1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_standard_lag_ADP_5" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_standard_lag_ADP_20" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_standard_lag_aa" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Chronolog_standard_lag_collagen1" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="VASP" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Addition_Pheno" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="cyp2c19_genotypes" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs4244285" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs4986893" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs28399504" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs56337013" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs72552267" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs72558186" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs41291556" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs6413438" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs12248560" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs662" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs854560" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs1045642" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="other_genotypes" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="subject_id" />
+      <index name="sample_project_idx" unique="false" columns="Project" />
+    </table>
+  </data-source>
+</component>
