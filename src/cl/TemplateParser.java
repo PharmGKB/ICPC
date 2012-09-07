@@ -1,5 +1,7 @@
 package cl;
 
+import com.google.common.base.Preconditions;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.pharmgkb.ExcelParser;
 import org.pharmgkb.util.CliHelper;
@@ -15,6 +17,7 @@ import java.io.File;
 public class TemplateParser {
   private static final Logger sf_logger = Logger.getLogger(TemplateParser.class);
   private File m_templateFile = null;
+  private File m_templateDirectory = null;
 
   public static void main(String args[]) {
     try {
@@ -22,7 +25,7 @@ public class TemplateParser {
 
       TemplateParser parser = new TemplateParser();
       parser.parseCommandLineArgs(args);
-      parser.parseFile();
+      parser.parse();
     }
     catch (Exception ex) {
       sf_logger.error("Couldn't run parser", ex);
@@ -32,15 +35,38 @@ public class TemplateParser {
     }
   }
 
-  private void parseFile() throws Exception {
-    ExcelParser parser = new ExcelParser(getTemplateFile());
+  private void parse() throws Exception {
+    if (getTemplateFile() != null) {
+      parseFile(getTemplateFile());
+    }
+    else if (getTemplateDirectory() != null) {
+      parseDirectory(getTemplateDirectory());
+    }
+  }
+
+  private void parseFile(File file) throws Exception {
+    Preconditions.checkNotNull(file);
+    Preconditions.checkArgument(file.exists(), "File does not exist: %s", file);
+
+    ExcelParser parser = new ExcelParser(file);
     parser.parse();
+  }
+
+  private void parseDirectory(File directory) throws Exception {
+    Preconditions.checkNotNull(directory);
+    Preconditions.checkArgument(directory.exists(), "File does not exist: %s", directory);
+    Preconditions.checkArgument(directory.isDirectory(), "File is not directory: %s", directory);
+
+    for (File file : FileUtils.listFiles(directory, new String[]{"xlsx","xls"}, false)) {
+      parseFile(file);
+    }
   }
 
   private void parseCommandLineArgs(String args[]) throws Exception{
     CliHelper cliHelper = new CliHelper(getClass(), false);
 
     cliHelper.addOption("f", "file", "ICPC excel template file to read", "pathToFile");
+    cliHelper.addOption("d", "directory", "ICPC excel template directory to read", "pathToDirectory");
 
     try {
       cliHelper.parse(args);
@@ -61,6 +87,16 @@ public class TemplateParser {
         throw new Exception("File not found "+cliHelper.getValue("-f"));
       }
     }
+
+    if (cliHelper.hasOption("-d")) {
+      File templateDirectory = new File(cliHelper.getValue("-d"));
+      if (templateDirectory.exists()) {
+        setTemplateDirectory(templateDirectory);
+      }
+      else {
+        throw new Exception("Directory doesn't exist "+cliHelper.getValue("-d"));
+      }
+    }
   }
 
 
@@ -70,5 +106,13 @@ public class TemplateParser {
 
   public void setTemplateFile(File templateFile) {
     m_templateFile = templateFile;
+  }
+
+  public File getTemplateDirectory() {
+    return m_templateDirectory;
+  }
+
+  public void setTemplateDirectory(File templateDirectory) {
+    m_templateDirectory = templateDirectory;
   }
 }
