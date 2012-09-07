@@ -16,7 +16,7 @@ import java.util.Iterator;
  */
 public class SubjectIterator implements Iterator {
   private static final Logger sf_logger = Logger.getLogger(SubjectIterator.class);
-  private static final Integer sf_columnCount = 215;
+  private static final Integer sf_columnCount = 214;
 
   private Sheet m_sheet = null;
   private Integer m_currentRow = 3;
@@ -98,8 +98,10 @@ public class SubjectIterator implements Iterator {
           break;
 
         case 3:
-          for (String value : Splitter.on(";").trimResults().split(cellStringValue)) {
-            subject.addSampleSource(SampleSource.lookupByName(value));
+          if (StringUtils.isNotBlank(cellStringValue)) {
+            for (String value : Splitter.on(";").trimResults().split(cellStringValue)) {
+              subject.addSampleSource(SampleSource.lookupByName(value));
+            }
           }
           break;
 
