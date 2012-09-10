@@ -1,4 +1,4 @@
-package org.pharmgkb;
+package org.pharmgkb.enums;
 
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;
@@ -10,19 +10,18 @@ import java.util.Collection;
  * User: whaleyr
  * Date: 9/4/12
  */
-public enum DiabetesStatus implements ExtendedEnum {
+public enum SampleSource implements ExtendedEnum {
+  SERUM(1, "1", "Serum"),
+  PLASMA(2, "2", "Plasma"),
+  TISSUE(3, "3", "Tissue"),
+  OTHERS(4, "4", "Others");
 
-  TYPE1(1, "1", "type 1"),
-  TYPE2(2, "2", "type 2"),
-  NONE(0, "0", "none"),
-  UNKNOWN(99, "99", "unknown");
-
-  private static ExtendedEnumHelper<DiabetesStatus> s_extendedEnumHelper;
+  private static ExtendedEnumHelper<SampleSource> s_extendedEnumHelper;
   private int m_id;
   private String m_shortName;
   private String m_displayName;
 
-  DiabetesStatus(int id, String shortName, String displayName) {
+  SampleSource(int id, String shortName, String displayName) {
     m_id = id;
     m_shortName = shortName;
     m_displayName = displayName;
@@ -31,7 +30,7 @@ public enum DiabetesStatus implements ExtendedEnum {
 
   private synchronized void init() {
     if (s_extendedEnumHelper == null) {
-      s_extendedEnumHelper = new ExtendedEnumHelper<DiabetesStatus>();
+      s_extendedEnumHelper = new ExtendedEnumHelper<SampleSource>();
     }
     s_extendedEnumHelper.add(this, m_id, m_shortName, m_displayName);
   }
@@ -67,7 +66,7 @@ public enum DiabetesStatus implements ExtendedEnum {
   /**
    * Looks for the enum with the given Id.
    */
-  public static DiabetesStatus lookupById(int id) {
+  public static SampleSource lookupById(int id) {
 
     return s_extendedEnumHelper.lookupById(id);
   }
@@ -75,7 +74,7 @@ public enum DiabetesStatus implements ExtendedEnum {
   /**
    * Looks for the enum with the given name.
    */
-  public static DiabetesStatus lookupByName(String text) {
+  public static SampleSource lookupByName(String text) {
 
     return s_extendedEnumHelper.lookupByName(text);
   }
@@ -84,7 +83,7 @@ public enum DiabetesStatus implements ExtendedEnum {
   /**
    * Gets all the enums sorted by Id.
    */
-  public static Collection<DiabetesStatus> getAllSortedById() {
+  public static Collection<SampleSource> getAllSortedById() {
 
     return s_extendedEnumHelper.getAllSortedById();
   }
@@ -92,7 +91,7 @@ public enum DiabetesStatus implements ExtendedEnum {
   /**
    * Gets all the enums sorted by name.
    */
-  public static Collection<DiabetesStatus> getAllSortedByName() {
+  public static Collection<SampleSource> getAllSortedByName() {
 
     return s_extendedEnumHelper.getAllSortedByName();
   }

@@ -1,4 +1,4 @@
-package org.pharmgkb;
+package org.pharmgkb.enums;
 
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;
@@ -8,20 +8,22 @@ import java.util.Collection;
 /**
  * Created by IntelliJ IDEA.
  * User: whaleyr
- * Date: Jul 16, 2010
- * Time: 9:54:36 AM
+ * Date: 9/4/12
  */
-public enum Value implements ExtendedEnum {
-  Unknown(99, "99", "not known"),
-  Yes(1, "1", "yes"),
-  No(0, "0", "no");
+public enum AlcoholStatus implements ExtendedEnum {
 
-  private static ExtendedEnumHelper<Value> s_extendedEnumHelper;
+  NONE(0, "0", "none"),
+  INFREQUENT(1, "1", "infrequent"),
+  MODERATE(2, "2", "moderate"),
+  FREQUENT(3, "3", "frequent"),
+  UNKNOWN(99, "99", "unknown");
+
+  private static ExtendedEnumHelper<AlcoholStatus> s_extendedEnumHelper;
   private int m_id;
   private String m_shortName;
   private String m_displayName;
 
-  Value(int id, String shortName, String displayName) {
+  AlcoholStatus(int id, String shortName, String displayName) {
     m_id = id;
     m_shortName = shortName;
     m_displayName = displayName;
@@ -30,7 +32,7 @@ public enum Value implements ExtendedEnum {
 
   private synchronized void init() {
     if (s_extendedEnumHelper == null) {
-      s_extendedEnumHelper = new ExtendedEnumHelper<Value>();
+      s_extendedEnumHelper = new ExtendedEnumHelper<AlcoholStatus>();
     }
     s_extendedEnumHelper.add(this, m_id, m_shortName, m_displayName);
   }
@@ -66,7 +68,7 @@ public enum Value implements ExtendedEnum {
   /**
    * Looks for the enum with the given Id.
    */
-  public static Value lookupById(int id) {
+  public static AlcoholStatus lookupById(int id) {
 
     return s_extendedEnumHelper.lookupById(id);
   }
@@ -74,7 +76,7 @@ public enum Value implements ExtendedEnum {
   /**
    * Looks for the enum with the given name.
    */
-  public static Value lookupByName(String text) {
+  public static AlcoholStatus lookupByName(String text) {
 
     return s_extendedEnumHelper.lookupByName(text);
   }
@@ -83,7 +85,7 @@ public enum Value implements ExtendedEnum {
   /**
    * Gets all the enums sorted by Id.
    */
-  public static Collection<Value> getAllSortedById() {
+  public static Collection<AlcoholStatus> getAllSortedById() {
 
     return s_extendedEnumHelper.getAllSortedById();
   }
@@ -91,7 +93,7 @@ public enum Value implements ExtendedEnum {
   /**
    * Gets all the enums sorted by name.
    */
-  public static Collection<Value> getAllSortedByName() {
+  public static Collection<AlcoholStatus> getAllSortedByName() {
 
     return s_extendedEnumHelper.getAllSortedByName();
   }
@@ -103,4 +105,4 @@ public enum Value implements ExtendedEnum {
     return getDisplayName();
   }
 
-}
+  }

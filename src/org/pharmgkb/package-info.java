@@ -4,7 +4,7 @@
         parameters = {
             @Parameter(
                 name  = "enumClass",
-                value = "org.pharmgkb.Value"),
+                value = "org.pharmgkb.enums.Value"),
             @Parameter(
                 name  = "identifierMethod",
                 value = "getId"),
@@ -18,7 +18,7 @@
         parameters = {
             @Parameter(
                 name  = "enumClass",
-                value = "org.pharmgkb.AlcoholStatus"),
+                value = "org.pharmgkb.enums.AlcoholStatus"),
             @Parameter(
                 name  = "identifierMethod",
                 value = "getId"),
@@ -32,7 +32,7 @@
         parameters = {
             @Parameter(
                 name  = "enumClass",
-                value = "org.pharmgkb.DiabetesStatus"),
+                value = "org.pharmgkb.enums.DiabetesStatus"),
             @Parameter(
                 name  = "identifierMethod",
                 value = "getId"),
@@ -46,7 +46,7 @@
         parameters = {
             @Parameter(
                 name  = "enumClass",
-                value = "org.pharmgkb.Gender"),
+                value = "org.pharmgkb.enums.Gender"),
             @Parameter(
                 name  = "identifierMethod",
                 value = "getId"),
@@ -60,7 +60,7 @@
         parameters = {
             @Parameter(
                 name  = "enumClass",
-                value = "org.pharmgkb.SampleSource"),
+                value = "org.pharmgkb.enums.SampleSource"),
             @Parameter(
                 name  = "identifierMethod",
                 value = "getId"),

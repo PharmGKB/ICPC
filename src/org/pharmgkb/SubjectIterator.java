@@ -5,6 +5,7 @@ import com.google.common.base.Splitter;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
+import org.pharmgkb.enums.*;
 import org.pharmgkb.util.ExcelUtils;
 
 import java.util.Iterator;

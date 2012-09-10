@@ -1,4 +1,4 @@
-package org.pharmgkb;
+package org.pharmgkb.enums;
 
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;

@@ -1,4 +1,4 @@
-package org.pharmgkb;
+package org.pharmgkb.enums;
 
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;
@@ -8,20 +8,20 @@ import java.util.Collection;
 /**
  * Created by IntelliJ IDEA.
  * User: whaleyr
- * Date: 9/4/12
+ * Date: Jul 16, 2010
+ * Time: 9:54:36 AM
  */
-public enum SampleSource implements ExtendedEnum {
-  SERUM(1, "1", "Serum"),
-  PLASMA(2, "2", "Plasma"),
-  TISSUE(3, "3", "Tissue"),
-  OTHERS(4, "4", "Others");
+public enum Value implements ExtendedEnum {
+  Unknown(99, "99", "not known"),
+  Yes(1, "1", "yes"),
+  No(0, "0", "no");
 
-  private static ExtendedEnumHelper<SampleSource> s_extendedEnumHelper;
+  private static ExtendedEnumHelper<Value> s_extendedEnumHelper;
   private int m_id;
   private String m_shortName;
   private String m_displayName;
 
-  SampleSource(int id, String shortName, String displayName) {
+  Value(int id, String shortName, String displayName) {
     m_id = id;
     m_shortName = shortName;
     m_displayName = displayName;
@@ -30,7 +30,7 @@ public enum SampleSource implements ExtendedEnum {
 
   private synchronized void init() {
     if (s_extendedEnumHelper == null) {
-      s_extendedEnumHelper = new ExtendedEnumHelper<SampleSource>();
+      s_extendedEnumHelper = new ExtendedEnumHelper<Value>();
     }
     s_extendedEnumHelper.add(this, m_id, m_shortName, m_displayName);
   }
@@ -66,7 +66,7 @@ public enum SampleSource implements ExtendedEnum {
   /**
    * Looks for the enum with the given Id.
    */
-  public static SampleSource lookupById(int id) {
+  public static Value lookupById(int id) {
 
     return s_extendedEnumHelper.lookupById(id);
   }
@@ -74,7 +74,7 @@ public enum SampleSource implements ExtendedEnum {
   /**
    * Looks for the enum with the given name.
    */
-  public static SampleSource lookupByName(String text) {
+  public static Value lookupByName(String text) {
 
     return s_extendedEnumHelper.lookupByName(text);
   }
@@ -83,7 +83,7 @@ public enum SampleSource implements ExtendedEnum {
   /**
    * Gets all the enums sorted by Id.
    */
-  public static Collection<SampleSource> getAllSortedById() {
+  public static Collection<Value> getAllSortedById() {
 
     return s_extendedEnumHelper.getAllSortedById();
   }
@@ -91,7 +91,7 @@ public enum SampleSource implements ExtendedEnum {
   /**
    * Gets all the enums sorted by name.
    */
-  public static Collection<SampleSource> getAllSortedByName() {
+  public static Collection<Value> getAllSortedByName() {
 
     return s_extendedEnumHelper.getAllSortedByName();
   }
@@ -103,4 +103,4 @@ public enum SampleSource implements ExtendedEnum {
     return getDisplayName();
   }
 
-  }
+}

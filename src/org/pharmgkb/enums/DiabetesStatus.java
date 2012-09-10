@@ -1,4 +1,4 @@
-package org.pharmgkb;
+package org.pharmgkb.enums;
 
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;
@@ -10,20 +10,19 @@ import java.util.Collection;
  * User: whaleyr
  * Date: 9/4/12
  */
-public enum AlcoholStatus implements ExtendedEnum {
+public enum DiabetesStatus implements ExtendedEnum {
 
+  TYPE1(1, "1", "type 1"),
+  TYPE2(2, "2", "type 2"),
   NONE(0, "0", "none"),
-  INFREQUENT(1, "1", "infrequent"),
-  MODERATE(2, "2", "moderate"),
-  FREQUENT(3, "3", "frequent"),
   UNKNOWN(99, "99", "unknown");
 
-  private static ExtendedEnumHelper<AlcoholStatus> s_extendedEnumHelper;
+  private static ExtendedEnumHelper<DiabetesStatus> s_extendedEnumHelper;
   private int m_id;
   private String m_shortName;
   private String m_displayName;
 
-  AlcoholStatus(int id, String shortName, String displayName) {
+  DiabetesStatus(int id, String shortName, String displayName) {
     m_id = id;
     m_shortName = shortName;
     m_displayName = displayName;
@@ -32,7 +31,7 @@ public enum AlcoholStatus implements ExtendedEnum {
 
   private synchronized void init() {
     if (s_extendedEnumHelper == null) {
-      s_extendedEnumHelper = new ExtendedEnumHelper<AlcoholStatus>();
+      s_extendedEnumHelper = new ExtendedEnumHelper<DiabetesStatus>();
     }
     s_extendedEnumHelper.add(this, m_id, m_shortName, m_displayName);
   }
@@ -68,7 +67,7 @@ public enum AlcoholStatus implements ExtendedEnum {
   /**
    * Looks for the enum with the given Id.
    */
-  public static AlcoholStatus lookupById(int id) {
+  public static DiabetesStatus lookupById(int id) {
 
     return s_extendedEnumHelper.lookupById(id);
   }
@@ -76,7 +75,7 @@ public enum AlcoholStatus implements ExtendedEnum {
   /**
    * Looks for the enum with the given name.
    */
-  public static AlcoholStatus lookupByName(String text) {
+  public static DiabetesStatus lookupByName(String text) {
 
     return s_extendedEnumHelper.lookupByName(text);
   }
@@ -85,7 +84,7 @@ public enum AlcoholStatus implements ExtendedEnum {
   /**
    * Gets all the enums sorted by Id.
    */
-  public static Collection<AlcoholStatus> getAllSortedById() {
+  public static Collection<DiabetesStatus> getAllSortedById() {
 
     return s_extendedEnumHelper.getAllSortedById();
   }
@@ -93,7 +92,7 @@ public enum AlcoholStatus implements ExtendedEnum {
   /**
    * Gets all the enums sorted by name.
    */
-  public static Collection<AlcoholStatus> getAllSortedByName() {
+  public static Collection<DiabetesStatus> getAllSortedByName() {
 
     return s_extendedEnumHelper.getAllSortedByName();
   }
