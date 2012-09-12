@@ -17,7 +17,6 @@ import java.util.Iterator;
  */
 public class SubjectIterator implements Iterator {
   private static final Logger sf_logger = Logger.getLogger(SubjectIterator.class);
-  private static final Integer sf_columnCount = 214;
 
   private Sheet m_sheet = null;
   private Integer m_currentRow = 3;
@@ -39,7 +38,12 @@ public class SubjectIterator implements Iterator {
 
   @Override
   public boolean hasNext() {
-    return getCurrentRow()<=getSheet().getLastRowNum();
+    boolean notPastLast = getCurrentRow()<=getSheet().getLastRowNum();
+
+    Cell cell = getSheet().getRow(getCurrentRow()).getCell(0);
+    boolean hasSubjectId = cell!=null && StringUtils.isNotBlank(cell.getStringCellValue());
+
+    return notPastLast && hasSubjectId;
   }
 
   @Override
@@ -56,7 +60,7 @@ public class SubjectIterator implements Iterator {
       copyFromRowToSubject(row, subject);
     }
     catch (Exception ex) {
-      sf_logger.error("Couldn't copy subject data for row "+getCurrentRow(), ex);
+      sf_logger.error("Couldn't copy subject data for row "+getCurrentRow()+1, ex);
       subject = null;
     }
 
@@ -67,13 +71,8 @@ public class SubjectIterator implements Iterator {
   protected void copyFromRowToSubject(Row row, Subject subject) throws Exception {
     Preconditions.checkNotNull(row);
     Preconditions.checkNotNull(subject);
-    Preconditions.checkArgument(
-        row.getLastCellNum()>=(sf_columnCount-1),
-        "Found insufficient columns, expected %s, found %s",
-        sf_columnCount,
-        (row.getLastCellNum()+1));
 
-    for (int colIdx=0; colIdx<sf_columnCount; colIdx++) {
+    for (int colIdx=0; colIdx<ExcelParser.COLUMN_COUNT; colIdx++) {
       String cellStringValue;
       try {
         cellStringValue = ExcelUtils.getStringValue(row.getCell(colIdx), getFormulaEvaluator());
@@ -107,6 +106,9 @@ public class SubjectIterator implements Iterator {
           break;
 
         case 4:
+          if (StringUtils.isBlank(cellStringValue)) {
+            throw new Exception("Project ID must be specified");
+          }
           subject.setProject(cellStringValue);
           break;
 

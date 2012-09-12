@@ -6,16 +6,12 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/JUnit.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/pharmgkb/enums/Metabolizer.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/org/pharmgkb/enums/MetabolizerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java" />
     </list>
-    <list id="451f1195-f0ed-4109-9bea-284ffa752263" name="ZZ-Ignore" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/log4j.properties" afterPath="$PROJECT_DIR$/conf/log4j.properties" />
-    </list>
     <ignored path="ICPC.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="3ff045bd-cefc-4a58-a568-b6f2466d4474" time="1347051600115" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -644,7 +640,6 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3ff045bd-cefc-4a58-a568-b6f2466d4474" name="Default" comment="" />
-      <changelist id="451f1195-f0ed-4109-9bea-284ffa752263" name="ZZ-Ignore" comment="" />
       <created>1346167409480</created>
       <updated>1347030885392</updated>
     </task>
@@ -664,7 +659,11 @@
       <created>1347290792617</created>
       <updated>1347290792617</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Updates.&#10;&#10;* added metabolizer enum for metabolizer phenotype&#10;* fixed column number checking based on column headers&#10;* skip empty rows&#10;* added jUnit support">
+      <created>1347478573266</created>
+      <updated>1347478573266</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -755,7 +754,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move enums to their own package." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates.&#10;&#10;* added metabolizer enum for metabolizer phenotype&#10;* fixed column number checking based on column headers&#10;* skip empty rows&#10;* added jUnit support" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -772,6 +771,7 @@
     <MESSAGE value="Fixes.&#10;&#10;* column count off by one&#10;* null check for splitter" />
     <MESSAGE value="Add directory crawling.&#10;&#10;* can specify -d on the command line now to load all excel sheets in one dir" />
     <MESSAGE value="Move enums to their own package." />
+    <MESSAGE value="Updates.&#10;&#10;* added metabolizer enum for metabolizer phenotype&#10;* fixed column number checking based on column headers&#10;* skip empty rows&#10;* added jUnit support" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
