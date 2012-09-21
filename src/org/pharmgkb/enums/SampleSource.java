@@ -11,6 +11,7 @@ import java.util.Collection;
  * Date: 9/4/12
  */
 public enum SampleSource implements ExtendedEnum {
+  UNKNOWN(0, "0", "Unknown"),
   SERUM(1, "1", "Serum"),
   PLASMA(2, "2", "Plasma"),
   TISSUE(3, "3", "Tissue"),

@@ -40,8 +40,10 @@ public class SubjectIterator implements Iterator {
   public boolean hasNext() {
     boolean notPastLast = getCurrentRow()<=getSheet().getLastRowNum();
 
-    Cell cell = getSheet().getRow(getCurrentRow()).getCell(0);
-    boolean hasSubjectId = cell!=null && StringUtils.isNotBlank(cell.getStringCellValue());
+    boolean hasSubjectId = getSheet()!=null
+        && getSheet().getRow(getCurrentRow())!=null
+        && getSheet().getRow(getCurrentRow()).getCell(0)!=null
+        && StringUtils.isNotBlank(getSheet().getRow(getCurrentRow()).getCell(0).getStringCellValue());
 
     return notPastLast && hasSubjectId;
   }
@@ -100,7 +102,14 @@ public class SubjectIterator implements Iterator {
         case 3:
           if (StringUtils.isNotBlank(cellStringValue)) {
             for (String value : Splitter.on(";").trimResults().split(cellStringValue)) {
-              subject.addSampleSource(SampleSource.lookupByName(value));
+              SampleSource source = SampleSource.lookupByName(value);
+              if (source == null) {
+                sf_logger.warn("can't find source for : "+value);
+                throw new Exception("row "+getCurrentRow()+" can't find source for : "+value);
+              }
+              else {
+                subject.addSampleSource(SampleSource.lookupByName(value));
+              }
             }
           }
           break;
