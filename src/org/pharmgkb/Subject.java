@@ -2264,7 +2264,7 @@ public class Subject {
     m_rs8192719 = rs8192719;
   }
 
-  @Column(name="rs3715274")
+  @Column(name="rs3745274")
   public String getRs3745274() {
     return m_rs3745274;
   }
