@@ -21,7 +21,7 @@ public class IcpcUtils {
 
   public static boolean isBlank(String string) {
     String trimString = StringUtils.trimToNull(string);
-    return StringUtils.isBlank(trimString) || trimString.equalsIgnoreCase("na");
+    return StringUtils.isBlank(trimString) || trimString.equalsIgnoreCase("na") || trimString.equalsIgnoreCase("n/a");
   }
 
   public static File getOutputFile(File inputFile) {

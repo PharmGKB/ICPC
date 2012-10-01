@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.pharmgkb.enums.*;
 import org.pharmgkb.util.ExcelUtils;
+import org.pharmgkb.util.IcpcUtils;
 
 import java.util.Iterator;
 
@@ -83,12 +84,17 @@ public class SubjectIterator implements Iterator {
         throw ex;
       }
 
+      if (StringUtils.isNotBlank(cellStringValue) && cellStringValue.equalsIgnoreCase("NA")) {
+        cellStringValue = null;
+      }
+
       switch(colIdx) {
 
         case 0:
           String subjectId = row.getCell(colIdx).getStringCellValue();
-          subjectId = StringUtils.replace(subjectId, ",", "");
-          subject.setSubjectId(StringUtils.strip(subjectId));
+          subjectId = StringUtils.strip(StringUtils.replace(subjectId, ",", ""));
+          subject.setSubjectId(subjectId);
+          ExcelUtils.writeCell(row, colIdx, subjectId);
           break;
 
         case 1:
@@ -100,7 +106,7 @@ public class SubjectIterator implements Iterator {
           break;
 
         case 3:
-          if (StringUtils.isNotBlank(cellStringValue)) {
+          if (!IcpcUtils.isBlank(cellStringValue)) {
             for (String value : Splitter.on(";").trimResults().split(cellStringValue)) {
               SampleSource source = SampleSource.lookupByName(value);
               if (source == null) {
@@ -115,7 +121,7 @@ public class SubjectIterator implements Iterator {
           break;
 
         case 4:
-          if (StringUtils.isBlank(cellStringValue)) {
+          if (IcpcUtils.isBlank(cellStringValue)) {
             throw new Exception("Project ID must be specified");
           }
           subject.setProject(cellStringValue);
@@ -301,7 +307,7 @@ public class SubjectIterator implements Iterator {
           break;
 
         case 40:
-          if (StringUtils.isBlank(cellStringValue)) {
+          if (IcpcUtils.isBlank(cellStringValue)) {
             break;
           }
           if (cellStringValue.contains("1")) {
@@ -679,6 +685,9 @@ public class SubjectIterator implements Iterator {
           break;
       }
 
+      if (StringUtils.isBlank(cellStringValue)) {
+        ExcelUtils.writeCell(row, colIdx, "NA");
+      }
     }
   }
 

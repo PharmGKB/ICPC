@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
-  <data-source source="LOCAL" name="ICPC Schema" product="MySQL" version="5.5.9" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.21 ( Revision: ${bzr.revision-id} )" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d" case-sensitive="true">
+  <data-source source="LOCAL" name="ICPC Schema" product="MySQL" version="5.5.25" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.21 ( Revision: ${bzr.revision-id} )" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d" case-sensitive="true">
     <extra-name-characters>#@</extra-name-characters>
     <identifier-quote-string>`</identifier-quote-string>
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
@@ -14,6 +14,10 @@
         <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
       </library>
     </libraries>
+    <table name="SampleCountByProject" schema="" catalog="icpc" type="VIEW">
+      <column name="project" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
+      <column name="n" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="MA==" />
+    </table>
     <table name="sampleGenotypes" schema="" catalog="icpc" type="TABLE">
       <column name="subject_id" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
       <column name="sortOrder" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
@@ -242,6 +246,15 @@
       <column name="rs854560" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
       <column name="rs1045642" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
       <column name="other_genotypes" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs4803418" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs48034189" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs8192719" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="rs3745274" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="Abs_white_on_plavix" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Red_on_plavix" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Platelet_on_plavix" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="MeanPlateletVol_on_plavix" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
+      <column name="Hematocrit_on_plavix" sqlType="DECIMAL" length="10" precision="0" nullable="true" jdbcType="3" />
       <primary-key name="PRIMARY" columns="subject_id" />
       <index name="sample_project_idx" unique="false" columns="Project" />
     </table>

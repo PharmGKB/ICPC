@@ -11,6 +11,7 @@ import org.pharmgkb.util.HibernateUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 
 /**
@@ -55,11 +56,13 @@ public class ExcelParser {
     }
   }
 
-  public void parse() throws Exception {
+  public void parse(File outputFile) throws Exception {
     sf_logger.info("Parsing excel workbook "+getFile());
+    sf_logger.info("writing output to "+outputFile);
 
     SubjectIterator subjectIterator = new SubjectIterator(getDataSheet());
     Session session = null;
+    FileOutputStream fos = null;
 
     try {
       session = HibernateUtils.getSession();
@@ -70,14 +73,23 @@ public class ExcelParser {
           sf_logger.debug(subject);
         }
 
+        Subject existingSubject = (Subject)session.get(Subject.class, subject.getSubjectId());
+        if (existingSubject != null) {
+          session.delete(existingSubject);
+        }
+
         session.save(subject);
       }
       HibernateUtils.commit(session);
+
+      fos = new FileOutputStream(outputFile);
+      getWorkbook().write(fos);
     }
     catch (Exception ex) {
       sf_logger.error("Error saving subjects", ex);
     }
     finally {
+      IOUtils.closeQuietly(fos);
       HibernateUtils.close(session);
     }
   }

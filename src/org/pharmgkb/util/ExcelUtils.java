@@ -41,12 +41,13 @@ public class ExcelUtils {
       row.createCell(idx).setCellValue(value);
     }
     else {
-      if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+      try {
+        cell.setCellType(Cell.CELL_TYPE_STRING);
+
         if (!value.equals(cell.getStringCellValue())) {
           StringBuilder sb = new StringBuilder();
           sb.append("Changed value: ")
-              .append(CellReference.convertNumToColString(cell.getColumnIndex()))
-              .append(cell.getRowIndex()+1)
+              .append(getAddress(cell))
               .append(" = ")
               .append(cell.getStringCellValue())
               .append(" -> ")
@@ -57,24 +58,9 @@ public class ExcelUtils {
           }
         }
       }
-      else {
-        Double existingValue = cell.getNumericCellValue();
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("Changed value: ")
-            .append(CellReference.convertNumToColString(cell.getColumnIndex()))
-            .append(cell.getRowIndex()+1)
-            .append(" = ")
-            .append(existingValue)
-            .append(" -> ")
-            .append(value);
-        sf_logger.info(sb.toString());
-
-        row.removeCell(cell);
-        row.createCell(idx).setCellType(Cell.CELL_TYPE_STRING);
-        if (highlight != null) {
-          cell.setCellStyle(highlight);
-        }
+      catch (Exception ex) {
+        sf_logger.error("Error writing to cell "+ExcelUtils.getAddress(row.getCell(idx)));
+        throw ex;
       }
       cell.setCellValue(value);
     }

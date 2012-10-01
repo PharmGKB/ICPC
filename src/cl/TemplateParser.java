@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.pharmgkb.ExcelParser;
 import org.pharmgkb.util.CliHelper;
 import org.pharmgkb.util.HibernateUtils;
+import org.pharmgkb.util.IcpcUtils;
 
 import java.io.File;
 
@@ -48,8 +49,10 @@ public class TemplateParser {
     Preconditions.checkNotNull(file);
     Preconditions.checkArgument(file.exists(), "File does not exist: %s", file);
 
+    File outputFile = IcpcUtils.getOutputFile(file);
+
     ExcelParser parser = new ExcelParser(file);
-    parser.parse();
+    parser.parse(outputFile);
   }
 
   private void parseDirectory(File directory) throws Exception {
