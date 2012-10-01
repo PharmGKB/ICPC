@@ -233,6 +233,15 @@ public class Subject {
   private String m_rs854560;
   private String m_rs1045642;
   private String m_othergenotypes;
+  private String m_rs4803418;
+  private String m_rs48034189;
+  private String m_rs8192719;
+  private String m_rs3745274;
+  private Double m_absWhiteOnPlavix;
+  private Double m_redOnPlavix;
+  private Double m_plateletOnPlavix;
+  private Double m_meanPlateletVolOnPlavix;
+  private Double m_hematocritOnPlavix;
 
   @Id
   @Column(name="Subject_ID")
@@ -2226,5 +2235,86 @@ public class Subject {
 
   public void setOthergenotypes(String othergenotypes) {
     m_othergenotypes = othergenotypes;
+  }
+
+  @Column(name="rs4803418")
+  public String getRs4803418() {
+    return m_rs4803418;
+  }
+
+  public void setRs4803418(String rs4803418) {
+    m_rs4803418 = rs4803418;
+  }
+
+  @Column(name="rs48034189")
+  public String getRs48034189() {
+    return m_rs48034189;
+  }
+
+  public void setRs48034189(String rs48034189) {
+    m_rs48034189 = rs48034189;
+  }
+
+  @Column(name="rs8192719")
+  public String getRs8192719() {
+    return m_rs8192719;
+  }
+
+  public void setRs8192719(String rs8192719) {
+    m_rs8192719 = rs8192719;
+  }
+
+  @Column(name="rs3715274")
+  public String getRs3745274() {
+    return m_rs3745274;
+  }
+
+  public void setRs3745274(String rs3745274) {
+    m_rs3745274 = rs3745274;
+  }
+
+  @Column(name="abs_white_on_plavix")
+  public Double getAbsWhiteOnPlavix() {
+    return m_absWhiteOnPlavix;
+  }
+
+  public void setAbsWhiteOnPlavix(Double absWhiteOnPlavix) {
+    m_absWhiteOnPlavix = absWhiteOnPlavix;
+  }
+
+  @Column(name="red_on_plavix")
+  public Double getRedOnPlavix() {
+    return m_redOnPlavix;
+  }
+
+  public void setRedOnPlavix(Double redOnPlavix) {
+    m_redOnPlavix = redOnPlavix;
+  }
+
+  @Column(name="platelet_on_plavix")
+  public Double getPlateletOnPlavix() {
+    return m_plateletOnPlavix;
+  }
+
+  public void setPlateletOnPlavix(Double plateletOnPlavix) {
+    m_plateletOnPlavix = plateletOnPlavix;
+  }
+
+  @Column(name="meanplateletvol_on_plavix")
+  public Double getMeanPlateletVolOnPlavix() {
+    return m_meanPlateletVolOnPlavix;
+  }
+
+  public void setMeanPlateletVolOnPlavix(Double meanPlateletVolOnPlavix) {
+    m_meanPlateletVolOnPlavix = meanPlateletVolOnPlavix;
+  }
+
+  @Column(name="hematocrit_on_plavix")
+  public Double getHematocritOnPlavix() {
+    return m_hematocritOnPlavix;
+  }
+
+  public void setHematocritOnPlavix(Double hematocritOnPlavix) {
+    m_hematocritOnPlavix = hematocritOnPlavix;
   }
 }

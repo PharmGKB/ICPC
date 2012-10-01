@@ -234,6 +234,15 @@ CREATE TABLE `samples` (
   `rs854560` varchar(200) DEFAULT NULL,
   `rs1045642` varchar(200) DEFAULT NULL,
   `other_genotypes` varchar(200) DEFAULT NULL,
+  rs4803418 varchar(200) default null,
+  rs48034189 varchar(200) default null,
+  rs8192719 varchar(200) default null,
+  rs3745274 varchar(200) default null,
+  Abs_white_on_plavix decimal(10,0) default null,
+  Red_on_plavix decimal(10,0) default null,
+  Platelet_on_plavix decimal(10,0) default null,
+  MeanPlateletVol_on_plavix decimal(10,0) default null,
+  Hematocrit_on_plavix decimal(10,0) default null,
   PRIMARY KEY (`Subject_ID`),
   KEY `sample_project_idx` (`Project`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
