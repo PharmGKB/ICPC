@@ -2,14 +2,19 @@ package org.pharmgkb;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
+import com.google.common.collect.Maps;
+import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.pharmgkb.enums.*;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.IcpcUtils;
 
 import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,10 +23,13 @@ import java.util.Iterator;
  */
 public class SubjectIterator implements Iterator {
   private static final Logger sf_logger = Logger.getLogger(SubjectIterator.class);
+  private static final Integer sf_columnNameRowIdx = 1;
 
   private Sheet m_sheet = null;
   private Integer m_currentRow = 3;
   private FormulaEvaluator m_formulaEvaluator = null;
+  private Map<Integer,String> m_columnIdxToNameMap = Maps.newHashMap();
+  private Integer m_columnCount = 0;
 
   public SubjectIterator(Sheet sheet) throws Exception {
     if (sheet == null) {
@@ -32,8 +40,28 @@ public class SubjectIterator implements Iterator {
     Workbook wb = sheet.getWorkbook();
     setFormulaEvaluator(wb.getCreationHelper().createFormulaEvaluator());
 
+    Row headerRow = getSheet().getRow(sf_columnNameRowIdx);
+    setColumnCount(Integer.valueOf(headerRow.getLastCellNum()));
+
     if (sf_logger.isDebugEnabled()) {
       sf_logger.debug("Sheet has "+sheet.getLastRowNum()+" rows");
+    }
+  }
+
+  public void parseHeading(@NonNull Session session) {
+    Preconditions.checkNotNull(session);
+
+    Query query = session.createQuery("from IcpcProperty ip where ip.description=:descrip");
+
+    Row headerRow = getSheet().getRow(sf_columnNameRowIdx);
+    for (Cell cell : headerRow) {
+      String cellContent = cell.getStringCellValue();
+      Object result = query.setParameter("descrip", StringUtils.strip(cellContent)).uniqueResult();
+
+      if (result!=null) {
+        IcpcProperty property = (IcpcProperty)result;
+        getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
+      }
     }
   }
 
@@ -69,6 +97,26 @@ public class SubjectIterator implements Iterator {
 
     bumpCurrentRow();
     return subject;
+  }
+
+  public Map<String,String> parseKeyValues() {
+    Map<String,String> keyValues = Maps.newHashMap();
+    Map<Integer,String> colIdxToKey = getColumnIdxToNameMap();
+
+    Row row = getSheet().getRow(getCurrentRow());
+
+    for (int colIdx=0; colIdx<getColumnCount(); colIdx++) {
+      if (colIdxToKey.containsKey(colIdx)) {
+        String value = ExcelUtils.getStringValue(row.getCell(colIdx), getFormulaEvaluator());
+        if (StringUtils.isBlank(value)) {
+          value="NA";
+        }
+
+        keyValues.put(colIdxToKey.get(colIdx), value);
+      }
+    }
+
+    return keyValues;
   }
 
   protected void copyFromRowToSubject(Row row, Subject subject) throws Exception {
@@ -734,5 +782,17 @@ public class SubjectIterator implements Iterator {
 
   public Double getNumber(Cell cell) {
     return ExcelUtils.getNumericValue(cell, getFormulaEvaluator());
+  }
+
+  public Map<Integer, String> getColumnIdxToNameMap() {
+    return m_columnIdxToNameMap;
+  }
+
+  public Integer getColumnCount() {
+    return m_columnCount;
+  }
+
+  public void setColumnCount(Integer columnCount) {
+    m_columnCount = columnCount;
   }
 }

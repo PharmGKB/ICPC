@@ -16,5 +16,6 @@
 
         <mapping package="org.pharmgkb"/>
         <mapping class="org.pharmgkb.Subject"/>
+        <mapping class="org.pharmgkb.IcpcProperty"/>
     </session-factory>
 </hibernate-configuration>

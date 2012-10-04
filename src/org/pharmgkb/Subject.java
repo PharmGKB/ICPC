@@ -1,13 +1,14 @@
 package org.pharmgkb;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import org.hibernate.annotations.IndexColumn;
-import org.hibernate.annotations.Sort;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -242,6 +243,7 @@ public class Subject {
   private Double m_plateletOnPlavix;
   private Double m_meanPlateletVolOnPlavix;
   private Double m_hematocritOnPlavix;
+  private Map<String,String> m_properties;
 
   @Id
   @Column(name="Subject_ID")
@@ -2316,5 +2318,25 @@ public class Subject {
 
   public void setHematocritOnPlavix(Double hematocritOnPlavix) {
     m_hematocritOnPlavix = hematocritOnPlavix;
+  }
+
+  @ElementCollection
+  @MapKeyClass(java.lang.String.class)
+  @MapKeyColumn(name="datakey")
+  @CollectionTable(name="sampleProperties",joinColumns = @JoinColumn(name="subjectId"))
+  @Column(name="datavalue")
+  public Map<String, String> getProperties() {
+    return m_properties;
+  }
+
+  public void setProperties(Map<String, String> properties) {
+    m_properties = properties;
+  }
+
+  public void addProperties(Map<String, String> properties) {
+    if (m_properties == null) {
+      m_properties = Maps.newHashMap();
+    }
+    m_properties.putAll(properties);
   }
 }

@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -66,8 +67,13 @@ public class ExcelParser {
 
     try {
       session = HibernateUtils.getSession();
+      subjectIterator.parseHeading(session);
+
       while (subjectIterator.hasNext()) {
+
+        Map<String,String> keyValueMap = subjectIterator.parseKeyValues();
         Subject subject = subjectIterator.next();
+        subject.addProperties(keyValueMap);
 
         if (sf_logger.isDebugEnabled()) {
           sf_logger.debug(subject);

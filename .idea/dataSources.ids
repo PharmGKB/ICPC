@@ -18,6 +18,13 @@
       <column name="project" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
       <column name="n" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="MA==" />
     </table>
+    <table name="propertyNames" schema="" catalog="icpc" type="TABLE">
+      <column name="name" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="descrip" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12" />
+      <column name="datatype" sqlType="VARCHAR" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="idx" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true" />
+      <primary-key name="PRIMARY" columns="idx" />
+    </table>
     <table name="sampleGenotypes" schema="" catalog="icpc" type="TABLE">
       <column name="subject_id" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
       <column name="sortOrder" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
@@ -26,6 +33,11 @@
     <table name="samplePpiNames" schema="" catalog="icpc" type="TABLE">
       <column name="subject_id" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
       <column name="ppiName" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
+    </table>
+    <table name="sampleProperties" schema="" catalog="icpc" type="TABLE">
+      <column name="subjectid" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="datakey" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="datavalue" sqlType="VARCHAR" length="200" precision="0" nullable="true" jdbcType="12" />
     </table>
     <table name="sampleSources" schema="" catalog="icpc" type="TABLE">
       <column name="subject_id" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
