@@ -32,7 +32,7 @@ public class IcpcUtils {
     String newExtension = new StringBuilder()
         .append(".")
         .append(sdf.format(date))
-        .append(".all.xls")
+        .append(".xls")
         .toString();
 
     return new File(inputFile.getAbsolutePath().replaceAll("\\.xls", newExtension));  

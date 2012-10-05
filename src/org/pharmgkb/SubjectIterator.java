@@ -48,21 +48,32 @@ public class SubjectIterator implements Iterator {
     }
   }
 
-  public void parseHeading(@NonNull Session session) {
+  public void parseHeading(@NonNull Session session) throws Exception {
     Preconditions.checkNotNull(session);
 
-    Query query = session.createQuery("from IcpcProperty ip where ip.description=:descrip");
+    Query query = session.createQuery("from IcpcProperty ip where trim(ip.description)=:descrip");
 
     Row headerRow = getSheet().getRow(sf_columnNameRowIdx);
+
+    if (!headerRow.getCell(0).getStringCellValue().equals("PharmGKB Subject ID")) {
+      throw new Exception("Can't find proper header row at index "+sf_columnNameRowIdx);
+    }
+
+    int cellCrawlCount = 0;
     for (Cell cell : headerRow) {
-      String cellContent = cell.getStringCellValue();
-      Object result = query.setParameter("descrip", StringUtils.strip(cellContent)).uniqueResult();
+      String cellContent = StringUtils.strip(cell.getStringCellValue());
+      Object result = query.setParameter("descrip", cellContent).uniqueResult();
 
       if (result!=null) {
         IcpcProperty property = (IcpcProperty)result;
         getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
       }
+      else {
+        sf_logger.warn("No column definition found (and cannot store data) for column "+(cell.getColumnIndex()+1)+": "+cellContent);
+      }
+      cellCrawlCount++;
     }
+    sf_logger.debug("Finished parsing header, coloumns read: "+cellCrawlCount+", columns matched: "+getColumnIdxToNameMap().size());
   }
 
   @Override
@@ -123,7 +134,7 @@ public class SubjectIterator implements Iterator {
     Preconditions.checkNotNull(row);
     Preconditions.checkNotNull(subject);
 
-    for (int colIdx=0; colIdx<ExcelParser.COLUMN_COUNT; colIdx++) {
+    for (int colIdx=0; colIdx<getColumnCount(); colIdx++) {
       String cellStringValue;
       try {
         cellStringValue = ExcelUtils.getStringValue(row.getCell(colIdx), getFormulaEvaluator());
@@ -727,9 +738,6 @@ public class SubjectIterator implements Iterator {
           subject.setOthergenotypes(cellStringValue);
 
         default:
-          if (sf_logger.isDebugEnabled()) {
-            sf_logger.debug("column "+colIdx);
-          }
           break;
       }
 

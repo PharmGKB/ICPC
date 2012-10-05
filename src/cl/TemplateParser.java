@@ -61,7 +61,12 @@ public class TemplateParser {
     Preconditions.checkArgument(directory.isDirectory(), "File is not directory: %s", directory);
 
     for (File file : FileUtils.listFiles(directory, new String[]{"xlsx","xls"}, false)) {
-      parseFile(file);
+      try {
+        parseFile(file);
+      }
+      catch (IllegalArgumentException ex) {
+        sf_logger.error("Couldn't parse file "+file, ex);
+      }
     }
   }
 

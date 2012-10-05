@@ -23,7 +23,6 @@ import java.util.Map;
 public class ExcelParser {
   private static final Logger sf_logger = Logger.getLogger(ExcelParser.class);
   private static final String sf_dataSheetName = "Subject_level_Data";
-  public static final Integer COLUMN_COUNT = 214;
   private File m_file = null;
   private Workbook m_workbook = null;
   private Sheet m_dataSheet = null;
@@ -49,12 +48,6 @@ public class ExcelParser {
     }
 
     Row headerRow = getDataSheet().getRow(1);
-    if (headerRow.getLastCellNum()<(COLUMN_COUNT-1)) {
-      throw new Exception(
-          String.format("Found insufficient columns, expected %s, found %s",
-              COLUMN_COUNT,
-          (headerRow.getLastCellNum()+1)));
-    }
   }
 
   public void parse(File outputFile) throws Exception {
@@ -76,7 +69,7 @@ public class ExcelParser {
         subject.addProperties(keyValueMap);
 
         if (sf_logger.isDebugEnabled()) {
-          sf_logger.debug(subject);
+          sf_logger.debug("Loaded subject: "+subject.getSubjectId());
         }
 
         Subject existingSubject = (Subject)session.get(Subject.class, subject.getSubjectId());

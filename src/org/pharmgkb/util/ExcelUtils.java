@@ -52,7 +52,7 @@ public class ExcelUtils {
               .append(cell.getStringCellValue())
               .append(" -> ")
               .append(value);
-          sf_logger.info(sb.toString());
+          sf_logger.debug(sb.toString());
           if (highlight != null) {
             cell.setCellStyle(highlight);
           }
@@ -83,7 +83,7 @@ public class ExcelUtils {
               .append(cell.getNumericCellValue())
               .append(" -> ")
               .append(value);
-          sf_logger.info(sb.toString());
+          sf_logger.debug(sb.toString());
           if (highlight != null) {
             cell.setCellStyle(highlight);
           }
@@ -100,7 +100,7 @@ public class ExcelUtils {
             .append(existingValue)
             .append(" -> ")
             .append(value);
-        sf_logger.info(sb.toString());
+        sf_logger.debug(sb.toString());
 
         row.removeCell(cell);
         row.createCell(idx).setCellType(Cell.CELL_TYPE_NUMERIC);
