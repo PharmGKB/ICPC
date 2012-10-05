@@ -62,6 +62,9 @@ public class TemplateParser {
 
     for (File file : FileUtils.listFiles(directory, new String[]{"xlsx","xls"}, false)) {
       try {
+        if (file.getName().startsWith("~")) {
+          continue;
+        }
         parseFile(file);
       }
       catch (IllegalArgumentException ex) {

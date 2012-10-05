@@ -143,8 +143,9 @@ public class SubjectIterator implements Iterator {
         throw ex;
       }
 
-      if (StringUtils.isNotBlank(cellStringValue) && cellStringValue.equalsIgnoreCase("NA")) {
+      if (IcpcUtils.isBlank(cellStringValue)) {
         cellStringValue = null;
+        ExcelUtils.writeCell(row, colIdx, "NA");
       }
 
       switch(colIdx) {
@@ -739,10 +740,6 @@ public class SubjectIterator implements Iterator {
 
         default:
           break;
-      }
-
-      if (StringUtils.isBlank(cellStringValue)) {
-        ExcelUtils.writeCell(row, colIdx, "NA");
       }
     }
   }

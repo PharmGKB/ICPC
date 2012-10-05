@@ -245,20 +245,34 @@ CREATE TABLE `samples` (
   Hematocrit_on_plavix decimal(10,0) default null,
   PRIMARY KEY (`Subject_ID`),
   KEY `sample_project_idx` (`Project`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 create table sampleGenotypes (
   subject_id varchar(200) not null,
   sortOrder int not null,
   genotype varchar(10) not null
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 create table sampleSources (
 subject_id varchar(200) not null,
 source int not null
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 create table samplePpiNames (
 subject_id varchar(200) not null,
 ppiName varchar(200) not null
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
+
+CREATE TABLE propertyNames (
+  `name` varchar(200) DEFAULT NULL,
+  descrip varchar(4000) DEFAULT NULL,
+  datatype varchar(100) DEFAULT NULL,
+  idx int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (idx)
+);
+
+CREATE TABLE sampleProperties (
+  subjectid varchar(200) DEFAULT NULL,
+  datakey varchar(200) DEFAULT NULL,
+  datavalue varchar(200) DEFAULT NULL
+);
