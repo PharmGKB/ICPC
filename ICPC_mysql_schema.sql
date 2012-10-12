@@ -494,7 +494,7 @@ insert into propertyNames(name,descrip,datatype) values ('rs854560','PON1 genoty
 insert into propertyNames(name,descrip,datatype) values ('rs1045642','ABCB1 genotype A>G (rs1045642)','string');
 insert into propertyNames(name,descrip,datatype) values ('other_genotypes','Other Genotypes, please specify','string');
 insert into propertyNames(name,descrip,datatype) values ('rs4803418','CYP2B6*1C genotype G>C (rs4803418)','string');
-insert into propertyNames(name,descrip,datatype) values ('rs48034189','CYP2B6*1C genotype C>T (rs48034189','string');
+insert into propertyNames(name,descrip,datatype) values ('rs48034189','CYP2B6*1C genotype C>T (rs48034189)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs8192719','CYP2B6*9 genotype T>C (rs8192719)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs3745274','CYP2B6*6 genotype G>T (rs3745274)','string');
 insert into propertyNames(name,descrip,datatype) values ('Abs_white_on_plavix','Absolute White cell count (cells/µL) on Plavix','number');
@@ -510,3 +510,5 @@ insert into propertyNames(name,descrip,datatype) values ('dna_concentration','DN
 insert into propertyNames(name,descrip,datatype) values ('rs2279343','CYP2B6*4 genotype A>G (rs2279343)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs3745274','CYP2B6*9 genotype G>T (rs3745274 )','string');
 insert into propertyNames(name,descrip,datatype) values ('cyp2b6_genotypes','CYP2B6 genotypes','string');
+insert into propertyNames(name,descrip,datatype) values ('cyp2c19_genotypes', 'Cyp2C19 genotypes','string');
+insert into propertyNames(name,descrip,datatype) values ('rs3745274_cyp2b6_9','CYP2B6*9 genotype G>T (rs3745274)','string');
