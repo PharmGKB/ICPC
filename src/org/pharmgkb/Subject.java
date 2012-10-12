@@ -24,7 +24,7 @@ public class Subject {
   private Enum m_Genotyping;
   private Enum m_Phenotyping;
   private Set<Enum> m_SampleSource;
-  private String m_Project;
+  private Integer m_Project;
   private Enum m_Gender;
   private String m_Raceself;
   private String m_RaceOMB;
@@ -299,11 +299,11 @@ public class Subject {
   }
 
   @Column(name="Project",nullable = false)
-  public String getProject() {
+  public Integer getProject() {
     return m_Project;
   }
 
-  public void setProject(String project) {
+  public void setProject(Integer project) {
     m_Project = project;
   }
 

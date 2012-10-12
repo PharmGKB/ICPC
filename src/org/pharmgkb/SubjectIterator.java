@@ -184,7 +184,7 @@ public class SubjectIterator implements Iterator {
           if (IcpcUtils.isBlank(cellStringValue)) {
             throw new Exception("Project ID must be specified");
           }
-          subject.setProject(cellStringValue);
+          subject.setProject(Integer.valueOf(cellStringValue));
           break;
 
         case 5:

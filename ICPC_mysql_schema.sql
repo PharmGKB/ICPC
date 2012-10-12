@@ -24,7 +24,7 @@ CREATE TABLE `samples` (
   `Genotyping` decimal(10,0) NOT NULL,
   `Phenotyping` decimal(10,0) NOT NULL,
   `Sample_Source` decimal(10,0) DEFAULT NULL,
-  `Project` varchar(200) NOT NULL,
+  `Project` integer NOT NULL,
   `Gender` decimal(10,0) DEFAULT NULL,
   `Race_self` varchar(200) DEFAULT NULL,
   `Race_OMB` varchar(200) DEFAULT NULL,
