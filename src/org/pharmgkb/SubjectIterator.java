@@ -118,12 +118,17 @@ public class SubjectIterator implements Iterator {
 
     for (int colIdx=0; colIdx<getColumnCount(); colIdx++) {
       if (colIdxToKey.containsKey(colIdx)) {
+        String key = colIdxToKey.get(colIdx);
         String value = ExcelUtils.getStringValue(row.getCell(colIdx), getFormulaEvaluator());
+
         if (StringUtils.isBlank(value)) {
           value="NA";
         }
 
-        keyValues.put(colIdxToKey.get(colIdx), value);
+        if (!validate(key, value)) {
+          sf_logger.warn("Bad value at "+ExcelUtils.getAddress(row.getCell(colIdx)));
+        }
+        keyValues.put(key, value);
       }
     }
 
@@ -677,8 +682,6 @@ public class SubjectIterator implements Iterator {
           subject.setClopidogrelloadingdose(getNumber(row.getCell(colIdx)));
           break;
 
-        // XXX: skipping 113-199 for now. will implement soon.
-
         case 200:
           if (StringUtils.isNotBlank(cellStringValue)) {
             for (String genotype : Splitter.on("/").split(cellStringValue)) {
@@ -742,6 +745,268 @@ public class SubjectIterator implements Iterator {
           break;
       }
     }
+  }
+
+  protected boolean validate(String key, String value) {
+    boolean valid = true;
+
+    if (IcpcUtils.isBlank(value)) {
+      return valid;
+    }
+
+    String strippedValue = StringUtils.stripToNull(value);
+
+    switch (key) {
+      // subject ID column is special
+      case "Subject_ID":
+        return (strippedValue.startsWith("PA") && strippedValue.length()>2);
+
+        // columns that must be integers
+      case "Project":
+        try {
+          Integer.valueOf(strippedValue);
+        }
+        catch (Exception ex) {
+          valid = false;
+        }
+        break;
+
+      // enum columns
+      case "Alcohol":
+        valid = (AlcoholStatus.lookupByName(strippedValue) != null);
+        break;
+      case "Diabetes":
+        valid = (DiabetesStatus.lookupByName(strippedValue) != null);
+        break;
+      case "Gender":
+        valid = (Gender.lookupByName(strippedValue) != null);
+        break;
+      case "Sample_Source":
+        for (String token : Splitter.on(";").split(strippedValue)) {
+          valid = valid && (SampleSource.lookupByName(StringUtils.strip(token))!=null);
+        }
+        break;
+
+      // columns that must be floats
+      case "Age":
+      case "Height":
+      case "Weight":
+      case "BMI":
+      case "Diastolic_BP_Max":
+      case "Diastolic_BP_Median":
+      case "Systolic_BP_Max":
+      case "Systolic_BP_Median":
+      case "CRP":
+      case "BUN":
+      case "Creatinine":
+      case "Left_Ventricle":
+      case "Right_Ventricle":
+      case "Dose_Clopidogrel_aspirin":
+      case "Duration_Clopidogrel":
+      case "Duration_Aspirin":
+      case "Duration_therapy":
+      case "Active_metabolite":
+      case "Days_MajorBleeding":
+      case "Days_MinorBleeding":
+      case "Num_bleeding":
+      case "PFA_mean_EPI_Collagen_closure_Baseline":
+      case "PFA_mean_ADP_Collagen_closure_Baseline":
+      case "PFA_mean_EPI_Collagen_closure_Post":
+      case "PFA_mean_ADP_Collagen_closure_Post":
+      case "PFA_mean_EPI_Collagen_closure_Standard":
+      case "PFA_mean_ADP_Collagen_closure_Standard":
+      case "Verify_Now_baseline_Base":
+      case "Verify_Now_baseline_PRU":
+      case "Verify_Now_baseline_percentinhibition":
+      case "Verify_Now_post_Base":
+      case "Verify_Now_post_PRU":
+      case "Verify_Now_post_percentinhibition":
+      case "Verify_Now_on_clopidogrel_Base":
+      case "Verify_Now_on_clopidogrel_PRU":
+      case "Verify_Now_on_clopidogrel_percentinhibition":
+      case "PAP_8_baseline_max_ADP_2 ":
+      case "PAP_8_baseline_max_ADP_5":
+      case "PAP_8_baseline_max_ADP_10":
+      case "PAP_8_baseline_max_ADP_20":
+      case "PAP_8_baseline_max_collagen_1":
+      case "PAP_8_baseline_max_collagen_2":
+      case "PAP_8_baseline_max_collagen_10":
+      case "PAP_8_baseline_max_collagen_6":
+      case "PAP_8_baseline_max_epi":
+      case "PAP_8_baseline_max_aa":
+      case "PAP_8_baseline_lag_collagen_1":
+      case "PAP_8_baseline_lag_collagen_2":
+      case "PAP_8_baseline_lag_collagen_5":
+      case "PAP_8_baseline_lag_collagen_10":
+      case "PAP_8_post_max_ADP_2 ":
+      case "PAP_8_post_max_ADP_5":
+      case "PAP_8_post_max_ADP_10":
+      case "PAP_8_post_max_ADP_20":
+      case "PAP_8_post_max_collagen_1":
+      case "PAP_8_post_max_collagen_2":
+      case "PAP_8_post_max_collagen_5":
+      case "PAP_8_post_max_collagen_10":
+      case "PAP_8_post_max_epi_perc":
+      case "PAP_8_post_max_aa_perc":
+      case "PAP_8_post_lag_collagen_1":
+      case "PAP_8_post_lag_collagen_2":
+      case "PAP_8_post_lag_collagen_5":
+      case "PAP_8_post_lag_collagen_10":
+      case "PAP_8_standard_max_ADP_2":
+      case "PAP_8_standard_max_ADP_5":
+      case "PAP_8_standard_max_ADP_10":
+      case "PAP_8_standard_max_ADP_20":
+      case "PAP_8_standard_max_collagen_1":
+      case "PAP_8_standard_max_collagen_2":
+      case "PAP_8_standard_max_collagen_5":
+      case "PAP_8_standard_max_collagen_10":
+      case "PAP_8_standard_max_epi_pct":
+      case "PAP_8_standard_max_aa_pct":
+      case "PAP_8_standard_lag_collagen_1":
+      case "PAP_8_standard_lag_collagen_2":
+      case "5PAP_8_standard_lag_collagen_5":
+      case "PAP_8_standard_lag_collagen_10":
+      case "Chronolog_baseline_max_ADP_5":
+      case "Chronolog_baseline_max_ADP_20":
+      case "Chronolog_baseline_max_aa":
+      case "Chronolog_baseline_max_collagen1":
+      case "Chronolog_baseline_lag_ADP_5":
+      case "Chronolog_baseline_lag_ADP_20":
+      case "Chronolog_baseline_lag_aa":
+      case "Chronolog_baseline_lag_collagen1":
+      case "Chronolog_loading_max_ADP_5":
+      case "Chronolog_loading_max_ADP_20":
+      case "Chronolog_loading_max_aa":
+      case "Chronolog_loading_max_collagen1":
+      case "Chronolog_loading_lag_ADP_5":
+      case "Chronolog_loading_lag_ADP_20":
+      case "Chronolog_loading_lag_aa":
+      case "Chronolog_loading_lag_collagen1":
+      case "Chronolog_standard_max_ADP_5":
+      case "Chronolog_standard_max_ADP_20":
+      case "Chronolog_standard_max_aa":
+      case "Chronolog_standard_max_collagen1":
+      case "Chronolog_standard_lag_ADP_5":
+      case "Chronolog_standard_lag_ADP_20":
+      case "Chronolog_standard_lag_aa":
+      case "Chronolog_standard_lag_collagen1":
+      case "VASP":
+      case "Duration_followup_clinical_outcomes":
+      case "Time_STEMI":
+      case "Time_NSTEMI":
+      case "Time_Angina":
+      case "Time_REVASC":
+      case "Time_stroke":
+      case "Time_heartFailure":
+      case "Time_MechValve":
+      case "Time_tissValve":
+      case "Time_stent":
+      case "Time_mortality":
+      case "Time_death":
+      case "Time_venHypertrophy":
+      case "Time_PeriVascular":
+      case "Time_AF":
+      case "Time_Loading_PFA":
+      case "Time_loading_VerifyNow":
+      case "Time_loading_PAP8":
+      case "Time_loading_Chronolog":
+      case "Clopidogrel_loading_dose":
+      case "White_cell_count":
+      case "Red_cell_count":
+      case "Platelet_count":
+      case "Abs_white_on_plavix":
+      case "Red_on_plavix":
+      case "Platelet_on_plavix":
+      case "MeanPlateletVol_on_plavix":
+      case "Hematocrit_on_plavix":
+      case "Mean_platelet_volume":
+      case "Hematocrit ":
+      case "LDL":
+      case "HDL":
+      case "Total_Cholesterol":
+      case "Triglycerides":
+      case "Inter_assay_variation":
+      case "Intra_assay_variation":
+      case "Optical_Platelet_Aggregometry":
+      case "Time_MACE":
+        try {
+          Float.valueOf(strippedValue);
+        }
+        catch (Exception ex) {
+          valid = false;
+        }
+        break;
+
+      // columns with no/yes as 0/1
+      case "Genotyping":
+      case "Phenotyping":
+      case "Ejection_fraction":
+      case "Clopidogrel":
+      case "Aspirn":
+      case "Clopidogrel_alone":
+      case "ADP":
+      case "Arachadonic_acid":
+      case "Collagen":
+      case "Verify_Now_base":
+      case "Verify_Now_post_loading":
+      case "Verify_Now_while_on_clopidogrel":
+      case "Pre_clopidogrel_platelet_aggregometry_base":
+      case "Post_clopidogrel_platelet_aggregometry":
+        return (strippedValue!=null
+            && (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1")));
+
+      // columns with no/yes/unknown as 0/1/99
+      case "Ever_Smoked":
+      case "Current_smoker":
+      case "Blood_Pressure":
+      case "placebo_RCT":
+      case "Aspirin_Less_100":
+      case "Other_medications":
+      case "Statins":
+      case "PPI ":
+      case "Calcium_blockers":
+      case "Beta_blockers":
+      case "ACE_Inh":
+      case "Ang_inh_blockers":
+      case "Ezetemib":
+      case "Glycoprotein_IIaIIIb_inhibitor":
+      case "CV_events":
+      case "Bleeding":
+      case "Major_Bleeding":
+      case "Minor_Bleeding":
+      case "STEMI":
+      case "NSTEMI":
+      case "Other_ischemic":
+      case "MI ":
+      case "Stroke":
+      case "All_cause_mortality":
+      case "Cardiovascular_death":
+      case "Angina":
+      case "Left_ventricular_hypertrophy":
+      case "Peripheral_vascular_disease":
+      case "Atrial_fibrillation":
+      case "REVASC":
+      case "Congestive_Heart_Failure":
+      case "Tissue_Valve_Replacement":
+      case "Blood_Cell":
+      case "Chol":
+        return (strippedValue!=null
+            && (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("99")));
+
+      // columns with left/right/no/unknown as 0/1/2/99
+      case "Stent_thromb":
+      case "Mechanical_Valve_Replacement":
+        return (strippedValue!=null
+            && (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("2") || StringUtils.strip(value).equals("99")));
+
+      // no validation
+      default:
+        if (sf_logger.isDebugEnabled()) {
+          sf_logger.debug("no validation for "+key);
+        }
+    }
+
+    return valid;
   }
 
   @Override
