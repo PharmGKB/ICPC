@@ -798,7 +798,6 @@ public class SubjectIterator implements Iterator {
       case "Systolic_BP_Median":
       case "CRP":
       case "BUN":
-      case "Creatinine":
       case "Left_Ventricle":
       case "Right_Ventricle":
       case "Dose_Clopidogrel_aspirin":
@@ -999,7 +998,11 @@ public class SubjectIterator implements Iterator {
         return (strippedValue!=null
             && (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("2") || StringUtils.strip(value).equals("99")));
 
-      // no validation
+      // columns that are stored as strings and can skip validation
+      case "Creatinine":
+        return true;
+
+        // no validation
       default:
         if (sf_logger.isDebugEnabled()) {
           sf_logger.debug("no validation for "+key);
