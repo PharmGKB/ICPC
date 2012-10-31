@@ -414,7 +414,6 @@ public class SubjectIterator implements Iterator {
       case "HDL":
       case "Total_Cholesterol":
       case "Triglycerides":
-      case "Inter_assay_variation":
       case "Intra_assay_variation":
       case "Optical_Platelet_Aggregometry":
       case "Time_MACE":
@@ -490,6 +489,7 @@ public class SubjectIterator implements Iterator {
 
       // columns that are stored as strings and can skip validation
       case "Creatinine":
+      case "Inter_assay_variation":
         return true;
 
         // no validation
