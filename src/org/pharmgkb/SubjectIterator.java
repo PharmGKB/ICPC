@@ -276,6 +276,9 @@ public class SubjectIterator implements Iterator {
           valid = valid && (SampleSource.lookupByName(StringUtils.strip(token))!=null);
         }
         break;
+      case "PPI_Name":
+        valid = (DrugPpi.lookupByName(strippedValue)!=null);
+        break;
 
       // columns that must be floats
       case "Age":
@@ -417,6 +420,8 @@ public class SubjectIterator implements Iterator {
       case "Intra_assay_variation":
       case "Optical_Platelet_Aggregometry":
       case "Time_MACE":
+      case "hemoglobin":
+      case "plasma_urea":
         try {
           Float.valueOf(strippedValue);
         }
