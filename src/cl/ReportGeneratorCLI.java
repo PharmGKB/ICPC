@@ -9,6 +9,8 @@ import org.pharmgkb.util.HibernateUtils;
 import java.io.File;
 
 /**
+ * This class is the command line utility for generating reports based on data that's stored in the ICPC database.
+ *
  * @author Ryan Whaley
  */
 public class ReportGeneratorCLI {

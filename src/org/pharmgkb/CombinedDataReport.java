@@ -2,6 +2,7 @@ package org.pharmgkb;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
+import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Row;
@@ -19,17 +20,28 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This report generator will dump all subjects and their properties to a single file.
+ *
  * @author Ryan Whaley
  */
 public class CombinedDataReport {
   private static final Logger sf_logger = Logger.getLogger(CombinedDataReport.class);
   private File m_outputFile = null;
 
-  public CombinedDataReport(File file) {
+  /**
+   * Constructor
+   * @param file file to write the report to, required
+   */
+  public CombinedDataReport(@NonNull File file) {
     Preconditions.checkNotNull(file);
     setOutputFile(file);
   }
 
+  /**
+   * Generate the report and save it to the file specified at construction.
+   *
+   * @throws PgkbException can occur if output file is not specified or if I/O operations fail
+   */
   public void generate() throws PgkbException {
     Preconditions.checkNotNull(getOutputFile());
     Session session = null;
@@ -88,10 +100,18 @@ public class CombinedDataReport {
     }
   }
 
+  /**
+   * Gets the file to output the report to
+   * @return the file to output the report to
+   */
   public File getOutputFile() {
     return m_outputFile;
   }
 
+  /**
+   * Sets the file to output the report to
+   * @param outputFile the file to output the report to
+   */
   public void setOutputFile(File outputFile) {
     m_outputFile = outputFile;
   }
