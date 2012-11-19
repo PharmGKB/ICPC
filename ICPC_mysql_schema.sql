@@ -284,7 +284,7 @@ CREATE TABLE sampleProperties (
 insert into propertyNames(name,descrip,datatype) values ('Subject_ID','PharmGKB Subject ID','string');
 insert into propertyNames(name,descrip,datatype) values ('Genotyping','Genetic Sample Available for GWAS & Genotyping QC (> 2 痢)','number');
 insert into propertyNames(name,descrip,datatype) values ('Phenotyping','Tissue Sample Source Available for Phenotyping and/or QC','number');
-insert into propertyNames(name,descrip,datatype) values ('Sample_Source ','Tissue Sample Source Available for Phenotyping and/or QC','string');
+insert into propertyNames(name,descrip,datatype) values ('Sample_Source','Tissue Sample Source Available for Phenotyping and/or QC','string');
 insert into propertyNames(name,descrip,datatype) values ('Project','Project Site','string');
 insert into propertyNames(name,descrip,datatype) values ('Gender','Gender','number');
 insert into propertyNames(name,descrip,datatype) values ('Race_self','Race (self-reported)','string');
@@ -319,7 +319,7 @@ insert into propertyNames(name,descrip,datatype) values ('Aspirn','Aspirin thera
 insert into propertyNames(name,descrip,datatype) values ('Dose_Aspirin','Therapeutic Dose of Aspirin (mg/day)','number');
 insert into propertyNames(name,descrip,datatype) values ('Duration_Aspirin','Duration of Aspirin therapy at followup','number');
 insert into propertyNames(name,descrip,datatype) values ('Statins','Statins','number');
-insert into propertyNames(name,descrip,datatype) values ('PPI ','PPIs','number');
+insert into propertyNames(name,descrip,datatype) values ('PPI','PPIs','number');
 insert into propertyNames(name,descrip,datatype) values ('PPI_name','Please provide the names of PPIs used','number');
 insert into propertyNames(name,descrip,datatype) values ('Calcium_blockers','Calcium Channel Blockers','number');
 insert into propertyNames(name,descrip,datatype) values ('Beta_blockers','Beta Blockers','number');
@@ -370,7 +370,7 @@ insert into propertyNames(name,descrip,datatype) values ('White_cell_count','Abs
 insert into propertyNames(name,descrip,datatype) values ('Red_cell_count','Red cell count (cells/無)','number');
 insert into propertyNames(name,descrip,datatype) values ('Platelet_count','Platelet count (cells/無)','number');
 insert into propertyNames(name,descrip,datatype) values ('Mean_platelet_volume','Mean platelet volume (fL)','number');
-insert into propertyNames(name,descrip,datatype) values ('Hematocrit ','Hematocrit (%)','number');
+insert into propertyNames(name,descrip,datatype) values ('Hematocrit','Hematocrit (%)','number');
 insert into propertyNames(name,descrip,datatype) values ('Chol','Various cholesterol measurement (e.g. total, LDL, HDL, etc.) (Required)','number');
 insert into propertyNames(name,descrip,datatype) values ('LDL','LDL (mg/dL)','number');
 insert into propertyNames(name,descrip,datatype) values ('HDL','HDL (mg/dL)','number');
@@ -410,7 +410,7 @@ insert into propertyNames(name,descrip,datatype) values ('Time_loading_VerifyNow
 insert into propertyNames(name,descrip,datatype) values ('Verify_Now_on_clopidogrel_Base','Verify Now ADP stimulated Aggregation (while on maintenance dose of Clopidogrel) Base','number');
 insert into propertyNames(name,descrip,datatype) values ('Verify_Now_on_clopidogrel_PRU','Verify Now ADP stimulated Aggregation (while on maintenance dose of Clopidogrel) PRU','number');
 insert into propertyNames(name,descrip,datatype) values ('Verify_Now_on_clopidogrel_percentinhibition','Verify Now ADP stimulated Aggregation (while on maintenance dose of Clopidogrel) % Inhibition','number');
-insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_max_ADP_2 ','PAP-8 baseline platelet rich plasma max aggregation of ADP 2 然 %','number');
+insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_max_ADP_2','PAP-8 baseline platelet rich plasma max aggregation of ADP 2 然 %','number');
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_max_ADP_5','PAP-8 baseline platelet rich plasma max aggregation of ADP 5 然 %','number');
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_max_ADP_10','PAP-8 baseline platelet rich plasma max aggregation of ADP 10 然 %','number');
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_max_ADP_20','PAP-8 baseline platelet rich plasma max aggregation of ADP 20 然 %','number');
@@ -424,7 +424,7 @@ insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_lag_col
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_lag_collagen_2','PAP-8 baseline platelet rich plasma lag time of Collagen 2 痢/ml%','number');
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_lag_collagen_5','PAP-8 baseline platelet rich plasma lag time of Collagen 5 痢/ml%','number');
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_baseline_lag_collagen_10','PAP-8 baseline platelet rich plasma lag time of Collagen 10 痢/ml%','number');
-insert into propertyNames(name,descrip,datatype) values ('PAP_8_post_max_ADP_2 ','PAP-8 post Plavix loading dose platelet rich plasma max aggregation of ADP 2 然 %','number');
+insert into propertyNames(name,descrip,datatype) values ('PAP_8_post_max_ADP_2','PAP-8 post Plavix loading dose platelet rich plasma max aggregation of ADP 2 然 %','number');
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_post_max_ADP_5','PAP-8 post Plavix loading dose platelet rich plasma max aggregation of ADP 5 然 %','number');
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_post_max_ADP_10','PAP-8 post Plavix loading dose platelet rich plasma max aggregation of ADP 10 然 %','number');
 insert into propertyNames(name,descrip,datatype) values ('PAP_8_post_max_ADP_20','PAP-8 post Plavix loading dose platelet rich plasma max aggregation of ADP 20 然 %','number');
@@ -480,12 +480,12 @@ insert into propertyNames(name,descrip,datatype) values ('Chronolog_standard_lag
 insert into propertyNames(name,descrip,datatype) values ('Chronolog_standard_lag_collagen1','Chronolog Plavix maintenance dose whole blood lag time of Collagen 1 痢/mlin seconds','number');
 insert into propertyNames(name,descrip,datatype) values ('VASP','VASP phosphorylation assay','number');
 insert into propertyNames(name,descrip,datatype) values ('Addition_Pheno','Insert additional platelet aggregation phenotypes here','string');
-insert into propertyNames(name,descrip,datatype) values ('rs4244285 ','CYP2C19*2 genotype G>A (rs4244285 )','string');
+insert into propertyNames(name,descrip,datatype) values ('rs4244285','CYP2C19*2 genotype G>A (rs4244285)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs4986893','CYP2C19*3 genotype G>A (rs4986893)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs28399504','CYP2C19*4 genotype A>G (rs28399504)','string');
-insert into propertyNames(name,descrip,datatype) values ('rs56337013','CYP2C19*5 genotype C>T (rs56337013 )','string');
-insert into propertyNames(name,descrip,datatype) values ('rs72552267','CYP2C19*6 genotype G>A (rs72552267 )','string');
-insert into propertyNames(name,descrip,datatype) values ('rs72558186','CYP2C19*7 genotype T>A (rs72558186 )','string');
+insert into propertyNames(name,descrip,datatype) values ('rs56337013','CYP2C19*5 genotype C>T (rs56337013)','string');
+insert into propertyNames(name,descrip,datatype) values ('rs72552267','CYP2C19*6 genotype G>A (rs72552267)','string');
+insert into propertyNames(name,descrip,datatype) values ('rs72558186','CYP2C19*7 genotype T>A (rs72558186)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs41291556','CYP2C19*8 genotype T>C (rs41291556)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs6413438','CYP2C19*10 genotype C>T (rs6413438)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs12248560','CYP2C19*17 genotype C>T (rs12248560)','string');
@@ -504,11 +504,12 @@ insert into propertyNames(name,descrip,datatype) values ('MeanPlateletVol_on_pla
 insert into propertyNames(name,descrip,datatype) values ('Hematocrit_on_plavix','Hematocrit (%) on Plavix','number');
 insert into propertyNames(name,descrip,datatype) values ('ezetimibe','Ezetimibe','number');
 insert into propertyNames(name,descrip,datatype) values ('chronolog_baseline_lta_max','Chronolog baseline LTA max aggregation of ADP 20 ug/ml in %','number');
-insert into propertyNames(name,descrip,datatype) values ('chronolog_baseline_lta_final','Chronolog baseline LTA  final (5min) aggregation of ADP 20 ug/ml in %','number');
+insert into propertyNames(name,descrip,datatype) values ('chronolog_baseline_lta_final','Chronolog baseline LTA final (5min) aggregation of ADP 20 ug/ml in %','number');
 insert into propertyNames(name,descrip,datatype) values ('multiplate_adp_test','Multiplate ADP test','string');
 insert into propertyNames(name,descrip,datatype) values ('dna_concentration','DNA concentration','number');
 insert into propertyNames(name,descrip,datatype) values ('rs2279343','CYP2B6*4 genotype A>G (rs2279343)','string');
-insert into propertyNames(name,descrip,datatype) values ('rs3745274','CYP2B6*9 genotype G>T (rs3745274 )','string');
+insert into propertyNames(name,descrip,datatype) values ('rs3745274','CYP2B6*9 genotype G>T (rs3745274)','string');
 insert into propertyNames(name,descrip,datatype) values ('cyp2b6_genotypes','CYP2B6 genotypes','string');
-insert into propertyNames(name,descrip,datatype) values ('cyp2c19_genotypes', 'Cyp2C19 genotypes','string');
+insert into propertyNames(name,descrip,datatype) values ('cyp2c19_genotypes','Cyp2C19 genotypes','string');
 insert into propertyNames(name,descrip,datatype) values ('rs3745274_cyp2b6_9','CYP2B6*9 genotype G>T (rs3745274)','string');
+insert into propertyNames(name,descrip,datatype) values ('binnedAge','Binned Age','string');
