@@ -1,7 +1,9 @@
 package org.pharmgkb;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
@@ -10,11 +12,16 @@ import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.pharmgkb.enums.*;
+import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.ExcelUtils;
+import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.IcpcUtils;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,6 +31,7 @@ import java.util.Map;
 public class SubjectIterator implements Iterator {
   private static final Logger sf_logger = Logger.getLogger(SubjectIterator.class);
   private static final Integer sf_columnNameRowIdx = 1;
+  private static final Pattern sf_dosingPattern = Pattern.compile("(\\d+).*mg");
 
   private Sheet m_sheet = null;
   private Integer m_currentRow = 3;
@@ -41,7 +49,7 @@ public class SubjectIterator implements Iterator {
     setFormulaEvaluator(wb.getCreationHelper().createFormulaEvaluator());
 
     Row headerRow = getSheet().getRow(sf_columnNameRowIdx);
-    setColumnCount(Integer.valueOf(headerRow.getLastCellNum()));
+    setColumnCount((int)headerRow.getLastCellNum());
 
     if (sf_logger.isDebugEnabled()) {
       sf_logger.debug("Sheet has "+sheet.getLastRowNum()+" rows");
@@ -61,7 +69,7 @@ public class SubjectIterator implements Iterator {
 
     int cellCrawlCount = 0;
     for (Cell cell : headerRow) {
-      String cellContent = StringUtils.strip(cell.getStringCellValue());
+      String cellContent = StringUtils.normalizeSpace(cell.getStringCellValue());
       Object result = query.setParameter("descrip", cellContent).uniqueResult();
 
       if (result!=null) {
@@ -69,7 +77,7 @@ public class SubjectIterator implements Iterator {
         getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
       }
       else {
-        sf_logger.warn("No column definition found (and cannot store data) for column "+(cell.getColumnIndex()+1)+": "+cellContent);
+        throw new PgkbException("No column definition found (and cannot store data) for column "+(cell.getColumnIndex()+1)+": "+cellContent);
       }
       cellCrawlCount++;
     }
@@ -103,7 +111,7 @@ public class SubjectIterator implements Iterator {
       subject.addProperties(keyValueMap);
     }
     catch (Exception ex) {
-      sf_logger.error("Couldn't copy subject data for row "+getCurrentRow()+1, ex);
+      sf_logger.error("Couldn't copy subject data for row "+(getCurrentRow()+1), ex);
       subject = null;
     }
 
@@ -122,162 +130,100 @@ public class SubjectIterator implements Iterator {
         String key = colIdxToKey.get(colIdx);
         String value = ExcelUtils.getStringValue(row.getCell(colIdx), getFormulaEvaluator());
 
-        if (StringUtils.isBlank(value)) {
-          value="NA";
+        String normalizedValue = null;
+        try {
+          normalizedValue = normalizeValue(key, value);
+        } catch (PgkbException ex) {
+          sf_logger.warn("Bad value at "+ExcelUtils.getAddress(row.getCell(colIdx))+": "+ex.getMessage());
         }
-
-        if (!validate(key, value)) {
-          sf_logger.warn("Bad value at "+ExcelUtils.getAddress(row.getCell(colIdx)));
-        }
-        keyValues.put(key, value);
+        keyValues.put(key, normalizedValue);
       }
     }
 
     return keyValues;
   }
 
-  protected void copyFromRowToSubject(Row row, Subject subject) throws Exception {
-    Preconditions.checkNotNull(row);
-    Preconditions.checkNotNull(subject);
-
-    for (int colIdx=0; colIdx<getColumnCount(); colIdx++) {
-      String cellStringValue;
-      try {
-        cellStringValue = ExcelUtils.getStringValue(row.getCell(colIdx), getFormulaEvaluator());
-      } catch (Exception ex) {
-        sf_logger.warn("Error getting value for cell "+ExcelUtils.getAddress(row.getCell(colIdx)));
-        throw ex;
-      }
-
-      if (IcpcUtils.isBlank(cellStringValue)) {
-        cellStringValue = null;
-        ExcelUtils.writeCell(row, colIdx, "NA");
-      }
-
-      switch(colIdx) {
-
-        case 0:
-          String subjectId = row.getCell(colIdx).getStringCellValue();
-          subjectId = StringUtils.strip(StringUtils.replace(subjectId, ",", ""));
-          subject.setSubjectId(subjectId);
-          ExcelUtils.writeCell(row, colIdx, subjectId);
-          break;
-
-        case 1:
-          subject.setGenotyping(convertToValue(cellStringValue));
-          break;
-
-        case 2:
-          subject.setPhenotyping(convertToValue(cellStringValue));
-          break;
-
-        case 3:
-          if (!IcpcUtils.isBlank(cellStringValue)) {
-            for (String value : Splitter.on(";").trimResults().split(cellStringValue)) {
-              SampleSource source = SampleSource.lookupByName(value);
-              if (source == null) {
-                sf_logger.warn("can't find source for : "+value);
-                throw new Exception("row "+getCurrentRow()+" can't find source for : "+value);
-              }
-              else {
-                subject.addSampleSource(SampleSource.lookupByName(value));
-              }
-            }
-          }
-          break;
-
-        case 4:
-          if (IcpcUtils.isBlank(cellStringValue)) {
-            throw new Exception("Project ID must be specified");
-          }
-          subject.setProject(Integer.valueOf(cellStringValue));
-          break;
-
-        case 5:
-          switch(cellStringValue) {
-            case "1":
-              subject.setGender(Gender.MALE);
-              break;
-            case "2":
-              subject.setGender(Gender.FEMALE);
-              break;
-            default:
-              subject.setGender(Gender.UNKNOWN);
-              break;
-          }
-          break;
-
-        case 6:
-          subject.setRaceself(cellStringValue);
-          break;
-
-        case 7:
-          subject.setRaceOMB(cellStringValue);
-          break;
-
-        case 8:
-          subject.setEthnicityreported(cellStringValue);
-          break;
-
-        case 9:
-          subject.setEthnicityOMB(cellStringValue);
-          break;
-
-        case 10:
-          subject.setCountry(cellStringValue);
-          break;
-
-        case 11:
-          subject.setAge(getNumber(row.getCell(colIdx)));
-          break;
-
-        default:
-          break;
-      }
-    }
-  }
-
-  protected boolean validate(String key, String value) {
+  /**
+   * Takes a key and value and normalizes the value depending on what key it is for. It also validates that the data is
+   * in the right format and will throw a PgkbException if it's malformed.
+   *
+   * @param key the key of the property to normalize
+   * @param value the value of the property normalize
+   * @return a normalized String version of the value
+   * @throws PgkbException can occur if the value is malformed for the given key
+   */
+  protected String normalizeValue(String key, String value) throws PgkbException {
     boolean valid = true;
+    String normalizedValue;
+    ExtendedEnum enumValue;
 
     if (IcpcUtils.isBlank(value)) {
-      return valid;
+      return IcpcUtils.NA;
     }
 
     String strippedValue = StringUtils.stripToNull(value);
+    normalizedValue = strippedValue;
 
     switch (key) {
       // subject ID column is special
       case "Subject_ID":
-        return (strippedValue.startsWith("PA") && strippedValue.length()>2);
+        valid = (strippedValue.startsWith("PA") && strippedValue.length()>2);
+        break;
 
-        // columns that must be integers
+      // columns that must be integers
       case "Project":
-        try {
-          Integer.valueOf(strippedValue);
-        }
-        catch (Exception ex) {
-          valid = false;
-        }
+        Integer.valueOf(strippedValue);
         break;
 
       // enum columns
       case "Alcohol":
-        valid = (AlcoholStatus.lookupByName(strippedValue) != null);
+        enumValue = AlcoholStatus.lookupByName(strippedValue);
+        if (enumValue != null) {
+          normalizedValue = enumValue.getShortName();
+        }
+        else {
+          valid = false;
+        }
         break;
       case "Diabetes":
-        valid = (DiabetesStatus.lookupByName(strippedValue) != null);
+        enumValue = DiabetesStatus.lookupByName(strippedValue);
+        if (enumValue != null) {
+          normalizedValue = enumValue.getShortName();
+        }
+        else {
+          valid = false;
+        }
         break;
       case "Gender":
-        valid = (Gender.lookupByName(strippedValue) != null);
+        enumValue = Gender.lookupByName(strippedValue);
+        if (enumValue != null) {
+          normalizedValue = enumValue.getShortName();
+        }
+        else {
+          valid = false;
+        }
         break;
       case "Sample_Source":
+        List<String> normalizedTokens = Lists.newArrayList();
         for (String token : Splitter.on(";").split(strippedValue)) {
-          valid = valid && (SampleSource.lookupByName(StringUtils.strip(token))!=null);
+          SampleSource source = SampleSource.lookupByName(StringUtils.strip(token));
+          if (source!=null) {
+            normalizedTokens.add(source.getShortName());
+          }
+          else {
+            valid = valid && (source!=null);
+          }
+          normalizedValue = Joiner.on(";").join(normalizedTokens);
         }
         break;
       case "PPI_Name":
-        valid = (DrugPpi.lookupByName(strippedValue)!=null);
+        enumValue = DrugPpi.lookupByName(strippedValue);
+        if (enumValue != null) {
+          normalizedValue = enumValue.getShortName();
+        }
+        else {
+          valid = false;
+        }
         break;
 
       // columns that must be floats
@@ -426,7 +372,12 @@ public class SubjectIterator implements Iterator {
           Float.valueOf(strippedValue);
         }
         catch (Exception ex) {
-          valid = false;
+          Matcher m = sf_dosingPattern.matcher(strippedValue);
+          valid = m.find();
+
+          if (valid) {
+            normalizedValue = m.group(1);
+          }
         }
         break;
 
@@ -437,16 +388,19 @@ public class SubjectIterator implements Iterator {
       case "Clopidogrel":
       case "Aspirn":
       case "Clopidogrel_alone":
-      case "ADP":
-      case "Arachadonic_acid":
-      case "Collagen":
       case "Verify_Now_base":
       case "Verify_Now_post_loading":
       case "Verify_Now_while_on_clopidogrel":
       case "Pre_clopidogrel_platelet_aggregometry_base":
       case "Post_clopidogrel_platelet_aggregometry":
-        return (strippedValue != null
-            && Value.lookupByName(strippedValue) != null);
+        enumValue = Value.lookupByName(strippedValue);
+        if (enumValue != null) {
+          normalizedValue = enumValue.getShortName();
+        }
+        else {
+          valid = false;
+        }
+        break;
 
       // columns with no/yes/unknown as 0/1/99
       case "Ever_Smoked":
@@ -483,19 +437,22 @@ public class SubjectIterator implements Iterator {
       case "Tissue_Valve_Replacement":
       case "Blood_Cell":
       case "Chol":
-        return (strippedValue!=null
-            && (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("99")));
+        valid = (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("99"));
+        break;
 
       // columns with left/right/no/unknown as 0/1/2/99
       case "Stent_thromb":
       case "Mechanical_Valve_Replacement":
-        return (strippedValue!=null
-            && (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("2") || StringUtils.strip(value).equals("99")));
+        valid = (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("2") || StringUtils.strip(value).equals("99"));
+        break;
 
       // columns that are stored as strings and can skip validation
       case "Creatinine":
       case "Inter_assay_variation":
-        return true;
+      case "ADP":
+      case "Arachadonic_acid":
+      case "Collagen":
+        break;
 
         // no validation
       default:
@@ -504,7 +461,11 @@ public class SubjectIterator implements Iterator {
         }
     }
 
-    return valid;
+    if (!valid) {
+      throw new PgkbException(key+" value is not valid: "+strippedValue);
+    }
+
+    return normalizedValue;
   }
 
   @Override
@@ -528,28 +489,12 @@ public class SubjectIterator implements Iterator {
     m_currentRow++;
   }
 
-  protected Value convertToValue(String string) {
-    Value value = Value.Unknown;
-
-    if (StringUtils.isNotBlank(string)) {
-      value = Value.lookupByName(string);
-      if (value == null) {
-        value = Value.Unknown;
-      }
-    }
-    return value;
-  }
-
   public FormulaEvaluator getFormulaEvaluator() {
     return m_formulaEvaluator;
   }
 
   public void setFormulaEvaluator(FormulaEvaluator formulaEvaluator) {
     m_formulaEvaluator = formulaEvaluator;
-  }
-
-  public Double getNumber(Cell cell) {
-    return ExcelUtils.getNumericValue(cell, getFormulaEvaluator());
   }
 
   public Map<Integer, String> getColumnIdxToNameMap() {

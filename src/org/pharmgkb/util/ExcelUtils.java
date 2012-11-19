@@ -29,7 +29,7 @@ public class ExcelUtils {
   }
 
   public static void writeCell(Row row, int idx, String value, CellStyle highlight) {
-    // first validate all the important arguments
+    // first normalizeValue all the important arguments
     if (value == null || row == null || idx<0) {
       // don't do anything if they're missing
       return;

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
 import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -12,6 +13,7 @@ import org.hibernate.Session;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
+import org.pharmgkb.util.IcpcUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -76,14 +78,9 @@ public class CombinedDataReport {
         Subject subject = (Subject)session.get(Subject.class, (String)result);
         Row row = sheet.createRow(currentRowIdx++);
 
-        for (String propertyName : subject.getProperties().keySet()) {
-          if (propertyIndexMap.get(propertyName) != null) {
-            Integer columnIdx = propertyIndexMap.get(propertyName)-1;
-            ExcelUtils.writeCell(row, columnIdx, subject.getProperties().get(propertyName));
-          }
-          else {
-            sf_logger.warn("Property not mapped "+propertyName);
-          }
+        for (String propertyName : propertyIndexMap.keySet()) {
+          Integer columnIdx = propertyIndexMap.get(propertyName)-1;
+          ExcelUtils.writeCell(row, columnIdx, StringUtils.defaultIfBlank(subject.getProperties().get(propertyName), IcpcUtils.NA));
         }
       }
 

@@ -18,12 +18,14 @@ import java.util.regex.Pattern;
  * Time: 9:55:50 AM
  */
 public class IcpcUtils {
+  public static final String NA = "NA";
+
   private static final Logger sf_logger = Logger.getLogger(IcpcUtils.class);
   private static final Pattern sf_alleleRegex = Pattern.compile("\\*\\d+");
 
   public static boolean isBlank(String string) {
     String trimString = StringUtils.trimToNull(string);
-    return StringUtils.isBlank(trimString) || trimString.equalsIgnoreCase("na") || trimString.equalsIgnoreCase("n/a");
+    return StringUtils.isBlank(trimString) || trimString.equalsIgnoreCase("na") || trimString.equalsIgnoreCase("n/a") || trimString.equalsIgnoreCase("unknown");
   }
 
   public static File getOutputFile(File inputFile) {

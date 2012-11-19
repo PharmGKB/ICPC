@@ -374,7 +374,8 @@ public class Subject {
 
   public String getProperty(Property property) {
     if (m_properties != null && property != null) {
-      return m_properties.get(property.getShortName());
+      String value = m_properties.get(property.getShortName());
+      return IcpcUtils.isBlank(value) ? null : value;
     }
     return null;
   }
@@ -421,6 +422,11 @@ public class Subject {
 
     setCountry(getProperty(Property.COUNTRY));
 
-    setAge(Double.valueOf(getProperty(Property.AGE)));
+    if (getProperty(Property.AGE) != null) {
+      setAge(Double.valueOf(getProperty(Property.AGE)));
+    }
+    else {
+      sf_logger.warn("no age specified for "+getProject()+":"+getSubjectId());
+    }
   }
 }
