@@ -32,6 +32,7 @@ public class SubjectIterator implements Iterator {
   private static final Logger sf_logger = Logger.getLogger(SubjectIterator.class);
   private static final Integer sf_columnNameRowIdx = 1;
   private static final Pattern sf_dosingPattern = Pattern.compile("(\\d+).*mg");
+  private static final Pattern sf_geneticBases = Pattern.compile("^[AaTtGgCc/]+$");
 
   private Sheet m_sheet = null;
   private Integer m_currentRow = 3;
@@ -444,6 +445,46 @@ public class SubjectIterator implements Iterator {
       case "Stent_thromb":
       case "Mechanical_Valve_Replacement":
         valid = (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("2") || StringUtils.strip(value).equals("99"));
+        break;
+
+      // columns that are supposed to be genetic bases (eg. A/T or GC)
+      case "rs4244285":
+      case "rs4986893":
+      case "rs28399504":
+      case "rs56337013":
+      case "rs72552267":
+      case "rs72558186":
+      case "rs41291556":
+      case "rs6413438":
+      case "rs12248560":
+      case "rs662":
+      case "rs854560":
+      case "rs1045642":
+      case "rs4803418":
+      case "rs48034189":
+      case "rs8192719":
+      case "rs3745274":
+      case "rs2279343":
+      case "rs3745274_cyp2b6_9":
+        Matcher m = sf_geneticBases.matcher(strippedValue);
+        if (m.matches()) {
+          if (!strippedValue.contains("/")) {
+            StringBuilder sb = new StringBuilder();
+            for (char base : strippedValue.toCharArray()) {
+              if (sb.length()!=0) {
+                sb.append("/");
+              }
+              sb.append(base);
+            }
+            normalizedValue = sb.toString().toUpperCase();
+          }
+          else {
+            normalizedValue = strippedValue.toUpperCase();
+          }
+        }
+        else {
+          valid = false;
+        }
         break;
 
       // columns that are stored as strings and can skip validation
