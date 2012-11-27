@@ -414,6 +414,16 @@ public class Subject {
     String genderString = getProperty(Property.GENDER);
     setGender(Gender.lookupByName(genderString));
 
+    if ((getProperty(Property.RACE_SELF) != null
+            && (getProperty(Property.RACE_SELF).equalsIgnoreCase("caucasian") || getProperty(Property.RACE_SELF).equalsIgnoreCase("white"))
+        )
+        ||
+        (getProperty(Property.RACE_OMB) != null
+            && (getProperty(Property.RACE_OMB).equalsIgnoreCase("caucasian") || getProperty(Property.RACE_OMB).equalsIgnoreCase("white"))
+        )) {
+      m_properties.put(Property.RACE_SELF.getShortName(), "caucasian");
+      m_properties.put(Property.RACE_OMB.getShortName(), "white");
+    }
     setRaceself(getProperty(Property.RACE_SELF));
     setRaceOMB(getProperty(Property.RACE_OMB));
 

@@ -502,7 +502,6 @@ insert into propertyNames(name,descrip,datatype) values ('Red_on_plavix','Red ce
 insert into propertyNames(name,descrip,datatype) values ('Platelet_on_plavix','Platelet count (cells/µL) on Plavix','number');
 insert into propertyNames(name,descrip,datatype) values ('MeanPlateletVol_on_plavix','Mean platelet volume (fL) on Plavix','number');
 insert into propertyNames(name,descrip,datatype) values ('Hematocrit_on_plavix','Hematocrit (%) on Plavix','number');
-insert into propertyNames(name,descrip,datatype) values ('ezetimibe','Ezetimibe','number');
 insert into propertyNames(name,descrip,datatype) values ('chronolog_baseline_lta_max','Chronolog baseline LTA max aggregation of ADP 20 ug/ml in %','number');
 insert into propertyNames(name,descrip,datatype) values ('chronolog_baseline_lta_final','Chronolog baseline LTA final (5min) aggregation of ADP 20 ug/ml in %','number');
 insert into propertyNames(name,descrip,datatype) values ('multiplate_adp_test','Multiplate ADP test','string');
@@ -513,3 +512,8 @@ insert into propertyNames(name,descrip,datatype) values ('cyp2b6_genotypes','CYP
 insert into propertyNames(name,descrip,datatype) values ('cyp2c19_genotypes','Cyp2C19 genotypes','string');
 insert into propertyNames(name,descrip,datatype) values ('rs3745274_cyp2b6_9','CYP2B6*9 genotype G>T (rs3745274)','string');
 insert into propertyNames(name,descrip,datatype) values ('binnedAge','Binned Age','string');
+insert into propertyNames(name,descrip,datatype) values ('rs2242480','rs2242480','string');
+insert into propertyNames(name,descrip,datatype) values ('rs3213619','rs3213619','string');
+insert into propertyNames(name,descrip,datatype) values ('rs2032582','rs2032582','string');
+insert into propertyNames(name,descrip,datatype) values ('rs1057910','rs1057910','string');
+insert into propertyNames(name,descrip,datatype) values ('rs71647871','rs71647871','string');
