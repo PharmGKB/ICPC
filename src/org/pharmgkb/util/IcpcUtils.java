@@ -25,7 +25,7 @@ public class IcpcUtils {
 
   public static boolean isBlank(String string) {
     String trimString = StringUtils.trimToNull(string);
-    return StringUtils.isBlank(trimString) || trimString.equalsIgnoreCase("na") || trimString.equalsIgnoreCase("n/a") || trimString.equalsIgnoreCase("unknown");
+    return StringUtils.isBlank(trimString) || trimString.equalsIgnoreCase("na") || trimString.equalsIgnoreCase("n/a") || trimString.equalsIgnoreCase("unknown") || trimString.equalsIgnoreCase("not available");
   }
 
   public static File getOutputFile(File inputFile) {

@@ -82,7 +82,7 @@ public class ExcelParser {
       getWorkbook().write(fos);
     }
     catch (Exception ex) {
-      sf_logger.error("Error saving subjects", ex);
+      sf_logger.error("Error saving subjects for "+getFile(), ex);
     }
     finally {
       IOUtils.closeQuietly(fos);
