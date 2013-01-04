@@ -517,3 +517,6 @@ insert into propertyNames(name,descrip,datatype) values ('rs3213619','rs3213619'
 insert into propertyNames(name,descrip,datatype) values ('rs2032582','rs2032582','string');
 insert into propertyNames(name,descrip,datatype) values ('rs1057910','rs1057910','string');
 insert into propertyNames(name,descrip,datatype) values ('rs71647871','rs71647871','string');
+insert into propertyNames(name,descrip,datatype) values ('Ace_or_Ang_inh_blockers','ACE Inhibitors or Angiotensin receptor blockers','string');
+insert into propertyNames(name,descrip,datatype) values ('ttf_acs','Time to the first ACS','string');
+insert into propertyNames(name,descrip,datatype) values ('acs_during_followup','ACS during follow up','string');

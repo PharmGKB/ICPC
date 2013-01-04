@@ -71,14 +71,16 @@ public class SubjectIterator implements Iterator {
     int cellCrawlCount = 0;
     for (Cell cell : headerRow) {
       String cellContent = StringUtils.normalizeSpace(cell.getStringCellValue());
-      Object result = query.setParameter("descrip", cellContent).uniqueResult();
+      if (!IcpcUtils.isBlank(cellContent)) {
+        Object result = query.setParameter("descrip", cellContent).uniqueResult();
 
-      if (result!=null) {
-        IcpcProperty property = (IcpcProperty)result;
-        getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
-      }
-      else {
-        throw new PgkbException("No column definition found (and cannot store data) for column "+(cell.getColumnIndex()+1)+": "+cellContent);
+        if (result!=null) {
+          IcpcProperty property = (IcpcProperty)result;
+          getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
+        }
+        else {
+          throw new PgkbException("No column definition found (and cannot store data) for column "+(cell.getColumnIndex()+1)+": "+cellContent);
+        }
       }
       cellCrawlCount++;
     }
