@@ -520,3 +520,12 @@ insert into propertyNames(name,descrip,datatype) values ('rs71647871','rs7164787
 insert into propertyNames(name,descrip,datatype) values ('Ace_or_Ang_inh_blockers','ACE Inhibitors or Angiotensin receptor blockers','string');
 insert into propertyNames(name,descrip,datatype) values ('ttf_acs','Time to the first ACS','string');
 insert into propertyNames(name,descrip,datatype) values ('acs_during_followup','ACS during follow up','string');
+insert into propertyNames(name,descrip,datatype) values ('clinical_setting', 'Clinical seting', 'string');
+insert into propertyNames(name,descrip,datatype) values ('prior_mi','Prior MI', 'string');
+insert into propertyNames(name,descrip,datatype) values ('prior_pci', 'Prior PCI', 'string');
+insert into propertyNames(name,descrip,datatype) values ('carat_2micro_aggmax','CARAT TX4 post Plavix loading dose platelet rich plasma max aggregation of ADP 2 µM %', 'string');
+insert into propertyNames(name,descrip,datatype) values ('carat_5micro_post_max','CARAT TX4 post-loading ADP 5uM AGGmax', 'string');
+insert into propertyNames(name,descrip,datatype) values ('carat_5micro_post_late','CARAT TX4 post-loading ADP 5uM AGGlate', 'string');
+insert into propertyNames(name,descrip,datatype) values ('carat_5micro_main_max','CARAT TX4 maintenance ADP 5uM AGGmax', 'string');
+insert into propertyNames(name,descrip,datatype) values ('carat_5micro_main_late','CARAT TX4 maintenance ADP 5uM AGGlate', 'string');
+commit;

@@ -2,6 +2,7 @@
   <data-source source="LOCAL" name="ICPC Schema" product="MySQL" version="5.5.25" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.21 ( Revision: ${bzr.revision-id} )" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d" case-sensitive="true">
     <extra-name-characters>#@</extra-name-characters>
     <identifier-quote-string>`</identifier-quote-string>
+    <auto-commit>false</auto-commit>
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
     <jdbc-url>jdbc:mysql://localhost:8889/icpc</jdbc-url>
     <user-name>root</user-name>
@@ -14,6 +15,7 @@
         <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
       </library>
     </libraries>
+    <schema name="" catalog="icpc" />
     <table name="SampleCountByProject" schema="" catalog="icpc" type="VIEW">
       <column name="project" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12" />
       <column name="n" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="MA==" />

@@ -59,6 +59,7 @@ public class SubjectIterator implements Iterator {
 
   public void parseHeading(@NonNull Session session) throws Exception {
     Preconditions.checkNotNull(session);
+    Map<String,String> unmappedColumnMap = Maps.newTreeMap();
 
     Query query = session.createQuery("from IcpcProperty ip where trim(ip.description)=:descrip");
 
@@ -79,11 +80,16 @@ public class SubjectIterator implements Iterator {
           getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
         }
         else {
-          throw new PgkbException("No column definition found (and cannot store data) for column "+(cell.getColumnIndex()+1)+": "+cellContent);
+          unmappedColumnMap.put(ExcelUtils.getAddress(cell), cellContent);
         }
       }
       cellCrawlCount++;
     }
+
+    if (unmappedColumnMap.size()>0) {
+      throw new PgkbException("No column definitions found for:\n"+unmappedColumnMap);
+    }
+
     sf_logger.debug("Finished parsing header, coloumns read: "+cellCrawlCount+", columns matched: "+getColumnIdxToNameMap().size());
   }
 
