@@ -496,7 +496,7 @@ insert into propertyNames(name,descrip,datatype) values ('other_genotypes','Othe
 insert into propertyNames(name,descrip,datatype) values ('rs4803418','CYP2B6*1C genotype G>C (rs4803418)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs48034189','CYP2B6*1C genotype C>T (rs48034189)','string');
 insert into propertyNames(name,descrip,datatype) values ('rs8192719','CYP2B6*9 genotype T>C (rs8192719)','string');
-insert into propertyNames(name,descrip,datatype) values ('rs3745274','CYP2B6*6 genotype G>T (rs3745274)','string');
+insert into propertyNames(name,vdescrip,datatype) values ('rs3745274','CYP2B6*6 genotype G>T (rs3745274)','string');
 insert into propertyNames(name,descrip,datatype) values ('Abs_white_on_plavix','Absolute White cell count (cells/µL) on Plavix','number');
 insert into propertyNames(name,descrip,datatype) values ('Red_on_plavix','Red cell count (cells/µL) on Plavix','number');
 insert into propertyNames(name,descrip,datatype) values ('Platelet_on_plavix','Platelet count (cells/µL) on Plavix','number');
@@ -528,4 +528,6 @@ insert into propertyNames(name,descrip,datatype) values ('carat_5micro_post_max'
 insert into propertyNames(name,descrip,datatype) values ('carat_5micro_post_late','CARAT TX4 post-loading ADP 5uM AGGlate', 'string');
 insert into propertyNames(name,descrip,datatype) values ('carat_5micro_main_max','CARAT TX4 maintenance ADP 5uM AGGmax', 'string');
 insert into propertyNames(name,descrip,datatype) values ('carat_5micro_main_late','CARAT TX4 maintenance ADP 5uM AGGlate', 'string');
+insert into propertyNames(name,descrip,datatype) values ('mi_during_followup','MI during follow up', 'string');
+insert into propertyNames(name,descrip,datatype) values ('ttf_mi','Time to the first MI', 'string');
 commit;
