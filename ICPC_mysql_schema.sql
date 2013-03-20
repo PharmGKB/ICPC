@@ -530,4 +530,13 @@ insert into propertyNames(name,descrip,datatype) values ('carat_5micro_main_max'
 insert into propertyNames(name,descrip,datatype) values ('carat_5micro_main_late','CARAT TX4 maintenance ADP 5uM AGGlate', 'string');
 insert into propertyNames(name,descrip,datatype) values ('mi_during_followup','MI during follow up', 'string');
 insert into propertyNames(name,descrip,datatype) values ('ttf_mi','Time to the first MI', 'string');
+insert into propertyNames(name,descrip,datatype) values ('vasp_ld','VASP phosphorylation assay after LD', 'string');
+insert into propertyNames(name,descrip,datatype) values ('vasp_md','VASP phosphorylation assay after MD', 'string');
+insert into propertyNames(name,descrip,datatype) values ('dna_plate','Plate Number', 'string');
+insert into propertyNames(name,descrip,datatype) values ('dna_location','Location', 'string');
+insert into propertyNames(name,descrip,datatype) values ('dna_conc','DNA Concentration', 'string');
+insert into propertyNames(name,descrip,datatype) values ('dna_units','Units', 'string');
+insert into propertyNames(name,descrip,datatype) values ('dna_volume','Volume', 'string');
+insert into propertyNames(name,descrip,datatype) values ('dna_icpc_plate','ICPC Plate Number', 'string');
+insert into propertyNames(name,descrip,datatype) values ('dna_icpc_tube','ICPC Tube ID', 'string');
 commit;

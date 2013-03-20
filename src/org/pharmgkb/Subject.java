@@ -4,6 +4,7 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.annotations.IndexColumn;
 import org.hibernate.annotations.Type;
@@ -12,6 +13,7 @@ import org.pharmgkb.enums.Property;
 import org.pharmgkb.enums.SampleSource;
 import org.pharmgkb.enums.Value;
 import org.pharmgkb.util.IcpcUtils;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
@@ -387,7 +389,10 @@ public class Subject {
     m_properties.putAll(properties);
 
     // pick out all properties that we want to strongly persist for analysis
-    setSubjectId(getProperties().get(Property.SUBJECT_ID.getShortName()));
+    String subjectId = getProperties().get(Property.SUBJECT_ID.getShortName());
+    subjectId = StringUtils.strip(subjectId);
+    subjectId = StringUtils.strip(subjectId,",");
+    setSubjectId(subjectId);
 
     Value genotyping = Value.lookupByName(getProperties().get(Property.GENOTYPING.getShortName()));
     setGenotyping(genotyping);
