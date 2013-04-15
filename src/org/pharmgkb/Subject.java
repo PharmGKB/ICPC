@@ -8,10 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.annotations.IndexColumn;
 import org.hibernate.annotations.Type;
-import org.pharmgkb.enums.Gender;
-import org.pharmgkb.enums.Property;
-import org.pharmgkb.enums.SampleSource;
-import org.pharmgkb.enums.Value;
+import org.pharmgkb.enums.*;
 import org.pharmgkb.util.IcpcUtils;
 
 import javax.persistence.*;
@@ -150,6 +147,16 @@ public class Subject {
 
   public void setRaceOMB(String raceOMB) {
     m_RaceOMB = raceOMB;
+  }
+
+  public String calculateRace() {
+    Race race = Race.lookupByFuzzyName(getRaceOMB(), getRaceself(), getEthnicityOMB(), getEthnicityreported());
+    if (race==null) {
+      return "NA";
+    }
+    else {
+      return race.getShortName();
+    }
   }
 
   @Column(name="Ethnicity_reported")

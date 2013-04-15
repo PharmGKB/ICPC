@@ -10,6 +10,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.hibernate.Session;
+import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
@@ -61,16 +62,30 @@ public class CombinedDataReport {
       Map<String,Integer> propertyIndexMap = Maps.newHashMap();
       List rez = session.createQuery("from IcpcProperty ip order by ip.index")
           .list();
+      int columnIdx = 0;
+
+      ExcelUtils.writeCell(descripRow, columnIdx, Property.SUBJECT_ID.getDisplayName());
+      ExcelUtils.writeCell(nameRow, columnIdx, Property.SUBJECT_ID.getShortName());
+      columnIdx++;
+      ExcelUtils.writeCell(descripRow, columnIdx, Property.RACE_OMB.getDisplayName());
+      ExcelUtils.writeCell(nameRow, columnIdx, Property.RACE_OMB.getShortName());
+      columnIdx++;
+
       for (Object result :rez) {
         IcpcProperty property = (IcpcProperty)result;
-        propertyIndexMap.put(property.getName(), property.getIndex());
+        Property propertyAttributes = Property.lookupByName(property.getName());
 
-        if (sf_logger.isDebugEnabled()) {
-          sf_logger.debug(property.getIndex()+": "+property.getDescription());
+        if (propertyAttributes==null || propertyAttributes.isShownInReport()) {
+          propertyIndexMap.put(property.getName(), columnIdx);
+
+          if (sf_logger.isDebugEnabled()) {
+            sf_logger.debug(columnIdx+": "+property.getDescription());
+          }
+
+          ExcelUtils.writeCell(descripRow, columnIdx, property.getDescription());
+          ExcelUtils.writeCell(nameRow, columnIdx, property.getName());
+          columnIdx++;
         }
-
-        ExcelUtils.writeCell(descripRow, property.getIndex()-1, property.getDescription());
-        ExcelUtils.writeCell(nameRow, property.getIndex()-1, property.getName());
       }
 
       rez = session.createQuery("select s.subjectId from Subject s order by s.project,s.subjectId").list();
@@ -78,9 +93,12 @@ public class CombinedDataReport {
         Subject subject = (Subject)session.get(Subject.class, (String)result);
         Row row = sheet.createRow(currentRowIdx++);
 
+        ExcelUtils.writeCell(row, 0, subject.getSubjectId());
+        ExcelUtils.writeCell(row, 1, subject.calculateRace());
+
         for (String propertyName : propertyIndexMap.keySet()) {
-          Integer columnIdx = propertyIndexMap.get(propertyName)-1;
-          ExcelUtils.writeCell(row, columnIdx, StringUtils.defaultIfBlank(subject.getProperties().get(propertyName), IcpcUtils.NA));
+          Integer valueColIdx= propertyIndexMap.get(propertyName);
+          ExcelUtils.writeCell(row, valueColIdx, StringUtils.defaultIfBlank(subject.getProperties().get(propertyName), IcpcUtils.NA));
         }
       }
 

@@ -22,6 +22,7 @@ public class IcpcUtils {
 
   private static final Logger sf_logger = Logger.getLogger(IcpcUtils.class);
   private static final Pattern sf_alleleRegex = Pattern.compile("\\*\\d+");
+  private static final SimpleDateFormat m_fileDateFormatter = new SimpleDateFormat("yyyyMMdd-HHmm");
 
   public static boolean isBlank(String string) {
     String trimString = StringUtils.trimToNull(string);
@@ -29,15 +30,17 @@ public class IcpcUtils {
   }
 
   public static File getOutputFile(File inputFile) {
+    String outputDirectoryName = inputFile.getParent()+"/output";
+
     Date date = new Date();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmm");
     String newExtension = new StringBuilder()
         .append(".")
-        .append(sdf.format(date))
+        .append(m_fileDateFormatter.format(date))
         .append(".xls")
         .toString();
+    String outputFileName = inputFile.getName().replaceAll("\\.xls", newExtension);
 
-    return new File(inputFile.getAbsolutePath().replaceAll("\\.xls", newExtension));  
+    return new File(outputDirectoryName, outputFileName);
   }
 
   /**
