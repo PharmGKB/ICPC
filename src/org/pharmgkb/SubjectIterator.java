@@ -17,6 +17,7 @@ import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.IcpcUtils;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -188,7 +189,12 @@ public class SubjectIterator implements Iterator {
       case "Alcohol":
         enumValue = AlcoholStatus.lookupByName(strippedValue);
         if (enumValue != null) {
-          normalizedValue = enumValue.getShortName();
+          if (enumValue==AlcoholStatus.UNKNOWN) {
+            normalizedValue = IcpcUtils.NA;
+          }
+          else {
+            normalizedValue = enumValue.getShortName();
+          }
         }
         else {
           valid = false;
@@ -197,7 +203,12 @@ public class SubjectIterator implements Iterator {
       case "Diabetes":
         enumValue = DiabetesStatus.lookupByName(strippedValue);
         if (enumValue != null) {
-          normalizedValue = enumValue.getShortName();
+          if (enumValue == DiabetesStatus.UNKNOWN) {
+            normalizedValue = IcpcUtils.NA;
+          }
+          else {
+            normalizedValue = enumValue.getShortName();
+          }
         }
         else {
           valid = false;
@@ -417,7 +428,6 @@ public class SubjectIterator implements Iterator {
       case "Blood_Pressure":
       case "placebo_RCT":
       case "Aspirin_Less_100":
-      case "Other_medications":
       case "Statins":
       case "PPI ":
       case "Calcium_blockers":
@@ -433,7 +443,6 @@ public class SubjectIterator implements Iterator {
       case "STEMI":
       case "NSTEMI":
       case "Other_ischemic":
-      case "MI ":
       case "Stroke":
       case "All_cause_mortality":
       case "Cardiovascular_death":
@@ -446,13 +455,19 @@ public class SubjectIterator implements Iterator {
       case "Tissue_Valve_Replacement":
       case "Blood_Cell":
       case "Chol":
-        valid = (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("99"));
+        valid = (strippedValue.equals("0") || strippedValue.equals("1") || strippedValue.equals("99"));
+        if (strippedValue.equals("99")) {
+          normalizedValue = IcpcUtils.NA;
+        }
         break;
 
       // columns with left/right/no/unknown as 0/1/2/99
       case "Stent_thromb":
       case "Mechanical_Valve_Replacement":
-        valid = (StringUtils.strip(value).equals("0") || StringUtils.strip(value).equals("1") || StringUtils.strip(value).equals("2") || StringUtils.strip(value).equals("99"));
+        valid = (strippedValue.equals("0") || strippedValue.equals("1") || strippedValue.equals("2") || strippedValue.equals("99"));
+        if (strippedValue.equals("99")) {
+          normalizedValue = IcpcUtils.NA;
+        }
         break;
 
       // columns that are supposed to be genetic bases (eg. A/T or GC)
@@ -474,21 +489,24 @@ public class SubjectIterator implements Iterator {
       case "rs3745274":
       case "rs2279343":
       case "rs3745274_cyp2b6_9":
+      case "rs2242480":
+      case "rs3213619":
+      case "rs2032582":
+      case "rs1057910":
+      case "rs71647871":
         Matcher m = sf_geneticBases.matcher(strippedValue);
         if (m.matches()) {
-          if (!strippedValue.contains("/")) {
-            StringBuilder sb = new StringBuilder();
-            for (char base : strippedValue.toCharArray()) {
-              if (sb.length()!=0) {
-                sb.append("/");
-              }
-              sb.append(base);
+          char[] valueArray = StringUtils.remove(strippedValue.toUpperCase(), '/').toCharArray();
+          Arrays.sort(valueArray);
+
+          StringBuilder sb = new StringBuilder();
+          for (char base : valueArray) {
+            if (sb.length()!=0) {
+              sb.append("/");
             }
-            normalizedValue = sb.toString().toUpperCase();
+            sb.append(base);
           }
-          else {
-            normalizedValue = strippedValue.toUpperCase();
-          }
+          normalizedValue = sb.toString();
         }
         else {
           valid = false;

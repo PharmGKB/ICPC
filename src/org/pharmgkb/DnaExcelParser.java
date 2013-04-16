@@ -30,7 +30,7 @@ public class DnaExcelParser {
   static {
     sf_columnMap.put(1, "dna_plate");
     sf_columnMap.put(2, "dna_location");
-    sf_columnMap.put(3, "dna_conc");
+    sf_columnMap.put(3, "dna_concentration");
     sf_columnMap.put(4, "dna_units");
     sf_columnMap.put(5, "dna_volume");
     sf_columnMap.put(6, "dna_icpc_plate");

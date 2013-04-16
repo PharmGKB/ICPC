@@ -2,8 +2,6 @@ package org.pharmgkb.util;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -12,10 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: Jul 16, 2010
- * Time: 9:55:50 AM
+ * @author whaleyr
  */
 public class IcpcUtils {
   public static final String NA = "NA";
@@ -71,15 +66,4 @@ public class IcpcUtils {
 
     return alleleClean;
   }
-
-  public void writeData(Session session, String subjectId, String key, String value) {
-    SQLQuery deleteQuery = session.createSQLQuery("delete from sampleProperties where subjectId=:subjectId and datakey=:datakey");
-    SQLQuery insertQuery = session.createSQLQuery("insert into sampleProperties(subjectId,datakey,datavalue) values (:subjectId,:datakey,:datavalue)");
-
-    int deleteCount = deleteQuery.setParameter("subjectId",subjectId).setParameter("datakey",key).executeUpdate();
-    int insertCount = insertQuery.setParameter("subjectId",subjectId).setParameter("datakey",key).setParameter("datavalue",value).executeUpdate();
-
-    sf_logger.debug(deleteCount+" records deleted, "+insertCount+" records inserted");
-  }
-
 }
