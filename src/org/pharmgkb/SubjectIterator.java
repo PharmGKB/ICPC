@@ -367,7 +367,6 @@ public class SubjectIterator implements Iterator {
       case "Time_Loading_PFA":
       case "Time_loading_VerifyNow":
       case "Time_loading_PAP8":
-      case "Time_loading_Chronolog":
       case "Clopidogrel_loading_dose":
       case "White_cell_count":
       case "Red_cell_count":
@@ -519,6 +518,7 @@ public class SubjectIterator implements Iterator {
       case "ADP":
       case "Arachadonic_acid":
       case "Collagen":
+      case "Time_loading_Chronolog":
         break;
 
         // no validation
