@@ -230,9 +230,6 @@ public class SubjectIterator implements Iterator {
           if (source!=null) {
             normalizedTokens.add(source.getShortName());
           }
-          else {
-            valid = valid && (source!=null);
-          }
           normalizedValue = Joiner.on(";").join(normalizedTokens);
         }
         break;
@@ -260,8 +257,6 @@ public class SubjectIterator implements Iterator {
       case "Left_Ventricle":
       case "Right_Ventricle":
       case "Dose_Clopidogrel_aspirin":
-      case "Duration_Clopidogrel":
-      case "Duration_Aspirin":
       case "Duration_therapy":
       case "Active_metabolite":
       case "Days_MajorBleeding":
@@ -329,7 +324,6 @@ public class SubjectIterator implements Iterator {
       case "Chronolog_baseline_max_aa":
       case "Chronolog_baseline_max_collagen1":
       case "Chronolog_baseline_lag_ADP_5":
-      case "Chronolog_baseline_lag_ADP_20":
       case "Chronolog_baseline_lag_aa":
       case "Chronolog_baseline_lag_collagen1":
       case "Chronolog_loading_max_ADP_5":
@@ -337,7 +331,6 @@ public class SubjectIterator implements Iterator {
       case "Chronolog_loading_max_aa":
       case "Chronolog_loading_max_collagen1":
       case "Chronolog_loading_lag_ADP_5":
-      case "Chronolog_loading_lag_ADP_20":
       case "Chronolog_loading_lag_aa":
       case "Chronolog_loading_lag_collagen1":
       case "Chronolog_standard_max_ADP_5":
@@ -345,7 +338,6 @@ public class SubjectIterator implements Iterator {
       case "Chronolog_standard_max_aa":
       case "Chronolog_standard_max_collagen1":
       case "Chronolog_standard_lag_ADP_5":
-      case "Chronolog_standard_lag_ADP_20":
       case "Chronolog_standard_lag_aa":
       case "Chronolog_standard_lag_collagen1":
       case "VASP":
@@ -353,8 +345,6 @@ public class SubjectIterator implements Iterator {
       case "Time_STEMI":
       case "Time_NSTEMI":
       case "Time_Angina":
-      case "Time_REVASC":
-      case "Time_stroke":
       case "Time_heartFailure":
       case "Time_MechValve":
       case "Time_tissValve":
@@ -365,7 +355,6 @@ public class SubjectIterator implements Iterator {
       case "Time_PeriVascular":
       case "Time_AF":
       case "Time_Loading_PFA":
-      case "Time_loading_VerifyNow":
       case "Time_loading_PAP8":
       case "Clopidogrel_loading_dose":
       case "White_cell_count":
@@ -519,6 +508,14 @@ public class SubjectIterator implements Iterator {
       case "Arachadonic_acid":
       case "Collagen":
       case "Time_loading_Chronolog":
+      case "Chronolog_baseline_lag_ADP_20":
+      case "Chronolog_loading_lag_ADP_20":
+      case "Chronolog_standard_lag_ADP_20":
+      case "Time_loading_VerifyNow":
+      case "Time_REVASC":
+      case "Time_stroke":
+      case "Duration_Clopidogrel":
+      case "Duration_Aspirin":
         break;
 
         // no validation
