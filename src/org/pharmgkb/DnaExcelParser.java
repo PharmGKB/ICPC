@@ -31,10 +31,11 @@ public class DnaExcelParser {
     sf_columnMap.put(1, "dna_plate");
     sf_columnMap.put(2, "dna_location");
     sf_columnMap.put(3, "dna_concentration");
-    sf_columnMap.put(4, "dna_units");
-    sf_columnMap.put(5, "dna_volume");
-    sf_columnMap.put(6, "dna_icpc_plate");
-    sf_columnMap.put(7, "dna_icpc_tube");
+    sf_columnMap.put(4, "picogreen_concentration");
+    sf_columnMap.put(5, "dna_units");
+    sf_columnMap.put(6, "dna_volume");
+    sf_columnMap.put(7, "dna_icpc_plate");
+    sf_columnMap.put(8, "dna_icpc_tube");
   }
 
   private Workbook m_workbook = null;
