@@ -94,10 +94,10 @@ public class ExcelUtils {
    *
    * @param row a {@link Row} from an excel {@link Workbook}
    * @param idx the index of the cell to write
-   * @param value the float value to write
+   * @param value the <code>double</code> value to write
    * @param highlight the {@link CellStyle} to use, optional
    */
-  public static void writeCell(Row row, int idx, float value, @Nullable CellStyle highlight) {
+  public static void writeCell(Row row, int idx, double value, @Nullable CellStyle highlight) {
     Cell cell = row.getCell(idx);
     if (cell == null) {
       row.createCell(idx, Cell.CELL_TYPE_NUMERIC).setCellValue(value);
@@ -105,7 +105,7 @@ public class ExcelUtils {
     else {
       if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
         Double existingValue = cell.getNumericCellValue();
-        if (value != existingValue.floatValue()) {
+        if (value != existingValue.doubleValue()) {
           StringBuilder sb = new StringBuilder();
           sb.append("Changed value: ")
               .append(CellReference.convertNumToColString(cell.getColumnIndex()))

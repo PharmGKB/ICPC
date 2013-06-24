@@ -108,7 +108,7 @@ public class CombinedDataReport {
           }
           else if (propType.equals("number")) {
             try {
-              float numValue = Float.valueOf(propValue);
+              double numValue = Double.valueOf(propValue);
               ExcelUtils.writeCell(row, valueColIdx, numValue, null);
             } catch (NumberFormatException ex) {
               sf_logger.debug("Input string is not number: {}", propValue);
