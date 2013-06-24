@@ -1,6 +1,7 @@
 package org.pharmgkb;
 
 import com.google.common.collect.Maps;
+import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -18,6 +19,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * This class parses the companion DNA submission excel file that adds more data to the Subjects. This class assumes
+ * that data already exists in the {@link Subject} and {@link IcpcProperty} tables.
+ *
  * @author Ryan Whaley
  */
 public class DnaExcelParser {
@@ -40,7 +44,13 @@ public class DnaExcelParser {
 
   private Workbook m_workbook = null;
 
-  public DnaExcelParser(File file) throws Exception {
+  /**
+   * Public constructor
+   *
+   * @param file the Excel file that holds the DNA data
+   * @throws Exception
+   */
+  public DnaExcelParser(@NonNull File file) throws Exception {
     if (file == null || !file.exists()) {
       throw new Exception("No file specified");
     }
@@ -55,6 +65,10 @@ public class DnaExcelParser {
     }
   }
 
+  /**
+   * Parses the file passed in during construction and writes collected data to the database.
+   * @throws Exception
+   */
   public void parse() throws Exception {
     Session session = null;
     NumberFormat idFormatter = new DecimalFormat("##########.##");
@@ -92,9 +106,6 @@ public class DnaExcelParser {
                       propValue = idFormatter.format(row.getCell(propIdx).getNumericCellValue());
                     }
                     propValues.put(sf_columnMap.get(propIdx), propValue);
-
-
-
                   }
                   subject.addProperties(propValues);
                 }
@@ -111,10 +122,18 @@ public class DnaExcelParser {
     }
   }
 
+  /**
+   * Get the {@link Workbook} object this parser is crawling
+   * @return a {@link Workbook} of DNA data
+   */
   public Workbook getWorkbook() {
     return m_workbook;
   }
 
+  /**
+   * Set the {@link Workbook} object this parser is crawling
+   * @param workbook a {@link Workbook} of DNA data
+   */
   public void setWorkbook(Workbook workbook) {
     m_workbook = workbook;
   }

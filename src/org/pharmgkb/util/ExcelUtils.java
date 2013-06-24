@@ -1,5 +1,7 @@
 package org.pharmgkb.util;
 
+import com.sun.istack.internal.Nullable;
+import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
@@ -9,26 +11,47 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: Jul 28, 2010
- * Time: 8:35:06 AM
+ * A collection of utility methods for working wth Excel files in Apache POI
+ *
+ * @author whaleyr
  */
 public class ExcelUtils {
   private static Logger sf_logger = Logger.getLogger(ExcelUtils.class);
 
-  public static String getAddress(Cell cell) {
+  /**
+   * Gets the human-readable address of <code>cell</code> in the {@link Workbook}. For example: A1, B32, AA5
+   *
+   * @param cell an excel {@link Cell}
+   * @return a readable String for the address
+   */
+  public static String getAddress(@NonNull Cell cell) {
     StringBuilder sb = new StringBuilder();
     sb.append(CellReference.convertNumToColString(cell.getColumnIndex()));
     sb.append(cell.getRowIndex()+1);
     return sb.toString();
   }
 
+  /**
+   * Write a text cell to the given row at the given index. Convenience method when no {@link CellStyle} needs to be
+   * specified.
+   *
+   * @param row a {@link Row} from an excel {@link Workbook}
+   * @param idx the index of the cell to write
+   * @param value the String value to write
+   */
   public static void writeCell(Row row, int idx, String value) {
     writeCell(row, idx, value, null);
   }
 
-  public static void writeCell(Row row, int idx, String value, CellStyle highlight) {
+  /**
+   * Write a text cell to the given row at the given index.
+   *
+   * @param row a {@link Row} from an excel {@link Workbook}
+   * @param idx the index of the cell to write
+   * @param value the String value to write
+   * @param highlight the {@link CellStyle} to use, optional
+   */
+  public static void writeCell(Row row, int idx, String value, @Nullable CellStyle highlight) {
     // first normalizeValue all the important arguments
     if (value == null || row == null || idx<0) {
       // don't do anything if they're missing
@@ -66,10 +89,18 @@ public class ExcelUtils {
     }
   }
 
-  public static void writeCell(Row row, int idx, float value, CellStyle highlight) {
+  /**
+   * Write a numeric cell to the given row at the given index.
+   *
+   * @param row a {@link Row} from an excel {@link Workbook}
+   * @param idx the index of the cell to write
+   * @param value the float value to write
+   * @param highlight the {@link CellStyle} to use, optional
+   */
+  public static void writeCell(Row row, int idx, float value, @Nullable CellStyle highlight) {
     Cell cell = row.getCell(idx);
     if (cell == null) {
-      row.createCell(idx).setCellValue(value);
+      row.createCell(idx, Cell.CELL_TYPE_NUMERIC).setCellValue(value);
     }
     else {
       if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
@@ -103,7 +134,7 @@ public class ExcelUtils {
         sf_logger.debug(sb.toString());
 
         row.removeCell(cell);
-        row.createCell(idx).setCellType(Cell.CELL_TYPE_NUMERIC);
+        cell = row.createCell(idx,Cell.CELL_TYPE_NUMERIC);
         if (highlight != null) {
           cell.setCellStyle(highlight);
         }
@@ -178,31 +209,4 @@ public class ExcelUtils {
     }
     return null;
   }
-
-  public static Double getNumberValue(CellValue cell) {
-
-    if (cell != null && cell.getCellType()==Cell.CELL_TYPE_NUMERIC) {
-      return cell.getNumberValue();
-    }
-    else if (cell != null && cell.getCellType()==Cell.CELL_TYPE_STRING) {
-      if (StringUtils.isNotBlank(cell.getStringValue())) {
-        return Double.valueOf(cell.getStringValue());
-      }
-    }
-    return null;
-  }
-
-  public static Double getNumericValue(Cell cell, FormulaEvaluator formulaEvaluator) {
-    Double number = null;
-
-    if (cell != null && cell.getCellType()==Cell.CELL_TYPE_NUMERIC) {
-      number = cell.getNumericCellValue();
-    }
-    else if (cell != null && cell.getCellType()==Cell.CELL_TYPE_FORMULA) {
-      number = getNumberValue(formulaEvaluator.evaluate(cell));
-    }
-
-    return number;
-  }
-
 }

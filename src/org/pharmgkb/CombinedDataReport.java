@@ -4,8 +4,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
 import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
@@ -15,6 +13,8 @@ import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
 import org.pharmgkb.util.IcpcUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,7 +28,7 @@ import java.util.Map;
  * @author Ryan Whaley
  */
 public class CombinedDataReport {
-  private static final Logger sf_logger = Logger.getLogger(CombinedDataReport.class);
+  private static final Logger sf_logger = LoggerFactory.getLogger(CombinedDataReport.class);
   private File m_outputFile = null;
 
   /**
@@ -60,6 +60,7 @@ public class CombinedDataReport {
       Row nameRow = sheet.createRow(currentRowIdx++);
 
       Map<String,Integer> propertyIndexMap = Maps.newHashMap();
+      Map<String,String> propertyTypeMap = Maps.newHashMap();
       List rez = session.createQuery("from IcpcProperty ip order by ip.index")
           .list();
       int columnIdx = 0;
@@ -77,6 +78,7 @@ public class CombinedDataReport {
 
         if (propertyAttributes==null || propertyAttributes.isShownInReport()) {
           propertyIndexMap.put(property.getName(), columnIdx);
+          propertyTypeMap.put(property.getName(), property.getType());
 
           if (sf_logger.isDebugEnabled()) {
             sf_logger.debug(columnIdx+": "+property.getDescription());
@@ -98,7 +100,24 @@ public class CombinedDataReport {
 
         for (String propertyName : propertyIndexMap.keySet()) {
           Integer valueColIdx= propertyIndexMap.get(propertyName);
-          ExcelUtils.writeCell(row, valueColIdx, StringUtils.defaultIfBlank(subject.getProperties().get(propertyName), IcpcUtils.NA));
+          String propType = propertyTypeMap.get(propertyName);
+          String propValue = subject.getProperties().get(propertyName);
+
+          if (IcpcUtils.isBlank(propValue)) {
+            ExcelUtils.writeCell(row, valueColIdx, IcpcUtils.NA);
+          }
+          else if (propType.equals("number")) {
+            try {
+              float numValue = Float.valueOf(propValue);
+              ExcelUtils.writeCell(row, valueColIdx, numValue, null);
+            } catch (NumberFormatException ex) {
+              sf_logger.debug("Input string is not number: {}", propValue);
+              ExcelUtils.writeCell(row, valueColIdx, IcpcUtils.NA);
+            }
+          }
+          else {
+            ExcelUtils.writeCell(row, valueColIdx, propValue);
+          }
         }
       }
 
