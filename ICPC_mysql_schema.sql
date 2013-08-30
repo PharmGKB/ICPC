@@ -539,4 +539,6 @@ insert into propertyNames(name,descrip,datatype) values ('dna_volume','Volume', 
 insert into propertyNames(name,descrip,datatype) values ('dna_icpc_plate','ICPC Plate Number', 'string');
 insert into propertyNames(name,descrip,datatype) values ('dna_icpc_tube','ICPC Tube ID', 'string');
 insert into propertyNames(name,descrip,datatype) values ('picogreen_concentration', 'picogreen concentration', 'string');
+insert into propertyNames(name,descrip,datatype) values ('indication_clopidogrel', 'Indication for Clopidogrel', 'string');
+insert into propertyNames(name,descrip,datatype) values ('pci_information', 'PCI Information (for patients with CAD)', 'string');
 commit;

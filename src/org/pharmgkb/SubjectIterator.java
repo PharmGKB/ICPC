@@ -5,6 +5,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -17,10 +18,7 @@ import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.IcpcUtils;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -173,6 +171,7 @@ public class SubjectIterator implements Iterator {
 
     String strippedValue = StringUtils.stripToNull(value);
     normalizedValue = strippedValue;
+    Set<String> validValues;
 
     switch (key) {
       // subject ID column is special
@@ -454,6 +453,22 @@ public class SubjectIterator implements Iterator {
       case "Mechanical_Valve_Replacement":
         valid = (strippedValue.equals("0") || strippedValue.equals("1") || strippedValue.equals("2") || strippedValue.equals("99"));
         if (strippedValue.equals("99")) {
+          normalizedValue = IcpcUtils.NA;
+        }
+        break;
+
+      case "pci_information":
+        validValues = Sets.newHashSet("1","2","3","4","NA");
+        valid = validValues.contains(strippedValue);
+        if (strippedValue.equals("NA")) {
+          normalizedValue = IcpcUtils.NA;
+        }
+        break;
+
+      case "indication_clopidogrel":
+        validValues = Sets.newHashSet("1","2","3","4","5","NA");
+        valid = validValues.contains(strippedValue);
+        if (strippedValue.equals("NA")) {
           normalizedValue = IcpcUtils.NA;
         }
         break;
