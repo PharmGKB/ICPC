@@ -32,6 +32,7 @@ public class SubjectIterator implements Iterator {
   private static final Integer sf_columnNameRowIdx = 1;
   private static final Pattern sf_dosingPattern = Pattern.compile("(\\d+).*mg");
   private static final Pattern sf_geneticBases = Pattern.compile("^[AaTtGgCc/]+$");
+  private static final Pattern sf_clopidogrelInd = Pattern.compile("[12345;(NA)]*");
 
   private Sheet m_sheet = null;
   private Integer m_currentRow = 3;
@@ -466,8 +467,8 @@ public class SubjectIterator implements Iterator {
         break;
 
       case "indication_clopidogrel":
-        validValues = Sets.newHashSet("1","2","3","4","5","NA");
-        valid = validValues.contains(strippedValue);
+        Matcher icm = sf_clopidogrelInd.matcher(strippedValue);
+        valid = icm.matches();
         if (strippedValue.equals("NA")) {
           normalizedValue = IcpcUtils.NA;
         }
