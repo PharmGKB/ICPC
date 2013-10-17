@@ -443,6 +443,7 @@ public class SubjectIterator implements Iterator {
       case "Tissue_Valve_Replacement":
       case "Blood_Cell":
       case "Chol":
+      case "mi_followup":
         valid = (strippedValue.equals("0") || strippedValue.equals("1") || strippedValue.equals("99"));
         if (strippedValue.equals("99")) {
           normalizedValue = IcpcUtils.NA;
