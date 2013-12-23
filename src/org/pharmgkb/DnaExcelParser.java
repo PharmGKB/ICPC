@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
+import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.HibernateUtils;
 
 import java.io.File;
@@ -82,35 +83,40 @@ public class DnaExcelParser {
 
         int countSamples = 0;
         for (int r=0; r<s.getLastRowNum(); r++) {
-          Row row = s.getRow(r);
-          if (row!=null) {
-            Cell cellSampleId = row.getCell(sf_idxSampleId);
-            if (cellSampleId!=null && StringUtils.isNotBlank(cellSampleId.getStringCellValue())) {
-              String sampleId = StringUtils.strip(cellSampleId.getStringCellValue());
-              sampleId = StringUtils.strip(sampleId, ",");
-              Matcher m = sf_patternSampleId.matcher(sampleId);
-              if (m.matches()) {
+          try {
+            Row row = s.getRow(r);
+            if (row!=null) {
+              Cell cellSampleId = row.getCell(sf_idxSampleId);
+              if (cellSampleId!=null && StringUtils.isNotBlank(cellSampleId.getStringCellValue())) {
+                String sampleId = StringUtils.strip(cellSampleId.getStringCellValue());
+                sampleId = StringUtils.strip(sampleId, ",");
+                Matcher m = sf_patternSampleId.matcher(sampleId);
+                if (m.matches()) {
 
-                Subject subject = (Subject)session.get(Subject.class, sampleId);
-                if (subject != null) {
-                  countSamples++;
-                  Map<String,String> propValues = Maps.newHashMap();
-                  for (Integer propIdx : sf_columnMap.keySet()) {
+                  Subject subject = (Subject)session.get(Subject.class, sampleId);
+                  if (subject != null) {
+                    countSamples++;
+                    Map<String,String> propValues = Maps.newHashMap();
+                    for (Integer propIdx : sf_columnMap.keySet()) {
 
-                    Cell cell = row.getCell(propIdx);
-                    String propValue = null;
-                    if (cell.getCellType()==Cell.CELL_TYPE_STRING) {
-                      propValue = row.getCell(propIdx).getStringCellValue();
-                      propValue = StringUtils.strip(propValue);
-                    } else if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC) {
-                      propValue = idFormatter.format(row.getCell(propIdx).getNumericCellValue());
+                      Cell cell = row.getCell(propIdx);
+                      String propValue = null;
+                      if (cell.getCellType()==Cell.CELL_TYPE_STRING) {
+                        propValue = row.getCell(propIdx).getStringCellValue();
+                        propValue = StringUtils.strip(propValue);
+                      } else if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC) {
+                        propValue = idFormatter.format(row.getCell(propIdx).getNumericCellValue());
+                      }
+                      propValues.put(sf_columnMap.get(propIdx), propValue);
                     }
-                    propValues.put(sf_columnMap.get(propIdx), propValue);
+                    subject.addProperties(propValues);
                   }
-                  subject.addProperties(propValues);
                 }
               }
             }
+          }
+          catch (Exception ex) {
+            throw new PgkbException("Error on row "+r, ex);
           }
         }
         HibernateUtils.commit(session);
