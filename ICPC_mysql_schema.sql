@@ -542,4 +542,6 @@ insert into propertyNames(name,descrip,datatype) values ('picogreen_concentratio
 insert into propertyNames(name,descrip,datatype) values ('indication_clopidogrel', 'Indication for Clopidogrel', 'string');
 insert into propertyNames(name,descrip,datatype) values ('pci_information', 'PCI Information (for patients with CAD)', 'string');
 insert into propertyNames(name,descrip,datatype) values ('mi_followup', 'MI during follow-up', 'string');
+insert into propertyNames(name,descrip,datatype) values ('clopidogrel_before_testing', 'clopidogrel loading dose before testing', 'string');
+insert into propertyNames(name,descrip,datatype) values ('clopidogrel_duration_before_testing', 'duration of clopidogrel treatment before testing', 'string');
 commit;
