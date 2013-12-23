@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" hash="2170234018">
-    <data-source source="LOCAL" name="ICPC - MAMP" product="MySQL" version="5.5.25" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.21 ( Revision: ${bzr.revision-id} )" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d" case-sensitive="true">
-      <extra-name-characters>#@</extra-name-characters>
-      <identifier-quote-string>`</identifier-quote-string>
+    <data-source source="LOCAL" name="ICPC - MAMP" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d">
+      <driver-ref>mysql</driver-ref>
       <auto-commit>false</auto-commit>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:8889/icpc</jdbc-url>
@@ -11,16 +10,15 @@
       <user-password>dfd8dfc5dfc5dfde</user-password>
       <schema-pattern>icpc.*</schema-pattern>
       <default-schemas>icpc.*</default-schemas>
-      <default-dialect>MySQL</default-dialect>
+      <default-dialect>TEXT</default-dialect>
       <libraries>
         <library>
           <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="ICPC - Iceman" product="MySQL" version="5.5.9" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.21 ( Revision: ${bzr.revision-id} )" uuid="7a184030-ff99-4380-becc-0d49c7d52cd7">
-      <extra-name-characters>#@</extra-name-characters>
-      <identifier-quote-string>`</identifier-quote-string>
+    <data-source source="LOCAL" name="ICPC - Iceman" uuid="7a184030-ff99-4380-becc-0d49c7d52cd7">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://10.0.0.173:8889/icpc</jdbc-url>
