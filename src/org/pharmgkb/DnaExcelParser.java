@@ -99,15 +99,20 @@ public class DnaExcelParser {
                     Map<String,String> propValues = Maps.newHashMap();
                     for (Integer propIdx : sf_columnMap.keySet()) {
 
-                      Cell cell = row.getCell(propIdx);
-                      String propValue = null;
-                      if (cell.getCellType()==Cell.CELL_TYPE_STRING) {
-                        propValue = row.getCell(propIdx).getStringCellValue();
-                        propValue = StringUtils.strip(propValue);
-                      } else if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC) {
-                        propValue = idFormatter.format(row.getCell(propIdx).getNumericCellValue());
+                      try {
+                        Cell cell = row.getCell(propIdx);
+                        String propValue = null;
+                        if (cell.getCellType()==Cell.CELL_TYPE_STRING) {
+                          propValue = row.getCell(propIdx).getStringCellValue();
+                          propValue = StringUtils.strip(propValue);
+                        } else if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC) {
+                          propValue = idFormatter.format(row.getCell(propIdx).getNumericCellValue());
+                        }
+                        propValues.put(sf_columnMap.get(propIdx), propValue);
                       }
-                      propValues.put(sf_columnMap.get(propIdx), propValue);
+                      catch (Exception ex) {
+                        throw new PgkbException("Error in column "+propIdx+" ("+sf_columnMap.get(propIdx)+")", ex);
+                      }
                     }
                     subject.addProperties(propValues);
                   }
@@ -116,7 +121,7 @@ public class DnaExcelParser {
             }
           }
           catch (Exception ex) {
-            throw new PgkbException("Error on row "+r, ex);
+            throw new PgkbException("Error on row "+(r+1), ex);
           }
         }
         HibernateUtils.commit(session);
