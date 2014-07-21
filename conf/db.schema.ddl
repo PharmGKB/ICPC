@@ -18,42 +18,14 @@ CREATE TABLE samples (
   Ethnicity_OMB varchar(200) DEFAULT NULL,
   Country varchar(200) DEFAULT NULL,
   Age decimal(10,0) DEFAULT NULL,
-  rs4244285 varchar(200) DEFAULT NULL,
-  rs4986893 varchar(200) DEFAULT NULL,
-  rs28399504 varchar(200) DEFAULT NULL,
-  rs56337013 varchar(200) DEFAULT NULL,
-  rs72552267 varchar(200) DEFAULT NULL,
-  rs72558186 varchar(200) DEFAULT NULL,
-  rs41291556 varchar(200) DEFAULT NULL,
-  rs6413438 varchar(200) DEFAULT NULL,
-  rs12248560 varchar(200) DEFAULT NULL,
-  rs662 varchar(200) DEFAULT NULL,
-  rs854560 varchar(200) DEFAULT NULL,
-  rs1045642 varchar(200) DEFAULT NULL,
-  other_genotypes varchar(200) DEFAULT NULL,
-  rs4803418 varchar(200) default null,
-  rs48034189 varchar(200) default null,
-  rs8192719 varchar(200) default null,
-  rs3745274 varchar(200) default null,
   PRIMARY KEY (Subject_ID)
 );
 
 create index samples_prj_idx on samples(project);
 
-create table sampleGenotypes (
-  subject_id varchar(200) not null,
-  sortOrder int not null,
-  genotype varchar(10) not null
-);
-
 create table sampleSources (
   subject_id varchar(200) not null,
   source int not null
-);
-
-create table samplePpiNames (
-  subject_id varchar(200) not null,
-  ppiName varchar(200) not null
 );
 
 CREATE TABLE propertyNames (

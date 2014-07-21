@@ -9,18 +9,18 @@ import java.util.Collection;
  * @author Ryan Whaley
  */
 public enum Property implements ExtendedEnum {
-  SUBJECT_ID(0, "Subject_ID", "PharmGKB Subject ID", false),
-  GENOTYPING(1, "Genotyping", "Genetic Sample Available for GWAS & Genotyping QC (> 2 �g)", true),
-  PHENOTYPING(2, "Phenotyping", "Tissue Sample(s) Available for additional Phenotyping or QC", true),
-  SAMPLE_SOURCE(3, "Sample_Source", "Tissue Sample Source  Available for Phenotyping and/or QC", true),
-  PROJECT(4, "Project", "Project Site", true),
-  GENDER(5, "Gender", "Gender", true),
-  RACE_SELF(6, "Race_self", "Race (self-reported) ", false),
-  RACE_OMB(7, "Race_OMB", "Race (OMB)", false),
+  SUBJECT_ID        (0, "Subject_ID", "PharmGKB Subject ID", false),
+  GENOTYPING        (1, "Genotyping", "Genetic Sample Available for GWAS & Genotyping QC (> 2 �g)", true),
+  PHENOTYPING       (2, "Phenotyping", "Tissue Sample(s) Available for additional Phenotyping or QC", true),
+  SAMPLE_SOURCE     (3, "Sample_Source", "Tissue Sample Source  Available for Phenotyping and/or QC", true),
+  PROJECT           (4, "Project", "Project Site", true),
+  GENDER            (5, "Gender", "Gender", true),
+  RACE_SELF         (6, "Race_self", "Race (self-reported) ", false),
+  RACE_OMB          (7, "Race_OMB", "Race (OMB)", false),
   ETHNICITY_REPORTED(8, "Ethnicity_reported", "Ethnicity (Reported)  (not required for minimal dataset)", false),
-  ETHNICITY_OMB(9, "Ethnicity_OMB", "Ethnicity (OMB)", false),
-  COUNTRY(10, "Country", "Country of Origin", true),
-  AGE(11, "Age", "Age", true)
+  ETHNICITY_OMB     (9, "Ethnicity_OMB", "Ethnicity (OMB)", false),
+  COUNTRY           (10, "Country", "Country of Origin", true),
+  AGE               (11, "Age", "Age", true)
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;
