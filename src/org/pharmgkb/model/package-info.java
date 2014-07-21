@@ -71,7 +71,7 @@
     )
 })
 
-package org.pharmgkb;
+package org.pharmgkb.model;
 
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.TypeDef;
