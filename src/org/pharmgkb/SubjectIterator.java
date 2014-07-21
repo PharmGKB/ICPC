@@ -14,6 +14,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.pharmgkb.enums.*;
 import org.pharmgkb.exception.PgkbException;
+import org.pharmgkb.model.Sample;
+import org.pharmgkb.model.SampleProperty;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.IcpcUtils;
@@ -24,7 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * This class will take a Sheet and do the parsing to generate {@link org.pharmgkb.Subject} objects. This will also
+ * This class will take a Sheet and do the parsing to generate {@link org.pharmgkb.model.Sample} objects. This will also
  * parse the header rows of the Sheet to ensure all properties in the file are represented in the DB. All the cells in
  * each row are also checked for validity depending on rules based on the header property.
  *
@@ -46,7 +48,7 @@ public class SubjectIterator implements Iterator {
   /**
    * Constructor for this {@link org.pharmgkb.SubjectIterator}. Expects to take in a Sheet from an Excel workbook with
    * the second row being a header row of property names.
-   * @param sheet a Sheet from an Excel Workbook with {@link org.pharmgkb.Subject} data in it
+   * @param sheet a Sheet from an Excel Workbook with {@link org.pharmgkb.model.Sample} data in it
    * @throws Exception can occur if an invalid <code>sheet</code> is specified
    */
   public SubjectIterator(Sheet sheet) throws Exception {
@@ -86,7 +88,7 @@ public class SubjectIterator implements Iterator {
           Object result = query.setParameter("descrip", cellContent).uniqueResult();
 
           if (result!=null) {
-            IcpcProperty property = (IcpcProperty)result;
+            SampleProperty property = (SampleProperty)result;
             getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
           }
           else {
@@ -119,8 +121,8 @@ public class SubjectIterator implements Iterator {
   }
 
   @Override
-  public Subject next() {
-    Subject subject = new Subject();
+  public Sample next() {
+    Sample sample = new Sample();
 
     Row row = getSheet().getRow(getCurrentRow());
 
@@ -130,15 +132,15 @@ public class SubjectIterator implements Iterator {
 
     try {
       Map<String,String> keyValueMap = parseKeyValues();
-      subject.addProperties(keyValueMap);
+      sample.addProperties(keyValueMap);
     }
     catch (Exception ex) {
       sf_logger.error("Couldn't copy subject data for row "+(getCurrentRow()+1), ex);
-      subject = null;
+      sample = null;
     }
 
     bumpCurrentRow();
-    return subject;
+    return sample;
   }
 
   protected Map<String,String> parseKeyValues() {

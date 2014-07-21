@@ -15,7 +15,7 @@
         <property name="transaction.factory_class">org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory</property>
 
         <mapping package="org.pharmgkb"/>
-        <mapping class="org.pharmgkb.Subject"/>
-        <mapping class="org.pharmgkb.IcpcProperty"/>
+        <mapping class="org.pharmgkb.model.Sample"/>
+        <mapping class="org.pharmgkb.model.SampleProperty"/>
     </session-factory>
 </hibernate-configuration>

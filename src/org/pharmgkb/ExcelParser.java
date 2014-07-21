@@ -6,6 +6,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
+import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
 
@@ -64,18 +65,18 @@ public class ExcelParser {
 
       while (subjectIterator.hasNext()) {
 
-        Subject subject = subjectIterator.next();
+        Sample sample = subjectIterator.next();
 
         if (sf_logger.isDebugEnabled()) {
-          sf_logger.debug("Loaded subject: "+subject.getSubjectId());
+          sf_logger.debug("Loaded subject: "+ sample.getSubjectId());
         }
 
-        Subject existingSubject = (Subject)session.get(Subject.class, subject.getSubjectId());
-        if (existingSubject != null) {
-          session.delete(existingSubject);
+        Sample existingSample = (Sample)session.get(Sample.class, sample.getSubjectId());
+        if (existingSample != null) {
+          session.delete(existingSample);
         }
 
-        session.save(subject);
+        session.save(sample);
       }
       HibernateUtils.commit(session);
 

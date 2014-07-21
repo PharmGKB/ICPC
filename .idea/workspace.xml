@@ -1,36 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ff045bd-cefc-4a58-a568-b6f2466d4474" name="Default" comment="New column definition.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/postgresql-9.3-1102.jdbc4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Postgresql.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/poi-ooxml-schemas.jar" afterPath="$PROJECT_DIR$/lib/poi-ooxml-schemas.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/poi-ooxml.jar" afterPath="$PROJECT_DIR$/lib/poi-ooxml.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/poi.jar" afterPath="$PROJECT_DIR$/lib/poi.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/enums/AlcoholStatus.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/enums/AlcoholStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/enums/DiabetesStatus.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/enums/DiabetesStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cl/DnaParser.java" afterPath="$PROJECT_DIR$/src/cl/DnaParser.java" />
+    <list default="true" id="3ff045bd-cefc-4a58-a568-b6f2466d4474" name="Default" comment="Refactored">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/pharmgkb/model/Sample.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/pharmgkb/IcpcProperty.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/util/ExcelUtils.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/util/ExcelUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/enums/Gender.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/enums/Gender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/util/HibernateUtils.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/util/HibernateUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ICPC.iml" afterPath="$PROJECT_DIR$/ICPC.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ICPC_mysql_schema.sql" afterPath="$PROJECT_DIR$/ICPC_mysql_schema.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/IcpcProperty.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/IcpcProperty.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/util/IcpcUtils.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/util/IcpcUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/enums/Metabolizer.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/enums/Metabolizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cl/ReportGeneratorCLI.java" afterPath="$PROJECT_DIR$/src/cl/ReportGeneratorCLI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/enums/SampleSource.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/enums/SampleSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/Subject.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/Subject.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cl/TemplateParser.java" afterPath="$PROJECT_DIR$/src/cl/TemplateParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pharmgkb/enums/Value.java" afterPath="$PROJECT_DIR$/src/org/pharmgkb/enums/Value.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/conf/hibernate.cfg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/log4j.properties" afterPath="$PROJECT_DIR$/conf/log4j.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="ab1b4845-bdbf-4f6b-866f-326c5541b38b" name="ZZ-Ignore" comment="" />
@@ -114,12 +92,26 @@
     <splitter split-orientation="horizontal" split-proportion="0.51970184">
       <split-first>
         <leaf>
-          <file leaf-file-name="ICPC_mysql_schema.sql" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="ICPC_mysql_schema.sql" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ICPC_mysql_schema.sql">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3846154" vertical-offset="615" max-vertical-offset="5220">
+                <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="5220">
                   <caret line="62" column="2" selection-start-line="62" selection-start-column="2" selection-end-line="62" selection-end-column="2" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="workspace.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="2445" max-vertical-offset="27870">
+                  <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+                  <folding>
+                    <marker date="1405920716000" expanded="true" signature="101372:101418" placeholder="..." />
+                    <marker date="1405920716000" expanded="true" signature="101372:101403" placeholder="..." />
+                    <marker date="1405920716000" expanded="true" signature="101372:101390" placeholder="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -184,7 +176,7 @@
             <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2010">
-                  <caret line="102" column="20" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="20" />
+                  <caret line="104" column="20" selection-start-line="104" selection-start-column="20" selection-end-line="104" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
@@ -194,30 +186,30 @@
             <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040">
-                  <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+                  <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IcpcProperty.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/IcpcProperty.java">
+          <file leaf-file-name="SampleProperty.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
-                  <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+                <state vertical-scroll-proportion="0.25821596" vertical-offset="0" max-vertical-offset="1050">
+                  <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
                   <folding>
-                    <element signature="e#859#860#0" expanded="true" />
-                    <element signature="e#889#890#0" expanded="true" />
-                    <element signature="e#941#942#0" expanded="true" />
-                    <element signature="e#978#979#0" expanded="true" />
-                    <element signature="e#1125#1126#0" expanded="true" />
-                    <element signature="e#1148#1149#0" expanded="true" />
-                    <element signature="e#1186#1187#0" expanded="true" />
-                    <element signature="e#1209#1210#0" expanded="true" />
-                    <element signature="e#1439#1440#0" expanded="true" />
-                    <element signature="e#1463#1464#0" expanded="true" />
-                    <element signature="e#1504#1505#0" expanded="true" />
-                    <element signature="e#1529#1530#0" expanded="true" />
+                    <element signature="e#867#868#0" expanded="true" />
+                    <element signature="e#897#898#0" expanded="true" />
+                    <element signature="e#949#950#0" expanded="true" />
+                    <element signature="e#986#987#0" expanded="true" />
+                    <element signature="e#1133#1134#0" expanded="true" />
+                    <element signature="e#1156#1157#0" expanded="true" />
+                    <element signature="e#1194#1195#0" expanded="true" />
+                    <element signature="e#1217#1218#0" expanded="true" />
+                    <element signature="e#1447#1448#0" expanded="true" />
+                    <element signature="e#1471#1472#0" expanded="true" />
+                    <element signature="e#1512#1513#0" expanded="true" />
+                    <element signature="e#1537#1538#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -227,10 +219,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Subject.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/Subject.java">
+          <file leaf-file-name="Sample.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/Sample.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.113065325" vertical-offset="0" max-vertical-offset="4815">
+                <state vertical-scroll-proportion="0.14610389" vertical-offset="0" max-vertical-offset="4815">
                   <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
                   <folding />
                 </state>
@@ -253,7 +245,7 @@
             <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1665">
-                  <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+                  <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
                   <folding />
                 </state>
               </provider>
@@ -273,7 +265,7 @@
             <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8550">
-                  <caret line="49" column="78" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
+                  <caret line="51" column="78" selection-start-line="51" selection-start-column="78" selection-end-line="51" selection-end-column="78" />
                   <folding />
                 </state>
               </provider>
@@ -378,6 +370,8 @@
         <option value="$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java" />
         <option value="$PROJECT_DIR$/src/org/pharmgkb/Subject.java" />
         <option value="$PROJECT_DIR$/ICPC_mysql_schema.sql" />
+        <option value="$PROJECT_DIR$/src/org/pharmgkb/SampleProperty.java" />
+        <option value="$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java" />
       </list>
     </option>
   </component>
@@ -491,65 +485,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pharmgkb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ICPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ICPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmgkb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enums" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ICPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ICPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="cl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ICPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ICPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -610,9 +546,11 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="SearchEverywhereHistory" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/org/pharmgkb" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.pharmgkb.model" />
       <recent name="org.pharmgkb" />
       <recent name="org.pharmgkb.enums" />
       <recent name="org.pharmgkb.util" />
@@ -1145,7 +1083,11 @@
       <created>1401469357528</created>
       <updated>1401469357528</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Lot of changes.&#10;&#10;* switched from MySQL to Postgres for various reasons&#10;* updated the Apache POI lib for dealing with excel files&#10;* filled in more JavaDocs on classes and methods&#10;* fixed the DDL for the project, especially property names&#10;* added an &quot;analyze&quot; option to check for consistency between all the property names in all the files&#10;* trimmed out some unused methods">
+      <created>1405920595785</created>
+      <updated>1405920595785</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -1170,10 +1112,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3" sideWeight="0.8691233" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21858408" sideWeight="0.9952153" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21858408" sideWeight="0.9952153" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21537651" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1194,7 +1136,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15974441" sideWeight="0.77753305" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3778761" sideWeight="0.9868526" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3778761" sideWeight="0.9868526" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944787" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1227,7 +1169,6 @@
       <TodoPanelSettings />
     </option>
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="true" />
-    <MESSAGE value="Adding in javadocs." />
     <MESSAGE value="Normalize spaces in property sql file." />
     <MESSAGE value="Column header to property matching fixes.&#10;&#10;* column names need to be normalized for whitespace&#10;* report should iterate through all possible properties, not just those for a given subject&#10;* update validation for columns, reflecting real world usage" />
     <MESSAGE value="Normalize genotype columns." />
@@ -1252,7 +1193,8 @@
     <MESSAGE value="New column definition." />
     <MESSAGE value="More log info for exception." />
     <MESSAGE value="Adding documentation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding documentation." />
+    <MESSAGE value="Lot of changes.&#10;&#10;* switched from MySQL to Postgres for various reasons&#10;* updated the Apache POI lib for dealing with excel files&#10;* filled in more JavaDocs on classes and methods&#10;* fixed the DDL for the project, especially property names&#10;* added an &quot;analyze&quot; option to check for consistency between all the property names in all the files&#10;* trimmed out some unused methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lot of changes.&#10;&#10;* switched from MySQL to Postgres for various reasons&#10;* updated the Apache POI lib for dealing with excel files&#10;* filled in more JavaDocs on classes and methods&#10;* fixed the DDL for the project, especially property names&#10;* added an &quot;analyze&quot; option to check for consistency between all the property names in all the files&#10;* trimmed out some unused methods" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1292,14 +1234,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="1965">
-          <caret line="96" column="40" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cl/DnaParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1155">
@@ -1322,23 +1256,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/IcpcProperty.java">
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="945">
           <caret line="12" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#859#860#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
-            <element signature="e#1148#1149#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1209#1210#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1504#1505#0" expanded="true" />
-            <element signature="e#1529#1530#0" expanded="true" />
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#897#898#0" expanded="true" />
+            <element signature="e#949#950#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1194#1195#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1471#1472#0" expanded="true" />
+            <element signature="e#1512#1513#0" expanded="true" />
+            <element signature="e#1537#1538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1398,7 +1332,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/Subject.java">
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/Sample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3000" max-vertical-offset="6900">
           <caret line="200" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1435,23 +1369,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/IcpcProperty.java">
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="945">
           <caret line="12" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#859#860#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
-            <element signature="e#1148#1149#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1209#1210#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1504#1505#0" expanded="true" />
-            <element signature="e#1529#1530#0" expanded="true" />
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#897#898#0" expanded="true" />
+            <element signature="e#949#950#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1194#1195#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1471#1472#0" expanded="true" />
+            <element signature="e#1512#1513#0" expanded="true" />
+            <element signature="e#1537#1538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1674,15 +1608,15 @@
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2010">
-          <caret line="102" column="20" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="20" />
+          <caret line="104" column="20" selection-start-line="104" selection-start-column="20" selection-end-line="104" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="974" max-vertical-offset="2040">
-          <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040">
+          <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1708,7 +1642,7 @@
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1665">
-          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1716,49 +1650,61 @@
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8550">
-          <caret line="49" column="78" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
+          <caret line="51" column="78" selection-start-line="51" selection-start-column="78" selection-end-line="51" selection-end-column="78" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.113065325" vertical-offset="0" max-vertical-offset="4815">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/IcpcProperty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#859#860#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
-            <element signature="e#1148#1149#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1209#1210#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1504#1505#0" expanded="true" />
-            <element signature="e#1529#1530#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ICPC_mysql_schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3846154" vertical-offset="615" max-vertical-offset="5220">
+        <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="5220">
           <caret line="62" column="2" selection-start-line="62" selection-start-column="2" selection-end-line="62" selection-end-column="2" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/Sample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14610389" vertical-offset="0" max-vertical-offset="4815">
+          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2445" max-vertical-offset="27870">
+          <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+          <folding>
+            <marker date="1405920716000" expanded="true" signature="101372:101418" placeholder="..." />
+            <marker date="1405920716000" expanded="true" signature="101372:101403" placeholder="..." />
+            <marker date="1405920716000" expanded="true" signature="101372:101390" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25821596" vertical-offset="0" max-vertical-offset="1050">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#897#898#0" expanded="true" />
+            <element signature="e#949#950#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1194#1195#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1471#1472#0" expanded="true" />
+            <element signature="e#1512#1513#0" expanded="true" />
+            <element signature="e#1537#1538#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

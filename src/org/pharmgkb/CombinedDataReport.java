@@ -10,6 +10,8 @@ import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
+import org.pharmgkb.model.Sample;
+import org.pharmgkb.model.SampleProperty;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
 import org.pharmgkb.util.IcpcUtils;
@@ -73,7 +75,7 @@ public class CombinedDataReport {
       columnIdx++;
 
       for (Object result :rez) {
-        IcpcProperty property = (IcpcProperty)result;
+        SampleProperty property = (SampleProperty)result;
         Property propertyAttributes = Property.lookupByName(property.getName());
 
         if (propertyAttributes==null || propertyAttributes.isShownInReport()) {
@@ -92,16 +94,16 @@ public class CombinedDataReport {
 
       rez = session.createQuery("select s.subjectId from Subject s order by s.project,s.subjectId").list();
       for (Object result : rez) {
-        Subject subject = (Subject)session.get(Subject.class, (String)result);
+        Sample sample = (Sample)session.get(Sample.class, (String)result);
         Row row = sheet.createRow(currentRowIdx++);
 
-        ExcelUtils.writeCell(row, 0, subject.getSubjectId());
-        ExcelUtils.writeCell(row, 1, subject.calculateRace());
+        ExcelUtils.writeCell(row, 0, sample.getSubjectId());
+        ExcelUtils.writeCell(row, 1, sample.calculateRace());
 
         for (String propertyName : propertyIndexMap.keySet()) {
           Integer valueColIdx= propertyIndexMap.get(propertyName);
           String propType = propertyTypeMap.get(propertyName);
-          String propValue = subject.getProperties().get(propertyName);
+          String propValue = sample.getProperties().get(propertyName);
 
           if (IcpcUtils.isBlank(propValue)) {
             ExcelUtils.writeCell(row, valueColIdx, IcpcUtils.NA);

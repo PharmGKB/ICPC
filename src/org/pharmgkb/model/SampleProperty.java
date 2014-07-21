@@ -1,4 +1,4 @@
-package org.pharmgkb;
+package org.pharmgkb.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="propertyNames")
-public class IcpcProperty {
+public class SampleProperty {
   private String m_name;
   private String m_description;
   private String m_type;

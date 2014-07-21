@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
 import org.pharmgkb.exception.PgkbException;
+import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.HibernateUtils;
 
 import java.io.File;
@@ -21,7 +22,7 @@ import java.util.regex.Pattern;
 
 /**
  * This class parses the companion DNA submission excel file that adds more data to the Subjects. This class assumes
- * that data already exists in the {@link Subject} and {@link IcpcProperty} tables.
+ * that data already exists in the {@link org.pharmgkb.model.Sample} and {@link org.pharmgkb.model.SampleProperty} tables.
  *
  * @author Ryan Whaley
  */
@@ -93,8 +94,8 @@ public class DnaExcelParser {
                 Matcher m = sf_patternSampleId.matcher(sampleId);
                 if (m.matches()) {
 
-                  Subject subject = (Subject)session.get(Subject.class, sampleId);
-                  if (subject != null) {
+                  Sample sample = (Sample)session.get(Sample.class, sampleId);
+                  if (sample != null) {
                     countSamples++;
                     Map<String,String> propValues = Maps.newHashMap();
                     for (Integer propIdx : sf_columnMap.keySet()) {
@@ -114,7 +115,7 @@ public class DnaExcelParser {
                         throw new PgkbException("Error in column "+propIdx+" ("+sf_columnMap.get(propIdx)+")", ex);
                       }
                     }
-                    subject.addProperties(propValues);
+                    sample.addProperties(propValues);
                   }
                 }
               }
