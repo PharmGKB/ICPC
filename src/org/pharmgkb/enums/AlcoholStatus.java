@@ -6,9 +6,9 @@ import org.pharmgkb.util.ExtendedEnumHelper;
 import java.util.Collection;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: 9/4/12
+ * Alcohol Status enum
+ *
+ * @author Ryan Whaley
  */
 public enum AlcoholStatus implements ExtendedEnum {
 

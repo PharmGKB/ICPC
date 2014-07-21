@@ -17,9 +17,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: 8/28/12
+ * Class to represent a single sample of data. Some properties are set here in the model but most are defined in the
+ * generic <code>properties</code> property.
+ *
+ * @author Ryan Whaley
  */
 @Entity
 @Table(name="samples")

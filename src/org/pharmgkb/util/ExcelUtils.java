@@ -187,7 +187,7 @@ public class ExcelUtils {
         case Cell.CELL_TYPE_BOOLEAN:
           return Boolean.toString(cell.getBooleanCellValue());
         case Cell.CELL_TYPE_FORMULA:
-          return getStringValue(formulaEvaluator.evaluate(cell));
+          return getFormulaResultString(formulaEvaluator.evaluate(cell));
         default:
           return StringUtils.stripToNull(cell.getRichStringCellValue().getString());
       }
@@ -195,7 +195,12 @@ public class ExcelUtils {
     return null;
   }
 
-  public static String getStringValue(CellValue cell) {
+  /**
+   * Gets the <code>String</code> value of a formula result
+   * @param cell a CellValue that came from a formula result
+   * @return a String value
+   */
+  private static String getFormulaResultString(CellValue cell) {
 
     if (cell != null) {
       switch (cell.getCellType()) {

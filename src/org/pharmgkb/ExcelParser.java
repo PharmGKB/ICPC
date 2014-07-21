@@ -1,18 +1,19 @@
 package org.pharmgkb;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
+import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -88,6 +89,19 @@ public class ExcelParser {
       IOUtils.closeQuietly(fos);
       HibernateUtils.close(session);
     }
+  }
+
+  public List<String> analyze() {
+    List<String> titles = Lists.newArrayList();
+    Row row = getDataSheet().getRow(1);
+    for (Cell cell : row) {
+      titles.add(cell.getStringCellValue());
+
+      if (StringUtils.isBlank(cell.getStringCellValue())) {
+        sf_logger.warn("EMPTY CELL at "+getFile().getName()+":"+ ExcelUtils.getAddress(cell));
+      }
+    }
+    return titles;
   }
 
   public File getFile() {

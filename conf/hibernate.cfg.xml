@@ -4,12 +4,12 @@
   "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.PostgresPlusDialect</property>
 
-        <property name="connection.url">jdbc:mysql://localhost:8889/icpc</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/icpc</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.username">whaleyr</property>
+        <property name="connection.password"/>
 
         <!-- Transaction properties -->
         <property name="transaction.factory_class">org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory</property>

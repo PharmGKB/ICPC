@@ -8,12 +8,18 @@ import org.pharmgkb.util.HibernateUtils;
 import java.io.File;
 
 /**
+ * Parses the DNA data submission file and loads the contents into the DB
+ *
  * @author Ryan Whaley
  */
 public class DnaParser {
   private static final Logger sf_logger = Logger.getLogger(DnaParser.class);
   private File m_file = null;
 
+  /**
+   * main method, parses the command line args and kicks off the data parser
+   * @param args
+   */
   public static void main(String args[]) {
     try {
       HibernateUtils.init();
@@ -30,6 +36,11 @@ public class DnaParser {
     }
   }
 
+  /**
+   * Parses the command line args with a <code>CliHelper</code> and validates the args
+   * @param args array of String command line args
+   * @throws Exception
+   */
   private void parseCommandLineArgs(String args[]) throws Exception {
     CliHelper cliHelper = new CliHelper(getClass(), false);
 
@@ -56,11 +67,19 @@ public class DnaParser {
     }
   }
 
+  /**
+   * Executes the parser in {@link org.pharmgkb.DnaExcelParser}.
+   * @throws Exception
+   */
   private void parseFile() throws Exception {
     DnaExcelParser parser = new DnaExcelParser(getFile());
     parser.parse();
   }
 
+  /**
+   * Gets the DNA data file in Excel (.xlsx or .xls) format
+   * @return the DNA data file in Excel (.xlsx or .xls) format
+   */
   public File getFile() {
     return m_file;
   }

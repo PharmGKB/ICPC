@@ -8,9 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: 9/10/12
+ * @author Ryan Whaley
  */
 public enum Metabolizer implements ExtendedEnum {
   UM(0, "UM", "Ultrarapid Metabolizer"),

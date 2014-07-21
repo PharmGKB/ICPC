@@ -6,10 +6,7 @@ import org.pharmgkb.util.ExtendedEnumHelper;
 import java.util.Collection;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: Jul 16, 2010
- * Time: 9:54:36 AM
+ * @author Ryan Whaley
  */
 public enum Value implements ExtendedEnum {
   Unknown(99, "99", "not known"),

@@ -1,29 +1,44 @@
 package org.pharmgkb.util;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
+ * Helper methods for dealing with specific ICPC needs
+ *
  * @author whaleyr
  */
 public class IcpcUtils {
   public static final String NA = "NA";
 
-  private static final Logger sf_logger = Logger.getLogger(IcpcUtils.class);
-  private static final Pattern sf_alleleRegex = Pattern.compile("\\*\\d+");
   private static final SimpleDateFormat m_fileDateFormatter = new SimpleDateFormat("yyyyMMdd-HHmm");
 
+  /**
+   * Determines whether a String value can be considered "blank". Blank in this case meaning:
+   * <ul>
+   *   <li>null value</li>
+   *   <li>all whitespace</li>
+   *   <li>equals "NA" (case-insensitive)</li>
+   *   <li>equals "N/A" (case-insensitive)</li>
+   *   <li>equals "unknown" (case-insensitive)</li>
+   *   <li>equals "not available" (case-insensitive)</li>
+   * </ul>
+   * @param string
+   * @return
+   */
   public static boolean isBlank(String string) {
     String trimString = StringUtils.trimToNull(string);
     return StringUtils.isBlank(trimString) || trimString.equalsIgnoreCase("na") || trimString.equalsIgnoreCase("n/a") || trimString.equalsIgnoreCase("unknown") || trimString.equalsIgnoreCase("not available");
   }
 
+  /**
+   * Constructs the default name and path for an ouptut file based on the input data file.
+   * @param inputFile the input data file
+   * @return a new filename to ouput to
+   */
   public static File getOutputFile(File inputFile) {
     String outputDirectoryName = inputFile.getParent()+"/output";
 
@@ -36,34 +51,5 @@ public class IcpcUtils {
     String outputFileName = inputFile.getName().replaceAll("\\.xls", newExtension);
 
     return new File(outputDirectoryName, outputFileName);
-  }
-
-  /**
-   * This method takes a String allele and returns a stripped version of that allele.  This way we don't have to store
-   * every version of each allele.  For instance, *4K is stripped down to *4 for processing and mapping.
-   * @param allele a String allele
-   * @return a stripped version of <code>allele</code>
-   */
-  public static String alleleStrip(String allele) {
-    String alleleClean = null;
-
-    Matcher m = sf_alleleRegex.matcher(allele);
-    if (allele.equalsIgnoreCase("Unknown")) {
-      alleleClean = "Unknown";
-    }
-    else if (m.find()) {
-      alleleClean = allele.substring(m.start(),m.end());
-      if (allele.toLowerCase().contains("xn")) {
-        alleleClean += "XN";
-      }
-      else if (allele.equalsIgnoreCase("*2a")) {
-        alleleClean = "*2A";
-      }
-    }
-    else {
-      sf_logger.warn("Malformed allele found: " + allele);
-    }
-
-    return alleleClean;
   }
 }

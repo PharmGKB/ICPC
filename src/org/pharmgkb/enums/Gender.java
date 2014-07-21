@@ -6,9 +6,7 @@ import org.pharmgkb.util.ExtendedEnumHelper;
 import java.util.Collection;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: 9/4/12
+ * @author Ryan Whaley
  */
 public enum Gender implements ExtendedEnum {
   MALE(1, "1", "male"),

@@ -34,6 +34,7 @@
     <orderEntry type="library" name="Guava" level="project" />
     <orderEntry type="library" name="PharmGKB" level="project" />
     <orderEntry type="library" name="JUnit" level="project" />
+    <orderEntry type="library" name="Postgresql" level="project" />
   </component>
 </module>
 

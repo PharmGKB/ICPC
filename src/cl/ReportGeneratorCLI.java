@@ -54,11 +54,20 @@ public class ReportGeneratorCLI {
     }
   }
 
+  /**
+   * Makes the report by kicking off the {@link org.pharmgkb.CombinedDataReport} generate method and outputs to the
+   * specified file
+   * @throws PgkbException
+   */
   private void make() throws PgkbException {
     CombinedDataReport report = new CombinedDataReport(getOutputFile());
     report.generate();
   }
 
+  /**
+   * Gets the file to output to, will be overwritten if it already exists
+   * @return the file to output to
+   */
   public File getOutputFile() {
     return m_outputFile;
   }

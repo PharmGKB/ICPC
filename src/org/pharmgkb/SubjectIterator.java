@@ -18,14 +18,17 @@ import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.IcpcUtils;
 
+import javax.persistence.NonUniqueResultException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: 8/28/12
+ * This class will take a Sheet and do the parsing to generate {@link org.pharmgkb.Subject} objects. This will also
+ * parse the header rows of the Sheet to ensure all properties in the file are represented in the DB. All the cells in
+ * each row are also checked for validity depending on rules based on the header property.
+ *
+ * @author Ryan Whaley
  */
 public class SubjectIterator implements Iterator {
   private static final Logger sf_logger = Logger.getLogger(SubjectIterator.class);
@@ -40,6 +43,12 @@ public class SubjectIterator implements Iterator {
   private Map<Integer,String> m_columnIdxToNameMap = Maps.newHashMap();
   private Integer m_columnCount = 0;
 
+  /**
+   * Constructor for this {@link org.pharmgkb.SubjectIterator}. Expects to take in a Sheet from an Excel workbook with
+   * the second row being a header row of property names.
+   * @param sheet a Sheet from an Excel Workbook with {@link org.pharmgkb.Subject} data in it
+   * @throws Exception can occur if an invalid <code>sheet</code> is specified
+   */
   public SubjectIterator(Sheet sheet) throws Exception {
     if (sheet == null) {
       throw new Exception("No sheet specified");
@@ -71,16 +80,20 @@ public class SubjectIterator implements Iterator {
 
     int cellCrawlCount = 0;
     for (Cell cell : headerRow) {
-      String cellContent = StringUtils.normalizeSpace(cell.getStringCellValue());
+      String cellContent = StringUtils.strip(cell.getStringCellValue());
       if (!IcpcUtils.isBlank(cellContent)) {
-        Object result = query.setParameter("descrip", cellContent).uniqueResult();
+        try {
+          Object result = query.setParameter("descrip", cellContent).uniqueResult();
 
-        if (result!=null) {
-          IcpcProperty property = (IcpcProperty)result;
-          getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
-        }
-        else {
-          unmappedColumnMap.put(ExcelUtils.getAddress(cell), cellContent);
+          if (result!=null) {
+            IcpcProperty property = (IcpcProperty)result;
+            getColumnIdxToNameMap().put(cell.getColumnIndex(), property.getName());
+          }
+          else {
+            unmappedColumnMap.put(ExcelUtils.getAddress(cell), cellContent);
+          }
+        } catch (NonUniqueResultException ex) {
+          throw new PgkbException("More than one property with description: " + cellContent, ex);
         }
       }
       cellCrawlCount++;

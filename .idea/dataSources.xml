@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2170234018">
-    <data-source source="LOCAL" name="ICPC - MAMP" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d">
+  <component name="DataSourceManagerImpl" format="xml" hash="1263078990">
+    <data-source source="LOCAL" name="ICPC - local" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d">
       <driver-ref>mysql</driver-ref>
       <auto-commit>false</auto-commit>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:8889/icpc</jdbc-url>
+      <jdbc-url>jdbc:mysql://local:8889/icpc</jdbc-url>
       <user-name>root</user-name>
       <user-password>dfd8dfc5dfc5dfde</user-password>
       <schema-pattern>icpc.*</schema-pattern>
@@ -29,6 +29,14 @@
           <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
         </library>
       </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - icpc@localhost" uuid="13dc6ba5-d26e-445a-b8e7-4c0dad093490">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/icpc</jdbc-url>
+      <user-name>whaleyr</user-name>
+      <libraries />
     </data-source>
   </component>
 </project>

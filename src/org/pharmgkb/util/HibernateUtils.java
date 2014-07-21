@@ -18,9 +18,10 @@ import java.util.Enumeration;
 import java.util.Set;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: 9/5/12
+ * Hibernate utility class for dealing with hibernate sessions and transactions. Mostly copied from the PharmGKB
+ * codebase.
+ *
+ * @author Ryan Whaley
  */
 public class HibernateUtils {
   private static final Set<String> sf_driverNames = Sets.newHashSet();
