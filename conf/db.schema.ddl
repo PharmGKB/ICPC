@@ -38,6 +38,8 @@ CREATE TABLE samples (
   PRIMARY KEY (Subject_ID)
 );
 
+create index samples_prj_idx on samples(project);
+
 create table sampleGenotypes (
   subject_id varchar(200) not null,
   sortOrder int not null,
@@ -61,6 +63,8 @@ CREATE TABLE propertyNames (
   idx serial,
   PRIMARY KEY (idx)
 );
+
+create index propertyNames_idx on propertyNames(descrip);
 
 CREATE TABLE sampleProperties (
   subjectid varchar(200) DEFAULT NULL,
