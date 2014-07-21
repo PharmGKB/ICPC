@@ -68,7 +68,7 @@ CREATE TABLE sampleProperties (
   datavalue varchar(200) DEFAULT NULL
 );
 
-create index
+create index sampleProperties_idx on sampleProperties(subjectid);
 
 -- -------------------------
 

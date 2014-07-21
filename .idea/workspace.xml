@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ff045bd-cefc-4a58-a568-b6f2466d4474" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ICPC_mysql_schema.sql" afterPath="$PROJECT_DIR$/conf/db.schema.ddl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/db.schema.ddl" afterPath="$PROJECT_DIR$/conf/db.schema.ddl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="ab1b4845-bdbf-4f6b-866f-326c5541b38b" name="ZZ-Ignore" comment="" />
@@ -89,9 +90,12 @@
           <file leaf-file-name="db.schema.ddl" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/conf/db.schema.ddl">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.02347418" vertical-offset="0" max-vertical-offset="5220">
-                  <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-                  <folding />
+                <state vertical-scroll-proportion="-0.012519562" vertical-offset="1613" max-vertical-offset="5220">
+                  <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
+                  <folding>
+                    <marker date="1405921921000" expanded="true" signature="1896:1960" placeholder="create index..sampleProperties_idx..." />
+                    <marker date="1405921921000" expanded="true" signature="38830:38986" placeholder="insert into ..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -99,12 +103,12 @@
           <file leaf-file-name="workspace.xml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="2340" max-vertical-offset="27210">
-                  <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="2400" max-vertical-offset="27480">
+                  <caret line="169" column="20" selection-start-line="169" selection-start-column="20" selection-end-line="169" selection-end-column="20" />
                   <folding>
-                    <marker date="1405920842000" expanded="true" signature="98577:98623" placeholder="..." />
-                    <marker date="1405920842000" expanded="true" signature="98577:98608" placeholder="..." />
-                    <marker date="1405920842000" expanded="true" signature="98577:98595" placeholder="..." />
+                    <marker date="1405921964000" expanded="true" signature="99572:99618" placeholder="..." />
+                    <marker date="1405921964000" expanded="true" signature="99572:99603" placeholder="..." />
+                    <marker date="1405921964000" expanded="true" signature="99572:99590" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -366,6 +370,7 @@
         <option value="$PROJECT_DIR$/ICPC_mysql_schema.sql" />
         <option value="$PROJECT_DIR$/src/org/pharmgkb/SampleProperty.java" />
         <option value="$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java" />
+        <option value="$PROJECT_DIR$/conf/db.schema.ddl" />
       </list>
     </option>
   </component>
@@ -1088,7 +1093,11 @@
       <created>1405920835743</created>
       <updated>1405920835743</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Refactored the database DDL.&#10;&#10;* moved to the conf directory and renamed">
+      <created>1405921106383</created>
+      <updated>1405921106383</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -1170,7 +1179,6 @@
       <TodoPanelSettings />
     </option>
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="true" />
-    <MESSAGE value="Column header to property matching fixes.&#10;&#10;* column names need to be normalized for whitespace&#10;* report should iterate through all possible properties, not just those for a given subject&#10;* update validation for columns, reflecting real world usage" />
     <MESSAGE value="Normalize genotype columns." />
     <MESSAGE value="various fixes.&#10;&#10;* add in known equivalents for self-reported and OMB races&#10;* remove duplicate ezetimib property&#10;* add new variant position properties" />
     <MESSAGE value="Update NA values and expand error message." />
@@ -1195,7 +1203,8 @@
     <MESSAGE value="Adding documentation." />
     <MESSAGE value="Lot of changes.&#10;&#10;* switched from MySQL to Postgres for various reasons&#10;* updated the Apache POI lib for dealing with excel files&#10;* filled in more JavaDocs on classes and methods&#10;* fixed the DDL for the project, especially property names&#10;* added an &quot;analyze&quot; option to check for consistency between all the property names in all the files&#10;* trimmed out some unused methods" />
     <MESSAGE value="Refactorings.&#10;&#10;* renames Subject class to Sample class for more consistency&#10;* renames IcpcProperty to SampleProperty to make more sense&#10;* moved model object to a model package for organization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactorings.&#10;&#10;* renames Subject class to Sample class for more consistency&#10;* renames IcpcProperty to SampleProperty to make more sense&#10;* moved model object to a model package for organization" />
+    <MESSAGE value="Refactored the database DDL.&#10;&#10;* moved to the conf directory and renamed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored the database DDL.&#10;&#10;* moved to the conf directory and renamed" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1321,7 +1330,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="8175" max-vertical-offset="8295">
           <caret line="545" column="158" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1405921921000" expanded="true" signature="1896:1960" placeholder="create index..sampleProperties_idx..." />
+            <marker date="1405921921000" expanded="true" signature="38830:38986" placeholder="insert into ..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1666,12 +1678,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2340" max-vertical-offset="27210">
-          <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2400" max-vertical-offset="27480">
+          <caret line="169" column="20" selection-start-line="169" selection-start-column="20" selection-end-line="169" selection-end-column="20" />
           <folding>
-            <marker date="1405920842000" expanded="true" signature="98577:98623" placeholder="..." />
-            <marker date="1405920842000" expanded="true" signature="98577:98608" placeholder="..." />
-            <marker date="1405920842000" expanded="true" signature="98577:98595" placeholder="..." />
+            <marker date="1405921964000" expanded="true" signature="99572:99618" placeholder="..." />
+            <marker date="1405921964000" expanded="true" signature="99572:99603" placeholder="..." />
+            <marker date="1405921964000" expanded="true" signature="99572:99590" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1699,9 +1711,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/db.schema.ddl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02347418" vertical-offset="0" max-vertical-offset="5220">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-          <folding />
+        <state vertical-scroll-proportion="-0.012519562" vertical-offset="1613" max-vertical-offset="5220">
+          <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
+          <folding>
+            <marker date="1405921921000" expanded="true" signature="1896:1960" placeholder="create index..sampleProperties_idx..." />
+            <marker date="1405921921000" expanded="true" signature="38830:38986" placeholder="insert into ..." />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
