@@ -71,11 +71,6 @@ public class ExcelParser {
           sf_logger.debug("Loaded subject: "+ sample.getSubjectId());
         }
 
-        Sample existingSample = (Sample)session.get(Sample.class, sample.getSubjectId());
-        if (existingSample != null) {
-          session.delete(existingSample);
-        }
-
         session.save(sample);
       }
       HibernateUtils.commit(session);

@@ -46,6 +46,13 @@ CREATE TABLE sampleProperties (
 
 create index sampleProperties_idx on sampleProperties(subjectid);
 
+drop table properties;
+create table properties (
+  subject_id varchar(200) not null references samples(subject_id),
+  property_id integer,
+  value varchar(200) default null
+);
+
 -- -------------------------
 
 -- Properties that are read from excel templates and then stored in the DB
@@ -277,7 +284,6 @@ insert into propertyNames(name,descrip,datatype) values ('chronolog_baseline_lta
 insert into propertyNames(name,descrip,datatype) values ('multiplate_adp_test','Multiplate ADP test','string');
 insert into propertyNames(name,descrip,datatype) values ('dna_concentration','DNA concentration','number');
 insert into propertyNames(name,descrip,datatype) values ('rs2279343','CYP2B6*4 genotype A>G (rs2279343)','string');
-insert into propertyNames(name,descrip,datatype) values ('rs3745274','CYP2B6*9 genotype G>T (rs3745274)','string');
 insert into propertyNames(name,descrip,datatype) values ('cyp2b6_genotypes','CYP2B6 genotypes','string');
 insert into propertyNames(name,descrip,datatype) values ('cyp2c19_genotypes','Cyp2C19 genotypes','string');
 insert into propertyNames(name,descrip,datatype) values ('binnedAge','Binned Age','string');

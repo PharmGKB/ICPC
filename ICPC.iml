@@ -7,7 +7,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="fefed95f-79c9-4ee6-b289-507c63555d4d" />
+          <unit-entry name="hibernate.cfg.xml" value="13dc6ba5-d26e-445a-b8e7-4c0dad093490" />
         </datasource-map>
         <naming-strategy-map>
           <unit-entry name="hibernate.cfg.xml" />
@@ -30,7 +30,6 @@
     <orderEntry type="library" name="Log4J" level="project" />
     <orderEntry type="library" name="Excel Parsing" level="project" />
     <orderEntry type="library" name="Hibernate" level="project" />
-    <orderEntry type="library" name="MySQL" level="project" />
     <orderEntry type="library" name="Guava" level="project" />
     <orderEntry type="library" name="PharmGKB" level="project" />
     <orderEntry type="library" name="JUnit" level="project" />

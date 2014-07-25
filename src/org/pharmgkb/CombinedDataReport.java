@@ -11,7 +11,6 @@ import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
-import org.pharmgkb.model.SampleProperty;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
 import org.pharmgkb.util.IcpcUtils;
@@ -63,8 +62,6 @@ public class CombinedDataReport {
 
       Map<String,Integer> propertyIndexMap = Maps.newHashMap();
       Map<String,String> propertyTypeMap = Maps.newHashMap();
-      List rez = session.createQuery("from IcpcProperty ip order by ip.index")
-          .list();
       int columnIdx = 0;
 
       ExcelUtils.writeCell(descripRow, columnIdx, Property.SUBJECT_ID.getDisplayName());
@@ -74,25 +71,23 @@ public class CombinedDataReport {
       ExcelUtils.writeCell(nameRow, columnIdx, Property.RACE_OMB.getShortName());
       columnIdx++;
 
-      for (Object result :rez) {
-        SampleProperty property = (SampleProperty)result;
-        Property propertyAttributes = Property.lookupByName(property.getName());
+      for (Property property : Property.getAllSortedById()) {
 
-        if (propertyAttributes==null || propertyAttributes.isShownInReport()) {
-          propertyIndexMap.put(property.getName(), columnIdx);
-          propertyTypeMap.put(property.getName(), property.getType());
+        if (property.isShownInReport()) {
+          propertyIndexMap.put(property.getShortName(), columnIdx);
+          propertyTypeMap.put(property.getShortName(), property.getValidator() == IcpcUtils.VALIDATOR_NUMBER ? "number" : "string");
 
           if (sf_logger.isDebugEnabled()) {
-            sf_logger.debug(columnIdx+": "+property.getDescription());
+            sf_logger.debug(columnIdx+": "+property.getDisplayName());
           }
 
-          ExcelUtils.writeCell(descripRow, columnIdx, property.getDescription());
-          ExcelUtils.writeCell(nameRow, columnIdx, property.getName());
+          ExcelUtils.writeCell(descripRow, columnIdx, property.getDisplayName());
+          ExcelUtils.writeCell(nameRow, columnIdx, property.getShortName());
           columnIdx++;
         }
       }
 
-      rez = session.createQuery("select s.subjectId from Subject s order by s.project,s.subjectId").list();
+      List rez = session.createQuery("select s.subjectId from Sample s order by s.project,s.subjectId").list();
       for (Object result : rez) {
         Sample sample = (Sample)session.get(Sample.class, (String)result);
         Row row = sheet.createRow(currentRowIdx++);

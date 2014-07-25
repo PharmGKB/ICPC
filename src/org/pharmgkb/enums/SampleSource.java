@@ -1,9 +1,16 @@
 package org.pharmgkb.enums;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Sets;
+import org.apache.commons.lang.StringUtils;
+import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;
 
 import java.util.Collection;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 /**
  * @author Ryan Whaley
@@ -29,7 +36,7 @@ public enum SampleSource implements ExtendedEnum {
 
   private synchronized void init() {
     if (s_extendedEnumHelper == null) {
-      s_extendedEnumHelper = new ExtendedEnumHelper<SampleSource>();
+      s_extendedEnumHelper = new ExtendedEnumHelper<>();
     }
     s_extendedEnumHelper.add(this, m_id, m_shortName, m_displayName);
   }
@@ -95,6 +102,33 @@ public enum SampleSource implements ExtendedEnum {
     return s_extendedEnumHelper.getAllSortedByName();
   }
 
+  public static Pattern validationPattern() {
+    Collection<SampleSource> sources = SampleSource.getAllSortedById();
+    Set<String> tokens = Sets.newHashSet();
+    for (SampleSource source : sources) {
+      tokens.add(source.getShortName());
+      tokens.add(source.getDisplayName());
+    }
+    return Pattern.compile("("+Joiner.on("|").join(tokens)+"|\\;)+");
+  }
+
+  public static Set<SampleSource> parseList(String list) throws PgkbException {
+    Set<SampleSource> sources = Sets.newHashSet();
+
+    if (StringUtils.isNotBlank(list)) {
+      for (String token : Splitter.on(";").trimResults().split(list)) {
+        SampleSource source = SampleSource.lookupByName(token);
+        if (source == null) {
+          throw new PgkbException("No sample source mapped for "+token);
+        }
+        else {
+          sources.add(source);
+        }
+      }
+    }
+
+    return sources;
+  }
 
   @Override
   public final String toString() {

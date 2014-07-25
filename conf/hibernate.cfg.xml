@@ -14,8 +14,7 @@
         <!-- Transaction properties -->
         <property name="transaction.factory_class">org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory</property>
 
-        <mapping package="org.pharmgkb"/>
+        <mapping package="org.pharmgkb.model"/>
         <mapping class="org.pharmgkb.model.Sample"/>
-        <mapping class="org.pharmgkb.model.SampleProperty"/>
     </session-factory>
 </hibernate-configuration>

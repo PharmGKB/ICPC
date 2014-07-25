@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1570719887">
+  <component name="DataSourceManagerImpl" format="xml" hash="1910202772">
     <data-source source="LOCAL" name="ICPC - local" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d">
       <driver-ref>mysql</driver-ref>
       <auto-commit>false</auto-commit>
@@ -37,6 +37,17 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/icpc</jdbc-url>
       <user-name>whaleyr</user-name>
       <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml" uuid="16ed1c9b-d72b-4797-b885-c5e3984f9d85">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/icpc</jdbc-url>
+      <user-name>whaleyr</user-name>
+      <libraries>
+        <library>
+          <url>file://$PROJECT_DIR$/lib/postgresql-9.3-1102.jdbc4.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

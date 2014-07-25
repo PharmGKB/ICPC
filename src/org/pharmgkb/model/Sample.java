@@ -1,13 +1,9 @@
 package org.pharmgkb.model;
 
-import com.google.common.base.Splitter;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.hibernate.annotations.Type;
 import org.pharmgkb.enums.*;
-import org.pharmgkb.util.IcpcUtils;
 
 import javax.persistence.*;
 import java.util.Map;
@@ -22,12 +18,10 @@ import java.util.Set;
 @Entity
 @Table(name="samples")
 public class Sample {
-  private static Logger sf_logger = Logger.getLogger(Sample.class);
-
   private String m_subjectId;
   private Enum m_Genotyping;
   private Enum m_Phenotyping;
-  private Set<Enum> m_SampleSource;
+  private Set<SampleSource> m_SampleSource;
   private Integer m_Project;
   private Enum m_Gender;
   private String m_Raceself;
@@ -36,7 +30,7 @@ public class Sample {
   private String m_EthnicityOMB;
   private String m_Country;
   private Double m_Age;
-  private Map<String,String> m_properties;
+  private Map<Property,String> m_properties;
 
   @Id
   @Column(name="Subject_ID")
@@ -77,15 +71,15 @@ public class Sample {
   @JoinTable(name="sampleSources", joinColumns = @JoinColumn(name="subject_id"))
   @Column(name="source")
   @Type(type="sampleSourceType")
-  public Set<Enum> getSampleSource() {
+  public Set<SampleSource> getSampleSource() {
     return m_SampleSource;
   }
 
-  public void setSampleSource(Set<Enum> sampleSource) {
+  public void setSampleSource(Set<SampleSource> sampleSource) {
     m_SampleSource = sampleSource;
   }
 
-  public void addSampleSource(Enum sampleSource) {
+  public void addSampleSource(SampleSource sampleSource) {
     if (m_SampleSource == null) {
       m_SampleSource = Sets.newHashSet();
     }
@@ -176,97 +170,22 @@ public class Sample {
   }
 
   @ElementCollection
-  @MapKeyClass(java.lang.String.class)
-  @MapKeyColumn(name="datakey")
-  @CollectionTable(name="sampleProperties",joinColumns = @JoinColumn(name="subjectId"))
-  @Column(name="datavalue")
-  public Map<String, String> getProperties() {
+  @MapKeyClass(Property.class)
+  @MapKeyColumn(name="property_id")
+  @CollectionTable(name="properties",joinColumns = @JoinColumn(name="subject_id"))
+  @Column(name="value")
+  public Map<Property, String> getProperties() {
     return m_properties;
   }
 
-  public void setProperties(Map<String, String> properties) {
+  public void setProperties(Map<Property, String> properties) {
     m_properties = properties;
   }
 
-  /**
-   * Gets the value for the {@link Property} in the <code>properties</code> collection.
-   * @param property the {@link Property} to lookup
-   * @return the value for the given {@link Property} for the given subject
-   */
-  public String getProperty(Property property) {
-    if (m_properties != null && property != null) {
-      String value = m_properties.get(property.getShortName());
-      return IcpcUtils.isBlank(value) ? null : value;
-    }
-    return null;
-  }
-
-  /**
-   * Add properties to this sample. This method will add the properties to the <code>properties</code> Map for this
-   * {@link Sample} and will also assign the object properties in {@link Sample} that we want to strongly persist.
-   * @param properties a Map of property shortNames to property values
-   * @throws Exception can occur if no proper Source is part of the <code>properties</code> map
-   */
-  public void addProperties(Map<String, String> properties) throws Exception {
+  public void addProperty(Property property, String value) {
     if (m_properties == null) {
       m_properties = Maps.newHashMap();
     }
-    m_properties.putAll(properties);
-
-    // pick out all properties that we want to strongly persist for analysis
-    String subjectId = getProperties().get(Property.SUBJECT_ID.getShortName());
-    subjectId = StringUtils.strip(subjectId);
-    subjectId = StringUtils.strip(subjectId,",");
-    setSubjectId(subjectId);
-
-    Value genotyping = Value.lookupByName(getProperties().get(Property.GENOTYPING.getShortName()));
-    setGenotyping(genotyping);
-
-    Value phenotyping = Value.lookupByName(getProperty(Property.PHENOTYPING));
-    setPhenotyping(phenotyping);
-
-    String sources = getProperty(Property.SAMPLE_SOURCE);
-    if (!IcpcUtils.isBlank(sources)) {
-      for (String value : Splitter.on(";").trimResults().split(sources)) {
-        SampleSource source = SampleSource.lookupByName(value);
-        if (source == null) {
-          sf_logger.warn("can't find source for : "+value);
-          throw new Exception("subject "+getSubjectId()+" can't find source for : "+value);
-        }
-        else {
-          addSampleSource(SampleSource.lookupByName(value));
-        }
-      }
-    }
-
-    setProject(Integer.valueOf(getProperty(Property.PROJECT)));
-
-    String genderString = getProperty(Property.GENDER);
-    setGender(Gender.lookupByName(genderString));
-
-    if ((getProperty(Property.RACE_SELF) != null
-            && (getProperty(Property.RACE_SELF).equalsIgnoreCase("caucasian") || getProperty(Property.RACE_SELF).equalsIgnoreCase("white"))
-        )
-        ||
-        (getProperty(Property.RACE_OMB) != null
-            && (getProperty(Property.RACE_OMB).equalsIgnoreCase("caucasian") || getProperty(Property.RACE_OMB).equalsIgnoreCase("white"))
-        )) {
-      m_properties.put(Property.RACE_SELF.getShortName(), "caucasian");
-      m_properties.put(Property.RACE_OMB.getShortName(), "white");
-    }
-    setRaceself(getProperty(Property.RACE_SELF));
-    setRaceOMB(getProperty(Property.RACE_OMB));
-
-    setEthnicityreported(getProperty(Property.ETHNICITY_REPORTED));
-    setEthnicityOMB(getProperty(Property.ETHNICITY_OMB));
-
-    setCountry(getProperty(Property.COUNTRY));
-
-    if (getProperty(Property.AGE) != null) {
-      setAge(Double.valueOf(getProperty(Property.AGE)));
-    }
-    else {
-      sf_logger.warn("no age specified for "+getProject()+":"+getSubjectId());
-    }
+    m_properties.put(property, value);
   }
 }

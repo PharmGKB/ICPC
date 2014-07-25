@@ -68,6 +68,20 @@
                 name  = "valueOfMethod",
                 value = "lookupById")
         }
+    ),
+    @TypeDef(name = "propertyType",
+        typeClass = HibernateExtendedEnumType.class,
+        parameters = {
+            @Parameter(
+                name  = "enumClass",
+                value = "org.pharmgkb.enums.Property"),
+            @Parameter(
+                name  = "identifierMethod",
+                value = "getId"),
+            @Parameter(
+                name  = "valueOfMethod",
+                value = "lookupById")
+        }
     )
 })
 

@@ -1,20 +1,28 @@
 package org.pharmgkb.enums;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import org.apache.commons.lang.StringUtils;
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 /**
+ * Race descriptors as determined by the OMB.
+ *
  * @author Ryan Whaley
  */
 public enum Race implements ExtendedEnum {
   WHITE(0, "white", "White"),
   BLACK(1, "black", "Black"),
   ASIAN(2, "asian", "Asian"),
+  HISPANIC(4, "hispanic", "Hispanic"),
+  AMERICAN_INDIAN(5, "americanIndian", "American Indian or Alaskan Native"),
   OTHER(3, "other", "Other"),
   ;
 
@@ -143,6 +151,20 @@ public enum Race implements ExtendedEnum {
   public static Collection<Race> getAllSortedByName() {
 
     return s_extendedEnumHelper.getAllSortedByName();
+  }
+
+  public static Pattern validationPattern() {
+    Collection<Race> races = Race.getAllSortedById();
+    Set<String> tokens = Sets.newHashSet();
+    for (Race race : races) {
+      tokens.add(race.getShortName());
+      tokens.add(race.getDisplayName());
+    }
+    for (String key : sf_fuzzyMap.keySet()) {
+      tokens.add(key);
+      tokens.add(StringUtils.capitalize(key));
+    }
+    return Pattern.compile("("+ Joiner.on("|").join(tokens)+"|\\;)+");
   }
 
 
