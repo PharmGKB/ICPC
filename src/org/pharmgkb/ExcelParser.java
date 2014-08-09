@@ -3,12 +3,13 @@ package org.pharmgkb;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,12 +18,12 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: 8/28/12
+ * Parses the excel file passed to it for Sample data and outputs the data found to another excel file.
+ *
+ * @author Ryan Whaley
  */
 public class ExcelParser {
-  private static final Logger sf_logger = Logger.getLogger(ExcelParser.class);
+  private static final Logger sf_logger = LoggerFactory.getLogger(ExcelParser.class);
   private static final String sf_dataSheetName = "Subject_level_Data";
   private File m_file = null;
   private Workbook m_workbook = null;
@@ -47,8 +48,6 @@ public class ExcelParser {
     if (getDataSheet() == null) {
       throw new Exception("Required worksheet "+sf_dataSheetName+" not found");
     }
-
-    Row headerRow = getDataSheet().getRow(1);
   }
 
   public void parse(File outputFile) throws Exception {

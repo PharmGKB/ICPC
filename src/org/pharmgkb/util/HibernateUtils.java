@@ -3,13 +3,14 @@ package org.pharmgkb.util;
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -25,7 +26,7 @@ import java.util.Set;
  */
 public class HibernateUtils {
   private static final Set<String> sf_driverNames = Sets.newHashSet();
-  private static final Logger sf_logger = Logger.getLogger(HibernateUtils.class);
+  private static final Logger sf_logger = LoggerFactory.getLogger(HibernateUtils.class);
   private static SessionFactory s_sessionFactory = null;
 
   public static void init() {

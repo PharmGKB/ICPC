@@ -1,11 +1,9 @@
 package org.pharmgkb;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Splitter;
 import com.google.common.collect.Maps;
 import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
 import org.pharmgkb.enums.*;
@@ -13,6 +11,8 @@ import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.IcpcUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.NonUniqueResultException;
 import java.util.*;
@@ -25,7 +25,7 @@ import java.util.*;
  * @author Ryan Whaley
  */
 public class SubjectIterator implements Iterator {
-  private static final Logger sf_logger = Logger.getLogger(SubjectIterator.class);
+  private static final Logger sf_logger = LoggerFactory.getLogger(SubjectIterator.class);
   private static final Integer sf_columnNameRowIdx = 1;
 
   private Sheet m_sheet = null;

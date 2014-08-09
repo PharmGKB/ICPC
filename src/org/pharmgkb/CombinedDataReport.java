@@ -1,12 +1,9 @@
 package org.pharmgkb;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Maps;
 import com.sun.javafx.beans.annotations.NonNull;
-import org.apache.commons.io.IOUtils;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
@@ -19,9 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This report generator will dump all subjects and their properties to a single file.
@@ -48,87 +43,77 @@ public class CombinedDataReport {
    */
   public void generate() throws PgkbException {
     Preconditions.checkNotNull(getOutputFile());
-    Session session = null;
-    FileOutputStream fileOutputStream = null;
-    int currentRowIdx = 0;
 
-    try {
+    sf_logger.info("starting "+this.getClass().getSimpleName()+", writing to file " + getOutputFile());
+
+    Session session = null;
+
+    try(FileOutputStream out = new FileOutputStream(getOutputFile())) {
+      int currentRowIdx = 2;
       session = HibernateUtils.getSession();
 
-      SXSSFWorkbook workbook = new SXSSFWorkbook(5);
+      Workbook workbook = new XSSFWorkbook();
       Sheet sheet = workbook.createSheet("ICPC Data");
-      Row descripRow = sheet.createRow(currentRowIdx++);
-      Row nameRow = sheet.createRow(currentRowIdx++);
 
-      Map<String,Integer> propertyIndexMap = Maps.newHashMap();
-      Map<String,String> propertyTypeMap = Maps.newHashMap();
-      int columnIdx = 0;
-
-      ExcelUtils.writeCell(descripRow, columnIdx, Property.SUBJECT_ID.getDisplayName());
-      ExcelUtils.writeCell(nameRow, columnIdx, Property.SUBJECT_ID.getShortName());
-      columnIdx++;
-      ExcelUtils.writeCell(descripRow, columnIdx, Property.RACE_OMB.getDisplayName());
-      ExcelUtils.writeCell(nameRow, columnIdx, Property.RACE_OMB.getShortName());
-      columnIdx++;
-
+      Row descripRow = sheet.createRow(0);
+      Row nameRow = sheet.createRow(1);
       for (Property property : Property.getAllSortedById()) {
+        sf_logger.debug("{}: {}", property.getId(), property.getDisplayName());
 
-        if (property.isShownInReport()) {
-          propertyIndexMap.put(property.getShortName(), columnIdx);
-          propertyTypeMap.put(property.getShortName(), property.getValidator() == IcpcUtils.VALIDATOR_NUMBER ? "number" : "string");
-
-          if (sf_logger.isDebugEnabled()) {
-            sf_logger.debug(columnIdx+": "+property.getDisplayName());
-          }
-
-          ExcelUtils.writeCell(descripRow, columnIdx, property.getDisplayName());
-          ExcelUtils.writeCell(nameRow, columnIdx, property.getShortName());
-          columnIdx++;
-        }
+        ExcelUtils.writeCell(descripRow, property.getId(), property.getDisplayName());
+        ExcelUtils.writeCell(nameRow, property.getId(), property.getShortName());
       }
 
       List rez = session.createQuery("select s.subjectId from Sample s order by s.project,s.subjectId").list();
+      int projectId = 0;
       for (Object result : rez) {
-        Sample sample = (Sample)session.get(Sample.class, (String)result);
-        Row row = sheet.createRow(currentRowIdx++);
-
-        ExcelUtils.writeCell(row, 0, sample.getSubjectId());
-        ExcelUtils.writeCell(row, 1, sample.calculateRace());
-
-        for (String propertyName : propertyIndexMap.keySet()) {
-          Integer valueColIdx= propertyIndexMap.get(propertyName);
-          String propType = propertyTypeMap.get(propertyName);
-          String propValue = sample.getProperties().get(propertyName);
-
-          if (IcpcUtils.isBlank(propValue)) {
-            ExcelUtils.writeCell(row, valueColIdx, IcpcUtils.NA);
+        try {
+          Sample sample = (Sample)session.get(Sample.class, (String)result);
+          if (projectId != sample.getProject()) {
+            sf_logger.info("writing project {}", sample.getProject());
+            projectId = sample.getProject();
           }
-          else if (propType.equals("number")) {
-            try {
-              double numValue = Double.valueOf(propValue);
-              ExcelUtils.writeCell(row, valueColIdx, numValue, null);
-            } catch (NumberFormatException ex) {
-              sf_logger.debug("Input string is not number: {}", propValue);
+          Row row = sheet.createRow(currentRowIdx++);
+
+          for (Property property : Property.getAllSortedById()) {
+            Integer valueColIdx = property.getId();
+            boolean isNumber = property.getValidator() == IcpcUtils.VALIDATOR_NUMBER;
+            String propValue = sample.getProperties().get(property);
+
+            // if it's blank, write NA
+            if (IcpcUtils.isBlank(propValue)) {
               ExcelUtils.writeCell(row, valueColIdx, IcpcUtils.NA);
             }
+            // if property is a number, try to write a Double to a Number formatted column
+            else if (isNumber) {
+              try {
+                double numValue = Double.valueOf(propValue);
+                ExcelUtils.writeCell(row, valueColIdx, numValue, null);
+              } catch (NumberFormatException ex) {
+                sf_logger.debug("Input string is not number: {}", propValue);
+                ExcelUtils.writeCell(row, valueColIdx, propValue);
+              }
+            }
+            // otherwise, treat it like plain text
+            else {
+              ExcelUtils.writeCell(row, valueColIdx, propValue);
+            }
           }
-          else {
-            ExcelUtils.writeCell(row, valueColIdx, propValue);
-          }
+        }
+        catch (Exception ex) {
+          sf_logger.error("Error writing data for sample {}", result);
         }
       }
 
-      sf_logger.info("writing to file " + getOutputFile());
-      fileOutputStream = new FileOutputStream(getOutputFile());
-      workbook.write(fileOutputStream);
+      workbook.write(out);
     }
-    catch (IOException ex) {
-      throw new PgkbException("Error writing report to disk", ex);
+    catch (Exception ex) {
+      throw new PgkbException("Error writing report");
     }
     finally {
-      IOUtils.closeQuietly(fileOutputStream);
       HibernateUtils.close(session);
     }
+    sf_logger.info("done with {}",this.getClass().getSimpleName());
   }
 
   /**

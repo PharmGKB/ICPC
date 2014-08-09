@@ -1,10 +1,11 @@
 package cl;
 
-import org.apache.log4j.Logger;
 import org.pharmgkb.CombinedDataReport;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.CliHelper;
 import org.pharmgkb.util.HibernateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
@@ -14,7 +15,7 @@ import java.io.File;
  * @author Ryan Whaley
  */
 public class ReportGeneratorCLI {
-  private static final Logger sf_logger = Logger.getLogger(ReportGeneratorCLI.class);
+  private static final Logger sf_logger = LoggerFactory.getLogger(ReportGeneratorCLI.class);
   private File m_outputFile = null;
 
   public static void main(String args[]) {

@@ -4,13 +4,14 @@ import com.google.common.collect.Maps;
 import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.HibernateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,7 +29,7 @@ import java.util.regex.Pattern;
  * @author Ryan Whaley
  */
 public class DnaExcelParser {
-  private static final Logger sf_logger = Logger.getLogger(DnaExcelParser.class);
+  private static final Logger sf_logger = LoggerFactory.getLogger(DnaExcelParser.class);
   private static final Pattern sf_patternSampleId = Pattern.compile("([Pp][Aa]\\d+).*");
 
   private static final Integer sf_idxSampleId = 0;

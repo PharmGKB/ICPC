@@ -6,13 +6,14 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.pharmgkb.ExcelParser;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.CliHelper;
 import org.pharmgkb.util.HibernateUtils;
 import org.pharmgkb.util.IcpcUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,7 +26,7 @@ import java.util.List;
  * @author Ryan Whaley
  */
 public class TemplateParser {
-  private static final Logger sf_logger = Logger.getLogger(TemplateParser.class);
+  private static final Logger sf_logger = LoggerFactory.getLogger(TemplateParser.class);
   private File m_templateFile = null;
   private File m_templateDirectory = null;
   private boolean m_analyze = false;

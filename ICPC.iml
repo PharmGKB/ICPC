@@ -27,7 +27,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Apache Commons" level="project" />
-    <orderEntry type="library" name="Log4J" level="project" />
+    <orderEntry type="library" name="Logback" level="project" />
     <orderEntry type="library" name="Excel Parsing" level="project" />
     <orderEntry type="library" name="Hibernate" level="project" />
     <orderEntry type="library" name="Guava" level="project" />

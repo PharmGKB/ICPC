@@ -282,8 +282,7 @@ public enum Property implements ExtendedEnum {
   HEMOGLOBIN        (261, "hemoglobin", "Hemoglogin (g/dL)", false, IcpcUtils.VALIDATOR_NUMBER),
   PLASMA_UREA       (262, "plasma_urea", "PLASMA UREA (mmol/L)", false, IcpcUtils.VALIDATOR_NUMBER),
   TIME_TO_MACE      (263, "time_to_mace", "Time to the first  major adverse cardiac events (MACE) during followup", false, IcpcUtils.VALIDATOR_NUMBER),
-  RS3745274_CYP2B6_9(264, "rs3745274_cyp2b6_9","CYP2B6*9 genotype G>T (rs3745274)", false, IcpcUtils.VALIDATOR_BASES),
-  ;
+  RS3745274_CYP2B6_9(264, "rs3745274_cyp2b6_9","CYP2B6*9 genotype G>T (rs3745274)", false, IcpcUtils.VALIDATOR_BASES);
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;
   private int m_id;

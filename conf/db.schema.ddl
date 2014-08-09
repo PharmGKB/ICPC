@@ -49,9 +49,12 @@ create index sampleProperties_idx on sampleProperties(subjectid);
 drop table properties;
 create table properties (
   subject_id varchar(200) not null references samples(subject_id),
-  property_id integer,
+  property_id integer not null,
   value varchar(200) default null
 );
+
+create index properties_sub_idx on properties(subject_id);
+create index properties_subprop_idx on properties(subject_id,property_id);
 
 -- -------------------------
 

@@ -3,9 +3,10 @@ package org.pharmgkb.util;
 import com.sun.istack.internal.Nullable;
 import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellReference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -13,10 +14,10 @@ import java.math.MathContext;
 /**
  * A collection of utility methods for working wth Excel files in Apache POI
  *
- * @author whaleyr
+ * @author Ryan Whaley
  */
 public class ExcelUtils {
-  private static Logger sf_logger = Logger.getLogger(ExcelUtils.class);
+  private static Logger sf_logger = LoggerFactory.getLogger(ExcelUtils.class);
 
   /**
    * Gets the human-readable address of <code>cell</code> in the {@link Workbook}. For example: A1, B32, AA5
@@ -25,10 +26,7 @@ public class ExcelUtils {
    * @return a readable String for the address
    */
   public static String getAddress(@NonNull Cell cell) {
-    StringBuilder sb = new StringBuilder();
-    sb.append(CellReference.convertNumToColString(cell.getColumnIndex()));
-    sb.append(cell.getRowIndex()+1);
-    return sb.toString();
+    return CellReference.convertNumToColString(cell.getColumnIndex()) + (cell.getRowIndex() + 1);
   }
 
   /**
@@ -68,14 +66,7 @@ public class ExcelUtils {
         cell.setCellType(Cell.CELL_TYPE_STRING);
 
         if (!value.equals(cell.getStringCellValue())) {
-          StringBuilder sb = new StringBuilder();
-          sb.append("Changed value: ")
-              .append(getAddress(cell))
-              .append(" = ")
-              .append(cell.getStringCellValue())
-              .append(" -> ")
-              .append(value);
-          sf_logger.debug(sb.toString());
+          sf_logger.debug("Changed value: " + getAddress(cell) + " = " + cell.getStringCellValue() + " -> " + value);
           if (highlight != null) {
             cell.setCellStyle(highlight);
           }
@@ -105,16 +96,8 @@ public class ExcelUtils {
     else {
       if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
         Double existingValue = cell.getNumericCellValue();
-        if (value != existingValue.doubleValue()) {
-          StringBuilder sb = new StringBuilder();
-          sb.append("Changed value: ")
-              .append(CellReference.convertNumToColString(cell.getColumnIndex()))
-              .append(cell.getRowIndex()+1)
-              .append(" = ")
-              .append(cell.getNumericCellValue())
-              .append(" -> ")
-              .append(value);
-          sf_logger.debug(sb.toString());
+        if (value != existingValue) {
+          sf_logger.debug("Changed value: " + CellReference.convertNumToColString(cell.getColumnIndex()) + (cell.getRowIndex() + 1) + " = " + cell.getNumericCellValue() + " -> " + value);
           if (highlight != null) {
             cell.setCellStyle(highlight);
           }
@@ -123,15 +106,7 @@ public class ExcelUtils {
       else {
         String existingValue = cell.getStringCellValue();
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Changed value: ")
-            .append(CellReference.convertNumToColString(cell.getColumnIndex()))
-            .append(cell.getRowIndex()+1)
-            .append(" = ")
-            .append(existingValue)
-            .append(" -> ")
-            .append(value);
-        sf_logger.debug(sb.toString());
+        sf_logger.debug("Changed value: " + CellReference.convertNumToColString(cell.getColumnIndex()) + (cell.getRowIndex() + 1) + " = " + existingValue + " -> " + value);
 
         row.removeCell(cell);
         cell = row.createCell(idx,Cell.CELL_TYPE_NUMERIC);

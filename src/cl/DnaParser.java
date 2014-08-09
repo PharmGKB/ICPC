@@ -1,9 +1,10 @@
 package cl;
 
-import org.apache.log4j.Logger;
 import org.pharmgkb.DnaExcelParser;
 import org.pharmgkb.util.CliHelper;
 import org.pharmgkb.util.HibernateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
@@ -13,7 +14,7 @@ import java.io.File;
  * @author Ryan Whaley
  */
 public class DnaParser {
-  private static final Logger sf_logger = Logger.getLogger(DnaParser.class);
+  private static final Logger sf_logger = LoggerFactory.getLogger(DnaParser.class);
   private File m_file = null;
 
   /**
