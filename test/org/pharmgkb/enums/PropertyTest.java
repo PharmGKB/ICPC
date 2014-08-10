@@ -79,6 +79,9 @@ public class PropertyTest {
 
     assertEquals("100", Property.DOSE_CLOPIDOGREL.normalize("100 mg/day"));
     assertEquals("100", Property.DOSE_ASPIRIN.normalize("100 mg/day"));
+
+    assertEquals("165", Property.HEIGHT.normalize("1.65"));
+    assertEquals("180", Property.HEIGHT.normalize("1.8"));
   }
 
 }

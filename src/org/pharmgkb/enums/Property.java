@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang.StringUtils;
+import org.pharmgkb.ExcelParser;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;
@@ -372,6 +373,9 @@ public enum Property implements ExtendedEnum {
       if (m.find()) {
         String num = m.group(1);
         if (!IcpcUtils.isBlank(num)) {
+          if (this == HEIGHT) {
+            return normalizeHeight(num);
+          }
           return num;
         }
       }
@@ -420,6 +424,28 @@ public enum Property implements ExtendedEnum {
     }
 
     return stripped;
+  }
+
+  /**
+   * Normalizes height values. If the height is obviously wrong (in M) adjust it to proper measure (in CM)
+   * @param value the height value as a string
+   * @return the normalized height as a string or "NA"
+   */
+  protected static String normalizeHeight(String value) {
+    if (IcpcUtils.isBlank(value)) {
+      return IcpcUtils.NA;
+    }
+
+    try {
+      Double height = Double.valueOf(value);
+      if (height<10) {
+        height = height*100;
+      }
+      return String.format("%.0f",height);
+    }
+    catch (Exception ex) {
+      return IcpcUtils.NA;
+    }
   }
 
 
