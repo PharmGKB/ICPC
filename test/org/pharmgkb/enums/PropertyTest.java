@@ -6,7 +6,7 @@ import org.pharmgkb.exception.PgkbException;
 import static org.junit.Assert.*;
 
 /**
- * @author whaleyr
+ * @author Ryan Whaley
  */
 public class PropertyTest {
 

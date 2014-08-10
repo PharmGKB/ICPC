@@ -9,7 +9,7 @@ import java.io.File;
 import java.net.URL;
 
 /**
- * @author whaleyr
+ * @author Ryan Whaley
  */
 public class ExcelParserTest {
 

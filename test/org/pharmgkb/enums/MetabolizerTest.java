@@ -4,9 +4,7 @@ import com.google.common.collect.Lists;
 import junit.framework.TestCase;
 
 /**
- * Created by IntelliJ IDEA.
- * User: whaleyr
- * Date: 9/10/12
+ * @author Ryan Whaley
  */
 public class MetabolizerTest extends TestCase {
 

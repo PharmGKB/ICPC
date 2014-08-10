@@ -4,6 +4,8 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Session;
+import org.pharmgkb.enums.Property;
+import org.pharmgkb.model.Sample;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -15,7 +17,7 @@ import java.util.regex.Pattern;
 /**
  * Helper methods for dealing with specific ICPC needs
  *
- * @author whaleyr
+ * @author Ryan Whaley
  */
 public class IcpcUtils {
   public static final String NA = "NA";
@@ -76,6 +78,11 @@ public class IcpcUtils {
     return new File(outputDirectoryName, outputFileName);
   }
 
+  /**
+   * Make a RegEx pattern that will validate data against the given enum.
+   * @param enumToValidate the enum to validate the data against
+   * @return a RegEx pattern that can be used to validate data
+   */
   public static Pattern makeEnumValidator(Class enumToValidate) {
     try {
       Object[] constants = enumToValidate.getEnumConstants();
@@ -104,5 +111,29 @@ public class IcpcUtils {
   public static String lookupFormat(Session session, String name) {
     return (String)session.createSQLQuery("select format from propertynames where name=:name")
             .setString("name", name).uniqueResult();
+  }
+
+  /**
+   * Calculate the BMI for a subject using the properties available for it, or if the BMI has already been specified
+   * use that.
+   * Assumes height is stored in cm and weight is stored in kg.
+   *
+   * @param sample a Sample object
+   * @return the BMI for the Sample as a String to two decimal
+   */
+  public static String calculateBmi(Sample sample) {
+    if (!isBlank(sample.getProperties().get(Property.BMI))) {
+      return sample.getProperties().get(Property.BMI);
+    }
+    else if (!isBlank(sample.getProperties().get(Property.WEIGHT)) && !isBlank(sample.getProperties().get(Property.HEIGHT))) {
+      Double weight = Double.valueOf(sample.getProperties().get(Property.WEIGHT));
+      Double height = Double.valueOf(sample.getProperties().get(Property.HEIGHT))/100;
+      Double bmi = weight/(Math.pow(height, 2d));
+
+      return String.format("%.1f", bmi);
+    }
+    else {
+      return NA;
+    }
   }
 }

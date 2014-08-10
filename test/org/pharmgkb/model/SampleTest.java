@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author whaleyr
+ * @author Ryan Whaley
  */
 public class SampleTest {
 

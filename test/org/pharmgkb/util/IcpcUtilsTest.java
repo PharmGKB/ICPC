@@ -1,14 +1,17 @@
 package org.pharmgkb.util;
 
 import org.junit.Test;
+import org.pharmgkb.enums.Property;
 import org.pharmgkb.enums.SampleSource;
 import org.pharmgkb.exception.PgkbException;
+import org.pharmgkb.model.Sample;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test the utility methods in IcpcUtils
@@ -42,6 +45,19 @@ public class IcpcUtilsTest {
     assertFalse(IcpcUtils.isBlank("yup"));
     assertFalse(IcpcUtils.isBlank("12345"));
     assertFalse(IcpcUtils.isBlank("/"));
+  }
+
+  @Test
+  public void testCalculateBmi() {
+    Sample sample = new Sample();
+    sample.addProperty(Property.WEIGHT, "70");
+    sample.addProperty(Property.HEIGHT, "180");
+
+    assertEquals("21.6", IcpcUtils.calculateBmi(sample));
+
+    sample.addProperty(Property.BMI, "2.0");
+
+    assertEquals("2.0", IcpcUtils.calculateBmi(sample));
   }
 
 }

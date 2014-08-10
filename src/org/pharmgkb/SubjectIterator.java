@@ -183,6 +183,7 @@ public class SubjectIterator implements Iterator {
             break;
         }
       }
+      postProcess(sample);
     }
     catch (Exception ex) {
       sf_logger.error("Couldn't copy subject data for row "+(getCurrentRow()+1), ex);
@@ -191,6 +192,14 @@ public class SubjectIterator implements Iterator {
 
     bumpCurrentRow();
     return sample;
+  }
+
+  /**
+   * Processing that can only be done after all the properties for a sample have been assigned.
+   * @param sample a Sample record with all properties set
+   */
+  protected void postProcess(Sample sample) {
+    sample.addProperty(Property.BMI, IcpcUtils.calculateBmi(sample));
   }
 
   @Override
