@@ -130,7 +130,7 @@ public class SubjectIterator implements Iterator {
           continue;
         }
 
-        String normalizedValue = null;
+        String normalizedValue = value;
         if (property.validate(value)) {
           normalizedValue = property.normalize(value);
         }
@@ -199,7 +199,14 @@ public class SubjectIterator implements Iterator {
    * @param sample a Sample record with all properties set
    */
   protected void postProcess(Sample sample) {
+    // BMI calculation
     sample.addProperty(Property.BMI, IcpcUtils.calculateBmi(sample));
+
+    // Creatinine fix
+    sample.addProperty(Property.CREATININE, IcpcUtils.convertCreatinine(sample));
+
+    // Creatinine category
+    sample.addProperty(Property.CREATININE_CAT, IcpcUtils.calculateCreatinineCat(sample));
   }
 
   @Override

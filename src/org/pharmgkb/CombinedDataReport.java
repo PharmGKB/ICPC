@@ -68,7 +68,7 @@ public class CombinedDataReport {
       descripRow.setHeightInPoints(30f);
       formatRow.setHeightInPoints(60f);
 
-      for (Property property : Property.getAllSortedById()) {
+      for (Property property : Property.values()) {
         sf_logger.debug("{}: {}", property.getId(), property.getDisplayName());
 
         ExcelUtils.writeCell(descripRow, property.getId(), property.getDisplayName(), cs);
@@ -87,7 +87,7 @@ public class CombinedDataReport {
           }
           Row row = sheet.createRow(currentRowIdx++);
 
-          for (Property property : Property.getAllSortedById()) {
+          for (Property property : Property.values()) {
             Integer valueColIdx = property.getId();
             boolean isNumber = property.getValidator() == IcpcUtils.VALIDATOR_NUMBER;
             String propValue = sample.getProperties().get(property);

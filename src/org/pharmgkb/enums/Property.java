@@ -48,6 +48,7 @@ public enum Property implements ExtendedEnum {
   CRP               (25, "CRP", "hs-CRP (mg/L)", false, IcpcUtils.VALIDATOR_NUMBER),
   BUN               (26, "BUN", "BUN (mg/dL)", false, IcpcUtils.VALIDATOR_NUMBER),
   CREATININE        (27, "Creatinine", "Creatinine level (mg/dL)", false, IcpcUtils.VALIDATOR_NUMBER),
+  CREATININE_CAT    (265, "Creatinine_Category", "Creatinine Category", false, IcpcUtils.VALIDATOR_BINARY),
   EJECTION_FRACTION (28, "Ejection_fraction", "Availability of Ejection fraction from the placebo arm of RCTs for analysis of effect modification (optional)", false, IcpcUtils.VALIDATOR_BINARY_REQ),
   LEFT_VENTRICLE    (29, "Left_Ventricle", "Left Ventricle Ejection Fraction", false, IcpcUtils.VALIDATOR_NUMBER),
   PLACEBO_RCT       (30, "placebo_RCT", "Availability of platelet aggregation or clinical outcomes from the placebo arm of RCTs for analysis of effect modification (not part of minimal dataset)", false, IcpcUtils.VALIDATOR_BINARY),

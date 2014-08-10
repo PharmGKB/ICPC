@@ -325,4 +325,5 @@ insert into propertyNames(name,descrip,datatype) values ('clopidogrel_duration_b
 insert into propertyNames(name,descrip,datatype) values ('hemoglobin', 'Hemoglogin (g/dL)', 'number');
 insert into propertyNames(name,descrip,datatype) values ('plasma_urea', 'PLASMA UREA (mmol/L)', 'number');
 insert into propertyNames(name,descrip,datatype) values ('time_to_mace', 'Time to the first  major adverse cardiac events (MACE) during followup', 'string');
+insert into propertyNames(name,descrip,datatype) values ('Creatinine_Category', 'Creatinine Category', 'number');
 commit;

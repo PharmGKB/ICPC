@@ -60,4 +60,17 @@ public class IcpcUtilsTest {
     assertEquals("2.0", IcpcUtils.calculateBmi(sample));
   }
 
+  @Test
+  public void testConvertCreatinine() {
+    Sample sample = new Sample();
+    sample.setProject(7);
+    sample.addProperty(Property.CREATININE, "88.4");
+
+    assertEquals("1.00", IcpcUtils.convertCreatinine(sample));
+
+    sample.setProject(1);
+
+    assertEquals("88.4", IcpcUtils.convertCreatinine(sample));
+  }
+
 }

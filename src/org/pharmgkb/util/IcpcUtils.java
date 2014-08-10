@@ -1,16 +1,20 @@
 package org.pharmgkb.util;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.model.Sample;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -29,6 +33,7 @@ public class IcpcUtils {
   public static final Pattern VALIDATOR_TIME = Pattern.compile("(\\d{1,2}:\\d{2}:\\d{2})|((\\d+)?\\.?(\\d+)?)");
 
   private static final SimpleDateFormat m_fileDateFormatter = new SimpleDateFormat("yyyyMMdd-HHmm");
+  private static final List<Integer> sf_projectsWithBadCreatinine = Lists.newArrayList(7, 37);
   private static final Set<String> sf_blankWords = Sets.newHashSet();
   static {
     sf_blankWords.add("99");
@@ -40,6 +45,7 @@ public class IcpcUtils {
     sf_blankWords.add("not available");
     sf_blankWords.add("not determined");
   }
+  private static final Logger sf_logger = LoggerFactory.getLogger(IcpcUtils.class);
 
   /**
    * Determines whether a String value can be considered "blank". Blank in this case meaning:
@@ -134,6 +140,58 @@ public class IcpcUtils {
     }
     else {
       return NA;
+    }
+  }
+
+  /**
+   * Converts the creatinine level from µmol/L to mg/dL. Assumes the given sample is storing the Creatinine level in
+   * µmol/L.
+   * @param sample a Sample object
+   * @return the Creatinine level in mg/dL
+   */
+  public static String convertCreatinine(Sample sample) {
+    if (isBlank(sample.getProperties().get(Property.CREATININE))) {
+      return NA;
+    }
+    if (sf_projectsWithBadCreatinine.contains(sample.getProject())) {
+      Double level = Double.valueOf(sample.getProperties().get(Property.CREATININE));
+
+      return String.format("%.2f", level/88.4d);
+    }
+    else {
+      return sample.getProperties().get(Property.CREATININE);
+    }
+  }
+
+  /**
+   * Make the category value for creatinine levels, less than 2.5 gets a "0", more gets a "1", all other values get
+   * "NA". If the number can not be converted from the String will return an "NA" and log a warning. If the creatinine
+   * category already exists it will return that.
+   * @param sample a Sample object
+   * @return a string, enumerated value for the creatinine category
+   */
+  public static String calculateCreatinineCat(Sample sample) {
+    if (!isBlank(sample.getProperties().get(Property.CREATININE_CAT))) {
+      return sample.getProperties().get(Property.CREATININE_CAT);
+    }
+
+    if (isBlank(sample.getProperties().get(Property.CREATININE))) {
+      return NA;
+    }
+    else {
+      try {
+        Double level = Double.valueOf(sample.getProperties().get(Property.CREATININE));
+
+        if (level < 2.5d) {
+          return "0";
+        } else {
+          return "1";
+        }
+      }
+      catch(Exception ex) {
+        sf_logger.warn("Error making value for {}: {}", sample.getSubjectId(), sample.getProperties().get(Property.CREATININE));
+        return NA;
+      }
     }
   }
 }
