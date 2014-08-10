@@ -73,10 +73,9 @@ public class IcpcUtils {
   public static File getOutputFile(File inputFile) {
     String outputDirectoryName = inputFile.getParent()+"/output";
 
-    Date date = new Date();
     String newExtension = new StringBuilder()
         .append(".")
-        .append(m_fileDateFormatter.format(date))
+        .append(getTimestamp())
         .append(".xls")
         .toString();
     String outputFileName = inputFile.getName().replaceAll("\\.xls", newExtension);
@@ -193,5 +192,9 @@ public class IcpcUtils {
         return NA;
       }
     }
+  }
+
+  public static String getTimestamp() {
+    return m_fileDateFormatter.format(new Date());
   }
 }

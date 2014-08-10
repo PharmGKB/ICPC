@@ -6,8 +6,8 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.Session;
 import org.pharmgkb.ExcelParser;
+import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.CliHelper;
 import org.pharmgkb.util.HibernateUtils;
@@ -122,21 +122,15 @@ public class TemplateParser {
     List<String> fileNames = Lists.newArrayList(original,supported);
     Multimap<String,String> columnToFile = TreeMultimap.create();
 
-    Session session = HibernateUtils.getSession();
-    List rez = session.createQuery("select description from IcpcProperty").list();
-    for (Object result : rez) {
-      columnToFile.put(StringUtils.strip((String) result), supported);
+    for (Property property : Property.values()) {
+      columnToFile.put(StringUtils.strip(property.getDisplayName()), supported);
     }
-    HibernateUtils.close(session);
 
-    if (getTemplateFile() != null && getTemplateFile().exists()) {
-      ExcelParser parser = new ExcelParser(getTemplateFile());
-      List<String> columns = parser.analyze();
-      parser.loadFormats(session);
-
-      for (String column : columns) {
-        columnToFile.put(StringUtils.strip(column), original);
-      }
+    ExcelParser tParser = new ExcelParser();
+    List<String> tColumns = tParser.analyze();
+    tParser.loadFormats();
+    for (String column : tColumns) {
+      columnToFile.put(StringUtils.strip(column), original);
     }
 
     for (File file : FileUtils.listFiles(getTemplateDirectory(), new String[]{"xlsx","xls"}, false)) {
@@ -151,7 +145,7 @@ public class TemplateParser {
       }
     }
 
-    try (FileWriter fw = new FileWriter(getTemplateFile().getParent() + "/property.analysis.report.html")) {
+    try (FileWriter fw = new FileWriter(getTemplateDirectory() + "/output/property.analysis.report."+IcpcUtils.getTimestamp()+".html")) {
       fw.write("<html><head><meta charset=\"utf-8\"><title>ICPC sample property analysis</title></head>" +
               "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css\">" +
               "<body>" +
@@ -257,8 +251,8 @@ public class TemplateParser {
 
     setAnalyze(cliHelper.hasOption("-a"));
     if (isAnalyze()) {
-      if (getTemplateDirectory() == null || getTemplateFile() == null) {
-        throw new Exception("If doing analysis, you must specify the template file and the project data directory");
+      if (getTemplateDirectory() == null) {
+        throw new Exception("If doing analysis, you must specify the project data directory");
       }
     }
 

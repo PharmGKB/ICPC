@@ -20,16 +20,8 @@ public class ExcelParserTest {
 
   @Test
   public void testLoadFormats() throws Exception {
-    Session session = null;
-    try {
-      session = HibernateUtils.getSession();
-
-      ExcelParser parser = new ExcelParser(new File(getClass().getResource("ICPC_Submission_Template.xlsx").toURI()));
-      parser.loadFormats(session);
-    }
-    finally {
-      HibernateUtils.close(session);
-    }
+    ExcelParser parser = new ExcelParser(new File(getClass().getResource("ICPC_Submission_Template.xlsx").toURI()));
+    parser.loadFormats();
   }
 
 }
