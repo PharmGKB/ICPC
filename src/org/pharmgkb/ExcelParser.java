@@ -93,10 +93,42 @@ public class ExcelParser {
       titles.add(cell.getStringCellValue());
 
       if (StringUtils.isBlank(cell.getStringCellValue())) {
-        sf_logger.warn("EMPTY CELL at "+getFile().getName()+":"+ ExcelUtils.getAddress(cell));
+        sf_logger.warn("EMPTY CELL at " + getFile().getName() + ":" + ExcelUtils.getAddress(cell));
       }
     }
     return titles;
+  }
+
+  public void loadFormats(Session session) {
+
+    Row rowDescrip = getDataSheet().getRow(1);
+    Row rowFormat = getDataSheet().getRow(2);
+
+    for (int i=0; i<rowDescrip.getLastCellNum(); i++) {
+      Cell cellDescrip = rowDescrip.getCell(i);
+      Cell cellFormat = rowFormat.getCell(i);
+
+      if (StringUtils.isBlank(cellDescrip.getStringCellValue())) {
+        sf_logger.warn("EMPTY CELL at "+getFile().getName()+":"+ ExcelUtils.getAddress(cellDescrip));
+        continue;
+      }
+
+      String descrip = cellDescrip.getStringCellValue();
+      String format = cellFormat.getStringCellValue();
+
+      String name = (String)session.createSQLQuery("select name from propertynames where descrip=:d")
+              .setString("d", StringUtils.strip(descrip)).uniqueResult();
+
+      int updateCount = session.createSQLQuery("update propertynames set format=:format where descrip=:descrip")
+              .setString("format", format)
+              .setString("descrip", descrip)
+              .executeUpdate();
+
+      if (updateCount>0) {
+        sf_logger.info("{} updated with format", name);
+      }
+    }
+    HibernateUtils.commit(session);
   }
 
   public File getFile() {

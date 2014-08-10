@@ -49,19 +49,31 @@ public class CombinedDataReport {
     Session session = null;
 
     try(FileOutputStream out = new FileOutputStream(getOutputFile())) {
-      int currentRowIdx = 2;
+      int currentRowIdx = 3;
       session = HibernateUtils.getSession();
 
       Workbook workbook = new XSSFWorkbook();
       Sheet sheet = workbook.createSheet("ICPC Data");
 
+      CellStyle cs = workbook.createCellStyle();
+      cs.setWrapText(true);
+      Font f = workbook.createFont();
+      f.setBoldweight(Font.BOLDWEIGHT_BOLD);
+      cs.setFont(f);
+
       Row descripRow = sheet.createRow(0);
       Row nameRow = sheet.createRow(1);
+      Row formatRow = sheet.createRow(2);
+
+      descripRow.setHeightInPoints(30f);
+      formatRow.setHeightInPoints(60f);
+
       for (Property property : Property.getAllSortedById()) {
         sf_logger.debug("{}: {}", property.getId(), property.getDisplayName());
 
-        ExcelUtils.writeCell(descripRow, property.getId(), property.getDisplayName());
+        ExcelUtils.writeCell(descripRow, property.getId(), property.getDisplayName(), cs);
         ExcelUtils.writeCell(nameRow, property.getId(), property.getShortName());
+        ExcelUtils.writeCell(formatRow, property.getId(), IcpcUtils.lookupFormat(session, property.getShortName()), cs);
       }
 
       List rez = session.createQuery("select s.subjectId from Sample s order by s.project,s.subjectId").list();
@@ -87,8 +99,15 @@ public class CombinedDataReport {
             // if property is a number, try to write a Double to a Number formatted column
             else if (isNumber) {
               try {
+
                 double numValue = Double.valueOf(propValue);
-                ExcelUtils.writeCell(row, valueColIdx, numValue, null);
+                if (property == Property.AGE) {
+                  ExcelUtils.writeCell(row, valueColIdx, Math.floor(numValue), null);
+                }
+                else {
+                  ExcelUtils.writeCell(row, valueColIdx, numValue, null);
+                }
+
               } catch (NumberFormatException ex) {
                 sf_logger.debug("Input string is not number: {}", propValue);
                 ExcelUtils.writeCell(row, valueColIdx, propValue);

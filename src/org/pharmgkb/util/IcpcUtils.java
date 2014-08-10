@@ -3,6 +3,7 @@ package org.pharmgkb.util;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang.StringUtils;
+import org.hibernate.Session;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -98,5 +99,10 @@ public class IcpcUtils {
     } catch (Exception e) {
       throw new RuntimeException("Couldn't make enum validator for "+enumToValidate.toString());
     }
+  }
+
+  public static String lookupFormat(Session session, String name) {
+    return (String)session.createSQLQuery("select format from propertynames where name=:name")
+            .setString("name", name).uniqueResult();
   }
 }

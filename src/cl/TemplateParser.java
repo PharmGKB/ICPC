@@ -132,6 +132,7 @@ public class TemplateParser {
     if (getTemplateFile() != null && getTemplateFile().exists()) {
       ExcelParser parser = new ExcelParser(getTemplateFile());
       List<String> columns = parser.analyze();
+      parser.loadFormats(session);
 
       for (String column : columns) {
         columnToFile.put(StringUtils.strip(column), original);

@@ -32,6 +32,7 @@ CREATE TABLE propertyNames (
   name varchar(200) DEFAULT NULL,
   descrip varchar(4000) DEFAULT NULL,
   datatype varchar(100) DEFAULT NULL,
+  format varchar(4000) default null,
   idx serial,
   PRIMARY KEY (idx)
 );

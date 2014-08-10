@@ -4249,12 +4249,15 @@
       <column name="property_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="value" sqlType="varchar" precision="200" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
       <foreign-key name="properties_subject_id_fkey" columns="subject_id" ref-table="samples" ref-schema="public" ref-catalog="" ref-columns="subject_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="properties_sub_idx" unique="false" columns="subject_id"/>
+      <index name="properties_subprop_idx" unique="false" columns="subject_id,property_id"/>
     </table>
     <table name="propertynames" schema="public" catalog="icpc" type="TABLE">
       <column name="name" sqlType="varchar" precision="200" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
       <column name="descrip" sqlType="varchar" precision="4000" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
       <column name="datatype" sqlType="varchar" precision="100" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
       <column name="idx" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgncHJvcGVydHluYW1lc19pZHhfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="format" sqlType="varchar" precision="4000" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
       <primary-key name="propertynames_pkey" columns="idx"/>
       <index name="propertynames_idx" unique="false" columns="descrip"/>
     </table>
