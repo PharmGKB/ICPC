@@ -57,8 +57,8 @@ public class IcpcUtils {
    *   <li>equals "unknown" (case-insensitive)</li>
    *   <li>equals "not available" (case-insensitive)</li>
    * </ul>
-   * @param string
-   * @return
+   * @param string a String
+   * @return true if the string has any known "blank" value, including null
    */
   public static boolean isBlank(String string) {
     String trimString = StringUtils.trimToNull(StringUtils.lowerCase(string));
