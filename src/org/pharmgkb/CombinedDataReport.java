@@ -69,11 +69,11 @@ public class CombinedDataReport {
       formatRow.setHeightInPoints(60f);
 
       for (Property property : Property.values()) {
-        sf_logger.debug("{}: {}", property.getId(), property.getDisplayName());
+        sf_logger.debug("{}: {}", property.ordinal(), property.getDisplayName());
 
-        ExcelUtils.writeCell(descripRow, property.getId(), property.getDisplayName(), cs);
-        ExcelUtils.writeCell(nameRow, property.getId(), property.getShortName());
-        ExcelUtils.writeCell(formatRow, property.getId(), IcpcUtils.lookupFormat(session, property.getShortName()), cs);
+        ExcelUtils.writeCell(descripRow, property.ordinal(), property.getDisplayName(), cs);
+        ExcelUtils.writeCell(nameRow, property.ordinal(), property.getShortName());
+        ExcelUtils.writeCell(formatRow, property.ordinal(), IcpcUtils.lookupFormat(session, property.getShortName()), cs);
       }
 
       List rez = session.createQuery("select s.subjectId from Sample s order by s.project,s.subjectId").list();
@@ -88,7 +88,7 @@ public class CombinedDataReport {
 
         for (Property property : Property.values()) {
           try {
-            Integer valueColIdx = property.getId();
+            Integer valueColIdx = property.ordinal();
             boolean isNumber = property.getValidator() == IcpcUtils.VALIDATOR_NUMBER;
             String propValue = sample.getProperties().get(property);
 
