@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
@@ -79,7 +78,7 @@ public class ExcelParser {
     SubjectIterator subjectIterator = new SubjectIterator(getDataSheet());
     Session session = null;
 
-    try(FileOutputStream fos = new FileOutputStream(outputFile)) {
+    try {
       session = HibernateUtils.getSession();
       subjectIterator.parseHeading(session);
 
@@ -94,8 +93,6 @@ public class ExcelParser {
         session.save(sample);
       }
       HibernateUtils.commit(session);
-
-      getWorkbook().write(fos);
     }
     catch (Exception ex) {
       sf_logger.error("Error saving subjects for "+getFile(), ex);

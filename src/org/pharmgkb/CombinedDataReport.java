@@ -79,15 +79,15 @@ public class CombinedDataReport {
       List rez = session.createQuery("select s.subjectId from Sample s order by s.project,s.subjectId").list();
       int projectId = 0;
       for (Object result : rez) {
-        try {
-          Sample sample = (Sample)session.get(Sample.class, (String)result);
-          if (projectId != sample.getProject()) {
-            sf_logger.info("writing project {}", sample.getProject());
-            projectId = sample.getProject();
-          }
-          Row row = sheet.createRow(currentRowIdx++);
+        Sample sample = (Sample)session.get(Sample.class, (String)result);
+        if (projectId != sample.getProject()) {
+          sf_logger.info("writing project {}", sample.getProject());
+          projectId = sample.getProject();
+        }
+        Row row = sheet.createRow(currentRowIdx++);
 
-          for (Property property : Property.values()) {
+        for (Property property : Property.values()) {
+          try {
             Integer valueColIdx = property.getId();
             boolean isNumber = property.getValidator() == IcpcUtils.VALIDATOR_NUMBER;
             String propValue = sample.getProperties().get(property);
@@ -118,9 +118,9 @@ public class CombinedDataReport {
               ExcelUtils.writeCell(row, valueColIdx, propValue);
             }
           }
-        }
-        catch (Exception ex) {
-          sf_logger.error("Error writing data for sample {}", result);
+          catch (Exception ex) {
+            sf_logger.error("Error writing data for sample {}, property {}", result, property.getShortName());
+          }
         }
       }
 

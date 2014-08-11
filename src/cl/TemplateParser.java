@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
+import org.hibernate.Session;
 import org.pharmgkb.ExcelParser;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
@@ -27,6 +28,12 @@ import java.util.List;
  */
 public class TemplateParser {
   private static final Logger sf_logger = LoggerFactory.getLogger(TemplateParser.class);
+  private static final List<String> sf_truncateTableQueries = Lists.newArrayList(
+          "truncate table samplesources cascade",
+          "truncate table sampleproperties cascade",
+          "truncate table properties cascade",
+          "truncate table samples cascade");
+
   private File m_templateFile = null;
   private File m_templateDirectory = null;
   private boolean m_analyze = false;
@@ -95,6 +102,19 @@ public class TemplateParser {
     Preconditions.checkNotNull(directory);
     Preconditions.checkArgument(directory.exists(), "File does not exist: %s", directory);
     Preconditions.checkArgument(directory.isDirectory(), "File is not directory: %s", directory);
+
+    sf_logger.info("clearing the db tables for entry");
+    Session session = null;
+    try {
+      session = HibernateUtils.getSession();
+      for (String truncateQuery : sf_truncateTableQueries) {
+        session.createSQLQuery(truncateQuery).executeUpdate();
+      }
+      HibernateUtils.commit(session);
+    }
+    finally {
+      HibernateUtils.close(session);
+    }
 
     for (File file : FileUtils.listFiles(directory, new String[]{"xlsx","xls"}, false)) {
       try {

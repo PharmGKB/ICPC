@@ -32,7 +32,6 @@ public class SubjectIterator implements Iterator {
   private Integer m_currentRow = 3;
   private FormulaEvaluator m_formulaEvaluator = null;
   private Map<Integer,Property> m_columnIdxToNameMap = Maps.newHashMap();
-  private Integer m_columnCount = 0;
 
   /**
    * Constructor for this {@link org.pharmgkb.SubjectIterator}. Expects to take in a Sheet from an Excel workbook with
@@ -48,9 +47,6 @@ public class SubjectIterator implements Iterator {
 
     Workbook wb = sheet.getWorkbook();
     setFormulaEvaluator(wb.getCreationHelper().createFormulaEvaluator());
-
-    Row headerRow = getSheet().getRow(sf_columnNameRowIdx);
-    setColumnCount((int)headerRow.getLastCellNum());
 
     if (sf_logger.isDebugEnabled()) {
       sf_logger.debug("Sheet has "+sheet.getLastRowNum()+" rows");
@@ -113,7 +109,6 @@ public class SubjectIterator implements Iterator {
   public Sample next() {
     Sample sample = new Sample();
 
-    Map<Integer,Property> colIdxToProperty = getColumnIdxToNameMap();
     Row row = getSheet().getRow(getCurrentRow());
 
     if (sf_logger.isDebugEnabled()) {
@@ -121,8 +116,8 @@ public class SubjectIterator implements Iterator {
     }
 
     try {
-      for (int colIdx=0; colIdx<getColumnCount(); colIdx++) {
-        Property property = colIdxToProperty.get(colIdx);
+      for (Integer colIdx : getColumnIdxToNameMap().keySet()) {
+        Property property = getColumnIdxToNameMap().get(colIdx);
         String value = ExcelUtils.getStringValue(row.getCell(colIdx), getFormulaEvaluator());
 
         if (IcpcUtils.isBlank(value)) {
@@ -138,7 +133,12 @@ public class SubjectIterator implements Iterator {
           sf_logger.warn("[project "+sample.getProject()+"] Bad value for "+property.getShortName()+" in "+ExcelUtils.getAddress(row.getCell(colIdx))+": "+value);
         }
 
-        sample.addProperty(property, normalizedValue);
+        try {
+          sample.addProperty(property, normalizedValue);
+        }
+        catch (Exception ex) {
+          sf_logger.error("error with value in {}", ExcelUtils.getAddress(row.getCell(colIdx)));
+        }
 
         // some properties get set in the Smaple object itself
         switch (property) {
@@ -207,6 +207,9 @@ public class SubjectIterator implements Iterator {
 
     // Creatinine category
     sample.addProperty(Property.CREATININE_CAT, IcpcUtils.calculateCreatinineCat(sample));
+
+    // set race properly using all available info
+    sample.addProperty(Property.RACE_OMB, sample.calculateRace());
   }
 
   @Override
@@ -240,13 +243,5 @@ public class SubjectIterator implements Iterator {
 
   public Map<Integer, Property> getColumnIdxToNameMap() {
     return m_columnIdxToNameMap;
-  }
-
-  public Integer getColumnCount() {
-    return m_columnCount;
-  }
-
-  public void setColumnCount(Integer columnCount) {
-    m_columnCount = columnCount;
   }
 }

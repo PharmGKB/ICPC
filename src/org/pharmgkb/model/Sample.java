@@ -1,7 +1,7 @@
 package org.pharmgkb.model;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import org.hibernate.annotations.Type;
 import org.pharmgkb.enums.*;
 
@@ -77,13 +77,6 @@ public class Sample {
 
   public void setSampleSource(Set<SampleSource> sampleSource) {
     m_SampleSource = sampleSource;
-  }
-
-  public void addSampleSource(SampleSource sampleSource) {
-    if (m_SampleSource == null) {
-      m_SampleSource = Sets.newHashSet();
-    }
-    m_SampleSource.add(sampleSource);
   }
 
   @Column(name="Project",nullable = false)
@@ -183,9 +176,11 @@ public class Sample {
   }
 
   public void addProperty(Property property, String value) {
+    Preconditions.checkNotNull(property);
     if (m_properties == null) {
       m_properties = Maps.newHashMap();
     }
+
     m_properties.put(property, value);
   }
 }

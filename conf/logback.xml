@@ -14,7 +14,7 @@
 
     <logger name="org.hibernate" level="INFO" />
     <logger name="org.pharmgkb" level="INFO" />
-    <logger name="org.pharmgkb.ExcelParser" level="DEBUG" />
+    <logger name="org.pharmgkb.ExcelParser" level="INFO" />
 
     <root level="debug">
         <appender-ref ref="stdout"/>
