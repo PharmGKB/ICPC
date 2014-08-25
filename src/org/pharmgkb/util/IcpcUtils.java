@@ -120,14 +120,14 @@ public class IcpcUtils {
 
   /**
    * Calculate the BMI for a subject using the properties available for it, or if the BMI has already been specified
-   * use that.
+   * use that. If BMI is specified as "0", try to calculate it.
    * Assumes height is stored in cm and weight is stored in kg.
    *
    * @param sample a Sample object
    * @return the BMI for the Sample as a String to two decimal
    */
   public static String calculateBmi(Sample sample) {
-    if (!isBlank(sample.getProperties().get(Property.BMI))) {
+    if (!isBlank(sample.getProperties().get(Property.BMI)) && !sample.getProperties().get(Property.BMI).equals("0")) {
       return sample.getProperties().get(Property.BMI);
     }
     else if (!isBlank(sample.getProperties().get(Property.WEIGHT)) && !isBlank(sample.getProperties().get(Property.HEIGHT))) {

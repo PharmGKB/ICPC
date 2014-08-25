@@ -217,7 +217,7 @@ public class SubjectIterator implements Iterator {
    * Processing that can only be done after all the properties for a sample have been assigned.
    * @param sample a Sample record with all properties set
    */
-  protected void postProcess(Sample sample) {
+  protected static void postProcess(Sample sample) {
     // BMI calculation
     sample.addProperty(Property.BMI, IcpcUtils.calculateBmi(sample));
 
@@ -241,6 +241,10 @@ public class SubjectIterator implements Iterator {
     if (ejectFraction != null && !ejectFraction.equals(IcpcUtils.NA)) {
       sample.addProperty(Property.LVEF_AVAIL, Value.Yes.getShortName());
     }
+    String lvefAvail = sample.getProperties().get(Property.LVEF_AVAIL);
+    if (IcpcUtils.isBlank(lvefAvail)) {
+      sample.addProperty(Property.LVEF_AVAIL, Value.No.getShortName());
+    }
 
     // fix time to event properties, put in the value for maximum followup when answer is No
     String maxDays = sample.getProperties().get(Property.DURATION_FOLLOWUP_CLINICAL_OUTCOMES);
@@ -262,6 +266,12 @@ public class SubjectIterator implements Iterator {
     }
     else if (!IcpcUtils.isBlank(stemi) && !IcpcUtils.isBlank(nstemi) && stemi.equals(Value.No.getShortName()) && nstemi.equals(Value.No.getShortName())) {
       sample.addProperty(Property.MI_DURING_FOLLOWUP, Value.No.getShortName());
+    }
+
+    // fix the problem with caucasiens
+    String raceSelf = sample.getProperties().get(Property.RACE_SELF);
+    if (!IcpcUtils.isBlank(raceSelf) && raceSelf.equals("caucasiens")) {
+      sample.addProperty(Property.RACE_SELF, "caucasians");
     }
   }
 

@@ -48,7 +48,7 @@ public class IcpcUtilsTest {
   }
 
   @Test
-  public void testCalculateBmi() {
+  public void testCalculateBmi() throws PgkbException {
     Sample sample = new Sample();
     sample.addProperty(Property.WEIGHT, "70");
     sample.addProperty(Property.HEIGHT, "180");
@@ -60,8 +60,9 @@ public class IcpcUtilsTest {
     assertEquals("2.0", IcpcUtils.calculateBmi(sample));
 
     sample = new Sample();
-    sample.addProperty(Property.WEIGHT, "67");
-    sample.addProperty(Property.HEIGHT, "0");
+    sample.addProperty(Property.WEIGHT, Property.WEIGHT.normalize("67"));
+    sample.addProperty(Property.HEIGHT, Property.HEIGHT.normalize("0"));
+    sample.addProperty(Property.BMI, Property.HEIGHT.normalize("0.0"));
 
     assertEquals(IcpcUtils.NA, IcpcUtils.calculateBmi(sample));
   }
