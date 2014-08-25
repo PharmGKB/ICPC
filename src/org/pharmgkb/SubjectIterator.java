@@ -27,6 +27,25 @@ import java.util.*;
 public class SubjectIterator implements Iterator {
   private static final Logger sf_logger = LoggerFactory.getLogger(SubjectIterator.class);
   private static final Integer sf_columnNameRowIdx = 1;
+  private static final Map<Property,Property> sf_eventTimeMap = Maps.newHashMap();
+  static {
+    sf_eventTimeMap.put(Property.MAJOR_BLEEDING, Property.DAYS_MAJORBLEEDING);
+    sf_eventTimeMap.put(Property.MINOR_BLEEDING, Property.DAYS_MINORBLEEDING);
+    sf_eventTimeMap.put(Property.STEMI, Property.TIME_STEMI);
+    sf_eventTimeMap.put(Property.NSTEMI, Property.TIME_NSTEMI);
+    sf_eventTimeMap.put(Property.ANGINA, Property.TIME_ANGINA);
+    sf_eventTimeMap.put(Property.REVASC, Property.TIME_REVASC);
+    sf_eventTimeMap.put(Property.STROKE, Property.TIME_STROKE);
+    sf_eventTimeMap.put(Property.CONGESTIVE_HEART_FAILURE, Property.TIME_HEARTFAILURE);
+    sf_eventTimeMap.put(Property.MECHANICAL_VALVE_REPLACEMENT, Property.TIME_MECHVALVE);
+    sf_eventTimeMap.put(Property.TISSUE_VALVE_REPLACEMENT, Property.TIME_TISSVALVE);
+    sf_eventTimeMap.put(Property.STENT_THROMB, Property.TIME_STENT);
+    sf_eventTimeMap.put(Property.ALL_CAUSE_MORTALITY, Property.TIME_MORTALITY);
+    sf_eventTimeMap.put(Property.CARDIOVASCULAR_DEATH, Property.TIME_DEATH);
+    sf_eventTimeMap.put(Property.LEFT_VENTRICULAR_HYPERTROPHY, Property.TIME_VENHYPERTROPHY);
+    sf_eventTimeMap.put(Property.PERIPHERAL_VASCULAR_DISEASE, Property.TIME_PERIVASCULAR);
+    sf_eventTimeMap.put(Property.ATRIAL_FIBRILLATION, Property.TIME_AF);
+  }
 
   private Sheet m_sheet = null;
   private Integer m_currentRow = 3;
@@ -221,6 +240,28 @@ public class SubjectIterator implements Iterator {
     String ejectFraction = sample.getProperties().get(Property.LVEF);
     if (ejectFraction != null && !ejectFraction.equals(IcpcUtils.NA)) {
       sample.addProperty(Property.LVEF_AVAIL, Value.Yes.getShortName());
+    }
+
+    // fix time to event properties, put in the value for maximum followup when answer is No
+    String maxDays = sample.getProperties().get(Property.DURATION_FOLLOWUP_CLINICAL_OUTCOMES);
+    for (Property event : sf_eventTimeMap.keySet()) {
+      String eventStatus = sample.getProperties().get(event);
+      if (!IcpcUtils.isBlank(eventStatus) && Value.lookupByName(eventStatus) == Value.No) {
+        sample.addProperty(sf_eventTimeMap.get(event), maxDays);
+      }
+    }
+
+    // impute MI value from STEMI and NSTEMI values
+    String nstemi = sample.getProperties().get(Property.NSTEMI);
+    String stemi = sample.getProperties().get(Property.STEMI);
+    if (!IcpcUtils.isBlank(stemi) && stemi.equals(Value.Yes.getShortName())) {
+      sample.addProperty(Property.MI_DURING_FOLLOWUP, Value.Yes.getShortName());
+    }
+    else if (!IcpcUtils.isBlank(nstemi) && nstemi.equals(Value.Yes.getShortName())) {
+      sample.addProperty(Property.MI_DURING_FOLLOWUP, Value.Yes.getShortName());
+    }
+    else if (!IcpcUtils.isBlank(stemi) && !IcpcUtils.isBlank(nstemi) && stemi.equals(Value.No.getShortName()) && nstemi.equals(Value.No.getShortName())) {
+      sample.addProperty(Property.MI_DURING_FOLLOWUP, Value.No.getShortName());
     }
   }
 
