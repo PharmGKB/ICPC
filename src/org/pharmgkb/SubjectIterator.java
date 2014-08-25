@@ -210,6 +210,12 @@ public class SubjectIterator implements Iterator {
 
     // set race properly using all available info
     sample.addProperty(Property.RACE_OMB, sample.calculateRace());
+
+    // if subject currently smokes, then they have smoked
+    String currentSmoker = sample.getProperties().get(Property.CURRENT_SMOKER);
+    if (currentSmoker != null && currentSmoker.equals(Value.Yes.getShortName())) {
+      sample.addProperty(Property.EVER_SMOKED, Value.Yes.getShortName());
+    }
   }
 
   @Override
