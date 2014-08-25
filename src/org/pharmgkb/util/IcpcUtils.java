@@ -133,8 +133,12 @@ public class IcpcUtils {
     else if (!isBlank(sample.getProperties().get(Property.WEIGHT)) && !isBlank(sample.getProperties().get(Property.HEIGHT))) {
       Double weight = Double.valueOf(sample.getProperties().get(Property.WEIGHT));
       Double height = Double.valueOf(sample.getProperties().get(Property.HEIGHT))/100;
-      Double bmi = weight/(Math.pow(height, 2d));
 
+      if (height==0d || weight==0d) {
+        return IcpcUtils.NA;
+      }
+
+      Double bmi = weight/(Math.pow(height, 2d));
       return String.format("%.1f", bmi);
     }
     else {

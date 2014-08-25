@@ -58,6 +58,12 @@ public class IcpcUtilsTest {
     sample.addProperty(Property.BMI, "2.0");
 
     assertEquals("2.0", IcpcUtils.calculateBmi(sample));
+
+    sample = new Sample();
+    sample.addProperty(Property.WEIGHT, "67");
+    sample.addProperty(Property.HEIGHT, "0");
+
+    assertEquals(IcpcUtils.NA, IcpcUtils.calculateBmi(sample));
   }
 
   @Test

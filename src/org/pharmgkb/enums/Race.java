@@ -34,6 +34,7 @@ public enum Race implements ExtendedEnum {
   private static final Map<String,Race> sf_fuzzyMap = Maps.newHashMap();
   static {
     sf_fuzzyMap.put("caucasian", WHITE);
+    sf_fuzzyMap.put("caucasien", WHITE);
     sf_fuzzyMap.put("asia", ASIAN);
     sf_fuzzyMap.put("african", BLACK);
     sf_fuzzyMap.put("han chinese", ASIAN);
