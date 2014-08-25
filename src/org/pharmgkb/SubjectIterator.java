@@ -216,6 +216,12 @@ public class SubjectIterator implements Iterator {
     if (currentSmoker != null && currentSmoker.equals(Value.Yes.getShortName())) {
       sample.addProperty(Property.EVER_SMOKED, Value.Yes.getShortName());
     }
+
+    // if LVEF has a value, then it's available
+    String ejectFraction = sample.getProperties().get(Property.LVEF);
+    if (ejectFraction != null && !ejectFraction.equals(IcpcUtils.NA)) {
+      sample.addProperty(Property.LVEF_AVAIL, Value.Yes.getShortName());
+    }
   }
 
   @Override

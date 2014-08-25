@@ -69,7 +69,7 @@ public class PropertyTest {
 
     assertEquals("1;2", Property.SAMPLE_SOURCE.normalize("Serum;Plasma"));
 
-    assertEquals("1", Property.GENDER.normalize("male"));
+    assertEquals(Gender.MALE.getShortName(), Property.GENDER.normalize("male"));
 
     assertEquals("yes", Property.GENOTYPING.normalize("yes"));
     assertEquals("yes", Property.GENOTYPING.normalize("Yes"));
