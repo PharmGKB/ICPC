@@ -11,6 +11,6 @@ Data submission is handled via file in XLS or XLSX format. Here are the **requir
 7. **Column A will contain Subject IDs**
 8. Columns after column A can be optionally rearranged per submission
 
-There is a [default template](/ICPC_Submission_Template.xlsx) available. That file contains the default column headers that must be used in any data submission.
+There is a [default template](/resources/org/pharmgkb/ICPC_Submission_Template.xlsx) available. That file contains the default column headers that must be used in any data submission.
 
 Any other data sheets added to the submission file will be ignored.
