@@ -238,7 +238,7 @@ public class SubjectIterator implements Iterator {
 
     // if LVEF has a value, then it's available
     String ejectFraction = sample.getProperties().get(Property.LVEF);
-    if (ejectFraction != null && !ejectFraction.equals(IcpcUtils.NA)) {
+    if (!IcpcUtils.isBlank(ejectFraction) && !ejectFraction.equals("0")) {
       sample.addProperty(Property.LVEF_AVAIL, Value.Yes.getShortName());
     }
     String lvefAvail = sample.getProperties().get(Property.LVEF_AVAIL);
