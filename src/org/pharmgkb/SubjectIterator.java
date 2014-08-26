@@ -270,8 +270,8 @@ public class SubjectIterator implements Iterator {
 
     // fix the problem with caucasiens
     String raceSelf = sample.getProperties().get(Property.RACE_SELF);
-    if (!IcpcUtils.isBlank(raceSelf) && raceSelf.equals("caucasiens")) {
-      sample.addProperty(Property.RACE_SELF, "caucasians");
+    if (!IcpcUtils.isBlank(raceSelf) && raceSelf.equals("caucasien")) {
+      sample.addProperty(Property.RACE_SELF, "caucasian");
     }
   }
 
