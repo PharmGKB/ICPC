@@ -86,6 +86,12 @@ public class ExcelParser {
 
         Sample sample = subjectIterator.next();
 
+        // clear existing record if it exists
+        Sample existingSample = (Sample)session.get(Sample.class, sample.getSubjectId());
+        if (existingSample != null) {
+          session.delete(existingSample);
+        }
+
         if (sf_logger.isDebugEnabled()) {
           sf_logger.debug("Loaded subject: "+ sample.getSubjectId());
         }
