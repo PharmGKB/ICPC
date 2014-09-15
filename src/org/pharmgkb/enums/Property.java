@@ -326,7 +326,10 @@ public enum Property implements ExtendedEnum {
   PAP4_MAINT_LAG_COL_1(304,"pap4_maint_lag_col_1","PAP-4 maintenance dose of clopidogrel platelet rich plasma lag time of Collagen 1 µg/ml%", false, IcpcUtils.VALIDATOR_NUMBER),
   PAP4_MAINT_LAG_COL_2(305,"pap4_maint_lag_col_2","PAP-4 maintenance dose of clopidogrel platelet rich plasma lag time of Collagen 2 µg/ml%", false, IcpcUtils.VALIDATOR_NUMBER),
   PAP4_MAINT_LAG_COL_5(306,"pap4_maint_lag_col_5","PAP-4 maintenance dose of clopidogrel platelet rich plasma lag time of Collagen 5 µg/ml%", false, IcpcUtils.VALIDATOR_NUMBER),
-  PAP4_MAINT_LAG_COL_10(307,"pap4_maint_lag_col_10","PAP-4 maintenance dose of clopidogrel platelet rich plasma lag time of Collagen 10 µg/ml%", false, IcpcUtils.VALIDATOR_NUMBER);
+  PAP4_MAINT_LAG_COL_10(307,"pap4_maint_lag_col_10","PAP-4 maintenance dose of clopidogrel platelet rich plasma lag time of Collagen 10 µg/ml%", false, IcpcUtils.VALIDATOR_NUMBER),
+  PHENO_RAW(309, "raw_pheno", "raw_pheno", false, IcpcUtils.VALIDATOR_NUMBER),
+  PHENO_STD(310, "std_pheno", "std_pheno", false, IcpcUtils.VALIDATOR_NUMBER)
+  ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;
   private int m_id;
