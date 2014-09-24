@@ -127,7 +127,7 @@ public class CombinedDataReport {
       workbook.write(out);
     }
     catch (Exception ex) {
-      throw new PgkbException("Error writing report");
+      throw new PgkbException("Error writing report",ex);
     }
     finally {
       HibernateUtils.close(session);
