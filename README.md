@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/6285/PharmGKB/ICPC.png)](http://dx.doi.org/10.5281/zenodo.11859)
+
 # ICPC Data Processing
 
 This code will read in Excel data submitted by project participants, store it in a PostgreSQL database, and export information into defined reports. This project was developed in IntelliJ IDEA and has configuration files checked in for running easily in that envirionment.
