@@ -327,4 +327,7 @@ insert into propertyNames (name, descrip, datatype, format) values ('Chronolog_l
 insert into propertyNames (name, descrip, datatype, format) values ('Chronolog_loading_max_ADP_20', 'Chronolog Plavix post loading dose whole blood max aggregation of ADP 20 µM in ohms', 'number', 'Assay result  (numeric)');
 insert into propertyNames (name, descrip, datatype, format) values ('Chronolog_loading_max_aa', 'Chronolog Plavix post loading dose whole blood max aggregation of Arachadonic Acid in ohms', 'number', 'Assay result  (numeric)');
 insert into propertyNames (name, descrip, datatype, format) values ('other_genotypes', 'Other Genotypes, please specify', 'string', 'please use HGNC gene symbols and RsIDs if available');
+insert into propertyNames (name, descrip, datatype, format) values ('cone_adp_surface_pct', 'Cone and Platelet Analyzer (ADP-induced surface coverage%)', 'number', null);
+insert into propertyNames (name, descrip, datatype, format) values ('cone_adp_surface_size', 'Cone and Platelet Analyzer (ADP-induced average size of platelet aggregates µm2)', 'number', null);
+insert into propertyNames (name, descrip, datatype, format) values ('multiplate_aa_test', 'Multiplate AA test', 'number', null);
 commit;
