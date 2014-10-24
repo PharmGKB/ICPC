@@ -170,7 +170,7 @@ insert into propertyNames (name, descrip, datatype, format) values ('rs71647871'
 insert into propertyNames (name, descrip, datatype, format) values ('Ace_or_Ang_inh_blockers', 'ACE Inhibitors or Angiotensin receptor blockers', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('ttf_acs', 'Time to the first ACS', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('acs_during_followup', 'ACS during follow up', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('clinical_setting', 'Clinical seting', 'string', null);
+insert into propertyNames (name, descrip, datatype, format) values ('clinical_setting', 'Stable angina=1, ACS=2', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('prior_mi', 'Prior MI', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('prior_pci', 'Prior PCI', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('carat_2micro_aggmax', 'CARAT TX4 post Plavix loading dose platelet rich plasma max aggregation of ADP 2 µM %', 'string', null);
