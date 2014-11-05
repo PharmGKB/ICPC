@@ -54,6 +54,10 @@ public class PropertyTest {
     assertTrue(Property.TIME_LOADING_CHRONOLOG.validate("2:34:56"));
     assertTrue(Property.TIME_LOADING_CHRONOLOG.validate("1.2"));
     assertFalse(Property.TIME_LOADING_CHRONOLOG.validate("34blah"));
+
+    assertTrue(Property.PHENO_STD.validate("1"));
+    assertTrue(Property.PHENO_STD.validate("1.01"));
+    assertTrue(Property.PHENO_STD.validate("-1.01"));
   }
 
   @Test
@@ -82,6 +86,9 @@ public class PropertyTest {
 
     assertEquals("165", Property.HEIGHT.normalize("1.65"));
     assertEquals("180", Property.HEIGHT.normalize("1.8"));
+
+    assertEquals("-1.01", Property.PHENO_STD.normalize("-1.01"));
+    assertEquals("1.01", Property.PHENO_STD.normalize("1.01"));
   }
 
 }

@@ -330,8 +330,12 @@ public enum Property implements ExtendedEnum {
   HEMOGLOBIN        (261, "hemoglobin", "Hemoglogin (g/dL)", false, IcpcUtils.VALIDATOR_NUMBER),
   PLASMA_UREA       (262, "plasma_urea", "PLASMA UREA (mmol/L)", false, IcpcUtils.VALIDATOR_NUMBER),
   TIME_TO_MACE      (263, "time_to_mace", "Time to the first  major adverse cardiac events (MACE) during followup", false, IcpcUtils.VALIDATOR_NUMBER),
-  PHENO_RAW(309, "raw_pheno", "raw_pheno", false, IcpcUtils.VALIDATOR_NUMBER),
-  PHENO_STD(310, "std_pheno", "std_pheno", false, IcpcUtils.VALIDATOR_NUMBER)
+  PHENO_RAW         (309, "raw_pheno", "raw_pheno", false, IcpcUtils.VALIDATOR_NUMBER),
+  PHENO_STD         (310, "std_pheno", "std_pheno", false, IcpcUtils.VALIDATOR_NUMBER),
+  RIKEN_PLATE_NUM   (314, "riken_plate_num", "ICPC_RIKEN plate#", false, IcpcUtils.VALIDATOR_NUMBER),
+  RIKEN_LOCATION_NUM(315, "riken_location_num", "RIKEN location #", false, IcpcUtils.VALIDATOR_NUMBER),
+  RIKEN_LOCATION    (316, "riken_location", "RIKEN location", false, null),
+  RIKEN_ID          (317, "riken_new_id", "New ID", false, IcpcUtils.VALIDATOR_NUMBER)
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;

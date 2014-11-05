@@ -1,33 +1,37 @@
 package cl;
 
+import com.google.common.collect.Lists;
 import org.pharmgkb.DnaExcelParser;
+import org.pharmgkb.RikenParser;
+import org.pharmgkb.SupplementalParser;
 import org.pharmgkb.util.CliHelper;
 import org.pharmgkb.util.HibernateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Parses the DNA data submission file and loads the contents into the DB
  *
  * @author Ryan Whaley
  */
-public class DnaParser {
-  private static final Logger sf_logger = LoggerFactory.getLogger(DnaParser.class);
-  private File m_file = null;
+public class SupplementsParser {
+  private static final Logger sf_logger = LoggerFactory.getLogger(SupplementsParser.class);
+  List<SupplementalParser> parsers = Lists.newArrayList();
 
   /**
    * main method, parses the command line args and kicks off the data parser
-   * @param args
+   * @param args command line args
    */
   public static void main(String args[]) {
     try {
       HibernateUtils.init();
 
-      DnaParser parser = new DnaParser();
+      SupplementsParser parser = new SupplementsParser();
       parser.parseCommandLineArgs(args);
-      parser.parseFile();
+      parser.parse();
     }
     catch (Exception ex) {
       sf_logger.error("Couldn't parse DNA file", ex);
@@ -45,7 +49,8 @@ public class DnaParser {
   private void parseCommandLineArgs(String args[]) throws Exception {
     CliHelper cliHelper = new CliHelper(getClass(), false);
 
-    cliHelper.addOption("f", "file", "ICPC excel template file to read", "pathToFile");
+    cliHelper.addOption("d", "dnaFile", "DNA supplemental file", "pathToFile");
+    cliHelper.addOption("r", "rikenFile", "Riken supplemental file", "pathToFile");
 
     try {
       cliHelper.parse(args);
@@ -57,35 +62,23 @@ public class DnaParser {
       throw new Exception("Error parsing arguments", ex);
     }
 
-    if (cliHelper.hasOption("-f")) {
-      File templateFile = new File(cliHelper.getValue("-f"));
-      if (templateFile.exists()) {
-        setFile(templateFile);
-      }
-      else {
-        throw new Exception("File not found "+cliHelper.getValue("-f"));
-      }
+    if (cliHelper.hasOption("-d")) {
+      File file = new File(cliHelper.getValue("-d"));
+      parsers.add(new DnaExcelParser(file));
+    }
+    if (cliHelper.hasOption("-r")) {
+      File file = new File(cliHelper.getValue("-r"));
+      parsers.add(new RikenParser(file));
     }
   }
 
   /**
-   * Executes the parser in {@link org.pharmgkb.DnaExcelParser}.
+   * Executes the parsers specified.
    * @throws Exception
    */
-  private void parseFile() throws Exception {
-    DnaExcelParser parser = new DnaExcelParser(getFile());
-    parser.parse();
-  }
-
-  /**
-   * Gets the DNA data file in Excel (.xlsx or .xls) format
-   * @return the DNA data file in Excel (.xlsx or .xls) format
-   */
-  public File getFile() {
-    return m_file;
-  }
-
-  public void setFile(File file) {
-    m_file = file;
+  private void parse() throws Exception {
+    for (SupplementalParser parser : parsers) {
+      parser.parse();
+    }
   }
 }

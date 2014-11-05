@@ -29,7 +29,7 @@ public class IcpcUtils {
   public static final Pattern VALIDATOR_BINARY = Pattern.compile("([01]|99)");
   public static final Pattern VALIDATOR_THREE = Pattern.compile("([012]|99)");
   public static final Pattern VALIDATOR_BASES = Pattern.compile("^[AaTtGgCc/]+$");
-  public static final Pattern VALIDATOR_NUMBER = Pattern.compile("((\\d+)?\\.?(\\d+)?)(\\s+)?(mg|mg/day|mg/L|uM)?");
+  public static final Pattern VALIDATOR_NUMBER = Pattern.compile("(-?(\\d+)?\\.?(\\d+)?)(\\s+)?(mg|mg/day|mg/L|uM)?");
   public static final Pattern VALIDATOR_TIME = Pattern.compile("(\\d{1,2}:\\d{2}:\\d{2})|((\\d+)?\\.?(\\d+)?)");
 
   private static final SimpleDateFormat m_fileDateFormatter = new SimpleDateFormat("yyyyMMdd-HHmm");

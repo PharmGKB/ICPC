@@ -2,22 +2,18 @@ package org.pharmgkb;
 
 import com.google.common.collect.Maps;
 import com.sun.javafx.beans.annotations.NonNull;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
+import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,11 +24,10 @@ import java.util.regex.Pattern;
  *
  * @author Ryan Whaley
  */
-public class DnaExcelParser {
+public class DnaExcelParser extends SupplementalParser {
   private static final Logger sf_logger = LoggerFactory.getLogger(DnaExcelParser.class);
   private static final Pattern sf_patternSampleId = Pattern.compile("([Pp][Aa]\\d+).*");
 
-  private static final Integer sf_idxSampleId = 0;
   private static Map<Integer, Property> sf_columnMap = Maps.newHashMap();
   // maps excel sheet column number to the property name used in the database
   static {
@@ -46,8 +41,6 @@ public class DnaExcelParser {
     sf_columnMap.put(8, Property.DNA_ICPC_TUBE);
   }
 
-  private Workbook m_workbook = null;
-
   /**
    * Public constructor
    *
@@ -55,18 +48,7 @@ public class DnaExcelParser {
    * @throws Exception
    */
   public DnaExcelParser(@NonNull File file) throws Exception {
-    if (file == null || !file.exists()) {
-      throw new Exception("No file specified");
-    }
-
-    InputStream inputStream = null;
-    try {
-      inputStream = new FileInputStream(file);
-      setWorkbook(WorkbookFactory.create(inputStream));
-    }
-    finally {
-      IOUtils.closeQuietly(inputStream);
-    }
+    super(file);
   }
 
   /**
@@ -75,7 +57,6 @@ public class DnaExcelParser {
    */
   public void parse() throws Exception {
     Session session = null;
-    NumberFormat idFormatter = new DecimalFormat("##########.##");
 
     try {
       session = HibernateUtils.getSession();
@@ -103,13 +84,7 @@ public class DnaExcelParser {
 
                       try {
                         Cell cell = row.getCell(propIdx);
-                        String propValue = null;
-                        if (cell.getCellType()==Cell.CELL_TYPE_STRING) {
-                          propValue = row.getCell(propIdx).getStringCellValue();
-                          propValue = StringUtils.strip(propValue);
-                        } else if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC) {
-                          propValue = idFormatter.format(row.getCell(propIdx).getNumericCellValue());
-                        }
+                        String propValue = ExcelUtils.getStringValue(cell, getEvaluator());
                         sample.getProperties().put(sf_columnMap.get(propIdx), propValue);
                       }
                       catch (Exception ex) {
@@ -132,21 +107,5 @@ public class DnaExcelParser {
     finally {
       HibernateUtils.close(session);
     }
-  }
-
-  /**
-   * Get the {@link Workbook} object this parser is crawling
-   * @return a {@link Workbook} of DNA data
-   */
-  public Workbook getWorkbook() {
-    return m_workbook;
-  }
-
-  /**
-   * Set the {@link Workbook} object this parser is crawling
-   * @param workbook a {@link Workbook} of DNA data
-   */
-  public void setWorkbook(Workbook workbook) {
-    m_workbook = workbook;
   }
 }

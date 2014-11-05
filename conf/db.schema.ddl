@@ -330,4 +330,8 @@ insert into propertyNames (name, descrip, datatype, format) values ('other_genot
 insert into propertyNames (name, descrip, datatype, format) values ('cone_adp_surface_pct', 'Cone and Platelet Analyzer (ADP-induced surface coverage%)', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('cone_adp_surface_size', 'Cone and Platelet Analyzer (ADP-induced average size of platelet aggregates µm2)', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('multiplate_aa_test', 'Multiplate AA test', 'number', null);
+insert into propertyNames (name, descrip, datatype, format) values ('riken_plate_num','ICPC_RIKEN plate#','number',null);
+insert into propertyNames (name, descrip, datatype, format) values ('riken_location_num','RIKEN location #','number',null);
+insert into propertyNames (name, descrip, datatype, format) values ('riken_location', 'RIKEN location','string',null);
+insert into propertyNames (name, descrip, datatype, format) values ('riken_new_id', 'New ID','number',null);
 commit;
