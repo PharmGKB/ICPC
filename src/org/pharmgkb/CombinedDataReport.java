@@ -49,7 +49,7 @@ public class CombinedDataReport {
     Session session = null;
 
     try(FileOutputStream out = new FileOutputStream(getOutputFile())) {
-      int currentRowIdx = 3;
+      int currentRowIdx = 0;
       session = HibernateUtils.getSession();
 
       Workbook workbook = new XSSFWorkbook();
@@ -61,9 +61,8 @@ public class CombinedDataReport {
       f.setBoldweight(Font.BOLDWEIGHT_BOLD);
       cs.setFont(f);
 
-      Row descripRow = sheet.createRow(0);
-      Row nameRow = sheet.createRow(1);
-      Row formatRow = sheet.createRow(2);
+      Row descripRow = sheet.createRow(currentRowIdx++);
+      Row formatRow = sheet.createRow(currentRowIdx++);
 
       descripRow.setHeightInPoints(30f);
       formatRow.setHeightInPoints(60f);
@@ -72,7 +71,6 @@ public class CombinedDataReport {
         sf_logger.debug("{}: {}", property.ordinal(), property.getDisplayName());
 
         ExcelUtils.writeCell(descripRow, property.ordinal(), property.getDisplayName(), cs);
-        ExcelUtils.writeCell(nameRow, property.ordinal(), property.getShortName());
         ExcelUtils.writeCell(formatRow, property.ordinal(), IcpcUtils.lookupFormat(session, property.getShortName()), cs);
       }
 

@@ -153,8 +153,8 @@ insert into propertyNames (name, descrip, datatype, format) values ('Red_on_plav
 insert into propertyNames (name, descrip, datatype, format) values ('Platelet_on_plavix', 'Platelet count (cells/µL) on Plavix', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('MeanPlateletVol_on_plavix', 'Mean platelet volume (fL) on Plavix', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('Hematocrit_on_plavix', 'Hematocrit (%) on Plavix', 'number', null);
-insert into propertyNames (name, descrip, datatype, format) values ('chronolog_baseline_lta_max', 'Chronolog baseline LTA max aggregation of ADP 20 ug/ml in %', 'number', null);
-insert into propertyNames (name, descrip, datatype, format) values ('chronolog_baseline_lta_final', 'Chronolog baseline LTA final (5min) aggregation of ADP 20 ug/ml in %', 'number', null);
+insert into propertyNames (name, descrip, datatype, format) values ('chronolog_baseline_lta_max', 'Chronolog post-loading LTA max aggregation of ADP 20 ug/ml in %', 'number', null);
+insert into propertyNames (name, descrip, datatype, format) values ('chronolog_baseline_lta_final', 'Chronolog post-loading LTA final (5min) aggregation of ADP 20 ug/ml in %', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('multiplate_adp_test', 'Multiplate ADP test', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('dna_concentration', 'DNA concentration', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('rs2279343', 'CYP2B6*4 genotype A>G (rs2279343)', 'string', null);
