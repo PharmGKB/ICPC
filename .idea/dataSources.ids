@@ -1921,10 +1921,7 @@
     </table>
   </data-source>
   <data-source source="LOCAL" name="PostgreSQL - icpc@localhost" uuid="13dc6ba5-d26e-445a-b8e7-4c0dad093490">
-    <database-info product="PostgreSQL" version="9.3.4" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.3 JDBC4 (build 1100)">
-      <identifier-quote-string>&quot;</identifier-quote-string>
-    </database-info>
-    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
     <schema name="information_schema" catalog="icpc"/>
     <schema name="pg_catalog" catalog="icpc"/>
     <schema name="public" catalog="icpc"/>
@@ -4246,7 +4243,7 @@
     </table>
     <table name="properties" schema="public" catalog="icpc" type="TABLE">
       <column name="subject_id" sqlType="varchar" precision="200" scale="0" nullable="false" jdbcType="12"/>
-      <column name="property_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="property_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="value" sqlType="varchar" precision="200" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
       <foreign-key name="properties_subject_id_fkey" columns="subject_id" ref-table="samples" ref-schema="public" ref-catalog="" ref-columns="subject_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="properties_sub_idx" unique="false" columns="subject_id"/>

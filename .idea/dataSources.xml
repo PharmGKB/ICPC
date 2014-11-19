@@ -6,11 +6,6 @@
       <auto-commit>false</auto-commit>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://local:8889/icpc</jdbc-url>
-      <user-name>root</user-name>
-      <user-password>dfd8dfc5dfc5dfde</user-password>
-      <schema-pattern>icpc.*</schema-pattern>
-      <default-schemas>icpc.*</default-schemas>
-      <default-dialect>TEXT</default-dialect>
       <libraries>
         <library>
           <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
@@ -22,8 +17,6 @@
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://10.0.0.173:8889/icpc</jdbc-url>
-      <user-name>root</user-name>
-      <user-password>dfd8dfc5dfc5dfde</user-password>
       <libraries>
         <library>
           <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
@@ -35,7 +28,6 @@
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/icpc</jdbc-url>
-      <user-name>whaleyr</user-name>
       <libraries>
         <library>
           <url>file://$PROJECT_DIR$/lib/postgresql-9.3-1102.jdbc4.jar</url>
@@ -46,7 +38,6 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/icpc</jdbc-url>
-      <user-name>whaleyr</user-name>
       <libraries>
         <library>
           <url>file://$PROJECT_DIR$/lib/postgresql-9.3-1102.jdbc4.jar</url>
@@ -55,4 +46,3 @@
     </data-source>
   </component>
 </project>
-
