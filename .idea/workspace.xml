@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ff045bd-cefc-4a58-a568-b6f2466d4474" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/db.schema.ddl" afterPath="$PROJECT_DIR$/conf/db.schema.ddl" />
+    <list default="true" id="3ff045bd-cefc-4a58-a568-b6f2466d4474" name="Default" comment="" />
+    <list id="ab1b4845-bdbf-4f6b-866f-326c5541b38b" name="ZZ-Ignore" comment="ZZ-Ignore">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/logback.xml" afterPath="$PROJECT_DIR$/conf/logback.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
-    <list id="ab1b4845-bdbf-4f6b-866f-326c5541b38b" name="ZZ-Ignore" comment="" />
     <ignored path="ICPC.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/runtime/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +25,19 @@
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_TOOLBAR" value="true" />
+    <option name="FLATTEN" value="false" />
+    <option name="GROUP_BY_TYPE" value="true" />
+    <option name="SORT_CHILDREN" value="false" />
+    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="DebuggerManager">
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
@@ -84,244 +101,170 @@
     <favorites_list name="ICPC" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.51970184">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="db.schema.ddl" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/conf/db.schema.ddl">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.012519562" vertical-offset="1613" max-vertical-offset="5220">
-                  <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
-                  <folding>
-                    <marker date="1405921921000" expanded="true" signature="1896:1960" placeholder="create index..sampleProperties_idx..." />
-                    <marker date="1405921921000" expanded="true" signature="38830:38986" placeholder="insert into ..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="workspace.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="2400" max-vertical-offset="27480">
-                  <caret line="169" column="20" selection-start-line="169" selection-start-column="20" selection-end-line="169" selection-end-column="20" />
-                  <folding>
-                    <marker date="1405921964000" expanded="true" signature="99572:99618" placeholder="..." />
-                    <marker date="1405921964000" expanded="true" signature="99572:99603" placeholder="..." />
-                    <marker date="1405921964000" expanded="true" signature="99572:99590" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TemplateParser.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/cl/TemplateParser.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4350">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#9243#9244#0" expanded="true" />
-                    <element signature="e#9274#9275#0" expanded="true" />
-                    <element signature="e#9326#9327#0" expanded="true" />
-                    <element signature="e#9365#9366#0" expanded="true" />
-                    <element signature="e#9596#9597#0" expanded="true" />
-                    <element signature="e#9632#9633#0" expanded="true" />
-                    <element signature="e#9694#9695#0" expanded="true" />
-                    <element signature="e#9743#9744#0" expanded="true" />
-                    <element signature="e#9937#9938#0" expanded="true" />
-                    <element signature="e#9963#9964#0" expanded="true" />
-                    <element signature="e#10010#10011#0" expanded="true" />
-                    <element signature="e#10046#10047#0" expanded="true" />
-                    <marker date="1405919253000" expanded="true" signature="1867:2046" placeholder="/**...*/" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DnaParser.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/cl/DnaParser.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
-                  <caret line="80" column="62" selection-start-line="80" selection-start-column="62" selection-end-line="80" selection-end-column="62" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="log4j.properties" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/conf/log4j.properties">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-                  <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IcpcUtils.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/IcpcUtils.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-                  <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CombinedDataReport.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2010">
-                  <caret line="104" column="20" selection-start-line="104" selection-start-column="20" selection-end-line="104" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DnaExcelParser.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040">
-                  <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SampleProperty.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
-                  <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-                  <folding>
-                    <element signature="e#867#868#0" expanded="true" />
-                    <element signature="e#897#898#0" expanded="true" />
-                    <element signature="e#949#950#0" expanded="true" />
-                    <element signature="e#986#987#0" expanded="true" />
-                    <element signature="e#1133#1134#0" expanded="true" />
-                    <element signature="e#1156#1157#0" expanded="true" />
-                    <element signature="e#1194#1195#0" expanded="true" />
-                    <element signature="e#1217#1218#0" expanded="true" />
-                    <element signature="e#1447#1448#0" expanded="true" />
-                    <element signature="e#1471#1472#0" expanded="true" />
-                    <element signature="e#1512#1513#0" expanded="true" />
-                    <element signature="e#1537#1538#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="Sample.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/Sample.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.14610389" vertical-offset="0" max-vertical-offset="4815">
-                  <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PostgreSQL - icpc@localhost" pinned="false" current="false" current-in-tab="false">
-            <entry file="dbDummy://db-console:/959c759f/13dc6ba5-d26e-445a-b8e7-4c0dad093490/">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-9.310345" vertical-offset="0" max-vertical-offset="360">
-                  <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-                  <folding>
-                    <marker date="0" expanded="true" signature="941:984" placeholder="select disti..propertyNames..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ExcelParser.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1665">
-                  <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ExcelUtils.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/ExcelUtils.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3195">
-                  <caret line="200" column="27" selection-start-line="200" selection-start-column="27" selection-end-line="200" selection-end-column="27" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SubjectIterator.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8550">
-                  <caret line="51" column="78" selection-start-line="51" selection-start-column="78" selection-end-line="51" selection-end-column="78" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="HibernateUtils.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/HibernateUtils.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1410">
-                  <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Property.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Property.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1815">
-                  <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Race.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Race.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2310">
-                  <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SampleSource.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/SampleSource.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
-                  <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Value.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Value.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1590">
-                  <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="Property.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Property.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8055">
+              <caret line="351" column="36" selection-start-line="351" selection-start-column="36" selection-end-line="351" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RikenParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/RikenParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="930">
+              <caret line="53" column="32" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.schema.ddl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/db.schema.ddl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2011" max-vertical-offset="5145">
+              <caret line="157" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostgreSQL - icpc@localhost" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://db-console:/959c759f/13dc6ba5-d26e-445a-b8e7-4c0dad093490/">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.1034484" vertical-offset="0" max-vertical-offset="180">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+              <folding>
+                <marker date="0" expanded="true" signature="517:666" placeholder="update prope..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CombinedDataReport.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2055">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-91.8" vertical-offset="0" max-vertical-offset="36000">
+              <caret line="153" column="13" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logback.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/conf/logback.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3858521" vertical-offset="0" max-vertical-offset="622">
+              <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhenoParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cl/PhenoParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="1755">
+              <caret line="76" column="49" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SupplementsParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cl/SupplementsParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="481" max-vertical-offset="1200">
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sample.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/Sample.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1199" max-vertical-offset="1965">
+              <caret line="177" column="14" selection-start-line="177" selection-start-column="14" selection-end-line="177" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#983#984#0" expanded="false" />
+                <element signature="e#1011#1012#0" expanded="false" />
+                <element signature="e#1059#1060#0" expanded="false" />
+                <element signature="e#1092#1093#0" expanded="false" />
+                <element signature="e#1122#1123#0" expanded="false" />
+                <element signature="e#1164#1165#0" expanded="false" />
+                <element signature="e#1252#1253#0" expanded="false" />
+                <element signature="e#1281#1282#0" expanded="false" />
+                <element signature="e#1329#1330#0" expanded="false" />
+                <element signature="e#1364#1365#0" expanded="false" />
+                <element signature="e#1454#1455#0" expanded="false" />
+                <element signature="e#1484#1485#0" expanded="false" />
+                <element signature="e#1534#1535#0" expanded="false" />
+                <element signature="e#1571#1572#0" expanded="false" />
+                <element signature="e#1829#1830#0" expanded="false" />
+                <element signature="e#1860#1861#0" expanded="false" />
+                <element signature="e#1925#1926#0" expanded="false" />
+                <element signature="e#1964#1965#0" expanded="false" />
+                <element signature="e#2040#2041#0" expanded="false" />
+                <element signature="e#2066#2067#0" expanded="false" />
+                <element signature="e#2111#2112#0" expanded="false" />
+                <element signature="e#2140#2141#0" expanded="false" />
+                <element signature="e#2221#2222#0" expanded="false" />
+                <element signature="e#2246#2247#0" expanded="false" />
+                <element signature="e#2286#2287#0" expanded="false" />
+                <element signature="e#2313#2314#0" expanded="false" />
+                <element signature="e#2374#2375#0" expanded="false" />
+                <element signature="e#2401#2402#0" expanded="false" />
+                <element signature="e#2447#2448#0" expanded="false" />
+                <element signature="e#2478#2479#0" expanded="false" />
+                <element signature="e#2537#2538#0" expanded="false" />
+                <element signature="e#2563#2564#0" expanded="false" />
+                <element signature="e#2607#2608#0" expanded="false" />
+                <element signature="e#2636#2637#0" expanded="false" />
+                <element signature="e#2964#2965#0" expanded="false" />
+                <element signature="e#3000#3001#0" expanded="false" />
+                <element signature="e#3064#3065#0" expanded="false" />
+                <element signature="e#3113#3114#0" expanded="false" />
+                <element signature="e#3182#3183#0" expanded="false" />
+                <element signature="e#3213#3214#0" expanded="false" />
+                <element signature="e#3267#3268#0" expanded="false" />
+                <element signature="e#3306#3307#0" expanded="false" />
+                <element signature="e#3364#3365#0" expanded="false" />
+                <element signature="e#3390#3391#0" expanded="false" />
+                <element signature="e#3434#3435#0" expanded="false" />
+                <element signature="e#3463#3464#0" expanded="false" />
+                <element signature="e#3513#3514#0" expanded="false" />
+                <element signature="e#3535#3536#0" expanded="false" />
+                <element signature="e#3571#3572#0" expanded="false" />
+                <element signature="e#3592#3593#0" expanded="false" />
+                <element signature="e#3837#3838#0" expanded="false" />
+                <element signature="e#3866#3867#0" expanded="false" />
+                <element signature="e#3931#3932#0" expanded="false" />
+                <element signature="e#3966#3967#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -338,55 +281,30 @@
     </option>
   </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/Property.java" />
-        <option value="db-console:/959c759f/7a184030-ff99-4380-becc-0d49c7d52cd7/" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/Race.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/PropertyType.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java" />
-        <option value="db-console:/959c759f/fefed95f-79c9-4ee6-b289-507c63555d4d/" />
-        <option value="$PROJECT_DIR$/conf/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/src/cl/FileValidatorCLI.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java" />
-        <option value="$PROJECT_DIR$/conf/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/cl/TemplateParser.java" />
-        <option value="$PROJECT_DIR$/src/cl/DnaParser.java" />
-        <option value="$PROJECT_DIR$/src/cl/ReportGeneratorCLI.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/AlcoholStatus.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/DiabetesStatus.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/Gender.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/Metabolizer.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/SampleSource.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/enums/Value.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/util/ExcelUtils.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/util/HibernateUtils.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/util/IcpcUtils.java" />
-        <option value="db-console:/959c759f/13dc6ba5-d26e-445a-b8e7-4c0dad093490/" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/IcpcProperty.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/Subject.java" />
-        <option value="$PROJECT_DIR$/ICPC_mysql_schema.sql" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/SampleProperty.java" />
-        <option value="$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java" />
         <option value="$PROJECT_DIR$/conf/db.schema.ddl" />
+        <option value="db-console:/959c759f/13dc6ba5-d26e-445a-b8e7-4c0dad093490/" />
+        <option value="$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java" />
       </list>
     </option>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
     <option name="FILTER_INFO" value="false" />
-    <option name="FILTER_DEBUG" value="false" />
+    <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" value="" />
   </component>
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
-    <option name="height" value="1200" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -396,12 +314,24 @@
             <id />
           </State>
           <State>
-            <id>SQL</id>
+            <id>Assignment issues</id>
+          </State>
+          <State>
+            <id>Concurrency annotation issues</id>
+          </State>
+          <State>
+            <id>Encapsulation issues</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
           </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>Abstraction issues</id>
+            <id>JSReferencingMutableVariableFromClosure</id>
           </State>
         </selected-state>
       </profile-state>
@@ -433,6 +363,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -498,7 +429,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="docs" />
+              <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -512,26 +443,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="conf" />
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Console.TableResult.DefaultCopyAction" value="Comma-separated Values (CSV)" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/postgresql-9.3-1102.jdbc4.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/postgresql-9.3-1102.jdbc4.jar" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -546,9 +476,33 @@
     <property name="options.searchVisible" value="true" />
     <property name="SearchEverywhereHistory" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/org/pharmgkb" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="260" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="262" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="266" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1060" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="260" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="262" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="266" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1060" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cl" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/org/pharmgkb" />
+      <recent name="$PROJECT_DIR$/resources" />
+      <recent name="$PROJECT_DIR$/src/org/pharmgkb/model" />
       <recent name="$PROJECT_DIR$/conf" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -558,8 +512,92 @@
       <recent name="org.pharmgkb.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ReportGeneratorCLI">
-    <configuration default="false" name="MetabolizerTest" type="JUnit" factoryName="JUnit" temporary="true">
+  <component name="RunManager" selected="Application.Analyze Directory">
+    <configuration default="false" name="DescriptionLoader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="cl.DescriptionLoader" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ICPC" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="IcpcUtilsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.pharmgkb.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="ICPC" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="org.pharmgkb.util" />
+      <option name="MAIN_CLASS_NAME" value="org.pharmgkb.util.IcpcUtilsTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SampleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.pharmgkb.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="ICPC" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.pharmgkb.model" />
+      <option name="MAIN_CLASS_NAME" value="org.pharmgkb.model.SampleTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="PropertyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
           <option name="PATTERN" value="org.pharmgkb.enums.*" />
@@ -570,7 +608,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="org.pharmgkb.enums" />
-      <option name="MAIN_CLASS_NAME" value="org.pharmgkb.enums.MetabolizerTest" />
+      <option name="MAIN_CLASS_NAME" value="org.pharmgkb.enums.PropertyTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -583,11 +621,17 @@
       </option>
       <envs />
       <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="IcpcPropertyTest" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="ExcelParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
           <option name="PATTERN" value="org.pharmgkb.*" />
@@ -596,14 +640,14 @@
       </extension>
       <module name="ICPC" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="PACKAGE_NAME" value="org.pharmgkb" />
-      <option name="MAIN_CLASS_NAME" value="org.pharmgkb.IcpcPropertyTest" />
-      <option name="METHOD_NAME" />
+      <option name="MAIN_CLASS_NAME" value="org.pharmgkb.ExcelParserTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -611,14 +655,24 @@
       </option>
       <envs />
       <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="Default" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console" temporary="true">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -629,10 +683,13 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+    <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -648,19 +705,35 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -684,10 +757,149 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="false" name="Parse File" type="Application" factoryName="Application">
@@ -700,7 +912,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="cl.TemplateParser" />
       <option name="VM_PARAMETERS" value="-Xmx768m" />
-      <option name="PROGRAM_PARAMETERS" value="-f $USER_HOME$/Documents/ICPC/Submissions/project1.xlsx" />
+      <option name="PROGRAM_PARAMETERS" value="-f &quot;$USER_HOME$/Box Sync/pharmgkb_icpc/submissions/processed/project19.xlsx&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -729,7 +941,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="cl.TemplateParser" />
       <option name="VM_PARAMETERS" value="-Xmx2g" />
-      <option name="PROGRAM_PARAMETERS" value="-d $USER_HOME$/Documents/ICPC/Submissions" />
+      <option name="PROGRAM_PARAMETERS" value="-d &quot;$USER_HOME$/Box Sync/pharmgkb_icpc/submissions/processed&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -764,9 +976,58 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="cl.DnaParser" />
+      <option name="MAIN_CLASS_NAME" value="cl.SupplementsParser" />
       <option name="VM_PARAMETERS" value="-Xmx768m" />
-      <option name="PROGRAM_PARAMETERS" value="-f &quot;$USER_HOME$/Documents/ICPC/DnaSubmission/ICPC DNA Submission Database 01-15-2014.xlsx&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="-d &quot;$USER_HOME$/Box Sync/pharmgkb_icpc/submissions/dna/ICPC DNA Submission Database 01-15-2014.xlsx&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ICPC" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="RikenParser" type="Application" factoryName="Application">
+      <log_file path="$PROJECT_DIR$/runtime/logs/icpc.log" checked="true" skipped="true" show_all="false" alias="ICPC" />
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="cl.SupplementsParser" />
+      <option name="VM_PARAMETERS" value="-Xmx768m" />
+      <option name="PROGRAM_PARAMETERS" value="-r &quot;$USER_HOME$/Box Sync/pharmgkb_icpc/submissions/riken/ICPC_Riken_PlateMap_080513.xlsx&quot;" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ICPC" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhenoParser" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="cl.PhenoParser" />
+      <option name="VM_PARAMETERS" value="-Xmx768m" />
+      <option name="PROGRAM_PARAMETERS" value="-f &quot;$USER_HOME$/Box Sync/pharmgkb_icpc/submissions/pheno/adj_pheno_updated.csv&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -794,8 +1055,8 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="cl.ReportGeneratorCLI" />
-      <option name="VM_PARAMETERS" value="-Xmx768m" />
-      <option name="PROGRAM_PARAMETERS" value="-f $USER_HOME$/Downloads/icpc.combined.xlsx" />
+      <option name="VM_PARAMETERS" value="-Xmx3584m" />
+      <option name="PROGRAM_PARAMETERS" value="-f &quot;$USER_HOME$/Box Sync/pharmgkb_icpc/icpc.combined.xlsx&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -824,7 +1085,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="cl.TemplateParser" />
       <option name="VM_PARAMETERS" value="-Xmx2g" />
-      <option name="PROGRAM_PARAMETERS" value="-a -d $USER_HOME$/Documents/ICPC/Submissions -f $USER_HOME$/Documents/ICPC/ICPC_Template_Aug_7_2012.xlsx" />
+      <option name="PROGRAM_PARAMETERS" value="-a -d &quot;$USER_HOME$/Box Sync/pharmgkb_icpc/submissions/processed&quot; " />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -843,40 +1104,29 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="File Validator" type="Application" factoryName="Application">
-      <log_file path="$PROJECT_DIR$/runtime/logs/icpc.log" checked="true" skipped="true" show_all="false" alias="ICPC" />
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="cl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="cl.FileValidatorCLI" />
-      <option name="VM_PARAMETERS" value="-Xmx2g" />
-      <option name="PROGRAM_PARAMETERS" value="-d $USER_HOME$/Documents/ICPC/Submissions" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ICPC" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <list size="9">
+    <list size="12">
       <item index="0" class="java.lang.String" itemvalue="Application.Parse File" />
       <item index="1" class="java.lang.String" itemvalue="Application.Parse Directory" />
       <item index="2" class="java.lang.String" itemvalue="Application.DnaParser" />
-      <item index="3" class="java.lang.String" itemvalue="Application.ReportGeneratorCLI" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Analyze Directory" />
-      <item index="5" class="java.lang.String" itemvalue="Application.File Validator" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.MetabolizerTest" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.IcpcPropertyTest" />
-      <item index="8" class="java.lang.String" itemvalue="Query Language Console.Default" />
+      <item index="3" class="java.lang.String" itemvalue="Application.RikenParser" />
+      <item index="4" class="java.lang.String" itemvalue="Application.PhenoParser" />
+      <item index="5" class="java.lang.String" itemvalue="Application.ReportGeneratorCLI" />
+      <item index="6" class="java.lang.String" itemvalue="Application.Analyze Directory" />
+      <item index="7" class="java.lang.String" itemvalue="Application.DescriptionLoader" />
+      <item index="8" class="java.lang.String" itemvalue="JUnit.IcpcUtilsTest" />
+      <item index="9" class="java.lang.String" itemvalue="JUnit.SampleTest" />
+      <item index="10" class="java.lang.String" itemvalue="JUnit.PropertyTest" />
+      <item index="11" class="java.lang.String" itemvalue="JUnit.ExcelParserTest" />
     </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PropertyTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.DescriptionLoader" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.IcpcUtilsTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ExcelParserTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.SampleTest" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -891,214 +1141,523 @@
       <changelist id="3ff045bd-cefc-4a58-a568-b6f2466d4474" name="Default" comment="" />
       <changelist id="ab1b4845-bdbf-4f6b-866f-326c5541b38b" name="ZZ-Ignore" comment="" />
       <created>1346167409480</created>
+      <option name="number" value="Default" />
       <updated>1348188321646</updated>
+      <workItem from="1414088283406" duration="3224000" />
+      <workItem from="1414171949898" duration="4379000" />
+      <workItem from="1415038102991" duration="1758000" />
+      <workItem from="1415149426540" duration="8268000" />
+      <workItem from="1416413440608" duration="971000" />
     </task>
     <task id="LOCAL-00001" summary="Initial code check-in.&#10;&#10;* core data in Subject class&#10;* persisted to MySQL using hibernate&#10;* wrote an excel parser&#10;* added supporting PharmGKB lib">
       <created>1346910510080</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
       <updated>1346910510080</updated>
     </task>
     <task id="LOCAL-00003" summary="Fixes.&#10;&#10;* column count off by one&#10;* null check for splitter">
       <created>1347030920812</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
       <updated>1347030920812</updated>
     </task>
     <task id="LOCAL-00004" summary="Add directory crawling.&#10;&#10;* can specify -d on the command line now to load all excel sheets in one dir">
       <created>1347035535600</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
       <updated>1347035535600</updated>
     </task>
     <task id="LOCAL-00005" summary="Move enums to their own package.">
       <created>1347290792617</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
       <updated>1347290792617</updated>
     </task>
     <task id="LOCAL-00006" summary="Updates.&#10;&#10;* added metabolizer enum for metabolizer phenotype&#10;* fixed column number checking based on column headers&#10;* skip empty rows&#10;* added jUnit support">
       <created>1347478573266</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
       <updated>1347478573266</updated>
     </task>
     <task id="LOCAL-00007" summary="Updates.&#10;&#10;* added metabolizer enum for metabolizer phenotype&#10;* fixed column number checking based on column headers&#10;* skip empty rows&#10;* added jUnit support">
       <created>1347478832094</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
       <updated>1347478832094</updated>
     </task>
     <task id="LOCAL-00009" summary="Fix SampleSource parsing.&#10;&#10;  * allow 0 as an &quot;Unknown&quot; value&#10;  * throw errors if an unexpected SampleSource is found">
       <created>1348188390341</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
       <updated>1348188390341</updated>
     </task>
     <task id="LOCAL-00010" summary="Add more columns to the table for analysis.">
       <created>1349128477244</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
       <updated>1349128477244</updated>
     </task>
     <task id="LOCAL-00011" summary="Fix misspelling.">
       <created>1349128540109</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
       <updated>1349128540109</updated>
     </task>
     <task id="LOCAL-00012" summary="Add output file.&#10;&#10;* now processing files generates output files that put &quot;NA&quot; in empty cells">
       <created>1349129193034</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
       <updated>1349129193034</updated>
     </task>
     <task id="LOCAL-00013" summary="Add dynamic column storage.&#10;&#10;* since columns can't be depended upon to be in the same place or each project is not required to have the same columns">
       <created>1349391308684</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
       <updated>1349391308684</updated>
     </task>
     <task id="LOCAL-00014" summary="Correct how columns are crawled and more verbose log messages.">
       <created>1349419177649</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
       <updated>1349419177649</updated>
     </task>
     <task id="LOCAL-00015" summary="Fix logic errors, especially with NA values.">
       <created>1349461474174</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
       <updated>1349461474174</updated>
     </task>
     <task id="LOCAL-00016" summary="Add in definitions for sample properties.">
       <created>1350071407915</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
       <updated>1350071407915</updated>
     </task>
     <task id="LOCAL-00017" summary="new properties for more genotypes.">
       <created>1350075954499</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
       <updated>1350075954499</updated>
     </task>
     <task id="LOCAL-00018" summary="refactor project ID to be a number instead of a string.">
       <created>1350078889774</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
       <updated>1350078889774</updated>
     </task>
     <task id="LOCAL-00019" summary="Add in validation for property columns.">
       <created>1350337496501</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
       <updated>1350337496501</updated>
     </task>
     <task id="LOCAL-00020" summary="Don't validate creatinine levels.&#10;&#10;* due to an email from Li saying project 5 can't express their creatinine levels numerically">
       <created>1350933310893</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
       <updated>1350933310893</updated>
     </task>
     <task id="LOCAL-00021" summary="clopidogrel and aspirin are not actually required.">
       <created>1351703492439</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
       <updated>1351703492439</updated>
     </task>
     <task id="LOCAL-00022" summary="Change way properties of subjects are persisted.&#10;&#10;* take out most properties of Subject class, instead put them in as IcpcProperty instances&#10;* properties are pull from the IcpcProperty collection so the parser doesn't have to worry about column position">
       <created>1351703708412</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
       <updated>1351703708412</updated>
     </task>
     <task id="LOCAL-00023" summary="Change inter assay variation to not require a number, can be Strings.">
       <created>1351712658678</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
       <updated>1351712658678</updated>
     </task>
     <task id="LOCAL-00024" summary="Update data integrity checks.&#10;&#10;* PPI names are now checked against an enum for consistency&#10;* hemoglobin and plasma urea are added for project 4">
       <created>1351880308123</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
       <updated>1351880308123</updated>
     </task>
     <task id="LOCAL-00025" summary="Make a combined data generator.&#10;&#10;* generates a report that dumps all projects into one excel sheet with all columns&#10;* updated the apache POI lib to use streaming API for faster, more efficient report generation">
       <created>1351890418572</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
       <updated>1351890418572</updated>
     </task>
     <task id="LOCAL-00026" summary="Adding in javadocs.">
       <created>1351891886515</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
       <updated>1351891886515</updated>
     </task>
     <task id="LOCAL-00027" summary="Normalize spaces in property sql file.">
       <created>1353365724905</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
       <updated>1353365724905</updated>
     </task>
     <task id="LOCAL-00028" summary="Column header to property matching fixes.&#10;&#10;* column names need to be normalized for whitespace&#10;* report should iterate through all possible properties, not just those for a given subject&#10;* update validation for columns, reflecting real world usage">
       <created>1353365877373</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
       <updated>1353365877373</updated>
     </task>
     <task id="LOCAL-00029" summary="Normalize genotype columns.">
       <created>1353446167932</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
       <updated>1353446167932</updated>
     </task>
     <task id="LOCAL-00030" summary="various fixes.&#10;&#10;* add in known equivalents for self-reported and OMB races&#10;* remove duplicate ezetimib property&#10;* add new variant position properties">
       <created>1354032892542</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
       <updated>1354032892542</updated>
     </task>
     <task id="LOCAL-00031" summary="Update NA values and expand error message.">
       <created>1354248864680</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
       <updated>1354248864680</updated>
     </task>
     <task id="LOCAL-00032" summary="Add IDEA 12 prefs.">
       <created>1357266379818</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
       <updated>1357266379818</updated>
     </task>
     <task id="LOCAL-00033" summary="Add new columns from project 40 and ignore blank headers.">
       <created>1357266415860</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
       <updated>1357266415860</updated>
     </task>
     <task id="LOCAL-00034" summary="New columns and fix how unmatched columns are reported.">
       <created>1359395007675</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
       <updated>1359395007675</updated>
     </task>
     <task id="LOCAL-00035" summary="New columns for project 16.">
       <created>1359670171543</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
       <updated>1359670171543</updated>
     </task>
     <task id="LOCAL-00036" summary="Fix data bug.">
       <created>1359670199142</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
       <updated>1359670199142</updated>
     </task>
     <task id="LOCAL-00037" summary="Added code for parsing DNA file and properties for storing the found data.">
       <created>1363816743486</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
       <updated>1363816743486</updated>
     </task>
     <task id="LOCAL-00038" summary="Fix race reporting.&#10;&#10;* don't show raw race data, show calculated fuzzy-matched race instead&#10;* new method for finding a best-match race to display&#10;* new Race enum">
       <created>1366070017475</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
       <updated>1366070017475</updated>
     </task>
     <task id="LOCAL-00039" summary="Various data format fixes.&#10;&#10;* store &quot;99&quot; values as &quot;NA&quot; instead&#10;* get rid of duplicate &quot;DNA concentration&quot; property&#10;* alphabetize genotype bases for all rsid columns">
       <created>1366135152983</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
       <updated>1366135152983</updated>
     </task>
     <task id="LOCAL-00040" summary="Fix for time interval column.">
       <created>1366218368879</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
       <updated>1366218368879</updated>
     </task>
     <task id="LOCAL-00041" summary="More columns to skip number validation.&#10;&#10;* these are time period columns and have mixed numbers and text">
       <created>1366650480091</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
       <updated>1366650480091</updated>
     </task>
     <task id="LOCAL-00042" summary="New column for picogreen concentration.">
       <created>1368543141420</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
       <updated>1368543141420</updated>
     </task>
     <task id="LOCAL-00043" summary="Output fixes and JavaDocs.&#10;&#10;* now obey Property types when outputting the combined report, make number cells when needed&#10;* added more javadocs">
       <created>1372096340499</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
       <updated>1372096340499</updated>
     </task>
     <task id="LOCAL-00044" summary="Use double instead of floats for number values.&#10;&#10;* POI expects doubles, not floats&#10;* fixes a bug for number display in the output file">
       <created>1372116310720</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
       <updated>1372116310720</updated>
     </task>
     <task id="LOCAL-00045" summary="new columns defs.">
       <created>1377887660009</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
       <updated>1377887660009</updated>
     </task>
     <task id="LOCAL-00046" summary="Put in data value check for new clopidogrel column.">
       <created>1379621025238</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
       <updated>1379621025238</updated>
     </task>
     <task id="LOCAL-00047" summary="Add config file.">
       <created>1379621482788</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
       <updated>1379621482788</updated>
     </task>
     <task id="LOCAL-00048" summary="New column definition.">
       <created>1382029742120</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
       <updated>1382029742120</updated>
     </task>
     <task id="LOCAL-00049" summary="More log info for exception.">
       <created>1387763619565</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
       <updated>1387763619565</updated>
     </task>
     <task id="LOCAL-00050" summary="Adding documentation.">
       <created>1401469357528</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
       <updated>1401469357528</updated>
     </task>
     <task id="LOCAL-00051" summary="Lot of changes.&#10;&#10;* switched from MySQL to Postgres for various reasons&#10;* updated the Apache POI lib for dealing with excel files&#10;* filled in more JavaDocs on classes and methods&#10;* fixed the DDL for the project, especially property names&#10;* added an &quot;analyze&quot; option to check for consistency between all the property names in all the files&#10;* trimmed out some unused methods">
       <created>1405920595785</created>
+      <option name="number" value="00051" />
+      <option name="project" value="LOCAL" />
       <updated>1405920595785</updated>
     </task>
     <task id="LOCAL-00052" summary="Refactorings.&#10;&#10;* renames Subject class to Sample class for more consistency&#10;* renames IcpcProperty to SampleProperty to make more sense&#10;* moved model object to a model package for organization">
       <created>1405920835743</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
       <updated>1405920835743</updated>
     </task>
     <task id="LOCAL-00053" summary="Refactored the database DDL.&#10;&#10;* moved to the conf directory and renamed">
       <created>1405921106383</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
       <updated>1405921106383</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Added index for sampleProperties.&#10;&#10;* report generator was very slow without it.">
+      <created>1405922130046</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1405922130046</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Refactoring.&#10;&#10;* should have moved with the rest of the model classes">
+      <created>1405950302005</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1405950302005</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Adding more indexes to the db.">
+      <created>1405950321593</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1405950321593</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Cleanup.&#10;&#10;* clean out unused properties in Sample class&#10;* clean out unused properties in table DDL">
+      <created>1405957144584</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1405957144585</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Major update.&#10;&#10;* move sample properties into a Map in the Sample class, remove old SampleProperty&#10;* put all properties into the Property enum&#10;* handle all validation as regex patterns in the Property enum&#10;* normalization is moved into the Property enum, now validation and normalization are two separate paths&#10;* expanded the number of Properties that are validated&#10;* cleanup some more references to MySQL&#10;* change hibernate to 4.2 version">
+      <created>1406262719520</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1406262719520</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Logging, indexing, update libs, and fix combined data report.&#10;&#10;* update library jars for POI and logging&#10;* update to Logback logging instead of Log4j&#10;* fix combined data report to use the properties property of the Sample class properly&#10;* add index to properties tables so they work in decent time">
+      <created>1407627230002</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1407627230002</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Format descriptor.&#10;&#10;* add in an addiitonal Property &quot;format&quot; property that describes the values in the property (comes from template)&#10;* stick the default template into the resources directory&#10;* start adding some formatting to the combined output file">
+      <created>1407638083415</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1407638083415</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Height normalization.&#10;&#10;* fix obviously wrong height values.">
+      <created>1407640215144</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1407640215144</updated>
+    </task>
+    <task id="LOCAL-00062" summary="BMI calculation.&#10;&#10;* calculate the BMI for a sample if none is given and the necessary data is available">
+      <created>1407648078625</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1407648078625</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Add creatinine category.&#10;&#10;* adding new property for creatinine category as requested 7/21&#10;* creatinine category is now calculated from the creatinine measurement&#10;* creatinine category added to the submission template&#10;* combined data report now output columns in the order of the definition in the enum, not based on ID">
+      <created>1407652046313</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1407652046313</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Cleanup.">
+      <created>1407689545607</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1407689545608</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Analysis fixes and javadocs.&#10;&#10;* fix analyze, IcpcProperty no longer used, use Property instead&#10;* default constructor for ExcelParser uses the blank template file&#10;* column analysis gets written to the output directory now, with a timestamp&#10;* close outputstreams properly&#10;* loadFormats can manage its own db session&#10;* add more javadocs">
+      <created>1407692944795</created>
+      <option name="number" value="00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1407692944795</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Fix bug for blank columns.&#10;&#10;* handle blank columns in the middle of the template properly">
+      <created>1407718959614</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1407718959614</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Fix ordering of columns in combined report.">
+      <created>1407719984060</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1407719984061</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Fix race and BMI.&#10;&#10;* add fuzzy match for caucasians&#10;* make BMI miscalculations return NA">
+      <created>1408942997502</created>
+      <option name="number" value="00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1408942997503</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Post-process smoking status.">
+      <created>1408943485032</created>
+      <option name="number" value="00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1408943485032</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Post-process LVEF value and flag.">
+      <created>1408981794799</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1408981794799</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Post-process &quot;time to event&quot; and MI during follow-up.">
+      <created>1408990016183</created>
+      <option name="number" value="00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1408990016183</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Caucasiens, BMI, and LVEF.&#10;&#10;* fix messpellings for caucasians&#10;* fix logic bug for BMI calculation of 0 value&#10;* Just set all missing LVEF values to 0 instead of NA">
+      <created>1409006615910</created>
+      <option name="number" value="00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1409006615910</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Caucasiens are still a problem.">
+      <created>1409065847666</created>
+      <option name="number" value="00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1409065847666</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Fix overzealous LVEF availability.">
+      <created>1409066888283</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1409066888284</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Add format text to propertyNames.">
+      <created>1409093117792</created>
+      <option name="number" value="00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1409093117792</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Update docs.">
+      <created>1409093991641</created>
+      <option name="number" value="00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1409093991641</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Added new columns for project 15.">
+      <created>1410555281790</created>
+      <option name="number" value="00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1410555281790</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Delete a sample if it exists before saving.">
+      <created>1410555311927</created>
+      <option name="number" value="00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1410555311927</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Parsing phenotype information.&#10;&#10;* added new property enums for pheno information&#10;* added a parser for reading pheno information from a CSV file">
+      <created>1410794690828</created>
+      <option name="number" value="00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1410794690828</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Don't swallow exceptions.">
+      <created>1411577430288</created>
+      <option name="number" value="00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1411577430288</updated>
+    </task>
+    <task id="LOCAL-00081" summary="New columns for project 40.">
+      <created>1414103403449</created>
+      <option name="number" value="00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1414103403450</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Update descrip for clinical setting.">
+      <created>1414172769975</created>
+      <option name="number" value="00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1414172769976</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Re-arrange columns re: 10/23/14 email from Li.">
+      <created>1414173815907</created>
+      <option name="number" value="00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1414173815907</updated>
+    </task>
+    <task id="LOCAL-00084" summary="New Riken dataset parser.&#10;&#10;* made a new Parser for data from Riken&#10;* refactored Dna parser to use same abstract class as Riken&#10;* added new Properties&#10;* fixed number validator to handle negative numbers">
+      <created>1415164179271</created>
+      <option name="number" value="00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1415164179271</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Rename columns and modified combined report.&#10;&#10;* renamed two chronolog LTA columns as a correction&#10;* took out the property name from the combined report, was causing confusion.">
+      <created>1416415153488</created>
+      <option name="number" value="00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1416415153488</updated>
+    </task>
+    <task id="LOCAL-00086" summary="IDEA config update.">
+      <created>1416415208810</created>
+      <option name="number" value="00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1416415208810</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="18600000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1121,45 +1680,87 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3" sideWeight="0.8691233" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21858408" sideWeight="0.9952153" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30722892" sideWeight="0.63471776" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21686748" sideWeight="0.9952153" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21537651" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32566372" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16666667" sideWeight="0.80893683" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12673056" sideWeight="0.80893683" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920355" sideWeight="0.9952191" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329927" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.259542" sideWeight="0.3652822" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32846153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32597172" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283186" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32048193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.59138656" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15974441" sideWeight="0.77753305" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3778761" sideWeight="0.9868526" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21244635" sideWeight="0.77753305" order="0" side_tool="false" content_ui="combo" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944787" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3433735" sideWeight="0.9868526" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22886762" sideWeight="0.6700077" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26626506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253012" sideWeight="0.9952191" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.59138656" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21751826" sideWeight="0.9952153" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21537651" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16719618" sideWeight="0.80893683" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.259542" sideWeight="0.3652822" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283186" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944787" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21286735" sideWeight="0.77753305" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34452555" sideWeight="0.9868526" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30875912" sideWeight="0.63471776" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22886762" sideWeight="0.6700077" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26732674" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32569975" sideWeight="0.9952191" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32142857" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.59138656" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1174,51 +1775,54 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="true" />
-    <MESSAGE value="Normalize genotype columns." />
-    <MESSAGE value="various fixes.&#10;&#10;* add in known equivalents for self-reported and OMB races&#10;* remove duplicate ezetimib property&#10;* add new variant position properties" />
-    <MESSAGE value="Update NA values and expand error message." />
-    <MESSAGE value="Add IDEA 12 prefs." />
-    <MESSAGE value="Add new columns from project 40 and ignore blank headers." />
-    <MESSAGE value="New columns and fix how unmatched columns are reported." />
-    <MESSAGE value="New columns for project 16." />
-    <MESSAGE value="Fix data bug." />
-    <MESSAGE value="Added code for parsing DNA file and properties for storing the found data." />
-    <MESSAGE value="Fix race reporting.&#10;&#10;* don't show raw race data, show calculated fuzzy-matched race instead&#10;* new method for finding a best-match race to display&#10;* new Race enum" />
-    <MESSAGE value="Various data format fixes.&#10;&#10;* store &quot;99&quot; values as &quot;NA&quot; instead&#10;* get rid of duplicate &quot;DNA concentration&quot; property&#10;* alphabetize genotype bases for all rsid columns" />
-    <MESSAGE value="Fix for time interval column." />
-    <MESSAGE value="More columns to skip number validation.&#10;&#10;* these are time period columns and have mixed numbers and text" />
-    <MESSAGE value="New column for picogreen concentration." />
-    <MESSAGE value="Output fixes and JavaDocs.&#10;&#10;* now obey Property types when outputting the combined report, make number cells when needed&#10;* added more javadocs" />
-    <MESSAGE value="Use double instead of floats for number values.&#10;&#10;* POI expects doubles, not floats&#10;* fixes a bug for number display in the output file" />
-    <MESSAGE value="new columns defs." />
-    <MESSAGE value="Put in data value check for new clopidogrel column." />
-    <MESSAGE value="Add config file." />
-    <MESSAGE value="New column definition." />
-    <MESSAGE value="More log info for exception." />
-    <MESSAGE value="Adding documentation." />
-    <MESSAGE value="Lot of changes.&#10;&#10;* switched from MySQL to Postgres for various reasons&#10;* updated the Apache POI lib for dealing with excel files&#10;* filled in more JavaDocs on classes and methods&#10;* fixed the DDL for the project, especially property names&#10;* added an &quot;analyze&quot; option to check for consistency between all the property names in all the files&#10;* trimmed out some unused methods" />
-    <MESSAGE value="Refactorings.&#10;&#10;* renames Subject class to Sample class for more consistency&#10;* renames IcpcProperty to SampleProperty to make more sense&#10;* moved model object to a model package for organization" />
-    <MESSAGE value="Refactored the database DDL.&#10;&#10;* moved to the conf directory and renamed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored the database DDL.&#10;&#10;* moved to the conf directory and renamed" />
+    <MESSAGE value="BMI calculation.&#10;&#10;* calculate the BMI for a sample if none is given and the necessary data is available" />
+    <MESSAGE value="Add creatinine category.&#10;&#10;* adding new property for creatinine category as requested 7/21&#10;* creatinine category is now calculated from the creatinine measurement&#10;* creatinine category added to the submission template&#10;* combined data report now output columns in the order of the definition in the enum, not based on ID" />
+    <MESSAGE value="Cleanup." />
+    <MESSAGE value="Analysis fixes and javadocs.&#10;&#10;* fix analyze, IcpcProperty no longer used, use Property instead&#10;* default constructor for ExcelParser uses the blank template file&#10;* column analysis gets written to the output directory now, with a timestamp&#10;* close outputstreams properly&#10;* loadFormats can manage its own db session&#10;* add more javadocs" />
+    <MESSAGE value="Fix bug for blank columns.&#10;&#10;* handle blank columns in the middle of the template properly" />
+    <MESSAGE value="Fix ordering of columns in combined report." />
+    <MESSAGE value="Fix race and BMI.&#10;&#10;* add fuzzy match for caucasians&#10;* make BMI miscalculations return NA" />
+    <MESSAGE value="Post-process smoking status." />
+    <MESSAGE value="Post-process LVEF value and flag." />
+    <MESSAGE value="Post-process &quot;time to event&quot; and MI during follow-up." />
+    <MESSAGE value="Caucasiens, BMI, and LVEF.&#10;&#10;* fix messpellings for caucasians&#10;* fix logic bug for BMI calculation of 0 value&#10;* Just set all missing LVEF values to 0 instead of NA" />
+    <MESSAGE value="Caucasiens are still a problem." />
+    <MESSAGE value="Fix overzealous LVEF availability." />
+    <MESSAGE value="Add format text to propertyNames." />
+    <MESSAGE value="Update docs." />
+    <MESSAGE value="Added new columns for project 15." />
+    <MESSAGE value="Delete a sample if it exists before saving." />
+    <MESSAGE value="Parsing phenotype information.&#10;&#10;* added new property enums for pheno information&#10;* added a parser for reading pheno information from a CSV file" />
+    <MESSAGE value="Don't swallow exceptions." />
+    <MESSAGE value="New columns for project 40." />
+    <MESSAGE value="Update descrip for clinical setting." />
+    <MESSAGE value="Re-arrange columns re: 10/23/14 email from Li." />
+    <MESSAGE value="New Riken dataset parser.&#10;&#10;* made a new Parser for data from Riken&#10;* refactored Dna parser to use same abstract class as Riken&#10;* added new Properties&#10;* fixed number validator to handle negative numbers" />
+    <MESSAGE value="Rename columns and modified combined report.&#10;&#10;* renamed two chronolog LTA columns as a correction&#10;* took out the property name from the combined report, was causing confusion." />
+    <MESSAGE value="IDEA config update." />
+    <option name="LAST_COMMIT_MESSAGE" value="IDEA config update." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/cl/TemplateParser.java</url>
-          <line>51</line>
+          <url>file://$PROJECT_DIR$/src/cl/PhenoParser.java</url>
+          <line>68</line>
           <properties />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="31" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1244,177 +1848,10 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/cl/DnaParser.java">
+    <entry file="file://$PROJECT_DIR$/test/org/pharmgkb/enums/PropertyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1155">
-          <caret line="60" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="2370">
-          <caret line="64" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/HibernateUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="1620">
-          <caret line="33" column="72" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="945">
-          <caret line="12" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#867#868#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1447#1448#0" expanded="true" />
-            <element signature="e#1471#1472#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Property.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1920">
-          <caret line="29" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3270" max-vertical-offset="8970">
-          <caret line="218" column="32" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://db-console:/959c759f/fefed95f-79c9-4ee6-b289-507c63555d4d/">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="165">
-          <caret line="5" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="405">
-          <caret line="21" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1470">
-          <caret line="54" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/db.schema.ddl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8175" max-vertical-offset="8295">
-          <caret line="545" column="158" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1405921921000" expanded="true" signature="1896:1960" placeholder="create index..sampleProperties_idx..." />
-            <marker date="1405921921000" expanded="true" signature="38830:38986" placeholder="insert into ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Gender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="1665">
-          <caret line="77" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/Sample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3000" max-vertical-offset="6900">
-          <caret line="200" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ICPC.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="435">
-          <caret line="21" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="2370">
-          <caret line="54" column="38" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/HibernateUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="1620">
-          <caret line="33" column="72" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="945">
-          <caret line="12" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#867#868#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1447#1448#0" expanded="true" />
-            <element signature="e#1471#1472#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Property.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1920">
-          <caret line="29" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="8970">
-          <caret line="34" column="74" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="689" max-vertical-offset="1455">
+          <caret line="90" column="55" selection-start-line="90" selection-start-column="55" selection-end-line="90" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -1426,16 +1863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/SubmissionTemplate.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="315">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="dbDummy://db-console:/959c759f/fefed95f-79c9-4ee6-b289-507c63555d4d/">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
@@ -1443,19 +1870,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/atlassian-ide-plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.055504162" vertical-offset="0" max-vertical-offset="1081">
           <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1463,9 +1881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2232" max-vertical-offset="3285">
           <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
-          <folding>
-            <element signature="e#7276#7277#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1473,82 +1888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07204611" vertical-offset="0" max-vertical-offset="1041">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cl/TemplateParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4350">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#9243#9244#0" expanded="true" />
-            <element signature="e#9274#9275#0" expanded="true" />
-            <element signature="e#9326#9327#0" expanded="true" />
-            <element signature="e#9365#9366#0" expanded="true" />
-            <element signature="e#9596#9597#0" expanded="true" />
-            <element signature="e#9632#9633#0" expanded="true" />
-            <element signature="e#9694#9695#0" expanded="true" />
-            <element signature="e#9743#9744#0" expanded="true" />
-            <element signature="e#9937#9938#0" expanded="true" />
-            <element signature="e#9963#9964#0" expanded="true" />
-            <element signature="e#10010#10011#0" expanded="true" />
-            <element signature="e#10046#10047#0" expanded="true" />
-            <marker date="1405919253000" expanded="true" signature="1867:2046" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cl/ReportGeneratorCLI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
-          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
-          <folding>
-            <element signature="e#1955#1956#0" expanded="true" />
-            <element signature="e#1984#1985#0" expanded="true" />
-            <element signature="e#2032#2033#0" expanded="true" />
-            <element signature="e#2067#2068#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/AlcoholStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1665">
-          <caret line="11" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/DiabetesStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Gender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1590">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/DrugPpi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1650">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1556,171 +1895,426 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1995">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Race.java">
+    <entry file="jar://$PROJECT_DIR$/lib/pgkb.jar!/org/pharmgkb/util/ExtendedEnum.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2310">
-          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.056947608" vertical-offset="0" max-vertical-offset="1317">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/pgkb.jar!/org/pharmgkb/api/Ethnicity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07853403" vertical-offset="0" max-vertical-offset="955">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/AlcoholStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.015673982" vertical-offset="105" max-vertical-offset="1665">
+          <caret line="11" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/DrugPpi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5510204" vertical-offset="0" max-vertical-offset="1650">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/Hibernate.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1344">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
+          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/DiabetesStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.013901761" vertical-offset="75" max-vertical-offset="1620">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/SampleSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1590">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Property.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1815">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/ExcelUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3195">
-          <caret line="200" column="27" selection-start-line="200" selection-start-column="27" selection-end-line="200" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cl/DnaParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
-          <caret line="80" column="62" selection-start-line="80" selection-start-column="62" selection-end-line="80" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/IcpcUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2010">
-          <caret line="104" column="20" selection-start-line="104" selection-start-column="20" selection-end-line="104" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040">
-          <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.7107438" vertical-offset="1086" max-vertical-offset="2175">
+          <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/HibernateUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1410">
-          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.35812673" vertical-offset="30" max-vertical-offset="1650">
+          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cl/ReportGeneratorCLI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/pharmgkb/model/SampleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/pharmgkb/enums/MetabolizerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/pharmgkb/ExcelParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+          <caret line="22" column="73" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Gender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09528131" vertical-offset="0" max-vertical-offset="1590">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://db-console:/959c759f/13dc6ba5-d26e-445a-b8e7-4c0dad093490/">
+    <entry file="jar://$PROJECT_DIR$/lib/pgkb.jar!/org/pharmgkb/util/ExtendedEnumHelper.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.310345" vertical-offset="0" max-vertical-offset="360">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding>
-            <marker date="0" expanded="true" signature="941:984" placeholder="select disti..propertyNames..." />
-          </folding>
+        <state vertical-scroll-proportion="0.25056946" vertical-offset="0" max-vertical-offset="1317">
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Value.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31543624" vertical-offset="890" max-vertical-offset="1635">
+          <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Race.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2595">
+          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/pharmgkb/util/IcpcUtilsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
+          <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/pgkb.jar!/org/pharmgkb/webapp/webwork/search/ClinicalAnnotationListAction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.105337076" vertical-offset="0" max-vertical-offset="712">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="555">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/SubmissionTemplate.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31337047" vertical-offset="0" max-vertical-offset="718">
+          <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/959c759f/13dc6ba5-d26e-445a-b8e7-4c0dad093490/icpc.public.propertynames">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33297062" vertical-offset="2334" max-vertical-offset="6915">
+          <caret line="199" column="6" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cl/TemplateParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="4380">
+          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/ExcelParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1665">
-          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="2595">
+          <caret line="71" column="46" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
+          <folding>
+            <marker date="1410543690000" expanded="true" signature="-1:-1" placeholder="select name ..propertynames..." />
+            <marker date="1410543690000" expanded="true" signature="-1:-1" placeholder="update prope..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cl/DescriptionLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83984375" vertical-offset="0" max-vertical-offset="855">
+          <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/ExcelUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1919" max-vertical-offset="2805">
+          <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/SubjectIterator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8550">
-          <caret line="51" column="78" selection-start-line="51" selection-start-column="78" selection-end-line="51" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="581" max-vertical-offset="4335">
+          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+          <folding>
+            <element signature="e#11477#11478#0" expanded="false" />
+            <element signature="e#11512#11513#0" expanded="false" />
+            <element signature="e#11584#11585#0" expanded="false" />
+            <element signature="e#11631#11632#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/RikenParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="930">
+          <caret line="53" column="32" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/DnaExcelParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1515">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cl/SupplementsParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="481" max-vertical-offset="1200">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/Sample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14610389" vertical-offset="0" max-vertical-offset="4815">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1199" max-vertical-offset="1965">
+          <caret line="177" column="14" selection-start-line="177" selection-start-column="14" selection-end-line="177" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#983#984#0" expanded="false" />
+            <element signature="e#1011#1012#0" expanded="false" />
+            <element signature="e#1059#1060#0" expanded="false" />
+            <element signature="e#1092#1093#0" expanded="false" />
+            <element signature="e#1122#1123#0" expanded="false" />
+            <element signature="e#1164#1165#0" expanded="false" />
+            <element signature="e#1252#1253#0" expanded="false" />
+            <element signature="e#1281#1282#0" expanded="false" />
+            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1364#1365#0" expanded="false" />
+            <element signature="e#1454#1455#0" expanded="false" />
+            <element signature="e#1484#1485#0" expanded="false" />
+            <element signature="e#1534#1535#0" expanded="false" />
+            <element signature="e#1571#1572#0" expanded="false" />
+            <element signature="e#1829#1830#0" expanded="false" />
+            <element signature="e#1860#1861#0" expanded="false" />
+            <element signature="e#1925#1926#0" expanded="false" />
+            <element signature="e#1964#1965#0" expanded="false" />
+            <element signature="e#2040#2041#0" expanded="false" />
+            <element signature="e#2066#2067#0" expanded="false" />
+            <element signature="e#2111#2112#0" expanded="false" />
+            <element signature="e#2140#2141#0" expanded="false" />
+            <element signature="e#2221#2222#0" expanded="false" />
+            <element signature="e#2246#2247#0" expanded="false" />
+            <element signature="e#2286#2287#0" expanded="false" />
+            <element signature="e#2313#2314#0" expanded="false" />
+            <element signature="e#2374#2375#0" expanded="false" />
+            <element signature="e#2401#2402#0" expanded="false" />
+            <element signature="e#2447#2448#0" expanded="false" />
+            <element signature="e#2478#2479#0" expanded="false" />
+            <element signature="e#2537#2538#0" expanded="false" />
+            <element signature="e#2563#2564#0" expanded="false" />
+            <element signature="e#2607#2608#0" expanded="false" />
+            <element signature="e#2636#2637#0" expanded="false" />
+            <element signature="e#2964#2965#0" expanded="false" />
+            <element signature="e#3000#3001#0" expanded="false" />
+            <element signature="e#3064#3065#0" expanded="false" />
+            <element signature="e#3113#3114#0" expanded="false" />
+            <element signature="e#3182#3183#0" expanded="false" />
+            <element signature="e#3213#3214#0" expanded="false" />
+            <element signature="e#3267#3268#0" expanded="false" />
+            <element signature="e#3306#3307#0" expanded="false" />
+            <element signature="e#3364#3365#0" expanded="false" />
+            <element signature="e#3390#3391#0" expanded="false" />
+            <element signature="e#3434#3435#0" expanded="false" />
+            <element signature="e#3463#3464#0" expanded="false" />
+            <element signature="e#3513#3514#0" expanded="false" />
+            <element signature="e#3535#3536#0" expanded="false" />
+            <element signature="e#3571#3572#0" expanded="false" />
+            <element signature="e#3592#3593#0" expanded="false" />
+            <element signature="e#3837#3838#0" expanded="false" />
+            <element signature="e#3866#3867#0" expanded="false" />
+            <element signature="e#3931#3932#0" expanded="false" />
+            <element signature="e#3966#3967#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/pharmgkb/enums/PropertyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8129676" vertical-offset="653" max-vertical-offset="1455">
+          <caret line="90" column="55" selection-start-line="90" selection-start-column="55" selection-end-line="90" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/util/IcpcUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="65" max-vertical-offset="2880">
+          <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
+          <folding>
+            <marker date="1415162309000" expanded="true" signature="-1:-1" placeholder="select forma..propertynames..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/SupplementalParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="885">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="e#1281#1282#0" expanded="false" />
+            <element signature="e#1308#1309#0" expanded="false" />
+            <element signature="e#1481#1482#0" expanded="false" />
+            <element signature="e#1512#1513#0" expanded="false" />
+            <element signature="e#1556#1557#0" expanded="false" />
+            <element signature="e#1584#1585#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cl/PhenoParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="1755">
+          <caret line="76" column="49" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/enums/Property.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8055">
+          <caret line="351" column="36" selection-start-line="351" selection-start-column="36" selection-end-line="351" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/db.schema.ddl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2011" max-vertical-offset="5145">
+          <caret line="157" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/959c759f/13dc6ba5-d26e-445a-b8e7-4c0dad093490/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.1034484" vertical-offset="0" max-vertical-offset="180">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding>
+            <marker date="0" expanded="true" signature="517:666" placeholder="update prope..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/dataSources.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50643086" vertical-offset="135" max-vertical-offset="795">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/CombinedDataReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2055">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2400" max-vertical-offset="27480">
-          <caret line="169" column="20" selection-start-line="169" selection-start-column="20" selection-end-line="169" selection-end-column="20" />
-          <folding>
-            <marker date="1405921964000" expanded="true" signature="99572:99618" placeholder="..." />
-            <marker date="1405921964000" expanded="true" signature="99572:99603" placeholder="..." />
-            <marker date="1405921964000" expanded="true" signature="99572:99590" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="-91.8" vertical-offset="0" max-vertical-offset="36000">
+          <caret line="153" column="13" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pharmgkb/model/SampleProperty.java">
+    <entry file="file://$PROJECT_DIR$/conf/logback.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <element signature="e#867#868#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1447#1448#0" expanded="true" />
-            <element signature="e#1471#1472#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.3858521" vertical-offset="0" max-vertical-offset="622">
+          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/db.schema.ddl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.012519562" vertical-offset="1613" max-vertical-offset="5220">
-          <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
-          <folding>
-            <marker date="1405921921000" expanded="true" signature="1896:1960" placeholder="create index..sampleProperties_idx..." />
-            <marker date="1405921921000" expanded="true" signature="38830:38986" placeholder="insert into ..." />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
   </component>
@@ -1763,7 +2357,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>sass-stdlib</last-edited>
+          <last-edited>jquery-latest</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1787,7 +2381,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Hibernate|ICPC</last-edited>
+          <last-edited>ICPC</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1811,7 +2405,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Postgresql</last-edited>
+          <last-edited>Apache Commons</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1824,4 +2418,3 @@
     </states>
   </component>
 </project>
-
