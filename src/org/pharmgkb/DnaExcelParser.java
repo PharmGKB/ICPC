@@ -1,7 +1,6 @@
 package org.pharmgkb;
 
 import com.google.common.collect.Maps;
-import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
@@ -47,7 +46,7 @@ public class DnaExcelParser extends SupplementalParser {
    * @param file the Excel file that holds the DNA data
    * @throws Exception
    */
-  public DnaExcelParser(@NonNull File file) throws Exception {
+  public DnaExcelParser(File file) throws Exception {
     super(file);
   }
 

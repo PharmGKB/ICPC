@@ -1,7 +1,6 @@
 package org.pharmgkb.util;
 
 import com.sun.istack.internal.Nullable;
-import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellReference;
@@ -25,7 +24,7 @@ public class ExcelUtils {
    * @param cell an excel {@link Cell}
    * @return a readable String for the address
    */
-  public static String getAddress(@NonNull Cell cell) {
+  public static String getAddress(Cell cell) {
     return CellReference.convertNumToColString(cell.getColumnIndex()) + (cell.getRowIndex() + 1);
   }
 

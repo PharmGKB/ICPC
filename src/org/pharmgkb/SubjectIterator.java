@@ -2,7 +2,6 @@ package org.pharmgkb;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
-import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
@@ -72,7 +71,7 @@ public class SubjectIterator implements Iterator {
     }
   }
 
-  public void parseHeading(@NonNull Session session) throws Exception {
+  public void parseHeading(Session session) throws Exception {
     Preconditions.checkNotNull(session);
     Map<String,String> unmappedColumnMap = Maps.newTreeMap();
 

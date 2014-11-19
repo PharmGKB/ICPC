@@ -23,10 +23,12 @@ CREATE TABLE samples (
 
 create index samples_prj_idx on samples(project);
 
+
 create table sampleSources (
   subject_id varchar(200) not null,
   source int not null
 );
+
 
 CREATE TABLE propertyNames (
   name varchar(200) DEFAULT NULL,
@@ -39,13 +41,6 @@ CREATE TABLE propertyNames (
 
 create index propertyNames_idx on propertyNames(descrip);
 
-CREATE TABLE sampleProperties (
-  subjectid varchar(200) DEFAULT NULL,
-  datakey varchar(200) DEFAULT NULL,
-  datavalue varchar(200) DEFAULT NULL
-);
-
-create index sampleProperties_idx on sampleProperties(subjectid);
 
 drop table properties;
 create table properties (
@@ -104,11 +99,10 @@ insert into propertyNames (name, descrip, datatype, format) values ('Ezetemib', 
 insert into propertyNames (name, descrip, datatype, format) values ('Glycoprotein_IIaIIIb_inhibitor', 'Glycoprotein IIa IIIb inhibitor use (required)', 'number', 'yes = 1, no = 0 or not known = 99');
 insert into propertyNames (name, descrip, datatype, format) values ('Active_metabolite', 'Clopidogrel active metabolite levels (optional)', 'number', 'please use value in ng/mL');
 insert into propertyNames (name, descrip, datatype, format) values ('Bleeding', 'Bleeding/Other adverse events reporting', 'number', 'yes = 1, no = 0 or not known = 99');
-insert into propertyNames (name, descrip, datatype, format) values ('Major_Bleeding', 'Major Bleeding Events', 'number', 'yes = 1, no = 0 or not known = 99                                                                                                          A bleeding event was assessed as serious if it fulfilled the World Health Organization (WHO) criteria for a serious adverse drug reaction, that is, if it was lethal, life-threatening, permanently disabling, or lead to hospital admission or prolongation of hospital stay.');
+insert into propertyNames (name, descrip, datatype, format) values ('Major_Bleeding', 'Major Bleeding Events', 'number', 'yes = 1, no = 0 or not known = 99;  A bleeding event was assessed as serious if it fulfilled the World Health Organization (WHO) criteria for a serious adverse drug reaction, that is, if it was lethal, life-threatening, permanently disabling, or lead to hospital admission or prolongation of hospital stay.');
 insert into propertyNames (name, descrip, datatype, format) values ('Minor_Bleeding', 'Minor Bleeding Events', 'number', 'yes = 1, no = 0 or not known = 99;  Any bleed that is not a major bleed');
 insert into propertyNames (name, descrip, datatype, format) values ('CV_events', 'Cardiovascular events during followup', 'number', 'yes = 1, no = 0 or not known = 99');
 insert into propertyNames (name, descrip, datatype, format) values ('time_to_mace', 'Time to the first  major adverse cardiac events (MACE) during followup', 'string', 'days to the first event since inclusion');
-insert into propertyNames (name, descrip, datatype, format) values ('Time_MACE', 'Time to the first major adverse cardiac events (MACE) during followup', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('STEMI', 'STEMI during follow up', 'number', 'yes = 1, no = 0 or not known = 99');
 insert into propertyNames (name, descrip, datatype, format) values ('Time_STEMI', 'Time to the first STEMI', 'number', 'days to the first event since inclusion');
 insert into propertyNames (name, descrip, datatype, format) values ('NSTEMI', 'NSTEMI during follow up', 'number', 'yes = 1, no = 0 or not known = 99');
@@ -204,7 +198,7 @@ insert into propertyNames (name, descrip, datatype, format) values ('Mechanical_
 insert into propertyNames (name, descrip, datatype, format) values ('Time_MechValve', 'Time to the first mechanical Valve Replacement duing follow up', 'number', 'days to the first event since inclusion');
 insert into propertyNames (name, descrip, datatype, format) values ('Tissue_Valve_Replacement', 'Tissue Valve Replacement duing follow up', 'number', 'yes = 1, not present = 0, not known = 99 or valve replacement but type not known = 2');
 insert into propertyNames (name, descrip, datatype, format) values ('Time_tissValve', 'Time to the first tissue Valve Replacement duing follow up', 'number', 'days to the first event since inclusion');
-insert into propertyNames (name, descrip, datatype, format) values ('Stent_thromb', 'Stent Thrombosis duing follow up', 'number', 'left = 1, right =2, no = 0 or not known = 99');
+insert into propertyNames (name, descrip, datatype, format) values ('Stent_thromb', 'Stent Thrombosis duing follow up', 'number', 'yes = 1, no = 0 or not known = 99');
 insert into propertyNames (name, descrip, datatype, format) values ('Time_stent', 'Time to the first Stent Thrombosis duing follow up', 'number', 'days to the first event since inclusion');
 insert into propertyNames (name, descrip, datatype, format) values ('All_cause_mortality', 'All cause mortality duing follow up', 'number', 'yes = 1, no = 0 or not known = 99');
 insert into propertyNames (name, descrip, datatype, format) values ('Time_mortality', 'Time to the first All cause mortality duing follow up', 'number', 'days to the first event since inclusion');

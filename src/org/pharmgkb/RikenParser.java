@@ -1,12 +1,10 @@
 package org.pharmgkb;
 
 import com.google.common.collect.Maps;
-import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
-import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
@@ -32,7 +30,7 @@ public class RikenParser extends SupplementalParser {
     sf_columnMap.put(4, Property.RIKEN_ID);
   }
 
-  public RikenParser(@NonNull File file) throws Exception {
+  public RikenParser(File file) throws Exception {
     super(file);
   }
 

@@ -30,7 +30,6 @@ public class TemplateParser {
   private static final Logger sf_logger = LoggerFactory.getLogger(TemplateParser.class);
   private static final List<String> sf_truncateTableQueries = Lists.newArrayList(
           "truncate table samplesources cascade",
-          "truncate table sampleproperties cascade",
           "truncate table properties cascade",
           "truncate table samples cascade");
 

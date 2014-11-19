@@ -1,7 +1,6 @@
 package org.pharmgkb;
 
 import com.google.common.base.Preconditions;
-import com.sun.javafx.beans.annotations.NonNull;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.Session;
@@ -31,7 +30,7 @@ public class CombinedDataReport {
    * Constructor
    * @param file file to write the report to, required
    */
-  public CombinedDataReport(@NonNull File file) {
+  public CombinedDataReport(File file) {
     Preconditions.checkNotNull(file);
     setOutputFile(file);
   }

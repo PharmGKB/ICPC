@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="J2EE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/validation-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
