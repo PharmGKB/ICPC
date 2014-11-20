@@ -44,6 +44,7 @@ public class SubjectIterator implements Iterator {
     sf_eventTimeMap.put(Property.LEFT_VENTRICULAR_HYPERTROPHY, Property.TIME_VENHYPERTROPHY);
     sf_eventTimeMap.put(Property.PERIPHERAL_VASCULAR_DISEASE, Property.TIME_PERIVASCULAR);
     sf_eventTimeMap.put(Property.ATRIAL_FIBRILLATION, Property.TIME_AF);
+    sf_eventTimeMap.put(Property.CV_EVENTS, Property.TIME_TO_MACE);
   }
 
   private Sheet m_sheet = null;
