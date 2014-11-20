@@ -141,7 +141,7 @@ insert into propertyNames (name, descrip, datatype, format) values ('indication_
 insert into propertyNames (name, descrip, datatype, format) values ('rs4803418', 'CYP2B6*1C genotype G>C (rs4803418)', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('rs48034189', 'CYP2B6*1C genotype C>T (rs48034189)', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('rs8192719', 'CYP2B6*9 genotype T>C (rs8192719)', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('rs3745274', 'CYP2B6*6 genotype G>T (rs3745274)', 'string', null);
+insert into propertyNames (name, descrip, datatype, format) values ('CYP2B6_6', 'CYP2B6*6 genotype G>T (rs3745274)', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('Abs_white_on_plavix', 'Absolute White cell count (cells/µL) on Plavix', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('Red_on_plavix', 'Red cell count (cells/µL) on Plavix', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('Platelet_on_plavix', 'Platelet count (cells/µL) on Plavix', 'number', null);
@@ -152,7 +152,7 @@ insert into propertyNames (name, descrip, datatype, format) values ('chronolog_p
 insert into propertyNames (name, descrip, datatype, format) values ('multiplate_adp_test', 'Multiplate ADP test', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('dna_concentration', 'DNA concentration', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('rs2279343', 'CYP2B6*4 genotype A>G (rs2279343)', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('rs3745274', 'CYP2B6*9 genotype G>T (rs3745274)', 'string', null);
+insert into propertyNames (name, descrip, datatype, format) values ('CYP2B6_9', 'CYP2B6*9 genotype G>T (rs3745274)', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('cyp2b6_genotypes', 'CYP2B6 genotypes', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('pci_information', 'PCI Information (for patients with CAD)', 'string', 'Stable and no PCI=1; ACS and no PCI=2; Stable and PCI=3; ACS and PCI=4; Not Available =NA; please choose 1 value only, this is only relevant in patients with CAD');
 insert into propertyNames (name, descrip, datatype, format) values ('binnedAge', 'Binned Age', 'string', null);
