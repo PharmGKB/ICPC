@@ -61,6 +61,7 @@ public class CombinedDataReport {
       cs.setFont(f);
 
       Row descripRow = sheet.createRow(currentRowIdx++);
+      Row nameRow = sheet.createRow(currentRowIdx++);
       Row formatRow = sheet.createRow(currentRowIdx++);
 
       descripRow.setHeightInPoints(30f);
@@ -70,6 +71,7 @@ public class CombinedDataReport {
         sf_logger.debug("{}: {}", property.ordinal(), property.getDisplayName());
 
         ExcelUtils.writeCell(descripRow, property.ordinal(), property.getDisplayName(), cs);
+        ExcelUtils.writeCell(nameRow, property.ordinal(), property.getShortName());
         ExcelUtils.writeCell(formatRow, property.ordinal(), IcpcUtils.lookupFormat(session, property.getShortName()), cs);
       }
 
