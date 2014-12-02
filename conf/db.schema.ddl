@@ -149,7 +149,7 @@ insert into propertyNames (name, descrip, datatype, format) values ('MeanPlatele
 insert into propertyNames (name, descrip, datatype, format) values ('Hematocrit_on_plavix', 'Hematocrit (%) on Plavix', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('chronolog_postloading_lta_max', 'Chronolog post-loading LTA max aggregation of ADP 20 ug/ml in %', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('chronolog_postloading_lta_final', 'Chronolog post-loading LTA final (5min) aggregation of ADP 20 ug/ml in %', 'number', null);
-insert into propertyNames (name, descrip, datatype, format) values ('multiplate_adp_test', 'Multiplate ADP test', 'string', null);
+insert into propertyNames (name, descrip, datatype, format) values ('multiplate_adp_test', 'Multiplate ADP post loading', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('dna_concentration', 'DNA concentration', 'number', null);
 insert into propertyNames (name, descrip, datatype, format) values ('rs2279343', 'CYP2B6*4 genotype A>G (rs2279343)', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('CYP2B6_9', 'CYP2B6*9 genotype G>T (rs3745274)', 'string', null);
@@ -162,9 +162,9 @@ insert into propertyNames (name, descrip, datatype, format) values ('rs2032582',
 insert into propertyNames (name, descrip, datatype, format) values ('rs1057910', 'rs1057910', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('rs71647871', 'rs71647871', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('Ace_or_Ang_inh_blockers', 'ACE Inhibitors or Angiotensin receptor blockers', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('ttf_acs', 'Time to the first ACS', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('acs_during_followup', 'ACS during follow up', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('clinical_setting', 'Stable angina=1, ACS=2', 'string', null);
+insert into propertyNames (name, descrip, datatype, format) values ('ttf_acs', 'Time to the first ACS', 'string', 'days to the first event since inclusion');
+insert into propertyNames (name, descrip, datatype, format) values ('acs_during_followup', 'ACS during follow up', 'string', 'yes = 1, no = 0');
+insert into propertyNames (name, descrip, datatype, format) values ('clinical_setting', 'Clinical Setting', 'string', 'Stable angina=1, ACS=2');
 insert into propertyNames (name, descrip, datatype, format) values ('prior_mi', 'Prior MI', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('prior_pci', 'Prior PCI', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('carat_2micro_aggmax', 'CARAT TX4 post Plavix loading dose platelet rich plasma max aggregation of ADP 2 µM %', 'string', null);
@@ -172,8 +172,8 @@ insert into propertyNames (name, descrip, datatype, format) values ('carat_5micr
 insert into propertyNames (name, descrip, datatype, format) values ('carat_5micro_post_late', 'CARAT TX4 post-loading ADP 5uM AGGlate', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('carat_5micro_main_max', 'CARAT TX4 maintenance ADP 5uM AGGmax', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('carat_5micro_main_late', 'CARAT TX4 maintenance ADP 5uM AGGlate', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('mi_during_followup', 'MI during follow up', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('ttf_mi', 'Time to the first MI', 'string', null);
+insert into propertyNames (name, descrip, datatype, format) values ('mi_during_followup', 'MI during follow up', 'string', 'yes = 1, no = 0');
+insert into propertyNames (name, descrip, datatype, format) values ('ttf_mi', 'Time to the first MI', 'string', 'days to the first event since inclusion');
 insert into propertyNames (name, descrip, datatype, format) values ('vasp_ld', 'VASP phosphorylation assay after LD', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('vasp_md', 'VASP phosphorylation assay after MD', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('dna_plate', 'Plate Number', 'string', null);

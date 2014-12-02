@@ -223,7 +223,7 @@ public enum Property implements ExtendedEnum {
   CHRONOLOG_BASELINE_LTA_FINAL(221, "chronolog_postloading_lta_final", "Chronolog post-loading LTA final (5min) aggregation of ADP 20 ug/ml in %", false, IcpcUtils.VALIDATOR_NUMBER),
   CONE_ADP_SURFACE_PCT(311,"cone_adp_surface_pct","Cone and Platelet Analyzer (ADP-induced surface coverage%)", false, IcpcUtils.VALIDATOR_NUMBER),
   CONE_ADP_SURFACE_SIZE(312,"cone_adp_surface_size","Cone and Platelet Analyzer (ADP-induced average size of platelet aggregates µm2)", false, IcpcUtils.VALIDATOR_NUMBER),
-  MULTIPLATE_ADP_TEST(222, "multiplate_adp_test", "Multiplate ADP test", false, IcpcUtils.VALIDATOR_NUMBER),
+  MULTIPLATE_ADP_TEST(222, "multiplate_adp_test", "Multiplate ADP post loading", false, IcpcUtils.VALIDATOR_NUMBER),
   MULTIPLATE_AA_TEST(313,"multiplate_aa_test","Multiplate AA test", false, IcpcUtils.VALIDATOR_NUMBER),
   CARAT_2MICRO_AGGMAX(240, "carat_2micro_aggmax", "CARAT TX4 post Plavix loading dose platelet rich plasma max aggregation of ADP 2 µM %", false, IcpcUtils.VALIDATOR_NUMBER),
   CARAT_5MICRO_POST_MAX(241, "carat_5micro_post_max", "CARAT TX4 post-loading ADP 5uM AGGmax", false, IcpcUtils.VALIDATOR_NUMBER),
