@@ -92,7 +92,9 @@ public enum Property implements ExtendedEnum {
   TISSUE_VALVE_REPLACEMENT(69, "Tissue_Valve_Replacement", "Tissue Valve Replacement duing follow up", false, IcpcUtils.VALIDATOR_BINARY),
   TIME_TISSVALVE    (70, "Time_tissValve", "Time to the first tissue Valve Replacement duing follow up", false, IcpcUtils.VALIDATOR_NUMBER),
   STENT_THROMB      (71, "Stent_thromb", "Stent Thrombosis duing follow up", false, IcpcUtils.VALIDATOR_THREE),
+  TYPE_STENT_THROMB (318, "type_stent_thromb", "type of stent thrombosis", false, Pattern.compile("([0123]|NA)")),
   TIME_STENT        (72, "Time_stent", "Time to the first Stent Thrombosis duing follow up", false, IcpcUtils.VALIDATOR_NUMBER),
+  STENT_TYPE        (320, "stent_type","stent type", false, IcpcUtils.VALIDATOR_TERTIARY),
   ALL_CAUSE_MORTALITY(73, "All_cause_mortality", "All cause mortality duing follow up", false, IcpcUtils.VALIDATOR_BINARY),
   TIME_MORTALITY    (74, "Time_mortality", "Time to the first All cause mortality duing follow up", false, IcpcUtils.VALIDATOR_NUMBER),
   CARDIOVASCULAR_DEATH(75, "Cardiovascular_death", "Cardiovascular death (well adjudicated by committee independent of physician in charge) duing follow up", false, IcpcUtils.VALIDATOR_BINARY),
@@ -334,7 +336,17 @@ public enum Property implements ExtendedEnum {
   RIKEN_PLATE_NUM   (314, "riken_plate_num", "ICPC_RIKEN plate#", false, IcpcUtils.VALIDATOR_NUMBER),
   RIKEN_LOCATION_NUM(315, "riken_location_num", "RIKEN location #", false, IcpcUtils.VALIDATOR_NUMBER),
   RIKEN_LOCATION    (316, "riken_location", "RIKEN location", false, null),
-  RIKEN_ID          (317, "riken_new_id", "New ID", false, IcpcUtils.VALIDATOR_NUMBER)
+  RIKEN_ID          (317, "riken_new_id", "New ID", false, IcpcUtils.VALIDATOR_NUMBER),
+  ATIVE_MALIGNANCY  (319, "ative_malignancy", "active malignancy", false, IcpcUtils.VALIDATOR_BINARY),
+  CARDIO_CHEOCK_PCI (321, "cardio_cheock_pci", "cardiogenic shock at the time of PCI", false, IcpcUtils.VALIDATOR_BINARY),
+  HYPERCHOLESTEROLEMIA        (322, "hypercholesterolemia","Hypercholesterolemia",false,IcpcUtils.VALIDATOR_BINARY),
+  PERI_ART_DISEASE_BASE       (323, "peri_art_disease_base","peripheral arterial disease at baseline", false, IcpcUtils.VALIDATOR_BINARY),
+  TARGET_VESSEL_REVASC        (324, "target_vessel_revasc", "target vessel revascularization", false, IcpcUtils.VALIDATOR_BINARY),
+  TTF_TARGET_VESSEL_REVASC    (325, "ttf_target_vessel_revasc", "time to the first target vessel revascularization", false, IcpcUtils.VALIDATOR_NUMBER),
+  NONTARGET_VESSEL_REVASC     (326, "nontarget_vessel_revasc","Non-target vessel revascularization",false,IcpcUtils.VALIDATOR_BINARY),
+  TTF_NONTARGET_VESSEL_REVASC (327, "ttf_nontarget_vessel_revasc","time to the first non-target vessel revascularization",false,IcpcUtils.VALIDATOR_NUMBER),
+  HEMORRHARGIC_STROKE         (328, "hemorrhargic_stroke","hemorrhargic stroke",false,IcpcUtils.VALIDATOR_BINARY),
+  TTF_HEMORRHARGIC_STROKE     (329, "ttf_hemorrhargic_stroke","Time to the first hemorrhargic stroke",false,IcpcUtils.VALIDATOR_NUMBER),
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;

@@ -165,8 +165,8 @@ insert into propertyNames (name, descrip, datatype, format) values ('Ace_or_Ang_
 insert into propertyNames (name, descrip, datatype, format) values ('ttf_acs', 'Time to the first ACS', 'string', 'days to the first event since inclusion');
 insert into propertyNames (name, descrip, datatype, format) values ('acs_during_followup', 'ACS during follow up', 'string', 'yes = 1, no = 0');
 insert into propertyNames (name, descrip, datatype, format) values ('clinical_setting', 'Clinical Setting', 'string', 'Stable angina=1, ACS=2');
-insert into propertyNames (name, descrip, datatype, format) values ('prior_mi', 'Prior MI', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('prior_pci', 'Prior PCI', 'string', null);
+insert into propertyNames (name, descrip, datatype, format) values ('prior_mi', 'Prior MI', 'string', 'yes=1, no=0, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('prior_pci', 'Prior PCI', 'string', 'yes=1, no=0, not known=NA');
 insert into propertyNames (name, descrip, datatype, format) values ('carat_2micro_aggmax', 'CARAT TX4 post Plavix loading dose platelet rich plasma max aggregation of ADP 2 µM %', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('carat_5micro_post_max', 'CARAT TX4 post-loading ADP 5uM AGGmax', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('carat_5micro_post_late', 'CARAT TX4 post-loading ADP 5uM AGGlate', 'string', null);
@@ -328,4 +328,16 @@ insert into propertyNames (name, descrip, datatype, format) values ('riken_plate
 insert into propertyNames (name, descrip, datatype, format) values ('riken_location_num','RIKEN location #','number',null);
 insert into propertyNames (name, descrip, datatype, format) values ('riken_location', 'RIKEN location','string',null);
 insert into propertyNames (name, descrip, datatype, format) values ('riken_new_id', 'New ID','number',null);
+insert into propertyNames (name, descrip, datatype, format) values ('type_stent_thromb','type of stent thrombosis','string','definite=1, probable=2, possible=3, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('ative_malignancy','active malignancy','string','yes=1, no=0, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('stent_type','stent type','string','any DES=1,  BMS only=2, both= 3, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('cardio_cheock_pci','cardiogenic shock at the time of PCI','string','yes=1, no=0, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('hypercholesterolemia','Hypercholesterolemia','string','yes=1, no=0, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('peri_art_disease_base','peripheral arterial disease at baseline','string','yes=1, no=0, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('target_vessel_revasc','target vessel revascularization','string','yes=1, no=0, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('ttf_target_vessel_revasc','time to the first target vessel revascularization','string','days to the first event since inclusion');
+insert into propertyNames (name, descrip, datatype, format) values ('nontarget_vessel_revasc','Non-target vessel revascularization','string','yes=1, no=0, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('ttf_nontarget_vessel_revasc','time to the first non-target vessel revascularization','string','days to the first event since inclusion');
+insert into propertyNames (name, descrip, datatype, format) values ('hemorrhargic_stroke','hemorrhargic stroke','string','yes = 1, no = 0 or not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('ttf_hemorrhargic_stroke','Time to the first hemorrhargic stroke','string','days to the first event since inclusion');
 commit;
