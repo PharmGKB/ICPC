@@ -32,6 +32,7 @@ public class IcpcUtils {
   public static final Pattern VALIDATOR_BASES = Pattern.compile("^[AaTtGgCc/]+$");
   public static final Pattern VALIDATOR_NUMBER = Pattern.compile("(-?(\\d+)?\\.?(\\d+)?)(\\s+)?(mg|mg/day|mg/L|uM)?");
   public static final Pattern VALIDATOR_TIME = Pattern.compile("(\\d{1,2}:\\d{2}:\\d{2})|((\\d+)?\\.?(\\d+)?)");
+  public static final String DATA_SHEET_NAME = "Subject_level_Data";
 
   private static final SimpleDateFormat m_fileDateFormatter = new SimpleDateFormat("yyyyMMdd-HHmm");
   private static final List<Integer> sf_projectsWithBadCreatinine = Lists.newArrayList(7, 37);

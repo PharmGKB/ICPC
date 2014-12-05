@@ -52,7 +52,7 @@ public class CombinedDataReport {
       session = HibernateUtils.getSession();
 
       Workbook workbook = new XSSFWorkbook();
-      Sheet sheet = workbook.createSheet("ICPC Data");
+      Sheet sheet = workbook.createSheet(IcpcUtils.DATA_SHEET_NAME);
 
       CellStyle cs = workbook.createCellStyle();
       cs.setWrapText(true);
@@ -60,8 +60,8 @@ public class CombinedDataReport {
       f.setBoldweight(Font.BOLDWEIGHT_BOLD);
       cs.setFont(f);
 
-      Row descripRow = sheet.createRow(currentRowIdx++);
       Row nameRow = sheet.createRow(currentRowIdx++);
+      Row descripRow = sheet.createRow(currentRowIdx++);
       Row formatRow = sheet.createRow(currentRowIdx++);
 
       descripRow.setHeightInPoints(30f);

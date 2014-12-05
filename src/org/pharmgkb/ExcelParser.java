@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
+import org.pharmgkb.util.IcpcUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +23,6 @@ import java.util.List;
  */
 public class ExcelParser {
   private static final Logger sf_logger = LoggerFactory.getLogger(ExcelParser.class);
-  private static final String sf_dataSheetName = "Subject_level_Data";
   private File m_file = null;
   private Workbook m_workbook = null;
   private Sheet m_dataSheet = null;
@@ -59,9 +59,9 @@ public class ExcelParser {
       setWorkbook(WorkbookFactory.create(inputStream));
     }
 
-    setDataSheet(getWorkbook().getSheet(sf_dataSheetName));
+    setDataSheet(getWorkbook().getSheet(IcpcUtils.DATA_SHEET_NAME));
     if (getDataSheet() == null) {
-      throw new Exception("Required worksheet "+sf_dataSheetName+" not found");
+      throw new Exception("Required worksheet "+IcpcUtils.DATA_SHEET_NAME+" not found");
     }
   }
 
