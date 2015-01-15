@@ -130,9 +130,9 @@ insert into propertyNames (name, descrip, datatype, format) values ('Inter_assay
 insert into propertyNames (name, descrip, datatype, format) values ('Blood_collection_type', 'Blood collection tube (EDTA, Sodium Citrate (mol/L))', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('Sample_type', 'Sample Type (PRP or Whole Blood)', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('Aggregometry_agonist', 'Aggregometry agonist', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('ADP', 'ADP', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('Arachadonic_acid', 'Arachadonic acid', 'string', null);
-insert into propertyNames (name, descrip, datatype, format) values ('Collagen', 'Collagen', 'string', null);
+insert into propertyNames (name, descrip, datatype, format) values ('ADP', 'ADP', 'string', 'yes = 1, no = 0');
+insert into propertyNames (name, descrip, datatype, format) values ('Arachadonic_acid', 'Arachadonic acid', 'string', 'yes = 1, no = 0');
+insert into propertyNames (name, descrip, datatype, format) values ('Collagen', 'Collagen', 'string', 'yes = 1, no = 0');
 insert into propertyNames (name, descrip, datatype, format) values ('Platelet_aggregometry_method', 'Platelet aggregometry method', 'string', null);
 insert into propertyNames (name, descrip, datatype, format) values ('Project', 'Project Site', 'string', 'Coded project site where data was collected. ');
 insert into propertyNames (name, descrip, datatype, format) values ('rs41291556', 'CYP2C19*8 genotype T>C (rs41291556)', 'string', null);
@@ -340,4 +340,7 @@ insert into propertyNames (name, descrip, datatype, format) values ('nontarget_v
 insert into propertyNames (name, descrip, datatype, format) values ('ttf_nontarget_vessel_revasc','time to the first non-target vessel revascularization','string','days to the first event since inclusion');
 insert into propertyNames (name, descrip, datatype, format) values ('hemorrhargic_stroke','hemorrhargic stroke','string','yes = 1, no = 0 or not known=NA');
 insert into propertyNames (name, descrip, datatype, format) values ('ttf_hemorrhargic_stroke','Time to the first hemorrhargic stroke','string','days to the first event since inclusion');
+insert into propertyNames (name, descrip, datatype, format) values ('non_hs_crp', 'non-hs-CRP (mg/L)', 'number', 'numerical');
+insert into propertyNames (name, descrip, datatype, format) values ('cyp2c19_star2_count', 'Cyp2C19 genotypes number of *2', 'number', 'Number of *2 alleles');
+insert into propertyNames (name, descrip, datatype, format) values ('cyp2c19_star17_count', 'Cyp2C19 genotypes number of *17', 'number', 'Number of *17 alleles');
 commit;

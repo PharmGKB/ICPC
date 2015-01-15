@@ -347,6 +347,9 @@ public enum Property implements ExtendedEnum {
   TTF_NONTARGET_VESSEL_REVASC (327, "ttf_nontarget_vessel_revasc","time to the first non-target vessel revascularization",false,IcpcUtils.VALIDATOR_NUMBER),
   HEMORRHARGIC_STROKE         (328, "hemorrhargic_stroke","hemorrhargic stroke",false,IcpcUtils.VALIDATOR_BINARY),
   TTF_HEMORRHARGIC_STROKE     (329, "ttf_hemorrhargic_stroke","Time to the first hemorrhargic stroke",false,IcpcUtils.VALIDATOR_NUMBER),
+  non_hs_crp                  (330, "non_hs_crp", "non-hs-CRP (mg/L)", false, IcpcUtils.VALIDATOR_NUMBER),
+  cyp2c19_star2_count         (331, "cyp2c19_star2_count", "Cyp2C19 genotypes number of *2", false, IcpcUtils.VALIDATOR_NUMBER),
+  cyp2c19_star17_count        (332, "cyp2c19_star17_count", "Cyp2C19 genotypes number of *17", false, IcpcUtils.VALIDATOR_NUMBER),
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;
