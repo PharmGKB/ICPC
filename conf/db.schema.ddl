@@ -330,7 +330,7 @@ insert into propertyNames (name, descrip, datatype, format) values ('riken_locat
 insert into propertyNames (name, descrip, datatype, format) values ('riken_new_id', 'New ID','number',null);
 insert into propertyNames (name, descrip, datatype, format) values ('type_stent_thromb','type of stent thrombosis','string','definite=1, probable=2, possible=3, not known=NA');
 insert into propertyNames (name, descrip, datatype, format) values ('ative_malignancy','active malignancy','string','yes=1, no=0, not known=NA');
-insert into propertyNames (name, descrip, datatype, format) values ('stent_type','stent type','string','any DES=1,  BMS only=2, both= 3, not known=NA');
+insert into propertyNames (name, descrip, datatype, format) values ('stent_type','stent type','string','any DES=1,  BMS only=2, both= 3, balloon angioplasty with no stent implantation=0, not known=NA');
 insert into propertyNames (name, descrip, datatype, format) values ('cardio_cheock_pci','cardiogenic shock at the time of PCI','string','yes=1, no=0, not known=NA');
 insert into propertyNames (name, descrip, datatype, format) values ('hypercholesterolemia','Hypercholesterolemia','string','yes=1, no=0, not known=NA');
 insert into propertyNames (name, descrip, datatype, format) values ('peri_art_disease_base','peripheral arterial disease at baseline','string','yes=1, no=0, not known=NA');
