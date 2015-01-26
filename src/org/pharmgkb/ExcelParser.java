@@ -99,6 +99,7 @@ public class ExcelParser {
         session.save(sample);
       }
       HibernateUtils.commit(session);
+      sf_logger.info("Processed "+subjectIterator.getCurrentRow()+" rows");
     }
     catch (Exception ex) {
       sf_logger.error("Error saving subjects for "+getFile(), ex);

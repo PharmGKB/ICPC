@@ -273,6 +273,21 @@ public class SubjectIterator implements Iterator {
     if (!IcpcUtils.isBlank(raceSelf) && raceSelf.equals("caucasien")) {
       sample.addProperty(Property.RACE_SELF, "caucasian");
     }
+
+    // white and platelet counts from project 40 need to be multiplied by 1k
+    if (sample.getProject()==40) {
+      String whiteCell = sample.getProperties().get(Property.WHITE_CELL_COUNT);
+      if (!IcpcUtils.isBlank(whiteCell)) {
+        Double whiteCellCount = Double.valueOf(whiteCell)*1000;
+        sample.addProperty(Property.WHITE_CELL_COUNT, String.valueOf(whiteCellCount));
+      }
+
+      String platelet = sample.getProperties().get(Property.PLATELET_COUNT);
+      if (!IcpcUtils.isBlank(platelet)) {
+        Double plateletCount = Double.valueOf(platelet)*1000;
+        sample.addProperty(Property.PLATELET_COUNT, String.valueOf(plateletCount));
+      }
+    }
   }
 
   @Override
