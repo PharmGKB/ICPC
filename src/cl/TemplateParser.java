@@ -190,7 +190,15 @@ public class TemplateParser {
         } else {
           fw.write("<tr>");
         }
-        fw.write("<td>"+column+"</td>");
+        fw.write("<td>");
+        fw.write(column);
+        Property property = Property.lookupByName(column);
+        if (property != null) {
+          fw.write("<div style=\"margin-left:1em;\"><small>");
+          fw.write(property.getShortName());
+          fw.write("</small></div>");
+        }
+        fw.write("</td>");
 
         if (columnToFile.get(column).size()==1 && columnToFile.get(column).contains(supported)) {
           sf_logger.warn("UNUSED PROPERTY IN DB: "+column);
