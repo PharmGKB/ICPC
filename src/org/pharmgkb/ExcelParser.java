@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.hibernate.Session;
+import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
@@ -15,6 +16,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Parses the excel file passed to it for Sample data and outputs the data found to another excel file.
@@ -22,6 +25,7 @@ import java.util.List;
  * @author Ryan Whaley
  */
 public class ExcelParser {
+  private static final Pattern sf_projectFilenameRegex = Pattern.compile("project(\\d+).xlsx");
   private static final Logger sf_logger = LoggerFactory.getLogger(ExcelParser.class);
   private File m_file = null;
   private Workbook m_workbook = null;
@@ -65,6 +69,31 @@ public class ExcelParser {
     }
   }
 
+  public void clearSubjects() throws PgkbException {
+    Matcher m = sf_projectFilenameRegex.matcher(getFile().getName());
+    if (!m.matches()) {
+      throw new PgkbException("Project name not in right format "+getFile());
+    }
+
+    Session session = null;
+    Integer projectId = Integer.valueOf(m.group(1));
+    sf_logger.info("Clearing subjects for project "+projectId);
+
+    try {
+      session = HibernateUtils.getSession();
+      List rez = session.createQuery("select s.id from Sample s where s.project=:pid")
+              .setInteger("pid", Integer.valueOf(m.group(1))).list();
+      for (Object result : rez) {
+        session.delete(session.get(Sample.class, (String)result));
+      }
+      HibernateUtils.commit(session);
+      sf_logger.info("Removed "+rez.size()+" records");
+    }
+    finally {
+      HibernateUtils.close(session);
+    }
+  }
+
   /**
    * Parses sample data from the excel workbook and saves it to the database. Will copy the input file to the specified
    * output file.
@@ -83,14 +112,7 @@ public class ExcelParser {
       subjectIterator.parseHeading(session);
 
       while (subjectIterator.hasNext()) {
-
         Sample sample = subjectIterator.next();
-
-        // clear existing record if it exists
-        Sample existingSample = (Sample)session.get(Sample.class, sample.getSubjectId());
-        if (existingSample != null) {
-          session.delete(existingSample);
-        }
 
         if (sf_logger.isDebugEnabled()) {
           sf_logger.debug("Loaded subject: "+ sample.getSubjectId());

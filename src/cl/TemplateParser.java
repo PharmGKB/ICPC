@@ -88,6 +88,7 @@ public class TemplateParser {
     File outputFile = IcpcUtils.getOutputFile(file);
 
     ExcelParser parser = new ExcelParser(file);
+    parser.clearSubjects();
     parser.parse(outputFile);
   }
 
