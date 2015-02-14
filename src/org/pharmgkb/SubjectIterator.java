@@ -281,7 +281,17 @@ public class SubjectIterator implements Iterator {
         Double whiteCellCount = Double.valueOf(whiteCell)*1000;
         sample.addProperty(Property.WHITE_CELL_COUNT, String.valueOf(whiteCellCount));
       }
+    }
 
+    if (sample.getProject()==19) {
+      String redCell = sample.getProperties().get(Property.RED_CELL_COUNT);
+      if (!IcpcUtils.isBlank(redCell)) {
+        Double redCellCount = Double.valueOf(redCell)*1_000_000;
+        sample.addProperty(Property.RED_CELL_COUNT, String.valueOf(redCellCount));
+      }
+    }
+
+    if (sample.getProject()==40 || sample.getProject()==19) {
       String platelet = sample.getProperties().get(Property.PLATELET_COUNT);
       if (!IcpcUtils.isBlank(platelet)) {
         Double plateletCount = Double.valueOf(platelet)*1000;

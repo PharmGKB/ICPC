@@ -350,6 +350,7 @@ public enum Property implements ExtendedEnum {
   non_hs_crp                  (330, "non_hs_crp", "non-hs-CRP (mg/L)", false, IcpcUtils.VALIDATOR_NUMBER),
   cyp2c19_star2_count         (331, "cyp2c19_star2_count", "Cyp2C19 genotypes number of *2", false, IcpcUtils.VALIDATOR_NUMBER),
   cyp2c19_star17_count        (332, "cyp2c19_star17_count", "Cyp2C19 genotypes number of *17", false, IcpcUtils.VALIDATOR_NUMBER),
+  levf_category               (333, "levf_category", "LEVF Category", false, IcpcUtils.VALIDATOR_TERTIARY)
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;
