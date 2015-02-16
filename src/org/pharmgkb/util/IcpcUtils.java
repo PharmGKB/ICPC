@@ -75,11 +75,7 @@ public class IcpcUtils {
   public static File getOutputFile(File inputFile) {
     String outputDirectoryName = inputFile.getParent()+"/output";
 
-    String newExtension = new StringBuilder()
-        .append(".")
-        .append(getTimestamp())
-        .append(".xls")
-        .toString();
+    String newExtension = "." + getTimestamp() + ".xls";
     String outputFileName = inputFile.getName().replaceAll("\\.xls", newExtension);
 
     return new File(outputDirectoryName, outputFileName);
@@ -102,6 +98,7 @@ public class IcpcUtils {
         validNameSet.add(token.toLowerCase());
       }
 
+      //noinspection unchecked
       m = enumToValidate.getDeclaredMethod("getDisplayName");
       for (Object constant : constants) {
         String token = (String) m.invoke(constant);
@@ -202,5 +199,15 @@ public class IcpcUtils {
 
   public static String getTimestamp() {
     return m_fileDateFormatter.format(new Date());
+  }
+
+  public static boolean validateNumberFloor(String value, double floor) {
+    if (isBlank(value)) {
+      return true;
+    }
+
+    Double valueNumber = Double.valueOf(value);
+    return valueNumber >= floor;
+
   }
 }

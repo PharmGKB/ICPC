@@ -25,14 +25,19 @@ import java.util.List;
 public class CombinedDataReport {
   private static final Logger sf_logger = LoggerFactory.getLogger(CombinedDataReport.class);
   private File m_outputFile = null;
+  private Integer m_project = null;
 
   /**
    * Constructor
    * @param file file to write the report to, required
+   * @param project the project to write. if null then write all projects. not required
    */
-  public CombinedDataReport(File file) {
+  public CombinedDataReport(File file, Integer project) {
     Preconditions.checkNotNull(file);
     setOutputFile(file);
+    if (project != null) {
+      m_project = project;
+    }
   }
 
   /**
@@ -75,7 +80,15 @@ public class CombinedDataReport {
         ExcelUtils.writeCell(formatRow, property.ordinal(), IcpcUtils.lookupFormat(session, property.getShortName()), cs);
       }
 
-      List rez = session.createQuery("select s.subjectId from Sample s order by s.project,s.subjectId").list();
+      List rez;
+      if (m_project == null) {
+        rez = session.createQuery("select s.subjectId from Sample s order by s.project,s.subjectId").list();
+      }
+      else {
+        rez = session.createQuery("select s.subjectId from Sample s where s.project=:pid order by s.subjectId")
+                .setInteger("pid", m_project)
+                .list();
+      }
       int projectId = 0;
       for (Object result : rez) {
         Sample sample = (Sample)session.get(Sample.class, (String)result);

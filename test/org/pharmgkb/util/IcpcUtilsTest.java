@@ -80,4 +80,13 @@ public class IcpcUtilsTest {
     assertEquals("88.4", IcpcUtils.convertCreatinine(sample));
   }
 
+  @Test
+  public void testValidateNumberFloor() throws PgkbException {
+    assertFalse(IcpcUtils.validateNumberFloor("14",  1000d));
+    assertTrue(IcpcUtils.validateNumberFloor("1200", 1000d));
+    assertTrue(IcpcUtils.validateNumberFloor("NA",   1000d));
+    assertTrue(IcpcUtils.validateNumberFloor("",     1000d));
+    assertTrue(IcpcUtils.validateNumberFloor(null,   1000d));
+  }
+
 }

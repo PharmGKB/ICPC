@@ -17,6 +17,7 @@ import java.io.File;
 public class ReportGeneratorCLI {
   private static final Logger sf_logger = LoggerFactory.getLogger(ReportGeneratorCLI.class);
   private File m_outputFile = null;
+  private Integer m_project = null;
 
   public static void main(String args[]) {
     try {
@@ -37,7 +38,8 @@ public class ReportGeneratorCLI {
   private void parseCommandLineArgs(String args[]) throws Exception{
     CliHelper cliHelper = new CliHelper(getClass(), false);
 
-    cliHelper.addOption("f", "file", "ICPC excel template file to read", "pathToFile");
+    cliHelper.addOption("f", "file", "file path to write to", "pathToFile", true);
+    cliHelper.addOption("p", "project", "project to output", "projectId", false);
 
     try {
       cliHelper.parse(args);
@@ -53,6 +55,10 @@ public class ReportGeneratorCLI {
       File file = new File(cliHelper.getValue("-f"));
       setOutputFile(file);
     }
+
+    if (cliHelper.hasOption("-p")) {
+      setProject(cliHelper.getIntValue("-p"));
+    }
   }
 
   /**
@@ -61,7 +67,7 @@ public class ReportGeneratorCLI {
    * @throws PgkbException
    */
   private void make() throws PgkbException {
-    CombinedDataReport report = new CombinedDataReport(getOutputFile());
+    CombinedDataReport report = new CombinedDataReport(getOutputFile(), getProject());
     report.generate();
   }
 
@@ -75,5 +81,13 @@ public class ReportGeneratorCLI {
 
   public void setOutputFile(File outputFile) {
     m_outputFile = outputFile;
+  }
+
+  public Integer getProject() {
+    return m_project;
+  }
+
+  public void setProject(Integer project) {
+    m_project = project;
   }
 }

@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Session;
 import org.pharmgkb.ExcelParser;
@@ -140,7 +141,7 @@ public class TemplateParser {
     final String original = "Original<br/>Template";
 
     List<String> fileNames = Lists.newArrayList(original,supported);
-    Multimap<String,String> columnToFile = TreeMultimap.create();
+    Multimap<String,String> columnToFile = TreeMultimap.create(String.CASE_INSENSITIVE_ORDER, String.CASE_INSENSITIVE_ORDER);
 
     for (Property property : Property.values()) {
       columnToFile.put(StringUtils.strip(property.getDisplayName()), supported);
@@ -148,7 +149,6 @@ public class TemplateParser {
 
     ExcelParser tParser = new ExcelParser();
     List<String> tColumns = tParser.analyze();
-    tParser.loadFormats();
     for (String column : tColumns) {
       columnToFile.put(StringUtils.strip(column), original);
     }
@@ -174,8 +174,8 @@ public class TemplateParser {
               "<table class=\"table table-bordered table-striped\">\n");
 
       fw.write("<thead>");
-      fw.write("<tr><th colspan=\"3\"></th><th style=\"text-align:center;\" colspan=\"17\">Project</th></tr>");
-      fw.write("<tr><th>Column Name</th>");
+      fw.write("<tr><th colspan=\"4\"></th><th style=\"text-align:center;\" colspan=\"17\">Project</th></tr>");
+      fw.write("<tr><th>#</th><th>Column Name</th>");
         for (String file : fileNames) {
           String name = file.replace("project","").replace(".xlsx","");
           fw.write("<th>"+ name +"</th>");
@@ -192,11 +192,13 @@ public class TemplateParser {
           fw.write("<tr>");
         }
         fw.write("<td>");
-        fw.write(column);
+        fw.write(Integer.toString(row));
+        fw.write("</td><td>");
+        fw.write(StringEscapeUtils.escapeHtml(column));
         Property property = Property.lookupByName(column);
         if (property != null) {
           fw.write("<div style=\"margin-left:1em;\"><small>");
-          fw.write(property.getShortName());
+          fw.write(StringEscapeUtils.escapeHtml(property.getShortName()));
           fw.write("</small></div>");
         }
         fw.write("</td>");
@@ -219,7 +221,7 @@ public class TemplateParser {
         fw.write("</tr>\n");
 
         if (row%20 == 0) {
-          fw.write("<tr><th>Column Name</th>");
+          fw.write("<tr><th>#</th><th>Column Name</th>");
           for (String file : fileNames) {
             String name = file.replace("project", "").replace(".xlsx", "");
             fw.write("<th>" + name + "</th>");
