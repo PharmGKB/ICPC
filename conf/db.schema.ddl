@@ -22,6 +22,8 @@ CREATE TABLE samples (
 );
 
 create index samples_prj_idx on samples(project);
+create index samples_idx2 on samples(subject_id);
+create index samples_idx3 on samples(project,subject_id);
 
 
 create table sampleSources (
@@ -40,6 +42,7 @@ CREATE TABLE propertyNames (
 );
 
 create index propertyNames_idx on propertyNames(descrip);
+create index propertyNames_idx2 on propertyNames(idx);
 
 
 drop table properties;
@@ -199,7 +202,7 @@ INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('Mechan
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('Time_MechValve', 'Time to the first mechanical Valve Replacement duing follow up', 'number', 'days to the first event since inclusion', 140);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('Tissue_Valve_Replacement', 'Tissue Valve Replacement duing follow up', 'number', 'yes = 1, not present = 0, not known = NA or valve replacement but type not known = 2', 141);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('Time_tissValve', 'Time to the first tissue Valve Replacement duing follow up', 'number', 'days to the first event since inclusion', 142);
-INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('Stent_thromb', 'Stent Thrombosis duing follow up', 'number', 'left = 1, right =2, no = 0 or not known = NA', 143);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('Stent_thromb', 'Stent Thrombosis duing follow up', 'number', 'yes = 1, not present = 0, not known = NA', 143);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('Time_stent', 'Time to the first Stent Thrombosis duing follow up', 'number', 'days to the first event since inclusion', 144);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('All_cause_mortality', 'All cause mortality duing follow up', 'number', 'yes = 1, no = 0 or not known = NA', 145);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('Time_mortality', 'Time to the first All cause mortality duing follow up', 'number', 'days to the first event since inclusion', 146);
