@@ -93,7 +93,12 @@ public class SubjectIterator implements Iterator {
             getColumnIdxToNameMap().put(cell.getColumnIndex(), property);
           }
           else {
-            unmappedColumnMap.put(ExcelUtils.getAddress(cell), cellContent);
+            if (cellContent != null && cellContent.equals("LEVF Category")) {
+              getColumnIdxToNameMap().put(cell.getColumnIndex(), Property.LVEF_CATEGORY);
+            }
+            else {
+              unmappedColumnMap.put(ExcelUtils.getAddress(cell), cellContent);
+            }
           }
         } catch (NonUniqueResultException ex) {
           throw new PgkbException("More than one property with description: " + cellContent, ex);
