@@ -347,5 +347,5 @@ INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('ttf_he
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('non_hs_crp', 'non-hs-CRP (mg/L)', 'number', 'numerical', 285);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('cyp2c19_star2_count', 'Cyp2C19 genotypes number of *2', 'number', 'Number of *2 alleles', 286);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('cyp2c19_star17_count', 'Cyp2C19 genotypes number of *17', 'number', 'Number of *17 alleles', 287);
-INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('levf_category', 'LEVF Category', 'number', '0: normale LVEF >55%, 1: slightly impaired LVEF 45-55%, 2: moderately impaired LVEF 35-44%, 3: severyl impaired LVEF <35%', 288);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('lvef_category', 'LVEF Category', 'number', '0: normale LVEF >55%, 1: slightly impaired LVEF 45-55%, 2: moderately impaired LVEF 35-44%, 3: severyl impaired LVEF <35%', 288);
 commit;

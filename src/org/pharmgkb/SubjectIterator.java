@@ -1,7 +1,6 @@
 package org.pharmgkb;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
@@ -238,8 +237,9 @@ public class SubjectIterator implements Iterator {
     }
 
     // if LVEF has a value, then it's available
-    String ejectFraction = sample.getProperties().get(Property.LVEF);
-    if (!IcpcUtils.isBlank(ejectFraction) && !ejectFraction.equals("0")) {
+    String lvef = sample.getProperties().get(Property.LVEF);
+    sample.addProperty(Property.LVEF_CATEGORY, lvef);
+    if (!IcpcUtils.isBlank(lvef) && !lvef.equals("0")) {
       sample.addProperty(Property.LVEF_AVAIL, Value.Yes.getShortName());
     }
     String lvefAvail = sample.getProperties().get(Property.LVEF_AVAIL);
@@ -276,45 +276,41 @@ public class SubjectIterator implements Iterator {
     }
 
     // white counts from projects need to be multiplied by 1k
-    List<Integer> whiteAdjProjects = Lists.newArrayList(5,7,14,40,41);
     String whiteCell = sample.getProperties().get(Property.WHITE_CELL_COUNT);
-    if (whiteAdjProjects.contains(sample.getProject())) {
-      if (!IcpcUtils.isBlank(whiteCell)) {
-        Double whiteCellCount = Double.valueOf(whiteCell)*1000;
-        whiteCell = String.valueOf(whiteCellCount);
-        sample.addProperty(Property.WHITE_CELL_COUNT, whiteCell);
-      }
-    }
-    if (!IcpcUtils.validateNumberFloor(whiteCell,1000)) {
-      sf_logger.warn(Property.WHITE_CELL_COUNT.getDisplayName() + " is low for "+sample.getSubjectId());
+    if (!IcpcUtils.validateNumberFloor(whiteCell, 1000)) {
+      sf_logger.warn(Property.WHITE_CELL_COUNT.getDisplayName() + " is low for " + sample.getSubjectId() + ", updated");
+      Double whiteCellCount = Double.valueOf(whiteCell)*1000;
+      whiteCell = String.valueOf(whiteCellCount);
+      sample.addProperty(Property.WHITE_CELL_COUNT, whiteCell);
     }
 
     // red counts from projects need to be multiplied by 1m
-    List<Integer> redAdjProjects = Lists.newArrayList(5,7,14,19);
     String redCell = sample.getProperties().get(Property.RED_CELL_COUNT);
-    if (redAdjProjects.contains(sample.getProject())) {
-      if (!IcpcUtils.isBlank(redCell)) {
-        Double redCellCount = Double.valueOf(redCell)*1_000_000;
-        redCell = String.valueOf(redCellCount);
-        sample.addProperty(Property.RED_CELL_COUNT, redCell);
-      }
-    }
     if (!IcpcUtils.validateNumberFloor(redCell,1_000_000)) {
-      sf_logger.warn(Property.RED_CELL_COUNT.getDisplayName() + " is low for "+sample.getSubjectId());
+      sf_logger.warn(Property.RED_CELL_COUNT.getDisplayName() + " is low for "+sample.getSubjectId() + ", updated");
+      double rbcAdjusted = Double.valueOf(redCell);
+      if (rbcAdjusted>0 && rbcAdjusted<1_000) {
+        rbcAdjusted = rbcAdjusted*1_000_000;
+      } else if (rbcAdjusted>=1_000 && rbcAdjusted<1_000_000) {
+        rbcAdjusted = rbcAdjusted*1_000;
+      }
+      redCell = String.valueOf(rbcAdjusted);
+      sample.addProperty(Property.RED_CELL_COUNT, redCell);
     }
 
     // platelet counts from projects need to be multiplied by 1k
-    List<Integer> plateletAdjProjects = Lists.newArrayList(3,5,7,14,15,19,40,41);
     String platelet = sample.getProperties().get(Property.PLATELET_COUNT);
-    if (plateletAdjProjects.contains(sample.getProject())) {
-      if (!IcpcUtils.isBlank(platelet)) {
-        Double plateletCount = Double.valueOf(platelet)*1000;
-        platelet = String.valueOf(plateletCount);
-        sample.addProperty(Property.PLATELET_COUNT, platelet);
-      }
-    }
     if (!IcpcUtils.validateNumberFloor(platelet,1000)) {
-      sf_logger.warn(Property.PLATELET_COUNT.getDisplayName() + " is low for "+sample.getSubjectId());
+      sf_logger.warn(Property.PLATELET_COUNT.getDisplayName() + " is low for "+sample.getSubjectId() + ", updated");
+      Double plateletCount = Double.valueOf(platelet)*1000;
+      platelet = String.valueOf(plateletCount);
+      sample.addProperty(Property.PLATELET_COUNT, platelet);
+    }
+
+    // correct type "0" stent thrombosis to "NA"
+    String stentType = sample.getProperties().get(Property.TYPE_STENT_THROMB);
+    if (!IcpcUtils.isBlank(stentType) && stentType.equals("0")) {
+      sample.addProperty(Property.TYPE_STENT_THROMB, IcpcUtils.NA);
     }
   }
 
