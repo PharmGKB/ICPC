@@ -332,7 +332,7 @@ INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('riken_
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('riken_location_num', 'RIKEN location #', 'number', null, 270);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('riken_location', 'RIKEN location', 'string', null, 271);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('riken_new_id', 'New ID', 'number', null, 272);
-INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('type_stent_thromb', 'type of stent thrombosis', 'string', null, 273);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('type_stent_thromb', 'type of stent thrombosis', 'string', 'definite=1, probable=2, possible=3, not available=NA', 273);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('ative_malignancy', 'active malignancy', 'string', null, 274);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('stent_type', 'stent type', 'string', 'any DES=1,  BMS only=2, both= 3, balloon angioplasty with no stent implantation=0, not known=NA', 275);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('cardio_cheock_pci', 'cardiogenic shock at the time of PCI', 'string', null, 276);
