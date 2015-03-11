@@ -243,13 +243,19 @@ public class SubjectIterator implements Iterator {
 
     // if LVEF has a value, then it's available
     String lvef = sample.getProperties().get(Property.LVEF);
-    sample.addProperty(Property.LVEF_CATEGORY, lvef);
     if (!IcpcUtils.isBlank(lvef) && !lvef.equals("0")) {
       sample.addProperty(Property.LVEF_AVAIL, Value.Yes.getShortName());
     }
     String lvefAvail = sample.getProperties().get(Property.LVEF_AVAIL);
     if (IcpcUtils.isBlank(lvefAvail)) {
       sample.addProperty(Property.LVEF_AVAIL, Value.No.getShortName());
+    }
+    if (sample.getProject() == 19) {
+      sample.addProperty(Property.LVEF_CATEGORY, lvef);
+      sample.addProperty(Property.LVEF, IcpcUtils.NA);
+    }
+    else {
+      sample.addProperty(Property.LVEF_CATEGORY, IcpcUtils.NA);
     }
 
     // fix time to event properties, put in the value for maximum followup when answer is No
