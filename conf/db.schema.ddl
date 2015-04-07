@@ -348,4 +348,6 @@ INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('non_hs
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('cyp2c19_star2_count', 'Cyp2C19 genotypes number of *2', 'number', 'Number of *2 alleles', 286);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('cyp2c19_star17_count', 'Cyp2C19 genotypes number of *17', 'number', 'Number of *17 alleles', 287);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('lvef_category', 'LVEF Category', 'number', '0: normale LVEF >55%, 1: slightly impaired LVEF 45-55%, 2: moderately impaired LVEF 35-44%, 3: severyl impaired LVEF <35%', 288);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('cascaded_stdADP_Phenotype', 'Cascaded Std ADP Phenotype', 'number', 'Phenotypes standardized in order of ICPC ranking for sites reporting multiple phenotypes', 289);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('stdADP_Phenotype_max', 'Std ADP Phenotype Max', 'number', 'standardized phenotype from a single platform that maximizes the sample size for a given site', 290);
 commit;

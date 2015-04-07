@@ -12,7 +12,9 @@ import org.pharmgkb.util.HibernateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,13 +22,13 @@ import java.util.List;
  *
  * @author Ryan Whaley
  */
-public class PhenoParser extends CommonParser {
-  private static final Logger sf_logger = LoggerFactory.getLogger(PhenoParser.class);
-  public static final String sf_fileDescriptor = "ICPC phenotype file to read";
+public class PhenoAnalysisParser extends CommonParser {
+  private static final Logger sf_logger = LoggerFactory.getLogger(PhenoAnalysisParser.class);
+  private static final String sf_fileDescriptor = "Phenotype analysis file in CSV format, 3 columns";
 
   public static void main(String[] args) {
     HibernateUtils.init();
-    PhenoParser parser = new PhenoParser();
+    PhenoAnalysisParser parser = new PhenoAnalysisParser();
     try {
       parser.parseCommandLineArgs(args);
       parser.parseData();
@@ -44,41 +46,33 @@ public class PhenoParser extends CommonParser {
     try (FileReader fr = new FileReader(getDataFile()); BufferedReader br = new BufferedReader(fr)) {
       session = HibernateUtils.getSession();
 
+      // burn the first two lines
+      br.readLine();br.readLine();
+
       int sampleSaved = 0;
       int sampleParsed = 0;
       String line;
+
       while ((line = br.readLine())!=null) {
         Iterable<String> fields = Splitter.on(",").split(line);
         List<String> fieldList = Lists.newArrayList(fields);
 
-        if (StringUtils.isBlank(fieldList.get(0).replaceAll("\"",""))) {
+        String sampleId = fieldList.get(0).replaceAll("\"", "");
+        String cascaded = fieldList.get(1).replaceAll("\"", "");
+        String max      = fieldList.get(2).replaceAll("\"", "");
+
+        if (StringUtils.isBlank(sampleId)) {
           continue;
         }
         sampleParsed++;
-
-        String sampleId = fieldList.get(1).replaceAll("\"", "");
-        String rawPheno = fieldList.get(16).replaceAll("\"", "");
-        String stdPheno = fieldList.get(17).replaceAll("\"", "");
 
         Sample sample = (Sample)session.get(Sample.class, sampleId);
         if (sample == null) {
           sf_logger.warn("No sample found with ID: "+sampleId);
         }
         else {
-          if (Property.PHENO_RAW.validate(rawPheno)) {
-            rawPheno = Property.PHENO_RAW.normalize(rawPheno);
-            sample.addProperty(Property.PHENO_RAW, rawPheno);
-          } else {
-            sf_logger.warn("Bad value for "+sampleId+" raw_pheno: "+rawPheno);
-          }
-
-          if (Property.PHENO_STD.validate(stdPheno)) {
-            stdPheno = Property.PHENO_STD.normalize(stdPheno);
-            sample.addProperty(Property.PHENO_STD, stdPheno);
-          } else {
-            sf_logger.warn("Bad value for "+sampleId+" std_pheno: "+stdPheno);
-          }
-
+          setProperty(sample, Property.CASCADED_STDADP_PHENOTYPE, cascaded);
+          setProperty(sample, Property.STDADP_PHENOTYPE_MAX, max);
           sampleSaved++;
         }
       }
@@ -90,6 +84,15 @@ public class PhenoParser extends CommonParser {
     }
     finally {
       HibernateUtils.close(session);
+    }
+  }
+
+  private void setProperty(Sample sample, Property property, String value) throws PgkbException {
+    if (property.validate(value)) {
+      String normalizedValue = property.normalize(value);
+      sample.addProperty(property, normalizedValue);
+    } else {
+      sf_logger.warn("Bad value for "+sample.getSubjectId()+" "+property+": "+value);
     }
   }
 
