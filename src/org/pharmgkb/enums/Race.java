@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import org.apache.commons.lang.StringUtils;
 import org.pharmgkb.util.ExtendedEnum;
 import org.pharmgkb.util.ExtendedEnumHelper;
+import org.pharmgkb.util.IcpcUtils;
 
 import java.util.Collection;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.regex.Pattern;
  *
  * @author Ryan Whaley
  */
+@SuppressWarnings("unused")
 public enum Race implements ExtendedEnum {
   WHITE(0, "white", "White"),
   BLACK(1, "black", "Black"),
@@ -51,7 +53,7 @@ public enum Race implements ExtendedEnum {
 
   private synchronized void init() {
     if (s_extendedEnumHelper == null) {
-      s_extendedEnumHelper = new ExtendedEnumHelper<Race>();
+      s_extendedEnumHelper = new ExtendedEnumHelper<>();
     }
     s_extendedEnumHelper.add(this, m_id, m_shortName, m_displayName);
   }
@@ -124,15 +126,17 @@ public enum Race implements ExtendedEnum {
   }
 
   /**
-   * Will return the first matching Race for the given String races
+   * Will return the first matching non-blank Race for the given String races
    * @param races a collection of race Strings
    * @return the equivalent Race
    */
   public static Race lookupByFuzzyName(String... races) {
     for (String raceName : races) {
-      Race race = lookupByFuzzyName(raceName);
-      if (race!=null) {
-        return race;
+      if (!IcpcUtils.isBlank(raceName)) {
+        Race race = lookupByFuzzyName(raceName);
+        if (race != null) {
+          return race;
+        }
       }
     }
     return null;
@@ -165,7 +169,7 @@ public enum Race implements ExtendedEnum {
       tokens.add(key);
       tokens.add(StringUtils.capitalize(key));
     }
-    return Pattern.compile("("+ Joiner.on("|").join(tokens)+"|\\;)+");
+    return Pattern.compile("("+ Joiner.on("|").join(tokens)+"|;)+");
   }
 
 

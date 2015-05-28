@@ -35,6 +35,8 @@ public class PropertyTest {
     assertFalse(Property.GENDER.validate("blah"));
 
     assertTrue(Property.RACE_SELF.validate("blah"));
+    assertTrue(Property.RACE_OMB.validate("asia"));
+    assertFalse(Property.RACE_OMB.validate("123245"));
 
     assertTrue(Property.SAMPLE_SOURCE.validate("1;2;4"));
     assertFalse(Property.SAMPLE_SOURCE.validate("1;2;9"));

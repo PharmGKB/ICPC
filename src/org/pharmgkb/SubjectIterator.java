@@ -233,7 +233,9 @@ public class SubjectIterator implements Iterator {
     sample.addProperty(Property.CREATININE_CAT, IcpcUtils.calculateCreatinineCat(sample));
 
     // set race properly using all available info
-    sample.addProperty(Property.RACE_OMB, sample.calculateRace());
+    String ombRace = sample.calculateRace();
+    sample.setRaceOMB(ombRace);
+    sample.addProperty(Property.RACE_OMB, ombRace);
 
     // if subject currently smokes, then they have smoked
     String currentSmoker = sample.getProperties().get(Property.CURRENT_SMOKER);
