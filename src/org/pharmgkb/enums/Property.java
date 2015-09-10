@@ -353,6 +353,21 @@ public enum Property implements ExtendedEnum {
   LVEF_CATEGORY               (333, "lvef_category", "LVEF Category", false, IcpcUtils.VALIDATOR_TERTIARY),
   CASCADED_STDADP_PHENOTYPE   (334, "cascaded_stdADP_Phenotype", "Cascaded Std ADP Phenotype", false, IcpcUtils.VALIDATOR_NUMBER),
   STDADP_PHENOTYPE_MAX        (335, "stdADP_Phenotype_max", "Std ADP Phenotype Max", false, IcpcUtils.VALIDATOR_NUMBER),
+  RS7254579  (336, "rs7254579", "CYP2B6 genotype T>C (rs7254579)", false, IcpcUtils.VALIDATOR_BASES),
+  RS2286823  (337, "rs2286823", "TMEM120A; POR genotype G>A (rs2286823)", false, IcpcUtils.VALIDATOR_BASES),
+  RS1057868  (338, "rs1057868", "TMEM120A; POR genotype C>T (rs1057868)", false, IcpcUtils.VALIDATOR_BASES),
+  RS2046934  (339, "rs2046934", "MED12L;P2RY12 genotype A>G  (rs2046934)", false, IcpcUtils.VALIDATOR_BASES),
+  RS1472122  (340, "rs1472122", "P2RY13;MED12L;GPR87  genotype G>A (rs1472122)", false, IcpcUtils.VALIDATOR_BASES),
+  RS1799853  (341, "rs1799853", "CYP2C9 genotype C>T (rs1799853)", false, IcpcUtils.VALIDATOR_BASES),
+  RS28371685 (342, "rs28371685", "CYP2C9 genotype C>T (rs28371685)", false, IcpcUtils.VALIDATOR_BASES),
+  RS28365085 (343, "rs28365085", "CYP3A5 genotype A>G (rs28365085)", false, IcpcUtils.VALIDATOR_BASES),
+  RS12041331 (344, "rs12041331", "PEAR1 genotype G>A (rs12041331)", false, IcpcUtils.VALIDATOR_BASES),
+  RS1128503  (345, "rs1128503", "ABCB1 genotype G>A (rs1128503)", false, IcpcUtils.VALIDATOR_BASES),
+  RS168753   (346, "rs168753", "F2R genotype A>T (rs168753)", false, IcpcUtils.VALIDATOR_BASES),
+  RS5918     (347, "rs5918", "ITGB3 genotype T>C (rs5918)", false, IcpcUtils.VALIDATOR_BASES),
+  RS762551   (348, "rs762551", "CYP1A2 genotype A>C (rs762551)", false, IcpcUtils.VALIDATOR_BASES),
+  RS2244613  (349, "rs2244613", "CES1 genotype T>G (rs2244613 )", false, IcpcUtils.VALIDATOR_BASES),
+  RS2302429  (350, "rs2302429", "POR genotype G>A (rs2302429)", false, IcpcUtils.VALIDATOR_BASES),
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;
