@@ -10,7 +10,6 @@ import org.pharmgkb.model.Sample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,20 +64,6 @@ public class IcpcUtils {
   public static boolean isBlank(String string) {
     String trimString = StringUtils.trimToNull(StringUtils.lowerCase(string));
     return StringUtils.isBlank(trimString) || sf_blankWords.contains(trimString);
-  }
-
-  /**
-   * Constructs the default name and path for an ouptut file based on the input data file.
-   * @param inputFile the input data file
-   * @return a new filename to ouput to
-   */
-  public static File getOutputFile(File inputFile) {
-    String outputDirectoryName = inputFile.getParent()+"/output";
-
-    String newExtension = "." + getTimestamp() + ".xls";
-    String outputFileName = inputFile.getName().replaceAll("\\.xls", newExtension);
-
-    return new File(outputDirectoryName, outputFileName);
   }
 
   /**

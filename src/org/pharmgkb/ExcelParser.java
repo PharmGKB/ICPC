@@ -97,12 +97,10 @@ public class ExcelParser {
   /**
    * Parses sample data from the excel workbook and saves it to the database. Will copy the input file to the specified
    * output file.
-   * @param outputFile file to copy workbook content to
    * @throws Exception can occur from DB or IO
    */
-  public void parse(File outputFile) throws Exception {
+  public void parse() throws Exception {
     sf_logger.info("Parsing excel workbook "+getFile());
-    sf_logger.info("writing output to "+outputFile);
 
     SubjectIterator subjectIterator = new SubjectIterator(getDataSheet());
     Session session = null;

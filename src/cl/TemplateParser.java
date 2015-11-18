@@ -58,10 +58,12 @@ public class TemplateParser {
     }
     catch (Exception ex) {
       sf_logger.error("Couldn't run parser", ex);
+      System.exit(1);
     }
     finally {
       HibernateUtils.shutdown();
     }
+    System.exit(0);
   }
 
   /**
@@ -86,11 +88,9 @@ public class TemplateParser {
     Preconditions.checkNotNull(file);
     Preconditions.checkArgument(file.exists(), "File does not exist: %s", file);
 
-    File outputFile = IcpcUtils.getOutputFile(file);
-
     ExcelParser parser = new ExcelParser(file);
     parser.clearSubjects();
-    parser.parse(outputFile);
+    parser.parse();
   }
 
   /**
