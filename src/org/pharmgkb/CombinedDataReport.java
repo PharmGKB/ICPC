@@ -1,8 +1,7 @@
 package org.pharmgkb;
 
 import com.google.common.base.Preconditions;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
 import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
@@ -22,19 +21,25 @@ import java.util.List;
  *
  * @author Ryan Whaley
  */
-public class CombinedDataReport {
+public class CombinedDataReport extends AbstractReport {
   private static final Logger sf_logger = LoggerFactory.getLogger(CombinedDataReport.class);
-  private File m_outputFile = null;
+  private static final String sf_filename = "icpc.combined.xlsx";
+  private static final int sf_defaultColumnWidth = 15;
+  public static final String DATA_SHEET_NAME = "Subject_level_Data";
+
   private Integer m_project = null;
 
   /**
    * Constructor
-   * @param file file to write the report to, required
+   * @param dir directory to write the report to, required
    * @param project the project to write. if null then write all projects. not required
    */
-  public CombinedDataReport(File file, Integer project) {
-    Preconditions.checkNotNull(file);
-    setOutputFile(file);
+  public CombinedDataReport(File dir, Integer project) {
+    super(sf_defaultColumnWidth);
+    Preconditions.checkNotNull(dir);
+    Preconditions.checkArgument(dir.isDirectory());
+    setFile(new File(dir, sf_filename));
+
     if (project != null) {
       m_project = project;
     }
@@ -46,28 +51,16 @@ public class CombinedDataReport {
    * @throws PgkbException can occur if output file is not specified or if I/O operations fail
    */
   public void generate() throws PgkbException {
-    Preconditions.checkNotNull(getOutputFile());
-
-    sf_logger.info("starting "+this.getClass().getSimpleName()+", writing to file " + getOutputFile());
+    sf_logger.info("starting "+this.getClass().getSimpleName()+", writing to file " + getFile());
 
     Session session = null;
 
-    try(FileOutputStream out = new FileOutputStream(getOutputFile())) {
-      int currentRowIdx = 0;
+    try(FileOutputStream out = new FileOutputStream(getFile())) {
       session = HibernateUtils.getSession();
 
-      Workbook workbook = new XSSFWorkbook();
-      Sheet sheet = workbook.createSheet(IcpcUtils.DATA_SHEET_NAME);
-
-      CellStyle cs = workbook.createCellStyle();
-      cs.setWrapText(true);
-      Font f = workbook.createFont();
-      f.setBoldweight(Font.BOLDWEIGHT_BOLD);
-      cs.setFont(f);
-
-      Row nameRow = sheet.createRow(currentRowIdx++);
-      Row descripRow = sheet.createRow(currentRowIdx++);
-      Row formatRow = sheet.createRow(currentRowIdx++);
+      Row nameRow = getNextRow();
+      Row descripRow = getNextRow();
+      Row formatRow = getNextRow();
 
       descripRow.setHeightInPoints(30f);
       formatRow.setHeightInPoints(60f);
@@ -75,9 +68,9 @@ public class CombinedDataReport {
       for (Property property : Property.values()) {
         sf_logger.debug("{}: {}", property.ordinal(), property.getDisplayName());
 
-        ExcelUtils.writeCell(descripRow, property.ordinal(), property.getDisplayName(), cs);
-        ExcelUtils.writeCell(nameRow, property.ordinal(), property.getShortName());
-        ExcelUtils.writeCell(formatRow, property.ordinal(), IcpcUtils.lookupFormat(session, property.getShortName()), cs);
+        ExcelUtils.writeCell(descripRow, property.ordinal(), property.getDisplayName(), getHeaderStyle());
+        ExcelUtils.writeCell(nameRow, property.ordinal(), property.getShortName(), getMonospaceStyle());
+        ExcelUtils.writeCell(formatRow, property.ordinal(), IcpcUtils.lookupFormat(session, property), getCodeStyle());
       }
 
       List rez;
@@ -96,7 +89,7 @@ public class CombinedDataReport {
           sf_logger.info("writing project {}", sample.getProject());
           projectId = sample.getProject();
         }
-        Row row = sheet.createRow(currentRowIdx++);
+        Row row = getNextRow();
 
         for (Property property : Property.values()) {
           try {
@@ -136,7 +129,7 @@ public class CombinedDataReport {
         }
       }
 
-      workbook.write(out);
+      saveToOutputStream(out);
     }
     catch (Exception ex) {
       throw new PgkbException("Error writing report",ex);
@@ -147,19 +140,7 @@ public class CombinedDataReport {
     sf_logger.info("done with {}",this.getClass().getSimpleName());
   }
 
-  /**
-   * Gets the file to output the report to
-   * @return the file to output the report to
-   */
-  public File getOutputFile() {
-    return m_outputFile;
-  }
-
-  /**
-   * Sets the file to output the report to
-   * @param outputFile the file to output the report to
-   */
-  public void setOutputFile(File outputFile) {
-    m_outputFile = outputFile;
+  public String getSheetName() {
+    return DATA_SHEET_NAME;
   }
 }

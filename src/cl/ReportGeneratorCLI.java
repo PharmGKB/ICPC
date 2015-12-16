@@ -1,6 +1,8 @@
 package cl;
 
+import org.pharmgkb.AbstractReport;
 import org.pharmgkb.CombinedDataReport;
+import org.pharmgkb.GwasReport;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.CliHelper;
 import org.pharmgkb.util.HibernateUtils;
@@ -16,8 +18,9 @@ import java.io.File;
  */
 public class ReportGeneratorCLI {
   private static final Logger sf_logger = LoggerFactory.getLogger(ReportGeneratorCLI.class);
-  private File m_outputFile = null;
+  private File m_outputDirectory = null;
   private Integer m_project = null;
+  private String m_report = null;
 
   public static void main(String args[]) {
     try {
@@ -29,16 +32,19 @@ public class ReportGeneratorCLI {
     }
     catch (Exception ex) {
       sf_logger.error("Couldn't make report", ex);
+      System.exit(1);
     }
     finally {
       HibernateUtils.shutdown();
     }
+    System.exit(0);
   }
 
   private void parseCommandLineArgs(String args[]) throws Exception{
     CliHelper cliHelper = new CliHelper(getClass(), false);
 
-    cliHelper.addOption("f", "file", "file path to write to", "pathToFile", true);
+    cliHelper.addOption("r", "report", "which report to generate", "report", true);
+    cliHelper.addOption("d", "directory", "directory path to write to", "pathToDirectory", true);
     cliHelper.addOption("p", "project", "project to output", "projectId", false);
 
     try {
@@ -51,9 +57,13 @@ public class ReportGeneratorCLI {
       throw new Exception("Error parsing arguments", ex);
     }
 
-    if (cliHelper.hasOption("-f")) {
-      File file = new File(cliHelper.getValue("-f"));
-      setOutputFile(file);
+    if (cliHelper.hasOption("-r")) {
+      m_report = cliHelper.getValue("-r");
+    }
+
+    if (cliHelper.hasOption("-d")) {
+      File file = new File(cliHelper.getValue("-d"));
+      setOutputDirectory(file);
     }
 
     if (cliHelper.hasOption("-p")) {
@@ -67,7 +77,16 @@ public class ReportGeneratorCLI {
    * @throws PgkbException
    */
   private void make() throws PgkbException {
-    CombinedDataReport report = new CombinedDataReport(getOutputFile(), getProject());
+    AbstractReport report;
+    if (m_report.equalsIgnoreCase("combined")) {
+      report = new CombinedDataReport(getOutputDirectory(), getProject());
+    }
+    else if (m_report.equalsIgnoreCase("gwas")) {
+      report = new GwasReport(getOutputDirectory());
+    }
+    else {
+      throw new PgkbException("No report type found for "+m_report);
+    }
     report.generate();
   }
 
@@ -75,12 +94,12 @@ public class ReportGeneratorCLI {
    * Gets the file to output to, will be overwritten if it already exists
    * @return the file to output to
    */
-  public File getOutputFile() {
-    return m_outputFile;
+  public File getOutputDirectory() {
+    return m_outputDirectory;
   }
 
-  public void setOutputFile(File outputFile) {
-    m_outputFile = outputFile;
+  public void setOutputDirectory(File outputDirectory) {
+    m_outputDirectory = outputDirectory;
   }
 
   public Integer getProject() {

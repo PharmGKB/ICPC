@@ -46,9 +46,9 @@ public class ExcelUtils {
    * @param row a {@link Row} from an excel {@link Workbook}
    * @param idx the index of the cell to write
    * @param value the String value to write
-   * @param highlight the {@link CellStyle} to use, optional
+   * @param cellStyle the {@link CellStyle} to use, optional
    */
-  public static void writeCell(Row row, int idx, String value, @Nullable CellStyle highlight) {
+  public static void writeCell(Row row, int idx, String value, @Nullable CellStyle cellStyle) {
     // first normalizeValue all the important arguments
     if (value == null || row == null || idx<0) {
       // don't do anything if they're missing
@@ -58,7 +58,9 @@ public class ExcelUtils {
     Cell cell = row.getCell(idx);
 
     if (cell == null) {
-      row.createCell(idx).setCellValue(value);
+      cell = row.createCell(idx);
+      cell.setCellStyle(cellStyle);
+      cell.setCellValue(value);
     }
     else {
       try {
@@ -66,8 +68,8 @@ public class ExcelUtils {
 
         if (!value.equals(cell.getStringCellValue())) {
           sf_logger.debug("Changed value: " + getAddress(cell) + " = " + cell.getStringCellValue() + " -> " + value);
-          if (highlight != null) {
-            cell.setCellStyle(highlight);
+          if (cellStyle != null) {
+            cell.setCellStyle(cellStyle);
           }
         }
       }
@@ -85,20 +87,22 @@ public class ExcelUtils {
    * @param row a {@link Row} from an excel {@link Workbook}
    * @param idx the index of the cell to write
    * @param value the <code>double</code> value to write
-   * @param highlight the {@link CellStyle} to use, optional
+   * @param cellStyle the {@link CellStyle} to use, optional
    */
-  public static void writeCell(Row row, int idx, double value, @Nullable CellStyle highlight) {
+  public static void writeCell(Row row, int idx, double value, @Nullable CellStyle cellStyle) {
     Cell cell = row.getCell(idx);
     if (cell == null) {
-      row.createCell(idx, Cell.CELL_TYPE_NUMERIC).setCellValue(value);
+      cell = row.createCell(idx, Cell.CELL_TYPE_NUMERIC);
+      cell.setCellStyle(cellStyle);
+      cell.setCellValue(value);
     }
     else {
       if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
         Double existingValue = cell.getNumericCellValue();
         if (value != existingValue) {
           sf_logger.debug("Changed value: " + CellReference.convertNumToColString(cell.getColumnIndex()) + (cell.getRowIndex() + 1) + " = " + cell.getNumericCellValue() + " -> " + value);
-          if (highlight != null) {
-            cell.setCellStyle(highlight);
+          if (cellStyle != null) {
+            cell.setCellStyle(cellStyle);
           }
         }
       }
@@ -109,8 +113,8 @@ public class ExcelUtils {
 
         row.removeCell(cell);
         cell = row.createCell(idx,Cell.CELL_TYPE_NUMERIC);
-        if (highlight != null) {
-          cell.setCellStyle(highlight);
+        if (cellStyle != null) {
+          cell.setCellStyle(cellStyle);
         }
       }
 

@@ -63,9 +63,9 @@ public class ExcelParser {
       setWorkbook(WorkbookFactory.create(inputStream));
     }
 
-    setDataSheet(getWorkbook().getSheet(IcpcUtils.DATA_SHEET_NAME));
+    setDataSheet(getWorkbook().getSheet(CombinedDataReport.DATA_SHEET_NAME));
     if (getDataSheet() == null) {
-      throw new Exception("Required worksheet "+IcpcUtils.DATA_SHEET_NAME+" not found");
+      throw new Exception("Required worksheet "+CombinedDataReport.DATA_SHEET_NAME+" not found");
     }
   }
 

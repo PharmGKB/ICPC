@@ -31,7 +31,6 @@ public class IcpcUtils {
   public static final Pattern VALIDATOR_BASES = Pattern.compile("^[AaTtGgCc/]+$");
   public static final Pattern VALIDATOR_NUMBER = Pattern.compile("(-?(\\d+)?\\.?(\\d+)?)(\\s+)?(mg|mg/day|mg/L|uM|ul|uL)?");
   public static final Pattern VALIDATOR_TIME = Pattern.compile("(\\d{1,2}:\\d{2}:\\d{2})|((\\d+)?\\.?(\\d+)?)");
-  public static final String DATA_SHEET_NAME = "Subject_level_Data";
 
   private static final SimpleDateFormat m_fileDateFormatter = new SimpleDateFormat("yyyyMMdd-HHmm");
   private static final List<Integer> sf_projectsWithBadCreatinine = Lists.newArrayList(7, 37);
@@ -97,9 +96,9 @@ public class IcpcUtils {
     }
   }
 
-  public static String lookupFormat(Session session, String name) {
+  public static String lookupFormat(Session session, Property property) {
     return (String)session.createSQLQuery("select format from propertynames where name=:name")
-            .setString("name", name).uniqueResult();
+            .setString("name", property.getShortName()).uniqueResult();
   }
 
   /**
