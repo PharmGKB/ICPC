@@ -2,16 +2,28 @@ package org.pharmgkb;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.hibernate.Session;
+import org.pharmgkb.enums.Property;
 import org.pharmgkb.exception.PgkbException;
+import org.pharmgkb.model.Sample;
+import org.pharmgkb.util.ExcelUtils;
+import org.pharmgkb.util.HibernateUtils;
+import org.pharmgkb.util.IcpcUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.invoke.MethodHandles;
+import java.util.List;
 
 /**
  * @author Ryan Whaley
  */
 public abstract class AbstractReport {
+  private static final Logger sf_logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   private File m_file;
   private Workbook m_workbook;
@@ -38,6 +50,50 @@ public abstract class AbstractReport {
 
   public void saveToOutputStream(OutputStream out) throws IOException {
     m_workbook.write(out);
+  }
+
+  public boolean includeSample(Sample sample) {
+    return sample != null;
+  }
+
+  public void writeSampleProperties(List<Property> properties) throws PgkbException {
+    Session session = null;
+    try(FileOutputStream out = new FileOutputStream(getFile())) {
+      session = HibernateUtils.getSession();
+
+      Row codeRow = getNextRow();
+      Row titleRow = getNextRow();
+      Row formatRow = getNextRow();
+
+      for (int i=0; i<properties.size(); i++) {
+        Property property = properties.get(i);
+
+        ExcelUtils.writeCell(titleRow, i, property.getDisplayName(), getHeaderStyle());
+        ExcelUtils.writeCell(codeRow, i, property.getShortName(), getMonospaceStyle());
+        ExcelUtils.writeCell(formatRow, i, IcpcUtils.lookupFormat(session, property), getCodeStyle());
+      }
+
+      //noinspection unchecked
+      List<String> rez = session.createQuery("select s.subjectId from Sample s order by s.subjectId").list();
+      for (String sampleId : rez) {
+        Sample sample = (Sample)session.get(Sample.class, sampleId);
+
+        if (includeSample(sample)) {
+          Row sampleRow = getNextRow();
+          for (int i = 0; i < properties.size(); i++) {
+            ExcelUtils.writeCell(sampleRow, i, sample.getProperties().get(properties.get(i)));
+          }
+        }
+      }
+      saveToOutputStream(out);
+    }
+    catch (Exception ex) {
+      throw new PgkbException("Error writing report",ex);
+    }
+    finally {
+      HibernateUtils.close(session);
+    }
+    sf_logger.info("done with {}",this.getClass().getSimpleName());
   }
 
 
