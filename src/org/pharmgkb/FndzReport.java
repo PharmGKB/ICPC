@@ -10,6 +10,8 @@ import java.io.File;
 import java.util.List;
 
 /**
+ * A dump of properties for a request made on 12/16/2015. This excludes site 4 and limits to the GWAS samples.
+ *
  * @author Ryan Whaley
  */
 public class FndzReport extends AbstractReport {

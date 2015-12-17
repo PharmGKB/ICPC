@@ -11,6 +11,9 @@ import java.io.File;
 import java.util.List;
 
 /**
+ * A report for a request made on 12/16/2015. This includes only samples included in the GWAS analysis and is a small
+ * subset of properties in the full dataset.
+ *
  * @author Ryan Whaley
  */
 public class GwasReport extends AbstractReport {
