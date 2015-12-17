@@ -29,6 +29,7 @@ public class GwasReport extends AbstractReport {
   private static final String sf_sheetName = "Subjects";
   private static final List<Property> sf_columns = ImmutableList.of(
       Property.SUBJECT_ID,
+      Property.RIKEN_ID,
       Property.RACE_SELF,
       Property.RACE_OMB,
       Property.DIABETES,
@@ -60,7 +61,14 @@ public class GwasReport extends AbstractReport {
       Property.TIME_ANGINA,
       Property.PCI_INFORMATION,
       Property.CLINICAL_SETTING,
-      Property.INDICATION_CLOPIDOGREL
+      Property.INDICATION_CLOPIDOGREL,
+      Property.VERIFY_NOW_POST_BASE,
+      Property.VERIFY_NOW_POST_PRU,
+      Property.VERIFY_NOW_POST_PERCENTINHIBITION,
+      Property.TIME_LOADING_VERIFYNOW,
+      Property.VERIFY_NOW_ON_CLOPIDOGREL_BASE,
+      Property.VERIFY_NOW_ON_CLOPIDOGREL_PRU,
+      Property.VERIFY_NOW_ON_CLOPIDOGREL_PERCENTINHIBITION
   );
 
   public GwasReport(File dir) {
@@ -92,9 +100,13 @@ public class GwasReport extends AbstractReport {
       for (String sampleId : rez) {
         Sample sample = (Sample)session.get(Sample.class, sampleId);
 
-        Row sampleRow = getNextRow();
-        for (int i=0; i<sf_columns.size(); i++) {
-          ExcelUtils.writeCell(sampleRow, i, sample.getProperties().get(sf_columns.get(i)));
+        String rikenId = sample.getProperties().get(Property.RIKEN_ID);
+
+        if (!IcpcUtils.isBlank(rikenId)) {
+          Row sampleRow = getNextRow();
+          for (int i = 0; i < sf_columns.size(); i++) {
+            ExcelUtils.writeCell(sampleRow, i, sample.getProperties().get(sf_columns.get(i)));
+          }
         }
       }
 
