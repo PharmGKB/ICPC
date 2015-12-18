@@ -199,7 +199,9 @@ public class FndzReport extends AbstractReport {
       Property.PAP4_MAINT_LAG_COL_2,
       Property.PAP4_MAINT_LAG_COL_5,
       Property.PAP4_MAINT_LAG_COL_10,
-      Property.ADDITION_PHENO
+      Property.ADDITION_PHENO,
+      Property.PHENO_RAW,
+      Property.PHENO_STD
   );
 
   public FndzReport(File dir) {
