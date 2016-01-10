@@ -38,10 +38,14 @@ public class CombinedDataReport extends AbstractReport {
     super(sf_defaultColumnWidth);
     Preconditions.checkNotNull(dir);
     Preconditions.checkArgument(dir.isDirectory());
-    setFile(new File(dir, sf_filename));
 
     if (project != null) {
       m_project = project;
+      String projectFilename = sf_filename.replace("combined", "project"+m_project);
+      setFile(new File(dir, projectFilename));
+    }
+    else {
+      setFile(new File(dir, sf_filename));
     }
   }
 
