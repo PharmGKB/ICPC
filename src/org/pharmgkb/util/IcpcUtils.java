@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Session;
 import org.pharmgkb.enums.Property;
+import org.pharmgkb.enums.Value;
 import org.pharmgkb.model.Sample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +64,26 @@ public class IcpcUtils {
   public static boolean isBlank(String string) {
     String trimString = StringUtils.trimToNull(StringUtils.lowerCase(string));
     return StringUtils.isBlank(trimString) || sf_blankWords.contains(trimString);
+  }
+
+  /**
+   * Is any of the given String parameters a "Yes" {@link Value}
+   * @param values a variable array of String values
+   * @return true if any given parameter is a Yes {@link Value}
+   */
+  public static String occurs(String... values) {
+    boolean overall = false;
+    if (values != null && values.length > 0) {
+      for (String value : values) {
+        if (IcpcUtils.isBlank(value)) {
+          return NA;
+        }
+        else {
+          overall = value.equals(Value.Yes.getShortName()) || overall;
+        }
+      }
+    }
+    return overall ? Value.Yes.getShortName() : Value.No.getShortName();
   }
 
   /**

@@ -61,7 +61,10 @@ public class GwasReport extends AbstractReport {
       Property.TIME_LOADING_VERIFYNOW,
       Property.VERIFY_NOW_ON_CLOPIDOGREL_BASE,
       Property.VERIFY_NOW_ON_CLOPIDOGREL_PRU,
-      Property.VERIFY_NOW_ON_CLOPIDOGREL_PERCENTINHIBITION
+      Property.VERIFY_NOW_ON_CLOPIDOGREL_PERCENTINHIBITION,
+      Property.MI_PHENO,
+      Property.MACE_PHENO2,
+      Property.MACE_PHENO2_EX_STROKE
   );
 
   public GwasReport(File dir) {

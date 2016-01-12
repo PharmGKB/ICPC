@@ -365,4 +365,7 @@ INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('rs5918
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('rs762551', 'CYP1A2 genotype A>C (rs762551)', 'string', 'A/A, A/C, CC, NA', 303);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('rs2244613', 'CES1 genotype T>G (rs2244613 )', 'string', 'T/T, T/G, G/G, NA', 304);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('rs2302429', 'POR genotype G>A (rs2302429)', 'string', 'A/A, A/G, G/G or NA (Note all POR genotypes to be reported on the coding strand, which is the complement of the hg18 reference strand)', 305);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MI_pheno', 'MI_pheno', 'string', 'yes=1, no=0, not known=NA', 351);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MACE_pheno2', 'MACE_pheno2', 'string', 'yes=1, no=0, not known=NA', 352);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MACE_pheno2_ExclStroke', 'MACE_pheno2_ExclStroke', 'string', 'yes=1, no=0, not known=NA', 353);
 commit;

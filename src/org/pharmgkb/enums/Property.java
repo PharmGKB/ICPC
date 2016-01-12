@@ -367,6 +367,9 @@ public enum Property implements ExtendedEnum {
   RS762551   (348, "rs762551", "CYP1A2 genotype A>C (rs762551)", IcpcUtils.VALIDATOR_BASES),
   RS2244613  (349, "rs2244613", "CES1 genotype T>G (rs2244613 )", IcpcUtils.VALIDATOR_BASES),
   RS2302429  (350, "rs2302429", "POR genotype G>A (rs2302429)", IcpcUtils.VALIDATOR_BASES),
+  MI_PHENO              (351, "MI_pheno", "MI_pheno", IcpcUtils.VALIDATOR_BINARY),
+  MACE_PHENO2           (352, "MACE_pheno2", "MACE_pheno2", IcpcUtils.VALIDATOR_BINARY),
+  MACE_PHENO2_EX_STROKE (353, "MACE_pheno2_ExclStroke", "MAC_pheno2_ExclStroke", IcpcUtils.VALIDATOR_BINARY),
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;

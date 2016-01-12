@@ -222,7 +222,7 @@ public class SubjectIterator implements Iterator {
    * Processing that can only be done after all the properties for a sample have been assigned.
    * @param sample a Sample record with all properties set
    */
-  protected static void postProcess(Sample sample) {
+  public static void postProcess(Sample sample) {
     // BMI calculation
     sample.addProperty(Property.BMI, IcpcUtils.calculateBmi(sample));
 
@@ -325,6 +325,16 @@ public class SubjectIterator implements Iterator {
     if (!IcpcUtils.isBlank(stentType) && stentType.equals("0")) {
       sample.addProperty(Property.TYPE_STENT_THROMB, IcpcUtils.NA);
     }
+
+    String vascularDeath = sample.getProperties().get(Property.CARDIOVASCULAR_DEATH);
+    String stroke = sample.getProperties().get(Property.STROKE);
+    String stentThromb = sample.getProperties().get(Property.STENT_THROMB);
+    String mi = sample.getProperties().get(Property.MI_DURING_FOLLOWUP);
+
+    // calculated phenotyping columns
+    sample.addProperty(Property.MI_PHENO, mi);
+    sample.addProperty(Property.MACE_PHENO2, IcpcUtils.occurs(vascularDeath, stroke, stentThromb, mi));
+    sample.addProperty(Property.MACE_PHENO2_EX_STROKE, IcpcUtils.occurs(vascularDeath, stentThromb, mi));
   }
 
   @Override
