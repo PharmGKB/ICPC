@@ -370,6 +370,7 @@ public enum Property implements ExtendedEnum {
   MI_PHENO              (351, "MI_pheno", "MI_pheno", IcpcUtils.VALIDATOR_BINARY),
   MACE_PHENO2           (352, "MACE_pheno2", "MACE_pheno2", IcpcUtils.VALIDATOR_BINARY),
   MACE_PHENO2_EX_STROKE (353, "MACE_pheno2_ExclStroke", "MAC_pheno2_ExclStroke", IcpcUtils.VALIDATOR_BINARY),
+  CGS        (354, "cgs_subject", "CGS Subject", IcpcUtils.VALIDATOR_BINARY),
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;

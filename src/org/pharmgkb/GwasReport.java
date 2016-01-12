@@ -3,6 +3,7 @@ package org.pharmgkb;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import org.pharmgkb.enums.Property;
+import org.pharmgkb.enums.Value;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.IcpcUtils;
@@ -11,8 +12,8 @@ import java.io.File;
 import java.util.List;
 
 /**
- * A report for a request made on 12/16/2015. This includes only samples included in the GWAS analysis and is a small
- * subset of properties in the full dataset.
+ * A report for a request made on 12/16/2015. This includes only samples included in the GWAS analysis or samples marked
+ * for the Candidate Gene Study (CGS) and is a small subset of properties in the full dataset.
  *
  * @author Ryan Whaley
  */
@@ -64,7 +65,8 @@ public class GwasReport extends AbstractReport {
       Property.VERIFY_NOW_ON_CLOPIDOGREL_PERCENTINHIBITION,
       Property.MI_PHENO,
       Property.MACE_PHENO2,
-      Property.MACE_PHENO2_EX_STROKE
+      Property.MACE_PHENO2_EX_STROKE,
+      Property.CGS
   );
 
   public GwasReport(File dir) {
@@ -73,9 +75,15 @@ public class GwasReport extends AbstractReport {
     setFile(new File(dir, sf_filename));
   }
 
+  /**
+   * Include wither GWAS subjects (those withe Riken IDs) or CGS subjects (those with a CGS property of Yes)
+   * @param sample a {@link Sample} object to test for inclusion
+   * @return
+   */
   public boolean includeSample(Sample sample) {
     String rikenId = sample.getProperties().get(Property.RIKEN_ID);
-    return !IcpcUtils.isBlank(rikenId);
+    String cgs = sample.getProperties().get(Property.CGS);
+    return !IcpcUtils.isBlank(rikenId) || (cgs != null && cgs.equals(Value.Yes.getShortName()));
   }
 
   @Override

@@ -368,4 +368,5 @@ INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('rs2302
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MI_pheno', 'MI_pheno', 'string', 'yes=1, no=0, not known=NA', 351);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MACE_pheno2', 'MACE_pheno2', 'string', 'yes=1, no=0, not known=NA', 352);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MACE_pheno2_ExclStroke', 'MACE_pheno2_ExclStroke', 'string', 'yes=1, no=0, not known=NA', 353);
+INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('cgs_subject', 'CGS Subject', 'string', 'yes=1, no=0, not known=NA', 354);
 commit;
