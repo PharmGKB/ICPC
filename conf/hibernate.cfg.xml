@@ -8,7 +8,7 @@
 
         <property name="connection.url">jdbc:postgresql://localhost:5432/icpc</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.username">whaleyr</property>
+        <property name="connection.username"></property>
         <property name="connection.password"/>
 
         <!-- Transaction properties -->
