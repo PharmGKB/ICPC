@@ -352,8 +352,8 @@ public enum Property implements ExtendedEnum {
   LVEF_CATEGORY               (333, "lvef_category", "LVEF Category", IcpcUtils.VALIDATOR_TERTIARY),
   CASCADED_STDADP_PHENOTYPE   (334, "cascaded_stdADP_Phenotype", "Cascaded Std ADP Phenotype", IcpcUtils.VALIDATOR_NUMBER),
   STDADP_PHENOTYPE_MAX        (335, "stdADP_Phenotype_max", "Std ADP Phenotype Max", IcpcUtils.VALIDATOR_NUMBER),
-  RS7254579  (336, "rs7254579", "CYP2B6 genotype T>C (rs7254579)", IcpcUtils.VALIDATOR_BASES),
-  RS2286823  (337, "rs2286823", "TMEM120A; POR genotype G>A (rs2286823)", IcpcUtils.VALIDATOR_BASES),
+  RS7254579                   (336, "rs7254579", "CYP2B6 genotype T>C (rs7254579)", IcpcUtils.VALIDATOR_BASES),
+  RS2286823                   (337, "rs2286823", "TMEM120A; POR genotype G>A (rs2286823)", IcpcUtils.VALIDATOR_BASES),
   RS1057868  (338, "rs1057868", "TMEM120A; POR genotype C>T (rs1057868)", IcpcUtils.VALIDATOR_BASES),
   RS2046934  (339, "rs2046934", "MED12L;P2RY12 genotype A>G  (rs2046934)", IcpcUtils.VALIDATOR_BASES),
   RS1472122  (340, "rs1472122", "P2RY13;MED12L;GPR87  genotype G>A (rs1472122)", IcpcUtils.VALIDATOR_BASES),
@@ -367,10 +367,14 @@ public enum Property implements ExtendedEnum {
   RS762551   (348, "rs762551", "CYP1A2 genotype A>C (rs762551)", IcpcUtils.VALIDATOR_BASES),
   RS2244613  (349, "rs2244613", "CES1 genotype T>G (rs2244613 )", IcpcUtils.VALIDATOR_BASES),
   RS2302429  (350, "rs2302429", "POR genotype G>A (rs2302429)", IcpcUtils.VALIDATOR_BASES),
-  MI_PHENO              (351, "MI_pheno", "MI_pheno", IcpcUtils.VALIDATOR_BINARY),
-  MACE_PHENO2           (352, "MACE_pheno2", "MACE_pheno2", IcpcUtils.VALIDATOR_BINARY),
-  MACE_PHENO2_EX_STROKE (353, "MACE_pheno2_ExclStroke", "MAC_pheno2_ExclStroke", IcpcUtils.VALIDATOR_BINARY),
-  CGS        (354, "cgs_subject", "CGS Subject", IcpcUtils.VALIDATOR_BINARY),
+  MI_PHENO                    (351, "MI_pheno", "MI_pheno", IcpcUtils.VALIDATOR_BINARY),
+  MACE_PHENO2                 (352, "MACE_pheno2", "MACE_pheno2", IcpcUtils.VALIDATOR_BINARY),
+  MACE_PHENO2_EX_STROKE       (353, "MACE_pheno2_ExclStroke", "MAC_pheno2_ExclStroke", IcpcUtils.VALIDATOR_BINARY),
+  CGS                         (354, "cgs_subject", "CGS Subject", IcpcUtils.VALIDATOR_BINARY),
+  RS4803419                   (355, "rs4803419", "rs4803419", IcpcUtils.VALIDATOR_BASES),
+  MACE_CRITERIA_3             (356, "MACE_Criteria_3", "Includes pts w/MACE_pheno2 who coded \"NA\" but had a CV Death event", IcpcUtils.VALIDATOR_BINARY),
+  MACE_CRITERIA_4             (357, "MACE_Criteria_4", "Includes pts w/MACE_pheno2_ExclStroke who coded \"NA\" but had a CV Death event.", IcpcUtils.VALIDATOR_BINARY),
+  MACE_CRITERIA_5             (358, "MACE_Criteria_5", "all patients in who (CV Death AND MI AND ST is available) PLUS (all patients in who CV death OR stroke is 'yes')", IcpcUtils.VALIDATOR_BINARY)
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;

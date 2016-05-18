@@ -369,4 +369,8 @@ INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MI_phe
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MACE_pheno2', 'MACE_pheno2', 'string', 'yes=1, no=0, not known=NA', 352);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('MACE_pheno2_ExclStroke', 'MACE_pheno2_ExclStroke', 'string', 'yes=1, no=0, not known=NA', 353);
 INSERT INTO propertynames (name, descrip, datatype, format, idx) VALUES ('cgs_subject', 'CGS Subject', 'string', 'yes=1, no=0, not known=NA', 354);
+INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (355, 'rs4803419', 'rs4803419', 'string', 'C/C, C/T, T/T, NA');
+INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (356, 'MACE_Criteria_3', 'Includes pts w/MACE_pheno2 who coded "NA" but had a CV Death event', 'string', 'yes=1, no=0, not known=NA');
+INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (357, 'MACE_Criteria_4', 'Includes pts w/MACE_pheno2_ExclStroke who coded "NA" but had a CV Death event.', 'string', 'yes=1, no=0, not known=NA');
+INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (358, 'MACE_Criteria_5', 'all patients in who (CV Death AND MI AND ST is available) PLUS (all patients in who CV death OR stroke is "yes")', 'string', 'yes=1, no=0, not known=NA');
 commit;

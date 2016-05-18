@@ -87,6 +87,22 @@ public class IcpcUtils {
   }
 
   /**
+   * If the given <code>baseValue</code> is not available, use the given <code>addedValue</code>. Basically, this will
+   * try to replace a null value (e.g. "NA") with the contents of <code>addedValue</code>.
+   * @param baseValue The value to test for "NA" and possibly update
+   * @param addedValue The value to update to if <code>baseValue</code> is "NA"
+   * @return The final calculated value
+   */
+  public static String addAvailableData(String baseValue, String addedValue) {
+    if (isBlank(baseValue)) {
+      return addedValue;
+    }
+    else {
+      return baseValue;
+    }
+  }
+
+  /**
    * Make a RegEx pattern that will validate data against the given enum.
    * @param enumToValidate the enum to validate the data against
    * @return a RegEx pattern that can be used to validate data
