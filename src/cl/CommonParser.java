@@ -10,14 +10,14 @@ import java.io.File;
  *
  * @author Ryan Whaley
  */
-public abstract class CommonParser {
+abstract class CommonParser {
   private File m_dataFile;
 
   protected abstract void parseData() throws PgkbException;
 
   abstract String getFileDescriptor();
 
-  protected void parseCommandLineArgs(String args[]) throws Exception {
+  void parseCommandLineArgs(String args[]) throws Exception {
     CliHelper cliHelper = new CliHelper(getClass(), false);
     cliHelper.addOption("f", "file", getFileDescriptor(), "pathToFile");
 
@@ -42,11 +42,11 @@ public abstract class CommonParser {
     }
   }
 
-  public File getDataFile() {
+  File getDataFile() {
     return m_dataFile;
   }
 
-  public void setDataFile(File m_dataFile) {
+  private void setDataFile(File m_dataFile) {
     this.m_dataFile = m_dataFile;
   }
 }
