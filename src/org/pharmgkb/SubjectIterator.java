@@ -46,6 +46,11 @@ public class SubjectIterator implements Iterator {
     sf_eventTimeMap.put(Property.ATRIAL_FIBRILLATION, Property.TIME_AF);
     sf_eventTimeMap.put(Property.CV_EVENTS, Property.TIME_TO_MACE);
   }
+  private static final Map<String, Property> sf_knownSubstitutions = Maps.newHashMap();
+  static {
+    sf_knownSubstitutions.put("raw_pheno", Property.PHENO_RAW);
+    sf_knownSubstitutions.put("std_pheno", Property.PHENO_STD);
+  }
 
   private Sheet m_sheet = null;
   private Integer m_currentRow = 3;
@@ -58,7 +63,7 @@ public class SubjectIterator implements Iterator {
    * @param sheet a Sheet from an Excel Workbook with {@link org.pharmgkb.model.Sample} data in it
    * @throws Exception can occur if an invalid <code>sheet</code> is specified
    */
-  public SubjectIterator(Sheet sheet) throws Exception {
+  SubjectIterator(Sheet sheet) throws Exception {
     if (sheet == null) {
       throw new Exception("No sheet specified");
     }
@@ -72,7 +77,7 @@ public class SubjectIterator implements Iterator {
     }
   }
 
-  public void parseHeading(Session session) throws Exception {
+  void parseHeading(Session session) throws Exception {
     Preconditions.checkNotNull(session);
     Map<String,String> unmappedColumnMap = Maps.newTreeMap();
 
@@ -88,6 +93,9 @@ public class SubjectIterator implements Iterator {
       if (!IcpcUtils.isBlank(cellContent)) {
         try {
           Property property = Property.lookupByName(cellContent);
+          if (property == null) {
+            property = sf_knownSubstitutions.get(cellContent);
+          }
 
           if (property!=null) {
             getColumnIdxToNameMap().put(cell.getColumnIndex(), property);
@@ -350,31 +358,31 @@ public class SubjectIterator implements Iterator {
     throw new UnsupportedOperationException("remove() not implemented for SubjectIterator");
   }
 
-  public Sheet getSheet() {
+  private Sheet getSheet() {
     return m_sheet;
   }
 
-  public void setSheet(Sheet sheet) {
+  private void setSheet(Sheet sheet) {
     m_sheet = sheet;
   }
 
-  protected Integer getCurrentRow() {
+  Integer getCurrentRow() {
     return m_currentRow;
   }
 
-  protected void bumpCurrentRow() {
+  private void bumpCurrentRow() {
     m_currentRow++;
   }
 
-  public FormulaEvaluator getFormulaEvaluator() {
+  private FormulaEvaluator getFormulaEvaluator() {
     return m_formulaEvaluator;
   }
 
-  public void setFormulaEvaluator(FormulaEvaluator formulaEvaluator) {
+  private void setFormulaEvaluator(FormulaEvaluator formulaEvaluator) {
     m_formulaEvaluator = formulaEvaluator;
   }
 
-  public Map<Integer, Property> getColumnIdxToNameMap() {
+  private Map<Integer, Property> getColumnIdxToNameMap() {
     return m_columnIdxToNameMap;
   }
 }

@@ -46,7 +46,7 @@ abstract class CommonParser {
     return m_dataFile;
   }
 
-  private void setDataFile(File m_dataFile) {
+  protected void setDataFile(File m_dataFile) {
     this.m_dataFile = m_dataFile;
   }
 }

@@ -8,7 +8,6 @@ import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.ExcelUtils;
 import org.pharmgkb.util.HibernateUtils;
-import org.pharmgkb.util.IcpcUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -8,10 +8,13 @@ import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
 import org.pharmgkb.util.HibernateUtils;
 import org.pharmgkb.util.IcpcUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedSet;
@@ -22,6 +25,7 @@ import java.util.stream.Collectors;
  * @author Ryan Whaley
  */
 public class CgsGenotypeParser extends CommonParser {
+  private static final Logger sf_logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
   private static final String sf_fileDescriptor = "Genotypes for CGS subjects, space-separated, 38 columns";
   private static final Map<Property,String> sf_otherAlleleMap = new HashMap<>();
   static {
@@ -95,8 +99,8 @@ public class CgsGenotypeParser extends CommonParser {
       String header = br.readLine();
       loadMaps(header);
 
-      System.out.println("loaded properties: "+m_propertyMap.size());
-      System.out.println("loaded alleles: "+m_alleleMap.size());
+      sf_logger.info("loaded properties: "+m_propertyMap.size());
+      sf_logger.info("loaded alleles: "+m_alleleMap.size());
 
       String line;
       while ((line = br.readLine()) != null) {
@@ -105,7 +109,7 @@ public class CgsGenotypeParser extends CommonParser {
 
         Sample sample = (Sample)sampleQuery.setString("id", subjectId).uniqueResult();
         if (sample == null) {
-          System.out.println("sample not found: "+subjectId);
+          sf_logger.info("sample not found: "+subjectId);
           continue;
         }
         sample.addProperty(Property.CGS, "1");
