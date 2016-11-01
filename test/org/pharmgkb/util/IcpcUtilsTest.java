@@ -3,6 +3,7 @@ package org.pharmgkb.util;
 import org.junit.Test;
 import org.pharmgkb.enums.Property;
 import org.pharmgkb.enums.SampleSource;
+import org.pharmgkb.enums.Value;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.model.Sample;
 
@@ -87,6 +88,18 @@ public class IcpcUtilsTest {
     assertTrue(IcpcUtils.validateNumberFloor("NA",   1000d));
     assertTrue(IcpcUtils.validateNumberFloor("",     1000d));
     assertTrue(IcpcUtils.validateNumberFloor(null,   1000d));
+  }
+  
+  @Test
+  public void testCalculateCriteria5() {
+    assertEquals(Value.No.getShortName(),  IcpcUtils.calculateCriteria5("0","0","0","0","0"));
+    assertEquals(Value.Yes.getShortName(),  IcpcUtils.calculateCriteria5("0","0","0","0","1"));
+    assertEquals(IcpcUtils.NA,  IcpcUtils.calculateCriteria5("0","0","0","0",IcpcUtils.NA));
+    assertEquals(Value.Yes.getShortName(), IcpcUtils.calculateCriteria5("0","0","0","0","1"));
+    assertEquals(Value.Yes.getShortName(), IcpcUtils.calculateCriteria5("0","0","0","1","0"));
+    assertEquals(Value.Yes.getShortName(), IcpcUtils.calculateCriteria5("0","1","0","1","0"));
+    assertEquals(IcpcUtils.NA, IcpcUtils.calculateCriteria5("0","0",IcpcUtils.NA,"0","0"));
+    assertEquals(IcpcUtils.NA, IcpcUtils.calculateCriteria5(IcpcUtils.NA,"0","0","0","0"));
   }
 
 }

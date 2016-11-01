@@ -231,4 +231,18 @@ public class IcpcUtils {
     return valueNumber >= floor;
 
   }
+  
+  private static boolean isYes(String value) {
+    return !isBlank(value) && value.equals(Value.Yes.getShortName());
+  }
+  
+  public static String calculateCriteria5(String mi, String cvDeath, String stentThromb, String stroke, String macePheno2ExclStroke) {
+    if (isYes(cvDeath) || isYes(stroke)) {
+      return Value.Yes.getShortName();
+    }
+    if (isBlank(cvDeath) || isBlank(stentThromb) || isBlank(mi)) {
+      return NA;
+    }
+    return macePheno2ExclStroke;
+  }
 }
