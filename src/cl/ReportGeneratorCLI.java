@@ -1,9 +1,6 @@
 package cl;
 
-import org.pharmgkb.AbstractReport;
-import org.pharmgkb.CombinedDataReport;
-import org.pharmgkb.FndzReport;
-import org.pharmgkb.GwasReport;
+import org.pharmgkb.*;
 import org.pharmgkb.exception.PgkbException;
 import org.pharmgkb.util.CliHelper;
 import org.pharmgkb.util.HibernateUtils;
@@ -87,6 +84,9 @@ public class ReportGeneratorCLI {
     }
     else if (m_report.equalsIgnoreCase("fndz")) {
       report = new FndzReport(getOutputDirectory());
+    }
+    else if (m_report.equalsIgnoreCase("mace")) {
+      report = new MaceReport(getOutputDirectory());
     }
     else {
       throw new PgkbException("No report type found for "+m_report);

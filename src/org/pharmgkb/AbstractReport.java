@@ -111,7 +111,7 @@ public abstract class AbstractReport {
       }
 
       //noinspection unchecked
-      List<String> rez = session.createQuery("select s.subjectId from Sample s order by s.subjectId").list();
+      List<String> rez = session.createQuery("select s.subjectId from Sample s order by s.project, s.subjectId").list();
       for (String sampleId : rez) {
         Sample sample = (Sample)session.get(Sample.class, sampleId);
 

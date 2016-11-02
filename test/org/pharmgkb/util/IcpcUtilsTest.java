@@ -102,4 +102,12 @@ public class IcpcUtilsTest {
     assertEquals(IcpcUtils.NA, IcpcUtils.calculateCriteria5(IcpcUtils.NA,"0","0","0","0"));
   }
 
+  @Test
+  public void testOccurs() {
+    assertEquals(IcpcUtils.NA, IcpcUtils.occurs(IcpcUtils.NA, IcpcUtils.NA, IcpcUtils.NA, IcpcUtils.NA));
+    assertEquals(IcpcUtils.NA, IcpcUtils.occurs(IcpcUtils.NA, IcpcUtils.NA, IcpcUtils.NA, Value.Yes.getShortName()));
+    assertEquals(IcpcUtils.NA, IcpcUtils.occurs(IcpcUtils.NA, IcpcUtils.NA, IcpcUtils.NA, Value.No.getShortName()));
+    assertEquals(Value.Yes.getShortName(), IcpcUtils.occurs(Value.Yes.getShortName(), Value.Yes.getShortName(), Value.No.getShortName(), Value.No.getShortName()));
+    assertEquals(Value.No.getShortName(), IcpcUtils.occurs(Value.No.getShortName(), Value.No.getShortName(), Value.No.getShortName(), Value.No.getShortName()));
+  }
 }

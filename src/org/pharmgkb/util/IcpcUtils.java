@@ -245,4 +245,14 @@ public class IcpcUtils {
     }
     return macePheno2ExclStroke;
   }
+  
+  public static String calculateMiPheno(String stemi, String nstemi, String miDuringFollowup) {
+    if (isBlank(stemi) || isBlank(nstemi) || isBlank(miDuringFollowup)) {
+      return NA;
+    }
+    if (isYes(stemi) || isYes(nstemi) || isYes(miDuringFollowup)) {
+      return Value.Yes.getShortName();
+    }
+    return Value.No.getShortName();
+  }
 }

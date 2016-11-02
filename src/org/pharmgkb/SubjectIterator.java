@@ -337,16 +337,17 @@ public class SubjectIterator implements Iterator {
     String vascularDeath = sample.getProperties().get(Property.CARDIOVASCULAR_DEATH);
     String stroke = sample.getProperties().get(Property.STROKE);
     String stentThromb = sample.getProperties().get(Property.STENT_THROMB);
-    String mi = sample.getProperties().get(Property.MI_DURING_FOLLOWUP);
     String cvDeath = sample.getProperties().get(Property.CARDIOVASCULAR_DEATH);
+    String miDuringFollowup = sample.getProperties().get(Property.MI_DURING_FOLLOWUP);
 
-    String macePheno2         = IcpcUtils.occurs(vascularDeath, stroke, stentThromb, mi);
-    String macePheno2ExStroke = IcpcUtils.occurs(vascularDeath, stentThromb, mi);
+    String miPheno            = IcpcUtils.calculateMiPheno(stemi, nstemi, miDuringFollowup);
+    String macePheno2         = IcpcUtils.occurs(vascularDeath, stroke, stentThromb, miPheno);
+    String macePheno2ExStroke = IcpcUtils.occurs(vascularDeath, stentThromb, miPheno);
     String criteria3          = IcpcUtils.addAvailableData(macePheno2, cvDeath);
-    String criteria5          = IcpcUtils.calculateCriteria5(mi, cvDeath, stentThromb, stroke, macePheno2ExStroke); 
+    String criteria5          = IcpcUtils.calculateCriteria5(miPheno, cvDeath, stentThromb, stroke, macePheno2ExStroke); 
 
     // calculated phenotyping columns
-    sample.addProperty(Property.MI_PHENO, mi);
+    sample.addProperty(Property.MI_PHENO, miPheno);
     sample.addProperty(Property.MACE_PHENO2, macePheno2);
     sample.addProperty(Property.MACE_PHENO2_EX_STROKE, macePheno2ExStroke);
     sample.addProperty(Property.MACE_CRITERIA_3, criteria3);
