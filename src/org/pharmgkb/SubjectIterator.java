@@ -280,15 +280,8 @@ public class SubjectIterator implements Iterator {
     // impute MI value from STEMI and NSTEMI values
     String nstemi = sample.getProperties().get(Property.NSTEMI);
     String stemi = sample.getProperties().get(Property.STEMI);
-    if (!IcpcUtils.isBlank(stemi) && stemi.equals(Value.Yes.getShortName())) {
-      sample.addProperty(Property.MI_DURING_FOLLOWUP, Value.Yes.getShortName());
-    }
-    else if (!IcpcUtils.isBlank(nstemi) && nstemi.equals(Value.Yes.getShortName())) {
-      sample.addProperty(Property.MI_DURING_FOLLOWUP, Value.Yes.getShortName());
-    }
-    else if (!IcpcUtils.isBlank(stemi) && !IcpcUtils.isBlank(nstemi) && stemi.equals(Value.No.getShortName()) && nstemi.equals(Value.No.getShortName())) {
-      sample.addProperty(Property.MI_DURING_FOLLOWUP, Value.No.getShortName());
-    }
+    String miDuringFollowup = IcpcUtils.calculateMiDuringFollowup(stemi, nstemi);
+    sample.addProperty(Property.MI_DURING_FOLLOWUP, miDuringFollowup);
 
     // fix the problem with caucasiens
     String raceSelf = sample.getProperties().get(Property.RACE_SELF);
@@ -338,7 +331,6 @@ public class SubjectIterator implements Iterator {
     String stroke = sample.getProperties().get(Property.STROKE);
     String stentThromb = sample.getProperties().get(Property.STENT_THROMB);
     String cvDeath = sample.getProperties().get(Property.CARDIOVASCULAR_DEATH);
-    String miDuringFollowup = sample.getProperties().get(Property.MI_DURING_FOLLOWUP);
 
     String miPheno            = IcpcUtils.calculateMiPheno(stemi, nstemi, miDuringFollowup);
     String macePheno2         = IcpcUtils.occurs(vascularDeath, stroke, stentThromb, miPheno);

@@ -235,6 +235,24 @@ public class IcpcUtils {
   private static boolean isYes(String value) {
     return !isBlank(value) && value.equals(Value.Yes.getShortName());
   }
+
+  /**
+   * Calculate the "MI during followup" value. Should be yes if either STEMI or NSTEMI is yes
+   * @param stemi the STEMI value
+   * @param nstemi the NSTEMI value
+   * @return String value representing Yes, No, or NA
+   */
+  public static String calculateMiDuringFollowup(String stemi, String nstemi) {
+    if (isBlank(stemi) || isBlank(nstemi)) {
+      return NA;
+    }
+    else if (isYes(stemi) || isYes(nstemi)) {
+      return Value.Yes.getShortName();
+    }
+    else {
+      return Value.No.getShortName();
+    }
+  }
   
   public static String calculateCriteria5(String mi, String cvDeath, String stentThromb, String stroke, String macePheno2ExclStroke) {
     if (isYes(cvDeath) || isYes(stroke)) {

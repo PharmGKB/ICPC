@@ -110,4 +110,19 @@ public class IcpcUtilsTest {
     assertEquals(Value.Yes.getShortName(), IcpcUtils.occurs(Value.Yes.getShortName(), Value.Yes.getShortName(), Value.No.getShortName(), Value.No.getShortName()));
     assertEquals(Value.No.getShortName(), IcpcUtils.occurs(Value.No.getShortName(), Value.No.getShortName(), Value.No.getShortName(), Value.No.getShortName()));
   }
+  
+  @Test
+  public void testCalculateMiDuringFollowup() {
+    assertEquals(IcpcUtils.NA, 
+        IcpcUtils.calculateMiDuringFollowup(IcpcUtils.NA, IcpcUtils.NA));
+
+    assertEquals(IcpcUtils.NA, 
+        IcpcUtils.calculateMiDuringFollowup(IcpcUtils.NA, Value.Yes.getShortName()));
+
+    assertEquals(Value.Yes.getShortName(), 
+        IcpcUtils.calculateMiDuringFollowup(Value.No.getShortName(), Value.Yes.getShortName()));
+
+    assertEquals(Value.No.getShortName(), 
+        IcpcUtils.calculateMiDuringFollowup(Value.No.getShortName(), Value.No.getShortName()));
+  }
 }
