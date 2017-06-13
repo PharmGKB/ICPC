@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/6285/PharmGKB/ICPC.png)](http://dx.doi.org/10.5281/zenodo.11859)
+[![DOI](https://zenodo.org/badge/5486545.svg)](https://zenodo.org/badge/latestdoi/5486545)
 
 # ICPC Data Processing
 
