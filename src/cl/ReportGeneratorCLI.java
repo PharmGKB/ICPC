@@ -41,7 +41,7 @@ public class ReportGeneratorCLI {
   private void parseCommandLineArgs(String args[]) throws Exception{
     CliHelper cliHelper = new CliHelper(getClass(), false);
 
-    cliHelper.addOption("r", "report", "which report to generate", "report", true);
+    cliHelper.addOption("r", "report", "which report to generate: combined, gwas, fndz, or mace", "report", true);
     cliHelper.addOption("d", "directory", "directory path to write to", "pathToDirectory", true);
     cliHelper.addOption("p", "project", "project to output", "projectId", false);
 
