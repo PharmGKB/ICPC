@@ -374,7 +374,8 @@ public enum Property implements ExtendedEnum {
   RS4803419                   (355, "rs4803419", "rs4803419", IcpcUtils.VALIDATOR_BASES),
   MACE_CRITERIA_3             (356, "MACE_Criteria_3", "Includes pts w/MACE_pheno2 who coded \"NA\" but had a CV Death event", IcpcUtils.VALIDATOR_BINARY),
   MACE_CRITERIA_4             (357, "MACE_Criteria_4", "Includes pts w/MACE_pheno2_ExclStroke who coded \"NA\" but had a CV Death event.", IcpcUtils.VALIDATOR_BINARY),
-  MACE_CRITERIA_5             (358, "MACE_Criteria_5", "all patients in who (CV Death AND MI AND ST is available) PLUS (all patients in who CV death OR stroke is 'yes')", IcpcUtils.VALIDATOR_BINARY)
+  MACE_CRITERIA_5             (358, "MACE_Criteria_5", "all patients in who (CV Death AND MI AND ST is available) PLUS (all patients in who CV death OR stroke is 'yes')", IcpcUtils.VALIDATOR_BINARY),
+  IN_GWAS    (359, "Included_In_GWAS", "Included in GWAS Analysis", IcpcUtils.VALIDATOR_BINARY)
   ;
 
   private static ExtendedEnumHelper<Property> s_extendedEnumHelper;

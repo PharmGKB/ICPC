@@ -30,6 +30,7 @@ public class Sample {
   private String m_EthnicityOMB;
   private String m_Country;
   private Double m_Age;
+  private boolean m_includedInGwas;
   private Map<Property,String> m_properties;
 
   @Id
@@ -182,5 +183,14 @@ public class Sample {
     }
 
     m_properties.put(property, value);
+  }
+
+  @Column(name="Included_In_GWAS")
+  public boolean isIncludedInGwas() {
+    return m_includedInGwas;
+  }
+
+  public void setIncludedInGwas(boolean m_includedInGwas) {
+    this.m_includedInGwas = m_includedInGwas;
   }
 }

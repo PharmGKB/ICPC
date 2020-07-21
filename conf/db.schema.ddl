@@ -18,6 +18,7 @@ CREATE TABLE samples (
   Ethnicity_OMB varchar(200) DEFAULT NULL,
   Country varchar(200) DEFAULT NULL,
   Age decimal(10,0) DEFAULT NULL,
+  Included_In_GWAS BOOL DEFAULT FALSE,
   PRIMARY KEY (Subject_ID)
 );
 
@@ -373,4 +374,5 @@ INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (355, 'r
 INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (356, 'MACE_Criteria_3', 'Includes pts w/MACE_pheno2 who coded "NA" but had a CV Death event', 'string', 'yes=1, no=0, not known=NA');
 INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (357, 'MACE_Criteria_4', 'Includes pts w/MACE_pheno2_ExclStroke who coded "NA" but had a CV Death event.', 'string', 'yes=1, no=0, not known=NA');
 INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (358, 'MACE_Criteria_5', 'all patients in who (CV Death AND MI AND ST is available) PLUS (all patients in who CV death OR stroke is "yes")', 'string', 'yes=1, no=0, not known=NA');
+INSERT INTO propertynames (idx, name, descrip, datatype, format) VALUES (359, 'Included_In_GWAS', 'Included in GWAS Analysis', 'number', '1=yes, 0=no');
 commit;
