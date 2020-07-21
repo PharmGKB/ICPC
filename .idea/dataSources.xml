@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2086302087">
-    <data-source source="LOCAL" name="ICPC - local" uuid="fefed95f-79c9-4ee6-b289-507c63555d4d">
-      <driver-ref>mysql</driver-ref>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://local:8889/icpc</jdbc-url>
-      <libraries>
-        <library>
-          <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="ICPC - Iceman" uuid="7a184030-ff99-4380-becc-0d49c7d52cd7">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://10.0.0.173:8889/icpc</jdbc-url>
-      <libraries>
-        <library>
-          <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.21-bin.jar!/</url>
-        </library>
-      </libraries>
-    </data-source>
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="PostgreSQL - icpc@localhost" uuid="13dc6ba5-d26e-445a-b8e7-4c0dad093490">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
