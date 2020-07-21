@@ -1,6 +1,5 @@
 package org.pharmgkb.util;
 
-import com.sun.istack.internal.Nullable;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellReference;
@@ -48,7 +47,7 @@ public class ExcelUtils {
    * @param value the String value to write
    * @param cellStyle the {@link CellStyle} to use, optional
    */
-  public static void writeCell(Row row, int idx, String value, @Nullable CellStyle cellStyle) {
+  public static void writeCell(Row row, int idx, String value, CellStyle cellStyle) {
     // first normalizeValue all the important arguments
     if (value == null || row == null || idx<0) {
       // don't do anything if they're missing
@@ -89,7 +88,7 @@ public class ExcelUtils {
    * @param value the <code>double</code> value to write
    * @param cellStyle the {@link CellStyle} to use, optional
    */
-  public static void writeCell(Row row, int idx, double value, @Nullable CellStyle cellStyle) {
+  public static void writeCell(Row row, int idx, double value, CellStyle cellStyle) {
     Cell cell = row.getCell(idx);
     if (cell == null) {
       cell = row.createCell(idx, Cell.CELL_TYPE_NUMERIC);
